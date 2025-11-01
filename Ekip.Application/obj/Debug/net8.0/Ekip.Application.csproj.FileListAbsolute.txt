@@ -1,0 +1,16 @@
+C:\Users\amir\source\repos\EkipProject\Ekip.Application\bin\Debug\net8.0\Ekip.Application.deps.json
+C:\Users\amir\source\repos\EkipProject\Ekip.Application\bin\Debug\net8.0\Ekip.Application.dll
+C:\Users\amir\source\repos\EkipProject\Ekip.Application\bin\Debug\net8.0\Ekip.Application.pdb
+C:\Users\amir\source\repos\EkipProject\Ekip.Application\bin\Debug\net8.0\Ekip.Domain.dll
+C:\Users\amir\source\repos\EkipProject\Ekip.Application\bin\Debug\net8.0\Ekip.Domain.pdb
+C:\Users\amir\source\repos\EkipProject\Ekip.Application\obj\Debug\net8.0\Ekip.Application.csproj.AssemblyReference.cache
+C:\Users\amir\source\repos\EkipProject\Ekip.Application\obj\Debug\net8.0\Ekip.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\amir\source\repos\EkipProject\Ekip.Application\obj\Debug\net8.0\Ekip.Application.AssemblyInfoInputs.cache
+C:\Users\amir\source\repos\EkipProject\Ekip.Application\obj\Debug\net8.0\Ekip.Application.AssemblyInfo.cs
+C:\Users\amir\source\repos\EkipProject\Ekip.Application\obj\Debug\net8.0\Ekip.Application.csproj.CoreCompileInputs.cache
+C:\Users\amir\source\repos\EkipProject\Ekip.Application\obj\Debug\net8.0\Ekip.Application.sourcelink.json
+C:\Users\amir\source\repos\EkipProject\Ekip.Application\obj\Debug\net8.0\Ekip.App.3901BA66.Up2Date
+C:\Users\amir\source\repos\EkipProject\Ekip.Application\obj\Debug\net8.0\Ekip.Application.dll
+C:\Users\amir\source\repos\EkipProject\Ekip.Application\obj\Debug\net8.0\refint\Ekip.Application.dll
+C:\Users\amir\source\repos\EkipProject\Ekip.Application\obj\Debug\net8.0\Ekip.Application.pdb
+C:\Users\amir\source\repos\EkipProject\Ekip.Application\obj\Debug\net8.0\ref\Ekip.Application.dll

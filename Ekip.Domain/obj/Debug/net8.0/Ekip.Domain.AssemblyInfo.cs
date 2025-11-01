@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Ekip.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+77bfdbff2539427137e2ce93ac97ceba9af6631e")]
 [assembly: System.Reflection.AssemblyProductAttribute("Ekip.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Ekip.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -10,24 +10,24 @@ namespace Ekip.Domain.Entities
 {
     public class User
     {
-        public int ID { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string UserName { get; set; }
-        public string Password { get; set; }
-        public string Email { get; set; }
-        public bool Gender { get; set; }
-        public DateTime CreatDate { get; set; }
-        public double Rating { get; set; }
-        public bool IsPremium { get; set; }
-        public bool IsActive { get; set; }
-        public bool IsLocked { get; set; }
+        public int ID { get; private set; }
+        public string FirstName { get; private set; }
+        public string LastName { get; private set; }
+        public string UserName { get; private set; }
+        public string Password { get; private set; }
+        public string Email { get; private set; }
+        public bool Gender { get; private set; }
+        public DateTime CreateDate { get; private set; }
+        public double Rating { get; private set; }
+        public bool IsPremium { get; private set; }
+        public bool IsActive { get; private set; }
+        public bool IsLocked { get; private set; }
         public List<UserCredential> UserCredentials { get; private set; }
 
 
         public void addCredential(UserCredential credential)
         {
-            if (UserCredentials.Any(x => x.Equals(UserCredentials)))
+            if (UserCredentials.Any(x => x.Equals(credential)))
             {
                 throw new Exception("this credential already exist.");
             }
