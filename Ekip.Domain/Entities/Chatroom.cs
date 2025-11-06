@@ -1,15 +1,11 @@
 ﻿using Ekip.Domain.Enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Ekip.Domain.Entities
 {
     public class Chatroom
     {
-        public int Id { get; private set; }
+        public long Id { get; private set; }
         public string Name { get; private set; }
         public ChatRoomType ChatRoomType { get; private set; }
         public DateTime CreateDate { get; private set; }

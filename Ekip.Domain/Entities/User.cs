@@ -1,10 +1,4 @@
-﻿using Ekip.Domain.Enums;
-using Ekip.Domain.ValueObjects;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Ekip.Domain.ValueObjects;
 
 namespace Ekip.Domain.Entities
 {

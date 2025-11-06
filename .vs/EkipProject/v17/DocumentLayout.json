@@ -3,16 +3,32 @@
   "WorkspaceRootPath": "C:\\Users\\amir\\source\\repos\\EkipProject\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\amir\\source\\repos\\ekipproject\\ekip.application\\features\\messages\\commands\\sendmessage\\sendmessagecommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\features\\messages\\commands\\sendmessage\\sendmessagecommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\amir\\source\\repos\\ekipproject\\ekip.application\\features\\messages\\commands\\sendmessage\\sendmessagecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\features\\messages\\commands\\sendmessage\\sendmessagecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6619533C-51D9-499B-834C-5EECEBBE2867}|Ekip.Domain\\Ekip.Domain.csproj|c:\\users\\amir\\source\\repos\\ekipproject\\ekip.domain\\entities\\message.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6619533C-51D9-499B-834C-5EECEBBE2867}|Ekip.Domain\\Ekip.Domain.csproj|solutionrelative:ekip.domain\\entities\\message.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{6619533C-51D9-499B-834C-5EECEBBE2867}|Ekip.Domain\\Ekip.Domain.csproj|c:\\users\\amir\\source\\repos\\ekipproject\\ekip.domain\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6619533C-51D9-499B-834C-5EECEBBE2867}|Ekip.Domain\\Ekip.Domain.csproj|solutionrelative:ekip.domain\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6619533C-51D9-499B-834C-5EECEBBE2867}|Ekip.Domain\\Ekip.Domain.csproj|c:\\users\\amir\\source\\repos\\ekipproject\\ekip.domain\\valueobjects\\usercredential.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6619533C-51D9-499B-834C-5EECEBBE2867}|Ekip.Domain\\Ekip.Domain.csproj|solutionrelative:ekip.domain\\valueobjects\\usercredential.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\amir\\source\\repos\\ekipproject\\ekip.application\\interfaces\\imessagereadrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\interfaces\\imessagereadrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6619533C-51D9-499B-834C-5EECEBBE2867}|Ekip.Domain\\Ekip.Domain.csproj|c:\\users\\amir\\source\\repos\\ekipproject\\ekip.domain\\enums\\authenticationtype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6619533C-51D9-499B-834C-5EECEBBE2867}|Ekip.Domain\\Ekip.Domain.csproj|solutionrelative:ekip.domain\\enums\\authenticationtype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\amir\\source\\repos\\ekipproject\\ekip.application\\interfaces\\imessagewriterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\interfaces\\imessagewriterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\amir\\source\\repos\\ekipproject\\ekip.application\\features\\messages\\queries\\getmessage\\getmessagequeryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\features\\messages\\queries\\getmessage\\getmessagequeryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,45 +38,96 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "UserCredential.cs",
-              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Domain\\ValueObjects\\UserCredential.cs",
-              "RelativeDocumentMoniker": "Ekip.Domain\\ValueObjects\\UserCredential.cs",
-              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Domain\\ValueObjects\\UserCredential.cs",
-              "RelativeToolTip": "Ekip.Domain\\ValueObjects\\UserCredential.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAxwBcAAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-31T12:43:58.819Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "AuthenticationType.cs",
-              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Domain\\Enums\\AuthenticationType.cs",
-              "RelativeDocumentMoniker": "Ekip.Domain\\Enums\\AuthenticationType.cs",
-              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Domain\\Enums\\AuthenticationType.cs",
-              "RelativeToolTip": "Ekip.Domain\\Enums\\AuthenticationType.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAkAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-31T12:24:15.797Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "User.cs",
               "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Domain\\Entities\\User.cs",
               "RelativeDocumentMoniker": "Ekip.Domain\\Entities\\User.cs",
               "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Domain\\Entities\\User.cs",
               "RelativeToolTip": "Ekip.Domain\\Entities\\User.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAA1wBoAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAsAAAAAAAAAAAA9wBUAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-31T12:08:59.43Z",
+              "WhenOpened": "2025-11-05T16:02:27.763Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "IMessageWriteRepository.cs",
+              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Interfaces\\IMessageWriteRepository.cs",
+              "RelativeDocumentMoniker": "Ekip.Application\\Interfaces\\IMessageWriteRepository.cs",
+              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Interfaces\\IMessageWriteRepository.cs",
+              "RelativeToolTip": "Ekip.Application\\Interfaces\\IMessageWriteRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-04T19:48:48.711Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "IMessageReadRepository.cs",
+              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Interfaces\\IMessageReadRepository.cs",
+              "RelativeDocumentMoniker": "Ekip.Application\\Interfaces\\IMessageReadRepository.cs",
+              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Interfaces\\IMessageReadRepository.cs",
+              "RelativeToolTip": "Ekip.Application\\Interfaces\\IMessageReadRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-04T19:48:46.596Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "GetMessageQueryHandler.cs",
+              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Features\\Messages\\Queries\\GetMessage\\GetMessageQueryHandler.cs",
+              "RelativeDocumentMoniker": "Ekip.Application\\Features\\Messages\\Queries\\GetMessage\\GetMessageQueryHandler.cs",
+              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Features\\Messages\\Queries\\GetMessage\\GetMessageQueryHandler.cs",
+              "RelativeToolTip": "Ekip.Application\\Features\\Messages\\Queries\\GetMessage\\GetMessageQueryHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-04T19:48:34.148Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Message.cs",
+              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Domain\\Entities\\Message.cs",
+              "RelativeDocumentMoniker": "Ekip.Domain\\Entities\\Message.cs",
+              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Domain\\Entities\\Message.cs",
+              "RelativeToolTip": "Ekip.Domain\\Entities\\Message.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAQwBwAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-04T19:45:58.983Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SendMessageCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Features\\Messages\\Commands\\SendMessage\\SendMessageCommandHandler.cs",
+              "RelativeDocumentMoniker": "Ekip.Application\\Features\\Messages\\Commands\\SendMessage\\SendMessageCommandHandler.cs",
+              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Features\\Messages\\Commands\\SendMessage\\SendMessageCommandHandler.cs",
+              "RelativeToolTip": "Ekip.Application\\Features\\Messages\\Commands\\SendMessage\\SendMessageCommandHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-04T19:45:12.121Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SendMessageCommand.cs",
+              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Features\\Messages\\Commands\\SendMessage\\SendMessageCommand.cs",
+              "RelativeDocumentMoniker": "Ekip.Application\\Features\\Messages\\Commands\\SendMessage\\SendMessageCommand.cs",
+              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Features\\Messages\\Commands\\SendMessage\\SendMessageCommand.cs",
+              "RelativeToolTip": "Ekip.Application\\Features\\Messages\\Commands\\SendMessage\\SendMessageCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-04T19:45:03.353Z",
               "EditorCaption": ""
             }
           ]
