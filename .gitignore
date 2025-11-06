@@ -1,8 +1,40 @@
-.vs/
-.vs/
-bin/
-obj/
-*.user
+# Visual Studio user-specific files
 *.suo
-*.db
+*.user
+*.userosscache
+*.sln.docstates
+
+# Visual Studio cache and temp folders
+.vs/
+*/.vscode/
+
+# Build results
+[Bb]in/
+[Oo]bj/
+[Ll]og/
 *.log
+
+# NuGet packages
+*.nupkg
+*.snupkg
+*.nuspec
+packages/
+
+# Database and local data files
+*.db
+*.mdf
+*.ldf
+
+# Others
+*.cache
+*.tmp
+*.bak
+*.exe
+*.dll
+*.pdb
+
+# JetBrains Rider
+.idea/
+
+# Publish output
+publish/
