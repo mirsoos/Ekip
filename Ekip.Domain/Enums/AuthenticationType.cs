@@ -11,6 +11,6 @@ namespace Ekip.Domain.Enums
         PhoneNumber,
         Email,
         Instagram,
-
+        Instagram2
     }
 }

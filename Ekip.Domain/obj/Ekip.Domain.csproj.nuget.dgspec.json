@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Domain\\Ekip.Domain.csproj": {}
+    "C:\\Users\\Xena\\Source\\Repos\\Ekip\\Ekip.Domain\\Ekip.Domain.csproj": {}
   },
   "projects": {
-    "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Domain\\Ekip.Domain.csproj": {
+    "C:\\Users\\Xena\\Source\\Repos\\Ekip\\Ekip.Domain\\Ekip.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Domain\\Ekip.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\Xena\\Source\\Repos\\Ekip\\Ekip.Domain\\Ekip.Domain.csproj",
         "projectName": "Ekip.Domain",
-        "projectPath": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Domain\\Ekip.Domain.csproj",
-        "packagesPath": "C:\\Users\\amir\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Domain\\obj\\",
+        "projectPath": "C:\\Users\\Xena\\Source\\Repos\\Ekip\\Ekip.Domain\\Ekip.Domain.csproj",
+        "packagesPath": "C:\\Users\\Xena\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Xena\\Source\\Repos\\Ekip\\Ekip.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\amir\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Xena\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,7 +26,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
