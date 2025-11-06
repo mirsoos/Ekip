@@ -6,7 +6,7 @@ namespace Ekip.Domain.Entities
     public class Message
     {
         public long Id { get; private set; }
-        public Chatroom Chatroom { get; private set; }
+        public ChatRoom ChatRoom { get; private set; }
         public int SenderId { get; private set; }
         public string MessageContent { get; private set; }
         public DateTime SentAt { get; private set; }
@@ -14,11 +14,11 @@ namespace Ekip.Domain.Entities
         public bool IsEdited { get; private set; }
         public MessageType Type { get; private set; }
 
-        public Message(Chatroom chatroom,int senderId,string messageContent)
+        public Message(ChatRoom chatroom,int senderId,string messageContent)
         {
             if(string.IsNullOrEmpty(messageContent))
                 throw new ArgumentException("Message content cannot be empty.");
-            Chatroom = chatroom;
+            ChatRoom = chatroom;
             SenderId = senderId;
             MessageContent = messageContent;
             SentAt = DateTime.UtcNow;

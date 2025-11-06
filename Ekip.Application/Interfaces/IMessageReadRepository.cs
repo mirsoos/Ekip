@@ -5,7 +5,6 @@ namespace Ekip.Application.Interfaces
 {
     public interface IMessageReadRepository
     {
-        Task<List<Message>> GetMessagesAsync(long chatRoomId, CancellationToken cancellationToken = default);
-        Task<Chatroom> GetById()
+        Task<List<Message>> GetMessagesAsync(long chatRoomId,int Take = 50, CancellationToken cancellationToken = default);
     }
 }

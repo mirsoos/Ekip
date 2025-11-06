@@ -3,7 +3,7 @@
 
 namespace Ekip.Domain.Entities
 {
-    public class Chatroom
+    public class ChatRoom
     {
         public long Id { get; private set; }
         public string Name { get; private set; }
@@ -14,7 +14,7 @@ namespace Ekip.Domain.Entities
         private readonly List<Message> _messages = new();
         public IReadOnlyCollection<Message> Messages => _messages.AsReadOnly();
 
-        public Chatroom(string name,ChatRoomType type)
+        public ChatRoom(string name,ChatRoomType type)
         {
             if (string.IsNullOrEmpty(name))
                 throw new ArgumentException("Chatroom Must Have a Name");

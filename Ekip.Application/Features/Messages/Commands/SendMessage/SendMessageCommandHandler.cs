@@ -9,20 +9,24 @@ namespace Ekip.Application.Features.Messages.Commands.SendMessage
     public class SendMessageCommandHandler : IRequestHandler<SendMessageCommand,MessageDto>
     {
         private readonly IMessageWriteRepository _writeMessage;
-        public readonly IMessageReadRepository _readMessage;
-        public SendMessageCommandHandler(IMessageWriteRepository writeMessage,IMessageReadRepository readMessage) 
+        private readonly IChatRoomReadRepository _chatRoomRepository;
+        public SendMessageCommandHandler(IMessageWriteRepository writeMessage,IChatRoomReadRepository chatRoomRepository) 
             {
                 _writeMessage = writeMessage;
-                _readMessage = readMessage;
+                _chatRoomRepository = chatRoomRepository;
         }
 
         public async Task<MessageDto> Handle(SendMessageCommand request ,CancellationToken cancellationToken)
         {
-            var chatRoom = await _readMessage.()
 
-            var message = new Message(chatRoom,request.SenderId,request.MessageContent);
+            var chatRoom = await _chatRoomRepository.GetByIdAsync(request.ChatRoomId, cancellationToken);
 
-            var messages = await _writeMessage.AddAsync(message, cancellationToken);
+            if (chatRoom == null)
+                throw new Exception("ChatRoom Not Found");
+
+            var message = chatRoom.SendMessage(request.SenderId,request.MessageContent);
+
+            await _writeMessage.AddAsync(message, cancellationToken);
 
             return new MessageDto
             {
@@ -33,7 +37,7 @@ namespace Ekip.Application.Features.Messages.Commands.SendMessage
                 SenderId = message.SenderId,
                 SentAt = message.SentAt,
                 Type = message.Type,
-                ChatRoomId = message.ChatRoomId.Id
+                ChatRoomId = message.ChatRoom.Id
 
             };
 
