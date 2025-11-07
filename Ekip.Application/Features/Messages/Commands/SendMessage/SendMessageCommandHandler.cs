@@ -1,6 +1,5 @@
 ﻿using Ekip.Application.DTOs;
 using Ekip.Application.Interfaces;
-using Ekip.Domain.Entities;
 using MediatR;
 
 

@@ -12,6 +12,7 @@ namespace Ekip.Domain.Entities
         public DateTime SentAt { get; private set; }
         public bool IsDeleted { get; private set; }
         public bool IsEdited { get; private set; }
+        public bool IsRead { get; set; }
         public MessageType Type { get; private set; }
 
         public Message(ChatRoom chatroom,int senderId,string messageContent)

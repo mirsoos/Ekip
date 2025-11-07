@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Ekip.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a0a5b8a1c4dab9c4adc1e5f30711fd73d0b3993a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b1c43c5d1a39dea679718fd13f3b8cdc4a4c6ca0")]
 [assembly: System.Reflection.AssemblyProductAttribute("Ekip.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Ekip.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
