@@ -28,5 +28,6 @@ namespace Ekip.Domain.ValueObjects
         }
 
         public override int GetHashCode() => HashCode.Combine(Value, AuthenticationType);
+        private UserCredential() { }
     }
 }

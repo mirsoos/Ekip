@@ -5,7 +5,7 @@ namespace Ekip.Infrastructure.Repositories
 {
     public class ChatRoomReadRepository : IChatRoomReadRepository
     {
-        public Task<Chatroom?> GetByIdAsync(long chatRoomId, CancellationToken cancellationToken)
+        public Task<ChatRoom?> GetByIdAsync(long chatRoomId, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }

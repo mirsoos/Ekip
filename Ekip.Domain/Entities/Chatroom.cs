@@ -68,5 +68,7 @@ namespace Ekip.Domain.Entities
                 return message;
             
         }
+
+        private ChatRoom() { }
     }
 }

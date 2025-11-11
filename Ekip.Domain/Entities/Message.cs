@@ -12,7 +12,7 @@ namespace Ekip.Domain.Entities
         public DateTime SentAt { get; private set; }
         public bool IsDeleted { get; private set; }
         public bool IsEdited { get; private set; }
-        public bool IsRead { get; set; }
+        public bool IsRead { get; private set; }
         public MessageType Type { get; private set; }
 
         public Message(ChatRoom chatroom,int senderId,string messageContent)
@@ -39,5 +39,9 @@ namespace Ekip.Domain.Entities
         public void Delete() => IsDeleted = true;
         public void Pin() => Type = MessageType.Pinned;
         public void UnPin() => Type = MessageType.Normal;
+
+        public void Read() => IsRead = true;
+
+        private Message() { }
     }
 }

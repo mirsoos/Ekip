@@ -16,6 +16,7 @@ namespace Ekip.Domain.Entities
         public bool IsPremium { get; private set; }
         public bool IsActive { get; private set; }
         public bool IsLocked { get; private set; }
+        public Profile Profile { get; private set; }
         private readonly List<UserCredential> _userCredentials = new();
         public IReadOnlyCollection<UserCredential> UserCredentials => _userCredentials.AsReadOnly();
 
@@ -59,7 +60,9 @@ namespace Ekip.Domain.Entities
 
             _userCredentials.Add(credential);
         }
+
         public void DeActivate() => IsActive = false;
 
+        private User() { }
     }
 }
