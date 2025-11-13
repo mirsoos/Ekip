@@ -1,17 +1,17 @@
-﻿using Ekip.Domain.ValueObjects;
+﻿using Ekip.Domain.Entities.Base.Entities;
+using Ekip.Domain.Entities.Identity;
+using Ekip.Domain.ValueObjects;
 
-namespace Ekip.Domain.Entities
+namespace Ekip.Domain.Entities.Identity.Entities
 {
-    public class User
+    public class User : BaseEntitiy
     {
-        public int ID { get; private set; }
         public string FirstName { get; private set; }
         public string LastName { get; private set; }
         public string UserName { get; private set; }
         public string PasswordHash { get; private set; }
         public string Email { get; private set; }
         public bool Gender { get; private set; }
-        public DateTime CreateDate { get; private set; }
         public double Rating { get; private set; }
         public bool IsPremium { get; private set; }
         public bool IsActive { get; private set; }

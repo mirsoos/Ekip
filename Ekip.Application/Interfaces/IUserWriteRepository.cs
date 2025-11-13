@@ -1,4 +1,4 @@
-﻿using Ekip.Domain.Entities;
+﻿using Ekip.Domain.Entities.Identity.Entities;
 
 namespace Ekip.Application.Interfaces
 {

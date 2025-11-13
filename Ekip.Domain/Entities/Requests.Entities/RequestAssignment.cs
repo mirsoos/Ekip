@@ -1,9 +1,11 @@
-﻿
-namespace Ekip.Domain.Entities
+﻿using Ekip.Domain.Entities.Base.Entities;
+using Ekip.Domain.Entities.Identity;
+using Ekip.Domain.Entities.Identity.Entities;
+
+namespace Ekip.Domain.Entities.Requests.Entities
 {
-    public class RequestAssignment
+    public class RequestAssignment : BaseEntitiy
     {
-        public long Id { get; private set; }
         public Profile Applicant { get; private set; }
         public Request Request { get; private set; }
 

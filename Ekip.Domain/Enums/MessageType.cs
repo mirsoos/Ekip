@@ -4,7 +4,7 @@ namespace Ekip.Domain.Enums
 {
     public enum MessageType
     {
-        Normal,
+        Normal =1 ,
         Notification,
         Pinned
     }

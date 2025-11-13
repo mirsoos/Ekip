@@ -1,14 +1,13 @@
-﻿using Ekip.Domain.Enums;
+﻿using Ekip.Domain.Entities.Base.Entities;
+using Ekip.Domain.Enums;
 
 
-namespace Ekip.Domain.Entities
+namespace Ekip.Domain.Entities.Chat.Entites
 {
-    public class ChatRoom
+    public class ChatRoom : BaseEntitiy
     {
-        public long Id { get; private set; }
         public string Name { get; private set; }
         public ChatRoomType ChatRoomType { get; private set; }
-        public DateTime CreateDate { get; private set; }
         public int ChatRoomOwnerId { get; private set; }
         public List<int> Participants { get; private set; }
 
@@ -37,7 +36,7 @@ namespace Ekip.Domain.Entities
         public void RemoveParticipant(int userId) 
         {
 
-            if(userId == this.ChatRoomOwnerId)
+            if(userId == ChatRoomOwnerId)
             {
                 if(ChatRoomType == ChatRoomType.Group && Participants.Count > 1)
                 {

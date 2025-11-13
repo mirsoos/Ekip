@@ -1,4 +1,4 @@
-﻿using Ekip.Domain.Entities;
+﻿using Ekip.Domain.Entities.Identity.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;

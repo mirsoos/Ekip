@@ -1,4 +1,4 @@
-﻿using Ekip.Domain.Entities;
+﻿using Ekip.Domain.Entities.Chat.Entites;
 
 
 namespace Ekip.Application.Interfaces

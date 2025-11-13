@@ -1,16 +1,15 @@
-﻿using Ekip.Domain.Enums;
+﻿using Ekip.Domain.Entities.Base.Entities;
+using Ekip.Domain.Enums;
 
 
-namespace Ekip.Domain.Entities
+namespace Ekip.Domain.Entities.Chat.Entites
 {
-    public class Message
+    public class Message : BaseEntitiy
     {
-        public long Id { get; private set; }
         public ChatRoom ChatRoom { get; private set; }
         public int SenderId { get; private set; }
         public string MessageContent { get; private set; }
         public DateTime SentAt { get; private set; }
-        public bool IsDeleted { get; private set; }
         public bool IsEdited { get; private set; }
         public bool IsRead { get; private set; }
         public MessageType Type { get; private set; }

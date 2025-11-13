@@ -3,7 +3,7 @@ namespace Ekip.Domain.Enums
 {
     public enum ChatRoomType
     {
-        Private ,
+        Private =1 ,
         Group ,
         Public
     }

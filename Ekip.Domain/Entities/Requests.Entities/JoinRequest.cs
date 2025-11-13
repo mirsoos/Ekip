@@ -1,19 +1,22 @@
-﻿
+﻿using Ekip.Domain.Entities.Base.Entities;
+using Ekip.Domain.Entities.Identity;
+using Ekip.Domain.Entities.Identity.Entities;
 using Ekip.Domain.Enums;
 
-namespace Ekip.Domain.Entities
+namespace Ekip.Domain.Entities.Requests.Entities
 {
-    public class JoinRequest
+    /// <summary>
+    /// درخواست عضویت در اکیپ
+    /// </summary>
+    public class JoinRequest : BaseEntitiy
     {
-        public long Id { get; private set; }
-
         public JoinRequestStatus Status { get; private set; }
 
         public Profile Applicant { get; private set; }
-
         public Request Request { get; private set; }
+        public string? Description { get; private set; }
 
-        public JoinRequest(Request request,Profile applicant)
+        public JoinRequest(Request request,Profile applicant, string? description)
         {
             if (request == null)
                 throw new ArgumentNullException(nameof(request));
@@ -24,6 +27,7 @@ namespace Ekip.Domain.Entities
             Request = request;
             Applicant = applicant;
             Status = JoinRequestStatus.Pending;
+            Description = description;
         }
 
         public void Accept()

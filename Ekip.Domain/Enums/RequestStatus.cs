@@ -3,9 +3,10 @@ namespace Ekip.Domain.Enums
 {
     public enum RequestStatus
     {
-        Open,
+        Open = 1,
         InProgress,
         Completed,
-        Closed
+        Closed,
+        Canceled
     }
 }

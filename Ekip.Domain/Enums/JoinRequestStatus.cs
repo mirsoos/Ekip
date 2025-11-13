@@ -3,7 +3,7 @@ namespace Ekip.Domain.Enums
 {
     public enum JoinRequestStatus
     {
-        Pending,
+        Pending =1,
         Accepted,
         Declined
     }
