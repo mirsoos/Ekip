@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Ekip.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7260adf673d40194de0cba9d33d91155ae63b637")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2dacc59dc094e838883ad7a698ab4f48de632ef0")]
 [assembly: System.Reflection.AssemblyProductAttribute("Ekip.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Ekip.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

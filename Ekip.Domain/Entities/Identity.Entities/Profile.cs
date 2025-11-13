@@ -6,6 +6,8 @@ namespace Ekip.Domain.Entities.Identity.Entities
     public class Profile : BaseEntitiy
     {  
         public User UserDetails { get; private set; }
+        public double? Rating { get; private set; }
+        public int Level { get; private set; }
         private readonly List<User> _userContacts = new();
         private readonly List<Request> _requests = new();
         private readonly List<RequestAssignment> _requestAssignments = new();
@@ -18,6 +20,7 @@ namespace Ekip.Domain.Entities.Identity.Entities
             if (userDetails == null)
                 throw new Exception("userDetails Not Found");
             UserDetails = userDetails;
+            Rating = null;
         }
         public void AddContact(User userContacts)
         {

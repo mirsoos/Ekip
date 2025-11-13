@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Ekip.WebApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+45e4bcd20a26af0e1734f2a4584fb0457519a6b3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2dacc59dc094e838883ad7a698ab4f48de632ef0")]
 [assembly: System.Reflection.AssemblyProductAttribute("Ekip.WebApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Ekip.WebApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

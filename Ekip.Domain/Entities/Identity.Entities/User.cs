@@ -12,7 +12,11 @@ namespace Ekip.Domain.Entities.Identity.Entities
         public string PasswordHash { get; private set; }
         public string Email { get; private set; }
         public bool Gender { get; private set; }
+<<<<<<< Updated upstream:Ekip.Domain/Entities/Identity.Entities/User.cs
         public double Rating { get; private set; }
+=======
+        public DateTime CreateDate { get; private set; }
+>>>>>>> Stashed changes:Ekip.Domain/Entities/User.cs
         public bool IsPremium { get; private set; }
         public bool IsActive { get; private set; }
         public bool IsLocked { get; private set; }
@@ -37,7 +41,6 @@ namespace Ekip.Domain.Entities.Identity.Entities
             Email = email;
             Gender = gender;
             CreateDate = DateTime.UtcNow;
-            Rating = 0;
             IsPremium = false;
             IsActive = true;
             IsLocked = false;
