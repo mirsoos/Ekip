@@ -13,7 +13,11 @@ namespace Ekip.Domain.Entities.Identity.Entities
         public string Email { get; private set; }
         public bool Gender { get; private set; }
 <<<<<<< Updated upstream:Ekip.Domain/Entities/Identity.Entities/User.cs
+<<<<<<< Updated upstream:Ekip.Domain/Entities/Identity.Entities/User.cs
         public double Rating { get; private set; }
+=======
+        public DateTime CreateDate { get; private set; }
+>>>>>>> Stashed changes:Ekip.Domain/Entities/User.cs
 =======
         public DateTime CreateDate { get; private set; }
 >>>>>>> Stashed changes:Ekip.Domain/Entities/User.cs
