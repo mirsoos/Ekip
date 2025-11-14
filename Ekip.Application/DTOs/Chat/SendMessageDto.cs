@@ -1,7 +1,7 @@
 ﻿using Ekip.Domain.Enums;
 
 
-namespace Ekip.Application.DTOs
+namespace Ekip.Application.DTOs.Chat
 {
     public class SendMessageDto
     {

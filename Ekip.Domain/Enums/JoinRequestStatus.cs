@@ -5,7 +5,11 @@ namespace Ekip.Domain.Enums
     {
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         Pending =1,
+=======
+        Pending = 1,
+>>>>>>> Stashed changes
 =======
         Pending = 1,
 >>>>>>> Stashed changes

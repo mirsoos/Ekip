@@ -1,5 +1,4 @@
-﻿
-namespace Ekip.Application.DTOs
+﻿namespace Ekip.Application.DTOs.User
 {
     public class LoginDto
     {

@@ -14,11 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Ekip.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-<<<<<<< Updated upstream
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cddbfd79e11771139b22f3e4a4dc5aa90f5494bc")]
-=======
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2dacc59dc094e838883ad7a698ab4f48de632ef0")]
->>>>>>> Stashed changes
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+620d6a746831ebcae67e678bb2365b4e78bc1433")]
 [assembly: System.Reflection.AssemblyProductAttribute("Ekip.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Ekip.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

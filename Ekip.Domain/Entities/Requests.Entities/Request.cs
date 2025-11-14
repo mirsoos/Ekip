@@ -1,4 +1,4 @@
-﻿using Ekip.Domain.Entities.Base.Entities;
+﻿    using Ekip.Domain.Entities.Base.Entities;
 using Ekip.Domain.Entities.Identity;
 using Ekip.Domain.Entities.Identity.Entities;
 using Ekip.Domain.Enums;
@@ -17,8 +17,14 @@ namespace Ekip.Domain.Entities.Requests.Entities
         public bool IsValid { get; private set; }
         public int RequiredAssignments { get; private set; }
         public int? MaximumRequiredAssigments { get; private set; }
+        public int? MaximumAgeRequired { get; set; }
+        public int? MinimumAgeRequired { get; set; }
         public string? Tags { get; private set; }
-
+        public bool IsAutoAccept { get; private set; }
+        public bool IsRepeatable { get; private set; }
+        public RequestRepeatType? RepeatType { get; set; }
+        public RequestType RequestType { get; private set; }
+        public ApplicantType ApplicantType { get; set; }
         public DateTime RequestDateTime { get; private set; }
         public DateTime RequestForbidDateTime => RequestDateTime.AddHours(-12);
 
@@ -28,7 +34,7 @@ namespace Ekip.Domain.Entities.Requests.Entities
         private readonly List<RequestAssignment> _assignments = new();
         public IReadOnlyCollection<RequestAssignment> Assignments => _assignments.AsReadOnly();
 
-        public Request(Profile creator , string title , int requiredAssignment,DateTime requestDateTime,string? description, string? tags) 
+        public Request(Profile creator , string title , int requiredAssignment,DateTime requestDateTime,string? description, string? tags,RequestType requestType,ApplicantType applicantType,bool isAutoAccept) 
         {
             if (creator == null)
                 throw new Exception("a Request Must Have an Creator");
@@ -44,6 +50,9 @@ namespace Ekip.Domain.Entities.Requests.Entities
             RequestDateTime = requestDateTime;
             Description = description;
             Tags = tags;
+            RequestType = requestType;
+            ApplicantType = applicantType;
+            IsAutoAccept = isAutoAccept;
         }
 
         public void AddJoinRequest(Profile applicant,string? description)

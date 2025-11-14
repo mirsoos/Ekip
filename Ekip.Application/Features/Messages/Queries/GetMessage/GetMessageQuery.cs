@@ -1,4 +1,4 @@
-﻿using Ekip.Application.DTOs;
+﻿using Ekip.Application.DTOs.Chat;
 using MediatR;
 
 namespace Ekip.Application.Features.Messages.Queries.GetMessage

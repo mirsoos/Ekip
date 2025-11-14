@@ -1,4 +1,4 @@
-﻿using Ekip.Application.DTOs;
+﻿using Ekip.Application.DTOs.Chat;
 using Ekip.Application.Interfaces;
 using MediatR;
 

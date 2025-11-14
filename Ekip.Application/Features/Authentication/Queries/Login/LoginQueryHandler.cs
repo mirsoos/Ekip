@@ -1,4 +1,4 @@
-﻿using Ekip.Application.DTOs;
+﻿using Ekip.Application.DTOs.User;
 using Ekip.Application.Interfaces;
 using MediatR;
 

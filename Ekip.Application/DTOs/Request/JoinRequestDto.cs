@@ -1,5 +1,5 @@
 ﻿
-namespace Ekip.Application.DTOs
+namespace Ekip.Application.DTOs.Request
 {
     public class JoinRequestDto
     {

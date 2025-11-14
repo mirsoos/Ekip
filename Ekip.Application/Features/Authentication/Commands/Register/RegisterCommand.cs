@@ -1,4 +1,4 @@
-﻿using Ekip.Application.DTOs;
+﻿using Ekip.Application.DTOs.User;
 using MediatR;
 
 namespace Ekip.Application.Features.Authentication.Commands.Register

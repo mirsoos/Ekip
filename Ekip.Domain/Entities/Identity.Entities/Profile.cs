@@ -27,7 +27,7 @@ namespace Ekip.Domain.Entities.Identity.Entities
             if (userContacts == null)
                 throw new Exception("userContacts Must Have Value To Add");
 
-            if (_userContacts.Any(c => c.ID == userContacts.ID))
+            if (_userContacts.Any(c => c.Id == userContacts.Id))
                 throw new Exception("this Contact already Exsit");
 
             _userContacts.Add(userContacts);

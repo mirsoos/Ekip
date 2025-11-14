@@ -1,5 +1,4 @@
 ﻿using Ekip.Domain.Entities.Base.Entities;
-using Ekip.Domain.Entities.Identity;
 using Ekip.Domain.ValueObjects;
 
 namespace Ekip.Domain.Entities.Identity.Entities
@@ -12,24 +11,16 @@ namespace Ekip.Domain.Entities.Identity.Entities
         public string PasswordHash { get; private set; }
         public string Email { get; private set; }
         public bool Gender { get; private set; }
-<<<<<<< Updated upstream:Ekip.Domain/Entities/Identity.Entities/User.cs
-<<<<<<< Updated upstream:Ekip.Domain/Entities/Identity.Entities/User.cs
-        public double Rating { get; private set; }
-=======
-        public DateTime CreateDate { get; private set; }
->>>>>>> Stashed changes:Ekip.Domain/Entities/User.cs
-=======
-        public DateTime CreateDate { get; private set; }
->>>>>>> Stashed changes:Ekip.Domain/Entities/User.cs
         public bool IsPremium { get; private set; }
         public bool IsActive { get; private set; }
         public bool IsLocked { get; private set; }
+        public int Age { get; set; }
         public Profile Profile { get; private set; }
         private readonly List<UserCredential> _userCredentials = new();
         public IReadOnlyCollection<UserCredential> UserCredentials => _userCredentials.AsReadOnly();
 
 
-        public User(string firstName , string lastName , string userName , string email , bool gender)
+        public User(string firstName , string lastName , string userName , string email , bool gender,int age)
         {
 
             if (string.IsNullOrEmpty(firstName))
@@ -44,6 +35,7 @@ namespace Ekip.Domain.Entities.Identity.Entities
             UserName = userName;
             Email = email;
             Gender = gender;
+            Age = age;
             CreateDate = DateTime.UtcNow;
             IsPremium = false;
             IsActive = true;
