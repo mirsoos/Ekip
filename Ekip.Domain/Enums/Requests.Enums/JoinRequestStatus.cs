@@ -1,5 +1,4 @@
-﻿
-namespace Ekip.Domain.Enums
+﻿namespace Ekip.Domain.Enums.Requests.Enums
 {
     public enum JoinRequestStatus
     {

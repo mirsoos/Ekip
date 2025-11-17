@@ -1,7 +1,8 @@
-﻿    using Ekip.Domain.Entities.Base.Entities;
+﻿using Ekip.Domain.Entities.Base.Entities;
 using Ekip.Domain.Entities.Identity;
 using Ekip.Domain.Entities.Identity.Entities;
-using Ekip.Domain.Enums;
+using Ekip.Domain.Enums.Requests.Enums;
+using Ekip.Domain.ValueObjects;
 
 namespace Ekip.Domain.Entities.Requests.Entities
 {
@@ -34,7 +35,10 @@ namespace Ekip.Domain.Entities.Requests.Entities
         private readonly List<RequestAssignment> _assignments = new();
         public IReadOnlyCollection<RequestAssignment> Assignments => _assignments.AsReadOnly();
 
-        public Request(Profile creator , string title , int requiredAssignment,DateTime requestDateTime,string? description, string? tags,RequestType requestType,ApplicantType applicantType,bool isAutoAccept) 
+        private List<RequestFilter>? _requestFilters = [];
+        public IReadOnlyCollection<RequestFilter>? RequestFilters => _requestFilters.AsReadOnly();
+
+        public Request(Profile creator , string title , int requiredAssignment,DateTime requestDateTime,string? description, string? tags,RequestType requestType,ApplicantType applicantType,bool isAutoAccept,HashSet<RequestFilter>? requestFilters) 
         {
             if (creator == null)
                 throw new Exception("a Request Must Have an Creator");
@@ -53,6 +57,7 @@ namespace Ekip.Domain.Entities.Requests.Entities
             RequestType = requestType;
             ApplicantType = applicantType;
             IsAutoAccept = isAutoAccept;
+            _requestFilters = requestFilters?.ToList();
         }
 
         public void AddJoinRequest(Profile applicant,string? description)

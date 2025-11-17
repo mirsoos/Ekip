@@ -1,4 +1,4 @@
-﻿using Ekip.Domain.Enums;
+﻿using Ekip.Domain.Enums.Chat.Enums;
 
 namespace Ekip.Application.DTOs.Chat
 {

@@ -1,7 +1,7 @@
 ﻿using Ekip.Domain.Entities.Base.Entities;
 using Ekip.Domain.Entities.Identity;
 using Ekip.Domain.Entities.Identity.Entities;
-using Ekip.Domain.Enums;
+using Ekip.Domain.Enums.Requests.Enums;
 
 namespace Ekip.Domain.Entities.Requests.Entities
 {

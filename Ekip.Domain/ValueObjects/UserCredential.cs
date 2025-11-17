@@ -1,11 +1,10 @@
 ﻿using Ekip.Domain.Enums.Identity.Enums;
-using System;
 
 namespace Ekip.Domain.ValueObjects
 {
     public class UserCredential
     {
-        public string Value { get; private set; }         
+        public string Value { get; private set; }
         public AuthenticationType AuthenticationType { get; private set; }
         public bool IsVerified { get; private set; }
 
@@ -21,13 +20,15 @@ namespace Ekip.Domain.ValueObjects
 
         public void Verify() => IsVerified = true;
 
-            public override bool Equals(object? obj)
+        public override bool Equals(object? obj)
         {
             if (obj is not UserCredential other) return false;
             return Value == other.Value && AuthenticationType == other.AuthenticationType;
         }
 
         public override int GetHashCode() => HashCode.Combine(Value, AuthenticationType);
-        private UserCredential() { }
+
+        private UserCredential()
+        { }
     }
 }

@@ -1,22 +1,21 @@
-﻿
-namespace Ekip.Domain.Enums
+﻿namespace Ekip.Domain.Enums.Chat.Enums
 {
-    public enum ChatRoomType
+    public enum MessageType
     {
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
-        Private =1 ,
+        Normal =1 ,
 =======
-        Private = 1 ,
+        Normal = 1,
 >>>>>>> Stashed changes
 =======
-        Private = 1 ,
+        Normal = 1,
 >>>>>>> Stashed changes
 =======
-        Private = 1 ,
+        Normal = 1,
 >>>>>>> Stashed changes
-        Group ,
-        Public
+        Notification,
+        Pinned
     }
 }

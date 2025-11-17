@@ -1,5 +1,5 @@
 ﻿using Ekip.Application.DTOs.User;
-using Ekip.Domain.Enums;
+using Ekip.Domain.Enums.Requests.Enums;
 
 namespace Ekip.Application.DTOs.Request
 {

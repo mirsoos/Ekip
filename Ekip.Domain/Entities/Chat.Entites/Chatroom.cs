@@ -1,5 +1,5 @@
 ﻿using Ekip.Domain.Entities.Base.Entities;
-using Ekip.Domain.Enums;
+using Ekip.Domain.Enums.Chat.Enums;
 
 
 namespace Ekip.Domain.Entities.Chat.Entites
