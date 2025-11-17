@@ -38,3 +38,26 @@ packages/
 
 # Publish output
 publish/
+
+#Kiram Dahanet Amir ba Goog kardanet
+Ekip.Application/bin/
+Ekip.Application/obj/
+
+Ekip.Domain/bin/
+Ekip.Domain/obj/
+
+Ekip.Infrastructure/bin/
+Ekip.Infrastructure/obj/
+
+Ekip.WebApi/bin/
+Ekip.WebApi/obj/
+
+Ekip.Application/bin/
+Ekip.Application/obj/
+
+EkipProject/
+/.vs/EkipProject/v17/.suo
+/Ekip.Domain/obj/Debug/net8.0/Ekip.Domain.AssemblyInfo.cs
+/Ekip.Domain/obj/Debug/net8.0/Ekip.Domain.AssemblyInfoInputs.cache
+/Ekip.Domain/obj/Debug/net8.0/Ekip.Domain.assets.cache
+/Ekip.Domain/obj/Debug/net8.0/Ekip.Domain.GeneratedMSBuildEditorConfig.editorconfig

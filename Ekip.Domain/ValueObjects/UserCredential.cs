@@ -1,4 +1,4 @@
-﻿using Ekip.Domain.Enums;
+﻿using Ekip.Domain.Enums.Identity.Enums;
 using System;
 
 namespace Ekip.Domain.ValueObjects
