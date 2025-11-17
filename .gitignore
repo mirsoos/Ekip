@@ -6,7 +6,7 @@
 
 # Visual Studio cache and temp folders
 .vs/
-*/.vscode/
+.vscode/
 
 # Build results
 [Bb]in/
@@ -39,25 +39,22 @@ packages/
 # Publish output
 publish/
 
-#Kiram Dahanet Amir ba Goog kardanet
-Ekip.Application/bin/
-Ekip.Application/obj/
-
-Ekip.Domain/bin/
-Ekip.Domain/obj/
-
-Ekip.Infrastructure/bin/
-Ekip.Infrastructure/obj/
-
-Ekip.WebApi/bin/
-Ekip.WebApi/obj/
-
-Ekip.Application/bin/
-Ekip.Application/obj/
-
+# Project-specific folders (optional if covered by above)
 EkipProject/
-/.vs/EkipProject/v17/.suo
-/Ekip.Domain/obj/Debug/net8.0/Ekip.Domain.AssemblyInfo.cs
+/Ekip.WebApi/obj/Debug/net8.0/Ekip.WebApi.assets.cache
+/Ekip.WebApi/obj/Debug/net8.0/Ekip.WebApi.AssemblyInfoInputs.cache
+/Ekip.WebApi/obj/Debug/net8.0/Ekip.WebApi.GeneratedMSBuildEditorConfig.editorconfig
+/Ekip.WebApi/obj/Debug/net8.0/Ekip.WebApi.AssemblyInfo.cs
+/Ekip.Infrastructure/obj/Debug/net8.0/Ekip.Infrastructure.AssemblyInfo.cs
+/Ekip.Infrastructure/obj/Debug/net8.0/Ekip.Infrastructure.AssemblyInfoInputs.cache
+/Ekip.Infrastructure/obj/Debug/net8.0/Ekip.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+/Ekip.Infrastructure/obj/Debug/net8.0/Ekip.Infrastructure.assets.cache
 /Ekip.Domain/obj/Debug/net8.0/Ekip.Domain.AssemblyInfoInputs.cache
+/Ekip.Domain/obj/Debug/net8.0/Ekip.Domain.AssemblyInfo.cs
 /Ekip.Domain/obj/Debug/net8.0/Ekip.Domain.assets.cache
 /Ekip.Domain/obj/Debug/net8.0/Ekip.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/Ekip.Application/obj/Debug/net8.0/Ekip.Application.AssemblyInfo.cs
+/Ekip.Application/obj/Debug/net8.0/Ekip.Application.AssemblyInfoInputs.cache
+/Ekip.Application/obj/Debug/net8.0/Ekip.Application.assets.cache
+/Ekip.Application/obj/Debug/net8.0/Ekip.Application.csproj.AssemblyReference.cache
+/Ekip.Application/obj/Debug/net8.0/Ekip.Application.GeneratedMSBuildEditorConfig.editorconfig
