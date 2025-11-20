@@ -1,16 +1,18 @@
-﻿using Ekip.Application.DTOs.User;
+﻿using Ekip.Application.DTOs.Request;
+using Ekip.Application.DTOs.User;
 using Ekip.Domain.Enums.Requests.Enums;
+using MediatR;
 
-namespace Ekip.Application.DTOs.Request
+namespace Ekip.Application.Features.Request.Commands
 {
-    public class NewRequestDto
+    public class CreateRequestCommand : IRequest<NewRequestDto>
     {
-        public long RequestRef { get; set; }
+        public long ProfileRef { get; set; }
         public string Title { get; set; }
-        public string? Description { get; set; }
-        public RequestCreatorDto Creator { get; set; }
+        public string Description { get; set; }
+        public ProfileDto Creator { get; set; }
         public int RequiredMembers { get; set; }
-        public int? MaximumRequiredAssignmnets { get; set; }
+        public int? MaximumRequiredMembers { get; set; }
         public string[]? Tags { get; set; }
         public DateTime RequestCreateDateTime { get; set; }
         public DateTime RequestDateTime { get; set; }
@@ -19,7 +21,7 @@ namespace Ekip.Application.DTOs.Request
         public RequestType RequestType { get; set; }
         public MemberType MemberType { get; set; }
         public bool IsAutoAccept { get; set; }
-        public bool IsRepeatable { get; set; }
+        public bool IsRepeatble { get; set; }
         public RequestRepeatType? RepeatType { get; set; }
     }
 }

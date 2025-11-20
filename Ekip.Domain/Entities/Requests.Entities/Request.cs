@@ -16,16 +16,16 @@ namespace Ekip.Domain.Entities.Requests.Entities
         public Profile Creator { get; private set; }
         public RequestStatus Status { get; private set; }
         public bool IsValid { get; private set; }
-        public int RequiredAssignments { get; private set; }
-        public int? MaximumRequiredAssigments { get; private set; }
-        public int? MaximumAgeRequired { get; set; }
-        public int? MinimumAgeRequired { get; set; }
-        public string? Tags { get; private set; }
+        public int RequiredMembers { get; private set; }
+        public int? MaximumRequiredMembers { get; private set; }
+        public int? MaximumRequiredAge { get; set; }
+        public int? MinimumRequiredAge { get; set; }
+        public string[]? Tags { get; private set; }
         public bool IsAutoAccept { get; private set; }
         public bool IsRepeatable { get; private set; }
         public RequestRepeatType? RepeatType { get; set; }
         public RequestType RequestType { get; private set; }
-        public ApplicantType ApplicantType { get; set; }
+        public MemberType MemberType { get; set; }
         public DateTime RequestDateTime { get; private set; }
         public DateTime RequestForbidDateTime => RequestDateTime.AddHours(-12);
 
@@ -38,7 +38,7 @@ namespace Ekip.Domain.Entities.Requests.Entities
         private List<RequestFilter>? _requestFilters = [];
         public IReadOnlyCollection<RequestFilter>? RequestFilters => _requestFilters.AsReadOnly();
 
-        public Request(Profile creator , string title , int requiredAssignment,DateTime requestDateTime,string? description, string? tags,RequestType requestType,ApplicantType applicantType,bool isAutoAccept,HashSet<RequestFilter>? requestFilters) 
+        public Request(Profile creator , string title , int requiredAssignment,DateTime requestDateTime,string? description, string[]? tags,RequestType requestType,MemberType memberType,bool isAutoAccept,HashSet<RequestFilter>? requestFilters) 
         {
             if (creator == null)
                 throw new Exception("a Request Must Have an Creator");
@@ -55,22 +55,22 @@ namespace Ekip.Domain.Entities.Requests.Entities
             Description = description;
             Tags = tags;
             RequestType = requestType;
-            ApplicantType = applicantType;
+            MemberType = memberType;
             IsAutoAccept = isAutoAccept;
             _requestFilters = requestFilters?.ToList();
         }
 
-        public void AddJoinRequest(Profile applicant,string? description)
+        public void AddJoinRequest(Profile member,string? description)
         {
-            if(this.IsRequestOpenToNewApplicant())
-                throw new Exception("cannot Add an Applicant to a Request that is Not Open");
-            if (_joinRequests.Any(jr => jr.Applicant.Id == applicant.Id))
+            if(this.IsRequestOpenToNewMember())
+                throw new Exception("cannot Add an Member to a Request that is Not Open");
+            if (_joinRequests.Any(jr => jr.Member.Id == member.Id))
                 throw new Exception("this User already Sent a Join Request");
-            var newJoinRequest = new JoinRequest(this, applicant, description);
+            var newJoinRequest = new JoinRequest(this, member, description);
             _joinRequests.Add(newJoinRequest);
         }
 
-        public void AcceptApplicant(Profile owner , JoinRequest joinRequestToAccept)
+        public void AcceptMember(Profile owner , JoinRequest joinRequestToAccept)
         {
 
             if (owner.Id != Creator.Id)
@@ -78,7 +78,7 @@ namespace Ekip.Domain.Entities.Requests.Entities
 
             joinRequestToAccept.Accept();
 
-            var assignment = new RequestAssignment(this , joinRequestToAccept.Applicant);
+            var assignment = new RequestAssignment(this , joinRequestToAccept.Member);
 
             _assignments.Add(assignment);
 
@@ -87,7 +87,7 @@ namespace Ekip.Domain.Entities.Requests.Entities
             CheckForCompletion();
 
         }
-        public void RejectApplicant(Profile owner , JoinRequest joinRequestToReject)
+        public void RejectMember(Profile owner , JoinRequest joinRequestToReject)
         {
             if (owner.Id != Creator.Id)
                 throw new Exception("only the Owner Can Reject the Request");
@@ -100,7 +100,7 @@ namespace Ekip.Domain.Entities.Requests.Entities
         /// اینکه ایا عضو جدیدی قبول میتونه بکنه یا نه؟
         /// </summary>
         /// <returns>بول</returns>
-        public bool IsRequestOpenToNewApplicant()
+        public bool IsRequestOpenToNewMember()
         {
             var hasSpace = RequiredAssignments < MaximumRequiredAssigments || MaximumRequiredAssigments == null;
             var validDateTime = DateTime.UtcNow < RequestForbidDateTime;

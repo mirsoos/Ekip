@@ -7,7 +7,8 @@ namespace Ekip.Domain.Entities.Identity.Entities
     {  
         public User UserDetails { get; private set; }
         public double? Rating { get; private set; }
-        public int Level { get; private set; }
+        public int Exprience { get; private set; }
+        public string AvatarUrl { get; private set; }
         private readonly List<User> _userContacts = new();
         private readonly List<Request> _requests = new();
         private readonly List<RequestAssignment> _requestAssignments = new();
@@ -31,13 +32,6 @@ namespace Ekip.Domain.Entities.Identity.Entities
                 throw new Exception("this Contact already Exsit");
 
             _userContacts.Add(userContacts);
-        }
-
-        public Request CreateNewRequest(string title , int reqireAssignment)
-        {
-            var newRequest = new Request(this,title,reqireAssignment);
-            _requests.Add(newRequest);
-            return newRequest;
         }
         private Profile() { }
     }

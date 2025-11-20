@@ -1,4 +1,5 @@
 ﻿using Ekip.Domain.Entities.Base.Entities;
+using Ekip.Domain.Entities.Requests.Entities;
 using Ekip.Domain.Enums.Chat.Enums;
 
 
@@ -13,12 +14,15 @@ namespace Ekip.Domain.Entities.Chat.Entites
 
         private readonly List<Message> _messages = new();
         public IReadOnlyCollection<Message> Messages => _messages.AsReadOnly();
-
-        public ChatRoom(string name,int chatRoomOwnerId,ChatRoomType type)
+        public long RequestRef { get; private set; }
+        public Request Request { get; private set; }
+        public ChatRoom(string name,int chatRoomOwnerId,ChatRoomType type,Request request)
         {
             if (string.IsNullOrEmpty(name))
                 throw new ArgumentException("Chatroom Must Have a Name");
-
+            if (request == null)
+                throw new Exception("ChatRoom needs a Request to be Created");
+            Request = request;
             Name = name;
             ChatRoomType = type;
             ChatRoomOwnerId = chatRoomOwnerId;

@@ -12,5 +12,7 @@ namespace Ekip.Application.DTOs.Chat
         public DateTime SentAt { get; set; }
         public bool IsDeleted { get; set; }
         public bool IsEdited { get; set; }
+        public bool IsRead { get; set; }
+        public bool IsPinned { get; set; }
     }
 }

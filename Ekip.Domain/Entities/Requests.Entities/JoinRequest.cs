@@ -12,20 +12,20 @@ namespace Ekip.Domain.Entities.Requests.Entities
     {
         public JoinRequestStatus Status { get; private set; }
 
-        public Profile Applicant { get; private set; }
+        public Profile Member { get; private set; }
         public Request Request { get; private set; }
         public string? Description { get; private set; }
 
-        public JoinRequest(Request request,Profile applicant, string? description)
+        public JoinRequest(Request request,Profile member, string? description)
         {
             if (request == null)
                 throw new ArgumentNullException(nameof(request));
 
-            if (applicant == null)
-                throw new ArgumentNullException(nameof(applicant));
+            if (member == null)
+                throw new ArgumentNullException(nameof(member));
 
             Request = request;
-            Applicant = applicant;
+            Member = member;
             Status = JoinRequestStatus.Pending;
             Description = description;
         }

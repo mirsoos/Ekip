@@ -1,6 +1,6 @@
 ﻿using Ekip.Application.DTOs.User;
 using Ekip.Application.Interfaces;
-using Ekip.Domain.Entities;
+using Ekip.Domain.Entities.Identity.Entities;
 using MediatR;
 
 namespace Ekip.Application.Features.Authentication.Commands.Register

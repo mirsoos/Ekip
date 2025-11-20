@@ -3,7 +3,7 @@ namespace Ekip.Application.DTOs.User
 {
     public class RequestCreatorDto
     {
-        public int ProfileId { get; set; }
+        public long ProfileId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string UserName { get; set; }

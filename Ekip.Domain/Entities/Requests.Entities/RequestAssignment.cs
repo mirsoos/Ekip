@@ -6,17 +6,17 @@ namespace Ekip.Domain.Entities.Requests.Entities
 {
     public class RequestAssignment : BaseEntitiy
     {
-        public Profile Applicant { get; private set; }
+        public Profile Member { get; private set; }
         public Request Request { get; private set; }
 
-        public RequestAssignment(Request request , Profile applicant)
+        public RequestAssignment(Request request , Profile member)
         {
             if (request == null)
                 throw new Exception("the Request Not Found");
-            if (applicant == null)
-                throw new Exception("an Assignment need an Applicant to Assign to this Request");
+            if (member == null)
+                throw new Exception("an Assignment need an Member to Assign to this Request");
 
-            Applicant = applicant;
+            Member = member;
             Request = request;
         }
         private RequestAssignment() { }

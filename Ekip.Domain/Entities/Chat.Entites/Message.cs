@@ -24,6 +24,7 @@ namespace Ekip.Domain.Entities.Chat.Entites
             SentAt = DateTime.UtcNow;
             IsDeleted = false;
             IsEdited = false;
+            IsRead = false;
             Type = MessageType.Normal;
         }
         public void Edit(string messageContent)
