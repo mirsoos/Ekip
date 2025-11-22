@@ -1,13 +1,10 @@
-﻿using MediatR;
-using Ekip.Application.DTOs.User;
+﻿using Ekip.Application.DTOs.User;
+using MediatR;
 
 namespace Ekip.Application.Features.Profile.Commands.SetUserProfile
 {
-    public class SetUserProfileCommand : IRequest<ProfileDto>
+    public class SetUserProfileCommand : IRequest<CreatedProfileDto>
     {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
         public string UserName { get; set; }
-        public string AvatarUrl { get; set; }
     }
 }

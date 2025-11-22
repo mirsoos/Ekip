@@ -5,7 +5,7 @@ using Ekip.Domain.ValueObjects;
 using RequestEntity = Ekip.Domain.Entities.Requests.Entities.Request;
 using MediatR;
 
-namespace Ekip.Application.Features.Request.Commands
+namespace Ekip.Application.Features.Request.Commands.CreateRequest
 {
     public class CreateRequestCommandHandler : IRequestHandler<CreateRequestCommand, NewRequestDto>
     {

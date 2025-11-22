@@ -6,7 +6,7 @@ namespace Ekip.Domain.Entities.Identity.Entities
     public class Profile : BaseEntitiy
     {  
         public User UserDetails { get; private set; }
-        public double? Rating { get; private set; }
+        public double? Score { get; private set; }
         public int Exprience { get; private set; }
         public string AvatarUrl { get; private set; }
         private readonly List<User> _userContacts = new();
@@ -21,7 +21,7 @@ namespace Ekip.Domain.Entities.Identity.Entities
             if (userDetails == null)
                 throw new Exception("userDetails Not Found");
             UserDetails = userDetails;
-            Rating = null;
+            Score = null;
         }
         public void AddContact(User userContacts)
         {
