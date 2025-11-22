@@ -38,19 +38,19 @@ namespace Ekip.Domain.Entities.Requests.Entities
         private List<RequestFilter>? _requestFilters = [];
         public IReadOnlyCollection<RequestFilter>? RequestFilters => _requestFilters.AsReadOnly();
 
-        public Request(Profile creator , string title , int requiredAssignment,DateTime requestDateTime,string? description, string[]? tags,RequestType requestType,MemberType memberType,bool isAutoAccept,HashSet<RequestFilter>? requestFilters) 
+        public Request(Profile creator , string title , int requiredMember,DateTime requestDateTime,string? description, string[]? tags,RequestType requestType,MemberType memberType,bool isAutoAccept,HashSet<RequestFilter>? requestFilters) 
         {
             if (creator == null)
                 throw new Exception("a Request Must Have an Creator");
             if (title == null)
                 throw new Exception("a Request Must Have a Name");
-            if (requiredAssignment < 1)
+            if (requiredMember < 1)
                 throw new Exception("a Request cannot Create with 0 Person");
 
             Creator = creator;
             Title = title;
             Status = RequestStatus.Open;
-            RequiredAssignments = requiredAssignment;
+            RequiredMembers = requiredMember;
             RequestDateTime = requestDateTime;
             Description = description;
             Tags = tags;
@@ -102,7 +102,7 @@ namespace Ekip.Domain.Entities.Requests.Entities
         /// <returns>بول</returns>
         public bool IsRequestOpenToNewMember()
         {
-            var hasSpace = RequiredAssignments < MaximumRequiredAssigments || MaximumRequiredAssigments == null;
+            var hasSpace = RequiredMembers < MaximumRequiredMembers || MaximumRequiredMembers == null;
             var validDateTime = DateTime.UtcNow < RequestForbidDateTime;
             var validState = Status == RequestStatus.Open || Status == RequestStatus.InProgress;
 
@@ -120,7 +120,7 @@ namespace Ekip.Domain.Entities.Requests.Entities
 
         public void CheckForCompletion()
         {
-            if(_assignments.Count >= RequiredAssignments)
+            if(_assignments.Count >= RequiredMembers)
                 Status = RequestStatus.Completed;
         }
 

@@ -13,8 +13,7 @@ namespace Ekip.Infrastructure.Security
         {
             throw new NotImplementedException();
         }
-
-        public bool Verify(string hash, string password)
+        public Task<bool> Verify(string hash, string password)
         {
             throw new NotImplementedException();
         }

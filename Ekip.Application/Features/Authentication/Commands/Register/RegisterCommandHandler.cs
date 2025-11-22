@@ -25,15 +25,15 @@ namespace Ekip.Application.Features.Authentication.Commands.Register
             if (string.IsNullOrEmpty(request.UserName) || string.IsNullOrEmpty(request.Email))
                 throw new Exception("user must have Email or UserName");
 
-            if (await _userReadRepository.GetByUserNameAsync(request.UserName) != null)
+            if (await _userReadRepository.GetByUserNameAsync(request.UserName,cancellationToken) != null)
                 throw new Exception("this userName already exist");
 
-            if (await _userReadRepository.GetByEmailAsync(request.Email) != null)
+            if (await _userReadRepository.GetByEmailAsync(request.Email,cancellationToken) != null)
                 throw new Exception("this email already exist");
 
             var hashPassword =  _passwordHasher.Hash(request.Password);
 
-            var user = new User(request.FirstName , request.LastName , request.UserName , request.Email , request.Gender);
+            var user = new User(request.FirstName , request.LastName , request.UserName , request.Email , request.Gender,request.Age);
 
             user.SetPasswordHash(hashPassword);
 
@@ -44,7 +44,7 @@ namespace Ekip.Application.Features.Authentication.Commands.Register
 
             return new AuthenticationResult 
                 {
-                UserId = user.ID,
+                UserId = user.Id,
                 UserName = user.UserName,
                 Email = user.Email,
                 Token = userToken

@@ -1,9 +1,9 @@
 ﻿
-    namespace Ekip.Application.Interfaces
+namespace Ekip.Application.Interfaces
+{
+    public interface IPasswordHasher
     {
-        public interface IPasswordHasher
-        {
-            string Hash(string password);
-            Task<bool> Verify(string hash , string password);
-        }
+        string Hash(string password);
+        Task<bool> Verify(string hash , string password);
     }
+}

@@ -11,5 +11,6 @@ namespace Ekip.Application.Features.Authentication.Commands.Register
         public string Email { get; set; }
         public string Password { get; set; }
         public bool Gender { get; set; }
+        public int Age { get; set; }
     }
 }

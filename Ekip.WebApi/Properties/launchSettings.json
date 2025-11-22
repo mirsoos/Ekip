@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "Ekip.WebApi": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:7442;http://localhost:7443"
+    }
+  }
+}

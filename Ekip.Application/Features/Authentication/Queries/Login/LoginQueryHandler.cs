@@ -23,7 +23,7 @@ namespace Ekip.Application.Features.Authentication.Queries.Login
             if (string.IsNullOrEmpty(request.UserName) && string.IsNullOrEmpty(request.Email))
                 throw new Exception("cannot login with Empty UserName and Email");
 
-            var user = await _userReadRepository.GetByUserNameOrEmailAsync(request.UserName, request.Email);
+            var user = await _userReadRepository.GetByUserNameOrEmailAsync(request.UserName, request.Email,cancellationToken);
 
             if (user == null)
                 throw new Exception("username/email or password Not Valid");
@@ -37,7 +37,7 @@ namespace Ekip.Application.Features.Authentication.Queries.Login
 
             return new AuthenticationResult
             {
-                UserId = user.ID,
+                UserId = user.Id,
                 Email = user.Email,
                 UserName = user.UserName,
                 Token = token
