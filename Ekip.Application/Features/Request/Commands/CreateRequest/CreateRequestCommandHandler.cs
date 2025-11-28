@@ -4,6 +4,8 @@ using Ekip.Application.Interfaces;
 using Ekip.Domain.ValueObjects;
 using RequestEntity = Ekip.Domain.Entities.Requests.Entities.Request;
 using MediatR;
+using MassTransit;
+using Ekip.Application.Contracts.Events;
 
 namespace Ekip.Application.Features.Request.Commands.CreateRequest
 {
@@ -11,10 +13,12 @@ namespace Ekip.Application.Features.Request.Commands.CreateRequest
     {
         private readonly ICreateRequestWriteRepository _createRequest;
         private readonly IProfileWriteRepository _profileWrite;
-        public CreateRequestCommandHandler(ICreateRequestWriteRepository createRequest,IProfileWriteRepository profileWrite)
+        private readonly IPublishEndpoint _publishEndpoint;
+        public CreateRequestCommandHandler(ICreateRequestWriteRepository createRequest,IProfileWriteRepository profileWrite,IPublishEndpoint publishEndpoint)
         {
             _createRequest = createRequest;
             _profileWrite = profileWrite;
+            _publishEndpoint = publishEndpoint;
         }
         public async Task<NewRequestDto> Handle(CreateRequestCommand request, CancellationToken cancellationToken)
         {
@@ -41,10 +45,36 @@ namespace Ekip.Application.Features.Request.Commands.CreateRequest
                 request.RequestType,
                 request.MemberType,
                 request.IsAutoAccept,
-                requestFilters  
+                requestFilters 
                 );
 
            var savedRequest = await _createRequest.AddRequestAsync(newRequest,cancellationToken);
+
+            await _publishEndpoint.Publish(new RequestCreatedEvent
+            {
+                RequestRef = savedRequest.Id,
+                CreatorRef = savedRequest.Creator.Id,
+                Title = savedRequest.Title,
+                Description = savedRequest.Description,
+                RequestType = savedRequest.RequestType,
+                MemberType = savedRequest.MemberType,
+                IsAutoAccept = savedRequest.IsAutoAccept,
+                IsRepeatable = savedRequest.IsRepeatable,
+                RepeatType = savedRequest.RepeatType,
+                MaximumRequiredAssignmnets = savedRequest.MaximumRequiredMembers,
+                Tags = savedRequest.Tags,
+                RequestFilters = savedRequest.RequestFilters?.Select(f => new RequestFilterDto
+                {
+                    Value = f.Value,
+                    Type = f.Type,
+                    Kind = f.Kind,
+                }).ToArray(),
+                RequestCreateDateTime = savedRequest.CreateDate,
+                RequestDateTime = savedRequest.RequestDateTime,
+                RequestForbidDateTime = savedRequest.RequestForbidDateTime,
+                RequiredMembers = savedRequest.RequiredMembers,
+
+            });
 
             var requestResultDto = new NewRequestDto
             {

@@ -2,7 +2,7 @@
 using Ekip.Domain.Entities.Chat.Entites;
 
 
-namespace Ekip.Infrastructure.Repositories
+namespace Ekip.Infrastructure.Repositories.Implementations
 {
     public class PostgreMessageRepository : IMessageReadRepository
     {

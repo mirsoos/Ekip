@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "i3A1NI+OL40=",
+  "dgSpecHash": "dpE2i676o10=",
   "success": true,
   "projectFilePath": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Ekip.Application.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\amir\\.nuget\\packages\\masstransit.abstractions\\8.5.5\\masstransit.abstractions.8.5.5.nupkg.sha512",
     "C:\\Users\\amir\\.nuget\\packages\\mediatr\\13.1.0\\mediatr.13.1.0.nupkg.sha512",
     "C:\\Users\\amir\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512",
     "C:\\Users\\amir\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",

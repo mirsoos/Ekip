@@ -11,7 +11,7 @@ namespace Ekip.Application.DTOs.User
         public double Score { get; set; }
         public string Email { get; set; }
         public bool Gender { get; set; }
-        public int Exprience { get; set; }
+        public int Experience { get; set; }
         public List<NewRequestDto> Requests { get; set; }
         public List<JoinRequestDto> JoinRequests { get; set; }
         public List<ReuqestAssignmentDto> RequestAssignments { get; set; }

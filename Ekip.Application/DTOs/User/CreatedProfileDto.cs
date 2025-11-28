@@ -11,6 +11,6 @@ namespace Ekip.Application.DTOs.User
         public double? Score { get; set; }
         public string Email { get; set; }
         public bool Gender { get; set; }
-        public int Exprience { get; set; }
+        public int Experience { get; set; }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using Ekip.Application.Interfaces;
 using Ekip.Domain.Entities.Requests.Entities;
 
-namespace Ekip.Infrastructure.Repositories
+namespace Ekip.Infrastructure.Repositories.Implementations
 {
     internal class MongoRequestRepository : ICreateRequestWriteRepository
     {

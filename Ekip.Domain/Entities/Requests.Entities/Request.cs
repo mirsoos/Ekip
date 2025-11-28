@@ -1,14 +1,10 @@
 ﻿using Ekip.Domain.Entities.Base.Entities;
-using Ekip.Domain.Entities.Identity;
 using Ekip.Domain.Entities.Identity.Entities;
 using Ekip.Domain.Enums.Requests.Enums;
 using Ekip.Domain.ValueObjects;
 
 namespace Ekip.Domain.Entities.Requests.Entities
 {
-    /// <summary>
-    /// درخواست اکیپ یابی
-    /// </summary>
     public class Request : BaseEntitiy
     {
         public string Title { get; private set; }
@@ -26,8 +22,9 @@ namespace Ekip.Domain.Entities.Requests.Entities
         public RequestRepeatType? RepeatType { get; set; }
         public RequestType RequestType { get; private set; }
         public MemberType MemberType { get; set; }
+
         public DateTime RequestDateTime { get; private set; }
-        public DateTime RequestForbidDateTime => RequestDateTime.AddHours(-12);
+        public DateTime RequestForbidDateTime { get; private set; }
 
         private readonly List<JoinRequest> _joinRequests = new();
         public IReadOnlyCollection<JoinRequest> JoinRequests => _joinRequests.AsReadOnly();
@@ -38,20 +35,19 @@ namespace Ekip.Domain.Entities.Requests.Entities
         private List<RequestFilter>? _requestFilters = [];
         public IReadOnlyCollection<RequestFilter>? RequestFilters => _requestFilters.AsReadOnly();
 
-        public Request(Profile creator , string title , int requiredMember,DateTime requestDateTime,string? description, string[]? tags,RequestType requestType,MemberType memberType,bool isAutoAccept,HashSet<RequestFilter>? requestFilters) 
+        public Request(Profile creator, string title, int requiredMember, DateTime requestDateTime, string? description, string[]? tags, RequestType requestType, MemberType memberType, bool isAutoAccept, HashSet<RequestFilter>? requestFilters)
         {
-            if (creator == null)
-                throw new Exception("a Request Must Have an Creator");
-            if (title == null)
-                throw new Exception("a Request Must Have a Name");
-            if (requiredMember < 1)
-                throw new Exception("a Request cannot Create with 0 Person");
+            if (creator == null) throw new Exception("Request must have a Creator");
+            if (string.IsNullOrWhiteSpace(title)) throw new Exception("Request must have a Title");
+            if (requiredMember < 1) throw new Exception("Request cannot be created with 0 required members");
 
             Creator = creator;
             Title = title;
             Status = RequestStatus.Open;
             RequiredMembers = requiredMember;
             RequestDateTime = requestDateTime;
+            RequestForbidDateTime = requestDateTime.AddHours(-12);
+
             Description = description;
             Tags = tags;
             RequestType = requestType;
@@ -60,59 +56,63 @@ namespace Ekip.Domain.Entities.Requests.Entities
             _requestFilters = requestFilters?.ToList();
         }
 
-        public void AddJoinRequest(Profile member,string? description)
+        public void AddJoinRequest(Profile member, string? description)
         {
-            if(this.IsRequestOpenToNewMember())
-                throw new Exception("cannot Add an Member to a Request that is Not Open");
+            if (!this.IsRequestOpenToNewMember())
+                throw new Exception("Cannot add a member. Request is closed or full.");
+
             if (_joinRequests.Any(jr => jr.Member.Id == member.Id))
-                throw new Exception("this User already Sent a Join Request");
+                throw new Exception("This User already sent a Join Request");
+
+            if (_assignments.Any(a => a.Member.Id == member.Id))
+                throw new Exception("User is already a member");
+
             var newJoinRequest = new JoinRequest(this, member, description);
             _joinRequests.Add(newJoinRequest);
         }
 
-        public void AcceptMember(Profile owner , JoinRequest joinRequestToAccept)
+        public void AcceptMember(Profile owner, JoinRequest joinRequestToAccept)
         {
-
             if (owner.Id != Creator.Id)
-                throw new Exception("only the Owner Can Accept the Request");
+                throw new Exception("Only the Owner can Accept the Request");
+
+            var capacity = MaximumRequiredMembers ?? RequiredMembers;
+            if (_assignments.Count >= capacity)
+                throw new Exception("Team is already full");
 
             joinRequestToAccept.Accept();
 
-            var assignment = new RequestAssignment(this , joinRequestToAccept.Member);
-
+            var assignment = new RequestAssignment(this, joinRequestToAccept.Member);
             _assignments.Add(assignment);
 
-            Status = RequestStatus.InProgress;
+            if (Status == RequestStatus.Open)
+                Status = RequestStatus.InProgress;
 
             CheckForCompletion();
-
         }
-        public void RejectMember(Profile owner , JoinRequest joinRequestToReject)
+
+        public void RejectMember(Profile owner, JoinRequest joinRequestToReject)
         {
             if (owner.Id != Creator.Id)
-                throw new Exception("only the Owner Can Reject the Request");
+                throw new Exception("Only the Owner can Reject the Request");
+
             if (joinRequestToReject.Request.Id != Id)
-                throw new Exception("the Join Request dos not Belong to this Request");
+                throw new Exception("The Join Request does not belong to this Request");
+
             joinRequestToReject.Decline();
         }
 
-        /// <summary>
-        /// اینکه ایا عضو جدیدی قبول میتونه بکنه یا نه؟
-        /// </summary>
-        /// <returns>بول</returns>
         public bool IsRequestOpenToNewMember()
         {
-            var hasSpace = RequiredMembers < MaximumRequiredMembers || MaximumRequiredMembers == null;
+            var capacity = MaximumRequiredMembers ?? RequiredMembers;
+            var hasSpace = _assignments.Count < capacity;
+
             var validDateTime = DateTime.UtcNow < RequestForbidDateTime;
             var validState = Status == RequestStatus.Open || Status == RequestStatus.InProgress;
 
-            return  hasSpace && validDateTime && validState;
+            return hasSpace && validDateTime && validState;
         }
 
-        /// <summary>
-        /// عوض کردن قابل قبول بودن
-        /// </summary>
-        /// <param name="newValue"></param>
         public void ChangeValidity(bool newValue)
         {
             IsValid = newValue;
@@ -120,7 +120,7 @@ namespace Ekip.Domain.Entities.Requests.Entities
 
         public void CheckForCompletion()
         {
-            if(_assignments.Count >= RequiredMembers)
+            if (_assignments.Count >= RequiredMembers)
                 Status = RequestStatus.Completed;
         }
 

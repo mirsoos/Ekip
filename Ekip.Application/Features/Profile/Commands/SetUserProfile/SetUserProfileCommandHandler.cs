@@ -1,5 +1,7 @@
-﻿using Ekip.Application.DTOs.User;
+﻿using Ekip.Application.Contracts.Events;
+using Ekip.Application.DTOs.User;
 using Ekip.Application.Interfaces;
+using MassTransit;
 using MediatR;
 using ProfileEntity = Ekip.Domain.Entities.Identity.Entities.Profile;
 
@@ -9,11 +11,13 @@ namespace Ekip.Application.Features.Profile.Commands.SetUserProfile
     {
         private readonly IProfileWriteRepository _profileWrite;
         private readonly IUserReadRepository _userRead;
+        private readonly IPublishEndpoint _publishEndpoint;
 
-        public SetUserProfileCommandHandler(IProfileWriteRepository profileWrite,IUserReadRepository userRead)
+        public SetUserProfileCommandHandler(IProfileWriteRepository profileWrite,IUserReadRepository userRead , IPublishEndpoint publishEndpoint)
         {
             _profileWrite = profileWrite;
             _userRead = userRead;
+            _publishEndpoint = publishEndpoint;
         }
 
         public async Task<CreatedProfileDto> Handle(SetUserProfileCommand request, CancellationToken cancellationToken)
@@ -32,6 +36,16 @@ namespace Ekip.Application.Features.Profile.Commands.SetUserProfile
 
             var savedProfile = await _profileWrite.AddAsync(newProfile,cancellationToken);
 
+            await _publishEndpoint.Publish(new ProfileCreatedEvent
+            {
+                AvatarUrl = savedProfile.AvatarUrl,
+                Experience = savedProfile.Experience,
+                Score = savedProfile.Score,
+                Id = savedProfile.Id,
+                UserRef = savedProfile.UserDetails.Id
+                
+            });
+
             var resultDto = new CreatedProfileDto {
                 ProfileRef = savedProfile.Id,
                  FirstName = savedProfile.UserDetails.FirstName,
@@ -40,7 +54,7 @@ namespace Ekip.Application.Features.Profile.Commands.SetUserProfile
                  Gender = savedProfile.UserDetails.Gender,
                  UserName = savedProfile.UserDetails.UserName,
                  AvatarUrl = savedProfile.AvatarUrl,
-                 Exprience = savedProfile.Exprience,
+                 Experience = savedProfile.Experience,
                  Score = savedProfile.Score
             };
 

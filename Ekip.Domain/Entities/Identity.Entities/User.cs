@@ -14,13 +14,14 @@ namespace Ekip.Domain.Entities.Identity.Entities
         public bool IsPremium { get; private set; }
         public bool IsActive { get; private set; }
         public bool IsLocked { get; private set; }
-        public int Age { get; set; }
+        public int Age { get; private set; }
+        public string PhoneNumber { get; private set; }
         public Profile Profile { get; private set; }
         private readonly List<UserCredential> _userCredentials = new();
         public IReadOnlyCollection<UserCredential> UserCredentials => _userCredentials.AsReadOnly();
 
 
-        public User(string firstName , string lastName , string userName , string email , bool gender,int age)
+        public User(string firstName , string lastName , string userName , string email , bool gender,int age,string phoneNumber)
         {
 
             if (string.IsNullOrEmpty(firstName))
@@ -29,6 +30,8 @@ namespace Ekip.Domain.Entities.Identity.Entities
                 throw new Exception("lastName cannot Be Empty");
             if (string.IsNullOrEmpty(userName))
                 throw new Exception("userName cannot Be Empty");
+            if (string.IsNullOrEmpty(phoneNumber))
+                throw new Exception("PhoneNumber cannot Be Empty");
 
             FirstName = firstName;
             LastName = lastName;
@@ -36,6 +39,7 @@ namespace Ekip.Domain.Entities.Identity.Entities
             Email = email;
             Gender = gender;
             Age = age;
+            PhoneNumber = phoneNumber;
             CreateDate = DateTime.UtcNow;
             IsPremium = false;
             IsActive = true;
