@@ -2,6 +2,7 @@
 using Ekip.Application.Interfaces;
 using Ekip.Domain.Entities.ReadModels;
 using MassTransit;
+using System.Text.Json;
 
 namespace Ekip.Application.Features.Request.Consumer
 {
@@ -34,7 +35,7 @@ namespace Ekip.Application.Features.Request.Consumer
                 RequestType = message.RequestType,
                 RequiredMembers = message.RequiredMembers,
                 Tags = message.Tags != null ? string.Join(",",message.Tags) : null,
-                RequestFilters = message.RequestFilters != null ? System.Text.Json.JsonSerializer.Serialize(message.RequestFilters) : null,
+                RequestFilters = message.RequestFilters != null ? JsonSerializer.Serialize(message.RequestFilters) : null ,
             };
 
            await _readRepository.AddRequestAsync(mongoToPostgres, context.CancellationToken);

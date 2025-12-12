@@ -1,9 +1,11 @@
 ﻿namespace Ekip.Domain.Enums.Requests.Enums
 {
-    public enum JoinRequestStatus
+    public enum AssignmentStatus
     {
         Pending = 1,
         Accepted,
-        Declined
+        Declined,
+        Left,
+        Banned
     }
 }

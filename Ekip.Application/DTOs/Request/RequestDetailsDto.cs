@@ -1,5 +1,6 @@
 ﻿
 using Ekip.Application.DTOs.User;
+using Ekip.Domain.Enums.Requests.Enums;
 using Ekip.Domain.ValueObjects;
 
 namespace Ekip.Application.DTOs.Request
@@ -13,7 +14,7 @@ namespace Ekip.Application.DTOs.Request
         public int RequiredMembers { get; set; }
         public int? MaximumRequiredMembers { get; set; }
         public string[]? Tags { get; set; }
-        public string Status { get; set; }
+        public RequestStatus Status { get; set; }
         public List<AssignmentMemberDto> Members { get; set; }
         public DateTime RequestCreateDate { get; set; }
         public DateTime RequestDateTime { get; set; }

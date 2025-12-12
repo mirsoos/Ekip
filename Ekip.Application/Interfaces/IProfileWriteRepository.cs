@@ -1,5 +1,6 @@
 ﻿using Ekip.Application.DTOs.User;
 using Ekip.Domain.Entities.Identity.Entities;
+using Ekip.Domain.Entities.ReadModels;
 
 namespace Ekip.Application.Interfaces
 {

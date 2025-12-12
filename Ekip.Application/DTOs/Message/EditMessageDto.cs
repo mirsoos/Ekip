@@ -5,6 +5,6 @@ namespace Ekip.Application.DTOs.Chat
     {
         public long SenderRef { get; set; }
         public string MessageContent { get; set; }
-        public int MessageRef { get; set; }
+        public long MessageRef { get; set; }
     }
 }

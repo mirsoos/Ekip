@@ -16,14 +16,14 @@ namespace Ekip.Application.Features.Messages.Queries.GetMessage
         public async Task<List<MessageDto>> Handle(GetMessageQuery request,CancellationToken cancellationToken)
         {
             
-            var messages = await _readMessage.GetMessagesAsync(request.ChatRoomId,request.Take,cancellationToken);
+            var messages = await _readMessage.GetMessagesAsync(request.ChatRoomRef,request.Take,cancellationToken);
 
             var messageDtos = messages.Select(s => new MessageDto
             {
                 Id = s.Id,
-                ChatRoomId = s.ChatRoom.Id,
+                ChatRoomRef = s.ChatRoomRef,
                 MessageContent = s.MessageContent,
-                SenderId = s.SenderId,
+                SenderRef = s.SenderRef,
                 SentAt = s.SentAt,
                 IsDeleted = s.IsDeleted,
                 IsEdited = s.IsEdited,

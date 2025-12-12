@@ -28,7 +28,7 @@ namespace Ekip.Application.Features.Authentication.Queries.Login
             if (user == null)
                 throw new Exception("username/email or password Not Valid");
 
-            var isPasswordValid = await _passwordHasher.Verify(user.PasswordHash ,request.Password);
+            var isPasswordValid = await _passwordHasher.Verify(user.Password ,request.Password);
 
             if (!isPasswordValid)
                 throw new Exception("username/email or password Not Valid");

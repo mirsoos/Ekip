@@ -1,5 +1,4 @@
 ﻿using Ekip.Domain.Entities.Base.Entities;
-using Ekip.Domain.Entities.Identity.Entities;
 using Ekip.Domain.Enums.Requests.Enums;
 using Ekip.Domain.ValueObjects;
 
@@ -9,7 +8,7 @@ namespace Ekip.Domain.Entities.Requests.Entities
     {
         public string Title { get; private set; }
         public string? Description { get; private set; }
-        public Profile Creator { get; private set; }
+        public long Creator { get; private set; }
         public RequestStatus Status { get; private set; }
         public bool IsValid { get; private set; }
         public int RequiredMembers { get; private set; }
@@ -26,20 +25,18 @@ namespace Ekip.Domain.Entities.Requests.Entities
         public DateTime RequestDateTime { get; private set; }
         public DateTime RequestForbidDateTime { get; private set; }
 
-        private readonly List<JoinRequest> _joinRequests = new();
-        public IReadOnlyCollection<JoinRequest> JoinRequests => _joinRequests.AsReadOnly();
-
         private readonly List<RequestAssignment> _assignments = new();
         public IReadOnlyCollection<RequestAssignment> Assignments => _assignments.AsReadOnly();
 
-        private List<RequestFilter>? _requestFilters = [];
+        private List<RequestFilter> _requestFilters = new();
         public IReadOnlyCollection<RequestFilter>? RequestFilters => _requestFilters.AsReadOnly();
 
-        public Request(Profile creator, string title, int requiredMember, DateTime requestDateTime, string? description, string[]? tags, RequestType requestType, MemberType memberType, bool isAutoAccept, HashSet<RequestFilter>? requestFilters)
+        public Request(long creator, string title, int requiredMember, DateTime requestDateTime, string? description, string[]? tags, RequestType requestType, MemberType memberType, bool isAutoAccept, HashSet<RequestFilter>? requestFilters)
         {
-            if (creator == null) throw new Exception("Request must have a Creator");
-            if (string.IsNullOrWhiteSpace(title)) throw new Exception("Request must have a Title");
-            if (requiredMember < 1) throw new Exception("Request cannot be created with 0 required members");
+            if (string.IsNullOrWhiteSpace(title))
+                throw new Exception("Request must have a Title");
+            if (requiredMember < 1)
+                throw new Exception("Request cannot be created with 0 required members");
 
             Creator = creator;
             Title = title;
@@ -53,37 +50,41 @@ namespace Ekip.Domain.Entities.Requests.Entities
             RequestType = requestType;
             MemberType = memberType;
             IsAutoAccept = isAutoAccept;
-            _requestFilters = requestFilters?.ToList();
+            _requestFilters = requestFilters?.ToList() ?? new List<RequestFilter>();
+
+            _assignments.Add(new RequestAssignment(creator, "Creator" , AssignmentStatus.Accepted));
         }
 
-        public void AddJoinRequest(Profile member, string? description)
+        public RequestAssignment AddJoinRequest(long member, string description)
         {
             if (!this.IsRequestOpenToNewMember())
                 throw new Exception("Cannot add a member. Request is closed or full.");
 
-            if (_joinRequests.Any(jr => jr.Member.Id == member.Id))
+            if (_assignments.Any(jr => jr.SenderRef == member))
                 throw new Exception("This User already sent a Join Request");
 
-            if (_assignments.Any(a => a.Member.Id == member.Id))
-                throw new Exception("User is already a member");
+            var assignmentStatus = IsAutoAccept ? AssignmentStatus.Accepted : AssignmentStatus.Pending;
 
-            var newJoinRequest = new JoinRequest(this, member, description);
-            _joinRequests.Add(newJoinRequest);
+            var newAssignment = new RequestAssignment(member, description, assignmentStatus);
+            _assignments.Add(newAssignment);
+
+            CheckForCompletion();
+
+            return newAssignment;
         }
 
-        public void AcceptMember(Profile owner, JoinRequest joinRequestToAccept)
+        public void AcceptMember(long owner, RequestAssignment assignmentToAccept)
         {
-            if (owner.Id != Creator.Id)
+            if (owner != Creator)
                 throw new Exception("Only the Owner can Accept the Request");
 
+            var acceptedCount = _assignments.Count(a => a.Status == AssignmentStatus.Accepted);
             var capacity = MaximumRequiredMembers ?? RequiredMembers;
-            if (_assignments.Count >= capacity)
-                throw new Exception("Team is already full");
 
-            joinRequestToAccept.Accept();
+            if (acceptedCount >= capacity)
+                throw new Exception("Ekip is already full");
 
-            var assignment = new RequestAssignment(this, joinRequestToAccept.Member);
-            _assignments.Add(assignment);
+            assignmentToAccept.Accept();
 
             if (Status == RequestStatus.Open)
                 Status = RequestStatus.InProgress;
@@ -91,21 +92,19 @@ namespace Ekip.Domain.Entities.Requests.Entities
             CheckForCompletion();
         }
 
-        public void RejectMember(Profile owner, JoinRequest joinRequestToReject)
+        public void RejectMember(long owner, RequestAssignment assignmentToReject)
         {
-            if (owner.Id != Creator.Id)
+            if (owner != Creator)
                 throw new Exception("Only the Owner can Reject the Request");
 
-            if (joinRequestToReject.Request.Id != Id)
-                throw new Exception("The Join Request does not belong to this Request");
-
-            joinRequestToReject.Decline();
+            assignmentToReject.Decline();
         }
 
         public bool IsRequestOpenToNewMember()
         {
+            var acceptedCount = _assignments.Count(a => a.Status == AssignmentStatus.Accepted);
             var capacity = MaximumRequiredMembers ?? RequiredMembers;
-            var hasSpace = _assignments.Count < capacity;
+            var hasSpace = acceptedCount < capacity;
 
             var validDateTime = DateTime.UtcNow < RequestForbidDateTime;
             var validState = Status == RequestStatus.Open || Status == RequestStatus.InProgress;
@@ -120,7 +119,9 @@ namespace Ekip.Domain.Entities.Requests.Entities
 
         public void CheckForCompletion()
         {
-            if (_assignments.Count >= RequiredMembers)
+            var acceptedCount = _assignments.Count(a => a.Status == AssignmentStatus.Accepted);
+
+            if (acceptedCount >= RequiredMembers)
                 Status = RequestStatus.Completed;
         }
 

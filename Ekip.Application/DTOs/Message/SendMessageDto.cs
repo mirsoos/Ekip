@@ -9,5 +9,6 @@ namespace Ekip.Application.DTOs.Chat
         public long SenderRef { get; set; }
         public string MessageContent { get; set; }
         public MessageType Type { get; set; }
+        public long? ReplyToMessageRef { get; set; }
     }
 }

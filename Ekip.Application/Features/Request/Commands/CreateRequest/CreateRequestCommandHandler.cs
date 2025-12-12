@@ -11,10 +11,10 @@ namespace Ekip.Application.Features.Request.Commands.CreateRequest
 {
     public class CreateRequestCommandHandler : IRequestHandler<CreateRequestCommand, NewRequestDto>
     {
-        private readonly ICreateRequestWriteRepository _createRequest;
+        private readonly IRequestWriteRepository _createRequest;
         private readonly IProfileWriteRepository _profileWrite;
         private readonly IPublishEndpoint _publishEndpoint;
-        public CreateRequestCommandHandler(ICreateRequestWriteRepository createRequest,IProfileWriteRepository profileWrite,IPublishEndpoint publishEndpoint)
+        public CreateRequestCommandHandler(IRequestWriteRepository createRequest,IProfileWriteRepository profileWrite,IPublishEndpoint publishEndpoint)
         {
             _createRequest = createRequest;
             _profileWrite = profileWrite;
@@ -30,13 +30,12 @@ namespace Ekip.Application.Features.Request.Commands.CreateRequest
                 throw new Exception($"Profile with ID {request.ProfileRef} Not Found"); 
             };
 
-            var requestFilters = request.RequestFilters?.Select(rf => 
-            
-            new RequestFilter(rf.Value,rf.Type,rf.Kind)
-            ).ToHashSet();
+            var requestFilter = request.RequestFilters?.Select(rf =>
+                new RequestFilter(rf.Value, rf.Type, rf.Kind)
+                ).ToHashSet();
 
             var newRequest = new RequestEntity(
-                creator,
+                creator.Id,
                 request.Title,
                 request.RequiredMembers ,
                 request.RequestDateTime,
@@ -45,7 +44,7 @@ namespace Ekip.Application.Features.Request.Commands.CreateRequest
                 request.RequestType,
                 request.MemberType,
                 request.IsAutoAccept,
-                requestFilters 
+                requestFilter
                 );
 
            var savedRequest = await _createRequest.AddRequestAsync(newRequest,cancellationToken);
@@ -53,7 +52,7 @@ namespace Ekip.Application.Features.Request.Commands.CreateRequest
             await _publishEndpoint.Publish(new RequestCreatedEvent
             {
                 RequestRef = savedRequest.Id,
-                CreatorRef = savedRequest.Creator.Id,
+                CreatorRef = savedRequest.Creator,
                 Title = savedRequest.Title,
                 Description = savedRequest.Description,
                 RequestType = savedRequest.RequestType,
@@ -63,11 +62,8 @@ namespace Ekip.Application.Features.Request.Commands.CreateRequest
                 RepeatType = savedRequest.RepeatType,
                 MaximumRequiredAssignmnets = savedRequest.MaximumRequiredMembers,
                 Tags = savedRequest.Tags,
-                RequestFilters = savedRequest.RequestFilters?.Select(f => new RequestFilterDto
-                {
-                    Value = f.Value,
-                    Type = f.Type,
-                    Kind = f.Kind,
+                RequestFilters = savedRequest.RequestFilters?.Select(rf=> new RequestFilterDto {
+                Value = rf.Value,Type = rf.Type,Kind=rf.Kind
                 }).ToArray(),
                 RequestCreateDateTime = savedRequest.CreateDate,
                 RequestDateTime = savedRequest.RequestDateTime,
@@ -81,13 +77,7 @@ namespace Ekip.Application.Features.Request.Commands.CreateRequest
                 RequestRef = savedRequest.Id,
                 Title = savedRequest.Title,
                 Description = savedRequest.Description,
-                Creator = new RequestCreatorDto {
-                    ProfileId = savedRequest.Creator.Id,
-                    FirstName = savedRequest.Creator.UserDetails.FirstName,
-                    LastName = savedRequest.Creator.UserDetails.LastName,
-                    AvatarUrl = savedRequest.Creator.AvatarUrl,
-                    UserName = savedRequest.Creator.UserDetails.UserName,
-                },
+                Creator = savedRequest.Creator,
                 RequiredMembers = savedRequest.RequiredMembers,
                 MaximumRequiredAssignmnets = savedRequest.MaximumRequiredMembers,
                 Tags = savedRequest.Tags,
@@ -99,11 +89,11 @@ namespace Ekip.Application.Features.Request.Commands.CreateRequest
                 RequestType = savedRequest.RequestType,
                 RepeatType = savedRequest.RepeatType,
                 MemberType = savedRequest.MemberType,
-                RequestFilters = savedRequest.RequestFilters?.Select(f => new RequestFilterDto
+                RequestFilters = savedRequest.RequestFilters?.Select(rf => new RequestFilterDto
                 {
-                    Value = f.Value,
-                    Type = f.Type,
-                    Kind = f.Kind,
+                    Value = rf.Value,
+                    Type = rf.Type,
+                    Kind = rf.Kind
                 }).ToArray(),
             };
             return requestResultDto;

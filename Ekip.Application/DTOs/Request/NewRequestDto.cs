@@ -1,5 +1,6 @@
 ﻿using Ekip.Application.DTOs.User;
 using Ekip.Domain.Enums.Requests.Enums;
+using Ekip.Domain.ValueObjects;
 
 namespace Ekip.Application.DTOs.Request
 {
@@ -8,7 +9,7 @@ namespace Ekip.Application.DTOs.Request
         public long RequestRef { get; set; }
         public string Title { get; set; }
         public string? Description { get; set; }
-        public RequestCreatorDto Creator { get; set; }
+        public long Creator { get; set; }
         public int RequiredMembers { get; set; }
         public int? MaximumRequiredAssignmnets { get; set; }
         public string[]? Tags { get; set; }

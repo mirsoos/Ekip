@@ -10,19 +10,19 @@ namespace Ekip.Application.Features.Profile.Commands.SetUserProfile
     public class SetUserProfileCommandHandler : IRequestHandler<SetUserProfileCommand, CreatedProfileDto>
     {
         private readonly IProfileWriteRepository _profileWrite;
-        private readonly IUserReadRepository _userRead;
+        private readonly IUserWriteRepository _userWrite;
         private readonly IPublishEndpoint _publishEndpoint;
 
-        public SetUserProfileCommandHandler(IProfileWriteRepository profileWrite,IUserReadRepository userRead , IPublishEndpoint publishEndpoint)
+        public SetUserProfileCommandHandler(IProfileWriteRepository profileWrite,IUserWriteRepository userWrite, IPublishEndpoint publishEndpoint)
         {
             _profileWrite = profileWrite;
-            _userRead = userRead;
             _publishEndpoint = publishEndpoint;
+            _userWrite = userWrite;
         }
 
         public async Task<CreatedProfileDto> Handle(SetUserProfileCommand request, CancellationToken cancellationToken)
         {
-            var getUserDetails = await _userRead.GetByUserNameAsync(request.UserName,cancellationToken);
+            var getUserDetails = await _userWrite.GetByUserNameAsync(request.UserName,cancellationToken);
 
             if(getUserDetails == null)
                 throw new Exception($"User with username '{request.UserName}' not found.");

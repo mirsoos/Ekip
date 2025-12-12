@@ -1,24 +1,41 @@
 ﻿using Ekip.Domain.Entities.Base.Entities;
-using Ekip.Domain.Entities.Identity;
-using Ekip.Domain.Entities.Identity.Entities;
+using Ekip.Domain.Enums.Requests.Enums;
 
 namespace Ekip.Domain.Entities.Requests.Entities
 {
+    /// <summary>
+    /// درخواست عضویت در اکیپ
+    /// </summary>
     public class RequestAssignment : BaseEntitiy
     {
-        public Profile Member { get; private set; }
-        public Request Request { get; private set; }
+        public AssignmentStatus Status { get; private set; }
+        public long SenderRef { get; private set; }
+        public string? Description { get; private set; }
+        public DateTime ActionDate { get; set; }
 
-        public RequestAssignment(Request request , Profile member)
+        public RequestAssignment(long senderRef, string description , AssignmentStatus status)
         {
-            if (request == null)
-                throw new Exception("the Request Not Found");
-            if (member == null)
-                throw new Exception("an Assignment need an Member to Assign to this Request");
-
-            Member = member;
-            Request = request;
+            SenderRef = senderRef;
+            Status = status;
+            Description = description;
         }
+
+        public void Accept()
+        {
+            if (Status != AssignmentStatus.Pending)
+                throw new Exception("Request is Not in Pending State");
+            Status = AssignmentStatus.Accepted;
+            ActionDate = DateTime.UtcNow;
+        }
+
+        public void Decline()
+        {
+            if (Status != AssignmentStatus.Pending)
+                throw new Exception("Request is Not in Pending State");
+            Status = AssignmentStatus.Declined;
+            ActionDate = DateTime.UtcNow;
+        }
+
         private RequestAssignment() { }
     }
 }

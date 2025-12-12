@@ -1,10 +1,12 @@
 ﻿using Ekip.Domain.Entities.Chat.Entites;
+using Ekip.Domain.Entities.ReadModels;
 
 
 namespace Ekip.Application.Interfaces
 {
     public interface IMessageReadRepository
     {
-        Task<List<Message>> GetMessagesAsync(long chatRoomId,int Take = 50, CancellationToken cancellationToken = default);
+        Task<List<Message>> GetMessagesAsync(long chatRoomRef,int Take = 50, CancellationToken cancellationToken = default);
+        Task<MessageReadModel> AddMessageAsync(MessageReadModel messageReadModel, CancellationToken cancellationToken);
     }
 }

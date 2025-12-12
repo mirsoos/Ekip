@@ -7,18 +7,16 @@ using MediatR;
 
 namespace Ekip.Application.Features.Authentication.Commands.Register
 {
-    public class RegisterCommandHandler : IRequestHandler<RegisterCommand,AuthenticationResult>
+    public class RegisterCommandHandler : IRequestHandler<RegisterCommand, AuthenticationResult>
     {
         private readonly IPasswordHasher _passwordHasher;
-        private readonly IUserReadRepository _userReadRepository;
         private readonly IUserWriteRepository _userWriteRepository;
         private readonly IJwtTokenGenerator _jwtTokenGenerator;
         private readonly IPublishEndpoint _publishEndpoint;
 
-        public RegisterCommandHandler(IPasswordHasher passwordHasher , IUserReadRepository userReadRepository , IUserWriteRepository userWriteRepository , IJwtTokenGenerator jwtTokenGenerator,IPublishEndpoint publishEndpoint)
+        public RegisterCommandHandler(IPasswordHasher passwordHasher,IUserWriteRepository userWriteRepository,IJwtTokenGenerator jwtTokenGenerator,IPublishEndpoint publishEndpoint)
         {
             _passwordHasher = passwordHasher;
-            _userReadRepository = userReadRepository;
             _userWriteRepository = userWriteRepository;
             _jwtTokenGenerator = jwtTokenGenerator;
             _publishEndpoint = publishEndpoint;
@@ -26,28 +24,28 @@ namespace Ekip.Application.Features.Authentication.Commands.Register
 
         public async Task<AuthenticationResult> Handle(RegisterCommand request, CancellationToken cancellationToken)
         {
-            if (string.IsNullOrEmpty(request.UserName) || string.IsNullOrEmpty(request.Email))
-                throw new Exception("user must have Email or UserName");
-
-            if (await _userReadRepository.GetByUserNameAsync(request.UserName,cancellationToken) != null)
-                throw new Exception("this userName already exist");
-
-            if (await _userReadRepository.GetByEmailAsync(request.Email,cancellationToken) != null)
-                throw new Exception("this email already exist");
+            if (string.IsNullOrWhiteSpace(request.UserName) || string.IsNullOrWhiteSpace(request.Email))
+                throw new Exception("User must have Email and UserName");
 
             if (request.PhoneNumber.Length != 11)
                 throw new Exception("PhoneNumber is Not Valid");
 
-            var hashPassword =  _passwordHasher.Hash(request.Password);
+            var existingUser = await _userWriteRepository.GetByUserNameAsync(request.UserName, cancellationToken);
+            if (existingUser != null)
+                throw new Exception("This UserName already exists");
 
-            var user = new User(request.FirstName , request.LastName , request.UserName , request.Email , request.Gender,request.Age ,request.PhoneNumber);
+            var existingEmail = await _userWriteRepository.GetByEmailAsync(request.Email, cancellationToken);
+            if (existingEmail)
+                throw new Exception("This Email already exists");
 
+            var hashPassword = _passwordHasher.Hash(request.Password);
+
+            var user = new User(request.FirstName, request.LastName, request.UserName, request.Email, request.Gender, request.Age, request.PhoneNumber);
             user.SetPasswordHash(hashPassword);
-
 
             await _userWriteRepository.AddAsync(user, cancellationToken);
 
-            var userToken =  _jwtTokenGenerator.GenerateToken(user);
+            var userToken = _jwtTokenGenerator.GenerateToken(user);
 
             await _publishEndpoint.Publish(new UserCreatedEvent
             {
@@ -58,18 +56,17 @@ namespace Ekip.Application.Features.Authentication.Commands.Register
                 Gender = user.Gender,
                 LastName = user.LastName,
                 PhoneNumber = user.PhoneNumber,
-                UserName = user.UserName,
-                Password = hashPassword
-            });
+                UserName = user.UserName
+                // ❌ Password حذف شد (امنیت)
+            }, cancellationToken);
 
-            return new AuthenticationResult 
-                {
+            return new AuthenticationResult
+            {
                 UserId = user.Id,
                 UserName = user.UserName,
                 Email = user.Email,
                 PhoneNumber = user.PhoneNumber,
                 Token = userToken
-
             };
         }
     }
