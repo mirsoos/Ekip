@@ -1,7 +1,5 @@
-﻿
-using Ekip.Application.DTOs.User;
+﻿using Ekip.Application.DTOs.User;
 using Ekip.Domain.Enums.Requests.Enums;
-using Ekip.Domain.ValueObjects;
 
 namespace Ekip.Application.DTOs.Request
 {
@@ -19,12 +17,12 @@ namespace Ekip.Application.DTOs.Request
         public DateTime RequestCreateDate { get; set; }
         public DateTime RequestDateTime { get; set; }
         public DateTime RequestForbidDateTime { get; set; }
-        public List<RequestFilter> RequestFilters { get; set; }
-        public string RequestType { get; set; }
-        public string MemberType { get; set; }
+        public List<RequestFilterDto>? RequestFilters { get; set; }
+        public RequestType RequestType { get; set; }
+        public MemberType MemberType { get; set; }
         public bool IsAutoAccept { get; set; }
         public bool IsRepeatable { get; set; }
-        public string RepeatType { get; set; }
+        public RequestRepeatType? RepeatType { get; set; }
         public DateTime? NextRepeatDate { get; set; }
         public bool CanAssignRequest { get; set; }
     }

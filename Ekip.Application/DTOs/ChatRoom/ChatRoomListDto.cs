@@ -9,6 +9,6 @@ namespace Ekip.Application.DTOs.ChatRoom
         public string? LastMessagePreview { get; set; }
         public DateTime? LastMessageDate { get; set; }
         public List<long> Participants { get; set; }
-        public int UnreadCount { get; set; }
+        public int? UnreadCount { get; set; }
     }
 }

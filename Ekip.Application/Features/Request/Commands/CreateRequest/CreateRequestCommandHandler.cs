@@ -69,6 +69,7 @@ namespace Ekip.Application.Features.Request.Commands.CreateRequest
                 RequestDateTime = savedRequest.RequestDateTime,
                 RequestForbidDateTime = savedRequest.RequestForbidDateTime,
                 RequiredMembers = savedRequest.RequiredMembers,
+                Status = savedRequest.Status
 
             });
 

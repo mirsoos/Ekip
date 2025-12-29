@@ -1,8 +1,12 @@
-﻿using Ekip.Infrastructure.Persistence;
+﻿using Ekip.Application.Features.Authentication.Consumers;
+using Ekip.Application.Interfaces;
+using Ekip.Infrastructure.Persistence;
 using Ekip.Infrastructure.Repositories.Implementations;
 using Ekip.Infrastructure.Repositories.Interfaces;
+using Ekip.Infrastructure.Security;
 using Ekip.Infrastructure.Services.Implementations;
 using Ekip.Infrastructure.Services.Interfaces;
+using MassTransit;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,38 +19,51 @@ namespace Ekip.Infrastructure.Configurations
     {
         public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
-            // -----------------------------
-            // 1️⃣ Options
-            // -----------------------------
+
+            var infraSettings = configuration.GetSection("InfrastructureSettings").Get<InfrastructureSettings>();
+
+            services.AddMassTransit(busConfigurator =>
+            {
+
+                busConfigurator.SetKebabCaseEndpointNameFormatter();
+
+                var appAssembly = typeof(UserCreatedConsumer).Assembly;
+                busConfigurator.AddConsumers(appAssembly);
+
+                busConfigurator.UsingRabbitMq((context, cfg) =>
+                {
+                    cfg.Host(infraSettings.RabbitMqHost, "/", h =>
+                    {
+                        h.Username(infraSettings.RabbitMqUser);
+                        h.Password(infraSettings.RabbitMqPassword);
+                    });
+
+                    cfg.ConfigureEndpoints(context);
+                });
+            });
+
+
             services.Configure<InfrastructureSettings>(
                 configuration.GetSection("InfrastructureSettings")
             );
 
-            // -----------------------------
-            // 2️⃣ PostgreSQL DbContext (Read)
-            // -----------------------------
+
             services.AddDbContext<PostgresDbContext>(options =>
                     options.UseNpgsql(configuration.GetSection("InfrastructureSettings:PostgresConnection").Value));
 
-            // -----------------------------
-            // 3️⃣ MongoDB Client (Write)
-            // -----------------------------
+
             services.AddSingleton<IMongoClient>(sp =>
             {
                 var mongoConnection = configuration.GetSection("InfrastructureSettings:MongoConnection").Value;
                 return new MongoClient(mongoConnection);
             });
 
-            // MongoDbContext
+
             services.AddScoped<MongoDbContext>();
 
-            // MongoRepository
             services.AddScoped<IMongoRepository, MongoRepository>();
 
 
-            // -----------------------------
-            // 4️⃣ Redis
-            // -----------------------------
             services.AddSingleton<IConnectionMultiplexer>(sp =>
             {
                 var redisConnection = configuration.GetSection("InfrastructureSettings:RedisConnection").Value;
@@ -54,17 +71,14 @@ namespace Ekip.Infrastructure.Configurations
             });
             services.AddScoped<IRedisService, RedisService>();
 
-            // -----------------------------
-            // 5️⃣ Repositories
-            // -----------------------------
-            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-            // سایر repository های اختصاصی اگر داری اضافه می‌شن
 
-            // -----------------------------
-            // 6️⃣ Services عمومی (Email, RabbitMQ)
-            // -----------------------------
-            services.AddScoped<IEmailService, EmailService>();
-            services.AddScoped<IMessageQueueService, RabbitMqService>();
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+
+            services.AddScoped<IPasswordHasher, PasswordHasher>();
+            services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
+
+            //services.AddScoped<IEmailService, EmailService>();
+            //services.AddScoped<IMessageQueueService, RabbitMqService>();
 
             return services;
         }

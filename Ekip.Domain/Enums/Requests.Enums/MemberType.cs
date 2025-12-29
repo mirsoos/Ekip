@@ -1,4 +1,5 @@
-﻿namespace Ekip.Domain.Enums.Requests.Enums
+﻿
+namespace Ekip.Domain.Enums.Requests.Enums
 {
     public enum MemberType
     {

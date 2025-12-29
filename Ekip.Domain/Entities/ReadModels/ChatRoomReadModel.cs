@@ -17,6 +17,8 @@ namespace Ekip.Domain.Entities.ReadModels
         public string AvatarUrl { get; set; }
         public long RequestRef { get; set; }
         public long CreatorRef { get; set; }
-        public List<long> ChatRoomParticipants { get; set; }
+        public string? LastMessagePreview { get; set; }
+        public DateTime? LastMessageDate { get; set; }
+        public List<long> Participants { get; set; }
     }
 }

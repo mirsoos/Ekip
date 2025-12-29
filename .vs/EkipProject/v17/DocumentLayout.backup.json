@@ -1,7 +1,20 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\amir\\source\\repos\\EkipProject\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|c:\\users\\amir\\source\\repos\\ekipproject\\ekip.infrastructure\\repositories\\implementations\\postgrerequestrepositoy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|solutionrelative:ekip.infrastructure\\repositories\\implementations\\postgrerequestrepositoy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\amir\\source\\repos\\ekipproject\\ekip.application\\interfaces\\irequestreadrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\interfaces\\irequestreadrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\amir\\source\\repos\\ekipproject\\ekip.application\\features\\request\\consumers\\requestassignmentcreatedconsumer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\features\\request\\consumers\\requestassignmentcreatedconsumer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,11 +22,50 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 3,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "RequestAssignmentCreatedConsumer.cs",
+              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Features\\Request\\Consumers\\RequestAssignmentCreatedConsumer.cs",
+              "RelativeDocumentMoniker": "Ekip.Application\\Features\\Request\\Consumers\\RequestAssignmentCreatedConsumer.cs",
+              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Features\\Request\\Consumers\\RequestAssignmentCreatedConsumer.cs",
+              "RelativeToolTip": "Ekip.Application\\Features\\Request\\Consumers\\RequestAssignmentCreatedConsumer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-29T15:29:11.215Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "IRequestReadRepository.cs",
+              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Interfaces\\IRequestReadRepository.cs",
+              "RelativeDocumentMoniker": "Ekip.Application\\Interfaces\\IRequestReadRepository.cs",
+              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Interfaces\\IRequestReadRepository.cs",
+              "RelativeToolTip": "Ekip.Application\\Interfaces\\IRequestReadRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-29T15:28:34.099Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PostgreRequestRepositoy.cs",
+              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Infrastructure\\Repositories\\Implementations\\PostgreRequestRepositoy.cs",
+              "RelativeDocumentMoniker": "Ekip.Infrastructure\\Repositories\\Implementations\\PostgreRequestRepositoy.cs",
+              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Infrastructure\\Repositories\\Implementations\\PostgreRequestRepositoy.cs",
+              "RelativeToolTip": "Ekip.Infrastructure\\Repositories\\Implementations\\PostgreRequestRepositoy.cs",
+              "ViewState": "AgIAAHIAAAAAAAAAAAAAwIQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-29T15:28:24.72Z",
+              "EditorCaption": ""
             }
           ]
         }

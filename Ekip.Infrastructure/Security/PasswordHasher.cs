@@ -1,9 +1,5 @@
 ﻿using Ekip.Application.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using BCrypt.Net;
 
 namespace Ekip.Infrastructure.Security
 {
@@ -11,11 +7,11 @@ namespace Ekip.Infrastructure.Security
     {
         public string Hash(string password)
         {
-            throw new NotImplementedException();
+            return BCrypt.Net.BCrypt.HashPassword(password);
         }
-        public Task<bool> Verify(string hash, string password)
+        public bool Verify(string hash, string password)
         {
-            throw new NotImplementedException();
+            return BCrypt.Net.BCrypt.Verify(hash, password);
         }
     }
 }

@@ -1,6 +1,7 @@
-﻿namespace Ekip.Domain.Enums.Requests.Enums
+﻿
+namespace Ekip.Domain.Enums.Requests.Enums
 {
-    public enum RequestStatus
+    public enum     RequestStatus
     {
         Open = 1,
         InProgress,

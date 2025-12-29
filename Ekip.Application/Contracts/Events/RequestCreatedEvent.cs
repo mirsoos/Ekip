@@ -16,6 +16,7 @@ namespace Ekip.Application.Contracts.Events
         public DateTime RequestForbidDateTime { get; init; }
         public string? Description { get; init; }
         public string[]? Tags { get; init; }
+        public RequestStatus Status { get; init; }
         public RequestType RequestType { get; init; }
         public MemberType MemberType { get; init; }
         public bool IsAutoAccept { get; init; } 

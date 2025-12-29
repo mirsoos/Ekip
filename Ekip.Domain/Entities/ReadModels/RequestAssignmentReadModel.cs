@@ -1,4 +1,5 @@
 ﻿using Ekip.Domain.Enums.Requests.Enums;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Ekip.Domain.Entities.ReadModels
 {
@@ -11,5 +12,8 @@ namespace Ekip.Domain.Entities.ReadModels
         public long SenderRef { get; set; }
         public string? Description { get; set; }
         public DateTime ActionDate { get; set; }
+
+        [ForeignKey("SenderRef")]
+        public virtual ProfileReadModel SenderProfile { get; set; }
     }
 }

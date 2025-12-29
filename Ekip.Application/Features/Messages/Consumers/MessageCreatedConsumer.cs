@@ -8,13 +8,17 @@ namespace Ekip.Application.Features.Messages.Consumers
     public class MessageCreatedConsumer : IConsumer<MessageCreatedEvent>
     {
         private readonly IMessageReadRepository _messageRead;
-        public MessageCreatedConsumer(IMessageReadRepository messageRead)
+        private readonly IChatRoomReadRepository _chatRoomRead;
+        public MessageCreatedConsumer(IMessageReadRepository messageRead,IChatRoomReadRepository chatRoomRead)
         {
             _messageRead = messageRead;
+            _chatRoomRead = chatRoomRead;
         } 
         public async Task Consume(ConsumeContext<MessageCreatedEvent> context)
         {
             var message = context.Message;
+
+            await _chatRoomRead.UpdateLastMessageAsync(message.ChatRoomRef,message.MessageContent,message.SentAt,context.CancellationToken);
 
             var mongoToPostgres = new MessageReadModel
             {
@@ -26,7 +30,8 @@ namespace Ekip.Application.Features.Messages.Consumers
                 SentAt = message.SentAt,
                 ReplyToMessageRef = message.ReplyToMessageRef,
                 IsDeleted = message.IsDeleted,
-                IsEdited = message.IsEdited
+                IsEdited = message.IsEdited,
+                
             };
 
             await _messageRead.AddMessageAsync(mongoToPostgres, context.CancellationToken);

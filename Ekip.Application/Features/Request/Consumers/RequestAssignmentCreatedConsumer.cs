@@ -27,7 +27,7 @@ namespace Ekip.Application.Features.Request.Consumers
                 ActionDate = requestAssignment.ActionDate
             };
 
-            await _requestRead.UpdateAsync(mongoToPostgres.RequestRef, context.CancellationToken);
+            await _requestRead.AddAssignmentAsync(mongoToPostgres, context.CancellationToken);
 
         }
     }

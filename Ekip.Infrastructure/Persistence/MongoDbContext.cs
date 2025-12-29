@@ -20,7 +20,7 @@ namespace Ekip.Infrastructure.Persistence
         public IMongoCollection<User> Users => _database.GetCollection<User>("Users");
         public IMongoCollection<Profile> Profiles => _database.GetCollection<Profile>("Profiles");
         public IMongoCollection<Request> Requests => _database.GetCollection<Request>("Requests");
-        public IMongoCollection<RequestAssignment> JoinRequests => _database.GetCollection<RequestAssignment>("JoinRequests");
+        public IMongoCollection<RequestAssignment> RequestAssignments => _database.GetCollection<RequestAssignment>("JoinRequests");
         public IMongoCollection<ChatRoom> ChatRooms => _database.GetCollection<ChatRoom>("ChatRooms");
         public IMongoCollection<Message> Messages => _database.GetCollection<Message>("Messages");
         

@@ -2,29 +2,59 @@
 using Ekip.Application.Interfaces;
 using Ekip.Domain.Entities.Chat.Entites;
 using Ekip.Domain.Entities.ReadModels;
+using Ekip.Infrastructure.Persistence;
+using Microsoft.EntityFrameworkCore;
 
 namespace Ekip.Infrastructure.Repositories.Implementations
 {
     public class ChatRoomReadRepository : IChatRoomReadRepository
+
     {
-        public Task<ChatRoomReadModel> AddChatRoomAsync(ChatRoomReadModel chatRoomReadModel, CancellationToken cancellationToken)
+        private readonly PostgresDbContext _postgreDb;
+        public ChatRoomReadRepository(PostgresDbContext postgresDb)
         {
-            throw new NotImplementedException();
+            _postgreDb = postgresDb;
         }
 
-        public Task<ChatRoom?> GetByIdAsync(long chatRoomRef, CancellationToken cancellationToken)
+        public async Task<ChatRoomReadModel> AddChatRoomAsync(ChatRoomReadModel chatRoomReadModel, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            await _postgreDb.ChatRoomReads.AddAsync(chatRoomReadModel, cancellationToken: cancellationToken);
+            await _postgreDb.SaveChangesAsync(cancellationToken);
+            return chatRoomReadModel;
         }
 
-        public Task<ChatRoomListDto?> GetListByIdAsync(long chatRoomRef, CancellationToken cancellationToken)
+        public async Task<ChatRoomReadModel?> GetByIdAsync(long chatRoomRef, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+           return await _postgreDb.ChatRoomReads.AsNoTracking().FirstOrDefaultAsync(c=>c.Id == chatRoomRef , cancellationToken);
         }
 
-        Task<ChatRoomReadModel?> IChatRoomReadRepository.GetByIdAsync(long chatRoomRef, CancellationToken cancellationToken)
+        public async Task<ChatRoomListDto?> GetListByIdAsync(long chatRoomRef, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            var room = await _postgreDb.ChatRoomReads.AsNoTracking().Where(c => c.Id == chatRoomRef)
+                .Select(s => new ChatRoomListDto
+                {
+                    ChatRoomRef = s.Id,
+                    AvatarUrl = s.AvatarUrl,
+                    Participants = s.Participants.ToList(),
+                    Name = s.Name,
+                    LastMessageDate = s.LastMessageDate,
+                    LastMessagePreview = s.LastMessagePreview,
+
+                }).FirstOrDefaultAsync(cancellationToken);
+
+            return room;
+        }
+
+        public async Task UpdateLastMessageAsync(long chatRoomRef, string LastMessagePreview, DateTime LastMessageDate, CancellationToken cancellationToken)
+        {
+
+            await _postgreDb.ChatRoomReads
+                .Where(c => c.Id == chatRoomRef)
+                .ExecuteUpdateAsync(setters => setters
+                    .SetProperty(m => m.LastMessagePreview, LastMessagePreview)
+                    .SetProperty(m => m.LastMessageDate, LastMessageDate),
+                    cancellationToken
+                );
         }
     }
 }

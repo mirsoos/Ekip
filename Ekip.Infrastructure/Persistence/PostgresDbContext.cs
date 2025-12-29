@@ -18,7 +18,6 @@ namespace Ekip.Infrastructure.Persistence
         public DbSet<ProfileReadModel> ProfileReads { get; set; } 
         public DbSet<RequestReadModel> RequestReads { get; set; } 
         public DbSet<UserReadModel> UserReads { get; set; } 
-        public DbSet<JoinRequestReadModel> JoinRequestReads { get; set; } 
         public DbSet<RequestAssignmentReadModel> RequestAssignmentReads { get; set; } 
     }
 }

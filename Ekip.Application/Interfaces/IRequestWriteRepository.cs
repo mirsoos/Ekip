@@ -5,8 +5,7 @@ namespace Ekip.Application.Interfaces
     public interface IRequestWriteRepository
     {
         Task<Request> AddRequestAsync(Request request,CancellationToken cancellationToken);
-        Task<Request> GetRequestByIdAsync(long requestRef,CancellationToken cancellationToken);
+        Task<Request?> GetRequestByIdAsync(long requestRef,CancellationToken cancellationToken);
         Task UpdateAsync(Request request, CancellationToken cancellationToken);
-        Task<bool> AddRequestAssignmentAsync(RequestAssignment requestAssignment , CancellationToken cancellationToken);
     }
 }

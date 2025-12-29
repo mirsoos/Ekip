@@ -27,7 +27,7 @@ namespace Ekip.Application.Features.ChatRoom.Consumers
                 Name = chatRoom.Name,
                 CreatorRef = chatRoom.CreatorRef,
                 RequestRef = chatRoom.RequestRef,
-                ChatRoomParticipants = chatRoom.ChatRoomParticipants,
+                Participants = chatRoom.ChatRoomParticipants,
                 CreateDate = chatRoom.CreateDate,
                 ChatRoomType = chatRoom.ChatRoomType,
                 AvatarUrl = chatRoom.AvatarUrl

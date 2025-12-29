@@ -1,20 +1,32 @@
 ﻿using Ekip.Application.Interfaces;
-using Ekip.Domain.Entities.Chat.Entites;
 using Ekip.Domain.Entities.ReadModels;
+using Ekip.Infrastructure.Persistence;
+using Microsoft.EntityFrameworkCore;
 
 
 namespace Ekip.Infrastructure.Repositories.Implementations
 {
     public class PostgreMessageRepository : IMessageReadRepository
     {
-        public Task<MessageReadModel> AddMessageAsync(MessageReadModel messageReadModel, CancellationToken cancellationToken)
+        private readonly PostgresDbContext _postgreDb;
+        public PostgreMessageRepository(PostgresDbContext postgresDb)
         {
-            throw new NotImplementedException();
+            _postgreDb = postgresDb;
         }
-
-        public Task<List<Message>> GetMessagesAsync(long chatRoomRef, int take = 50, CancellationToken cancellationToken = default)
+        public async Task<MessageReadModel> AddMessageAsync(MessageReadModel messageReadModel, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            await _postgreDb.MessageReads.AddAsync(messageReadModel, cancellationToken);
+            await _postgreDb.SaveChangesAsync(cancellationToken);
+            return messageReadModel;
+        }
+        public async Task<List<MessageReadModel>> GetMessagesAsync(long chatRoomRef, int take = 50, CancellationToken cancellationToken = default)
+        {
+           return await _postgreDb.MessageReads
+                .AsNoTracking()
+                .Where(m => m.ChatRoomRef == chatRoomRef)
+                .OrderByDescending(m => m.SentAt)
+                .Take(take)
+                .ToListAsync(cancellationToken);
         }
     }
 }
