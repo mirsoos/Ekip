@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  # 1. PostgreSQL (نسخه 16 ثابت)
+  postgres:
+    image: postgres:16              # <--- تغییر مهم: استفاده از نسخه پایدار
+    container_name: ekip_postgres
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password123
+      POSTGRES_DB: EkipReadDb
+    ports:
+      - "5433:5432"                 # پورت بیرونی 5433
+    volumes:
+      - postgres_data_final:/var/lib/postgresql/data # <--- والیوم جدید
+
+  # 2. MongoDB
+  mongo:
+    image: mongo:latest
+    container_name: ekip_mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password123
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  # 3. RabbitMQ
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: ekip_rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+
+  # 4. Redis
+  redis:
+    image: redis:alpine
+    container_name: ekip_redis
+    ports:
+      - "16379:6379" # پورت بیرونی 16379
+    command: redis-server --appendonly yes # برای اطمینان از ذخیره سازی
+
+volumes:
+  postgres_data_final: # <--- والیوم جدید
+  mongo_data:
