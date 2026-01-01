@@ -6,7 +6,6 @@
 	<Nullable>enable</Nullable>
 </PropertyGroup>
 <ItemGroup>
-	<Folder Include="Controllers\" />
 	<Folder Include="Middlewares\" />
 	<Folder Include="Models\" />
 </ItemGroup>

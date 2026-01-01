@@ -4,23 +4,22 @@ using Ekip.Application.Interfaces;
 using Ekip.Domain.Entities.ReadModels;
 using Ekip.Domain.Enums.Requests.Enums;
 using Ekip.Infrastructure.Persistence;
-using MassTransit.Initializers;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json;
 
 namespace Ekip.Infrastructure.Repositories.Implementations
 {
-    public class PostgreRequestRepositoy : IRequestReadRepository
+    public class RequestReadRepository : IRequestReadRepository
     {
         private readonly PostgresDbContext _postgreDb;
-        public PostgreRequestRepositoy(PostgresDbContext postgresDb)
+        public RequestReadRepository(PostgresDbContext postgresDb)
         {
             _postgreDb = postgresDb;
         }
         public async Task<RequestReadModel> AddRequestAsync(RequestReadModel requestReadModel, CancellationToken cancellationToken)
         {
             await _postgreDb.RequestReads.AddAsync(requestReadModel, cancellationToken);
-            await  _postgreDb.SaveChangesAsync(cancellationToken);
+            await _postgreDb.SaveChangesAsync(cancellationToken);
             return requestReadModel;
         }
 
@@ -28,7 +27,7 @@ namespace Ekip.Infrastructure.Repositories.Implementations
         {
 
             var request = await _postgreDb.RequestReads
-                .AsNoTracking() 
+                .AsNoTracking()
                 .Where(r => r.Id == requestRef)
                 .Select(s => new
                 {
@@ -42,7 +41,7 @@ namespace Ekip.Infrastructure.Repositories.Implementations
                     s.RequestDateTime,
                     s.RequestForbidDateTime,
                     s.RequestType,
-                    s.MemberType, 
+                    s.MemberType,
                     s.IsAutoAccept,
                     s.IsRepeatable,
                     s.RepeatType,
@@ -61,7 +60,7 @@ namespace Ekip.Infrastructure.Repositories.Implementations
 
                     Members = s.Assignments.Select(m => new AssignmentMemberDto
                     {
-                        ProfileRef = m.SenderProfile.Id, 
+                        ProfileRef = m.SenderProfile.Id,
                         UserName = m.SenderProfile.User.UserName,
                         AvatarUrl = m.SenderProfile.AvatarUrl,
                         Status = m.Status,
@@ -90,27 +89,27 @@ namespace Ekip.Infrastructure.Repositories.Implementations
                 IsAutoAccept = request.IsAutoAccept,
                 IsRepeatable = request.IsRepeatable,
                 RepeatType = request.RepeatType,
-                NextRepeatDate = request.RepeatType != RequestRepeatType.None ? NextRepeatDate(request.CreateDate , request.RepeatType.Value) : null,
+                NextRepeatDate = request.RepeatType != RequestRepeatType.None ? NextRepeatDate(request.CreateDate, request.RepeatType.Value) : null,
                 Tags = !string.IsNullOrEmpty(request.TagsString)
                     ? request.TagsString.Split(',', StringSplitOptions.RemoveEmptyEntries)
                     : new string[0],
                 RequestFilters = !string.IsNullOrEmpty(request.RequestFiltersJson)
                     ? JsonSerializer.Deserialize<List<RequestFilterDto>>(request.RequestFiltersJson)
                     : new List<RequestFilterDto>(),
-                CanAssignRequest = CanAssign(request.Status , request.Members.Count(m=>m.Status == AssignmentStatus.Accepted) , request.MaximumRequiredAssignmnets ?? request.RequiredMembers, request.RequestForbidDateTime)
+                CanAssignRequest = CanAssign(request.Status, request.Members.Count(m => m.Status == AssignmentStatus.Accepted), request.MaximumRequiredAssignmnets ?? request.RequiredMembers, request.RequestForbidDateTime)
             };
         }
 
-        bool CanAssign(RequestStatus status,int currentMemberCount , int capacity , DateTime forbidTime)
+        bool CanAssign(RequestStatus status, int currentMemberCount, int capacity, DateTime forbidTime)
         {
             bool isOpen = status == RequestStatus.Open || status == RequestStatus.InProgress;
-            bool hasSpace = currentMemberCount < capacity ;
+            bool hasSpace = currentMemberCount < capacity;
             bool isValidTime = DateTime.UtcNow < forbidTime;
 
             return isOpen & hasSpace & isValidTime;
         }
 
-        DateTime? NextRepeatDate(DateTime createDate , RequestRepeatType repeatType)
+        DateTime? NextRepeatDate(DateTime createDate, RequestRepeatType repeatType)
         {
             var repeatDays = (int)repeatType;
             if (repeatDays <= 0) return null;
@@ -129,7 +128,5 @@ namespace Ekip.Infrastructure.Repositories.Implementations
             await _postgreDb.RequestAssignmentReads.AddAsync(assignment, cancellationToken);
             await _postgreDb.SaveChangesAsync(cancellationToken);
         }
-
-
     }
 }

@@ -6,10 +6,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Ekip.Infrastructure.Repositories.Implementations
 {
-    public class PostgreMessageRepository : IMessageReadRepository
+    public class MessageReadRepository : IMessageReadRepository
     {
         private readonly PostgresDbContext _postgreDb;
-        public PostgreMessageRepository(PostgresDbContext postgresDb)
+        public MessageReadRepository(PostgresDbContext postgresDb)
         {
             _postgreDb = postgresDb;
         }

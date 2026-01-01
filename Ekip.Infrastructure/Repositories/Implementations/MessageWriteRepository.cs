@@ -4,10 +4,10 @@ using Ekip.Infrastructure.Persistence;
 
 namespace Ekip.Infrastructure.Repositories.Implementations
 {
-    public class MongoMessageRepository : IMessageWriteRepository
+    public class MessageWriteRepository : IMessageWriteRepository
     {
         private readonly MongoDbContext _mongoDb;
-        public MongoMessageRepository(MongoDbContext mongoDb)
+        public MessageWriteRepository(MongoDbContext mongoDb)
         {
             _mongoDb = mongoDb;
         }

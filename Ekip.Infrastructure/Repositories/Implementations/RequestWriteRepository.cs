@@ -5,12 +5,11 @@ using MongoDB.Driver;
 
 namespace Ekip.Infrastructure.Repositories.Implementations
 {
-    public class MongoRequestRepository : IRequestWriteRepository
+    public class RequestWriteRepository : IRequestWriteRepository
     {
-
         private readonly MongoDbContext _mongoDb;
 
-        public MongoRequestRepository(MongoDbContext mongoDb)
+        public RequestWriteRepository(MongoDbContext mongoDb)
         {
             _mongoDb = mongoDb;
         }
@@ -24,7 +23,7 @@ namespace Ekip.Infrastructure.Repositories.Implementations
         public async Task<Request> GetRequestByIdAsync(long requestRef, CancellationToken cancellationToken)
         {
             var filters = Builders<Request>.Filter.Eq(r => r.Id, requestRef);
-            
+
             return await _mongoDb.Requests.Find(filters).FirstOrDefaultAsync(cancellationToken);
         }
 

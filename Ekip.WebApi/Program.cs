@@ -6,13 +6,14 @@ using Ekip.Infrastructure.Configurations;
 using Ekip.Infrastructure.Persistence;
 using Ekip.Infrastructure.Repositories;
 using Ekip.Infrastructure.Services.Interfaces;
+using Ekip.Application;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // -------------------------------------------------
 // 1️⃣ Configuration + Infrastructure
 // -------------------------------------------------
-
+builder.Services.AddApplicationServices();
 // DI کامل Infrastructure (Postgres Read + Mongo Write + Services)
 builder.Services.AddInfrastructure(builder.Configuration);
 
@@ -28,14 +29,13 @@ builder.Services.AddSwaggerGen();
 // -------------------------------------------------
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment())    
 {
-    // Swagger UI برای تست API در محیط توسعه
     app.UseSwagger();
     app.UseSwaggerUI(options =>
     {
         options.SwaggerEndpoint("/swagger/v1/swagger.json", "Ekip API V1");
-        options.RoutePrefix = string.Empty; // نمایش Swagger در root
+        options.RoutePrefix = string.Empty;
     });
 }
 

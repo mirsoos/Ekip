@@ -62,6 +62,16 @@ namespace Ekip.Infrastructure.Configurations
             services.AddScoped<MongoDbContext>();
 
             services.AddScoped<IMongoRepository, MongoRepository>();
+            services.AddScoped<IRequestReadRepository, RequestReadRepository>();
+            services.AddScoped<IRequestWriteRepository, RequestWriteRepository>();
+            services.AddScoped<IChatRoomReadRepository, ChatRoomReadRepository>();
+            services.AddScoped<IChatRoomWriteRepository, ChatRoomWriteRepository>();
+            services.AddScoped<IMessageReadRepository, MessageReadRepository>();
+            services.AddScoped<IMessageWriteRepository, MessageWriteRepository>();
+            services.AddScoped<IProfileReadRepository, ProfileReadRepository>();
+            services.AddScoped<IProfileWriteRepository, ProfileWriteRepository>();
+            services.AddScoped<IUserReadRepository, UserReadRepository>();
+            services.AddScoped<IUserWriteRepository, UserWriteRepository>();
 
 
             services.AddSingleton<IConnectionMultiplexer>(sp =>

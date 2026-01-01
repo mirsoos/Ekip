@@ -35,7 +35,7 @@ namespace Ekip.Application.Features.Authentication.Commands.Register
                 throw new Exception("This UserName already exists");
 
             var existingEmail = await _userWriteRepository.GetByEmailAsync(request.Email, cancellationToken);
-            if (existingEmail)
+            if (existingEmail != null)
                 throw new Exception("This Email already exists");
 
             var hashPassword = _passwordHasher.Hash(request.Password);
