@@ -6,10 +6,10 @@ namespace Ekip.Application.DTOs.Request
 {
     public class NewRequestDto
     {
-        public long RequestRef { get; set; }
+        public Guid RequestRef { get; set; }
         public string Title { get; set; }
         public string? Description { get; set; }
-        public long Creator { get; set; }
+        public Guid Creator { get; set; }
         public int RequiredMembers { get; set; }
         public int? MaximumRequiredAssignmnets { get; set; }
         public string[]? Tags { get; set; }

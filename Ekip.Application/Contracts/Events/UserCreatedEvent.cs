@@ -8,7 +8,8 @@ namespace Ekip.Application.Contracts.Events
 {
     public record UserCreatedEvent
     {
-        public long Id { get; init; }
+        public Guid Id { get; init; }
+        public Guid ProfileRef { get; set; }
         public DateTime CreateDate { get; init; }
         public bool IsDeleted { get; init; }
         public string FirstName { get; init; }

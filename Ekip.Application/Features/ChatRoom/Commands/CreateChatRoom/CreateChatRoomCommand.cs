@@ -9,8 +9,8 @@ namespace Ekip.Application.Features.ChatRoom.Commands.CreateChatRoom
         public ChatRoomType ChatRoomType { get; set; }
         public string Name { get; set; }
         public string AvatarUrl { get; set; }
-        public long RequestRef { get; set; }
-        public long CreatorRef { get; set; }
+        public Guid RequestRef { get; set; }
+        public Guid CreatorRef { get; set; }
         public List<ChatRoomParticipantsDto> ChatRoomParticipants { get; set; }
     }
 }

@@ -3,7 +3,7 @@ using Ekip.Domain.Entities.Requests.Entities;
 
 namespace Ekip.Domain.Entities.Identity.Entities
 {
-    public class Profile : BaseEntitiy
+    public class Profile : BaseEntity
     {  
         public User UserDetails { get; private set; }
         public double? Score { get; private set; }

@@ -6,14 +6,14 @@ namespace Ekip.Domain.Entities.Requests.Entities
     /// <summary>
     /// درخواست عضویت در اکیپ
     /// </summary>
-    public class RequestAssignment : BaseEntitiy
+    public class RequestAssignment : BaseEntity
     {
         public AssignmentStatus Status { get; private set; }
-        public long SenderRef { get; private set; }
+        public Guid SenderRef { get; private set; }
         public string? Description { get; private set; }
         public DateTime ActionDate { get; set; }
 
-        public RequestAssignment(long senderRef, string description , AssignmentStatus status)
+        public RequestAssignment(Guid senderRef, string description , AssignmentStatus status)
         {
             SenderRef = senderRef;
             Status = status;

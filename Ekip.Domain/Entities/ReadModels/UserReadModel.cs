@@ -7,8 +7,12 @@ using System.Threading.Tasks;
 
 namespace Ekip.Domain.Entities.ReadModels
 {
-    public class UserReadModel : BaseEntitiy
+    public class UserReadModel
     {
+        public Guid Id { get; set; }
+        public Guid ProfileRef { get; set; }
+        public bool IsDeleted { get; set; }
+        public DateTime CreateDate { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string UserName { get; set; }

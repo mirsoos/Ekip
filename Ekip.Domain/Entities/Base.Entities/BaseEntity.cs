@@ -6,10 +6,16 @@ using System.Threading.Tasks;
 
 namespace Ekip.Domain.Entities.Base.Entities
 {
-    public class BaseEntitiy
+    public class BaseEntity
     {
-        public long Id { get; set; }
+        public Guid Id { get; set; }
         public bool IsDeleted { get; set; }
         public DateTime CreateDate { get; set; }
+        protected BaseEntity()
+        {
+            Id = Guid.NewGuid();
+            CreateDate = DateTime.UtcNow;
+            IsDeleted = false;
+        }
     }
 }

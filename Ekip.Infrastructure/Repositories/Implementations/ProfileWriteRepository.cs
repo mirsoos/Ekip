@@ -1,33 +1,38 @@
 ﻿using Ekip.Application.Interfaces;
 using Ekip.Domain.Entities.Identity.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Ekip.Infrastructure.Persistence;
+using MongoDB.Driver;
 
 namespace Ekip.Infrastructure.Repositories.Implementations
 {
     public class ProfileWriteRepository : IProfileWriteRepository
     {
-        public Task<Profile> AddAsync(Profile profile, CancellationToken cancellationToken)
+        private readonly MongoDbContext _mongoDb;
+        public ProfileWriteRepository(MongoDbContext mongoDb)
         {
-            throw new NotImplementedException();
+            _mongoDb = mongoDb;
+        }
+        public async Task<Profile> AddAsync(Profile profile, CancellationToken cancellationToken)
+        {
+            await _mongoDb.Profiles.InsertOneAsync(profile,cancellationToken:cancellationToken);
+            return profile;
         }
 
-        public Task<bool> DoesProfileExistForUserAsync(long userRef, CancellationToken cancellationToken)
+        public async Task<bool> DoesProfileExistForUserAsync(Guid userRef, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            var profileExist = await _mongoDb.Profiles.CountDocumentsAsync(x=>x.UserDetails.Id == userRef,cancellationToken:cancellationToken);
+            return profileExist > 0;
         }
 
-        public Task<Profile> GetByIdAsync(long profileRef, CancellationToken cancellationToken)
+        public async Task<Profile> GetByIdAsync(Guid profileRef, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+             return await _mongoDb.Profiles.Find(x=>x.Id == profileRef).FirstOrDefaultAsync(cancellationToken);
         }
 
-        public Task<Profile> UpdateAsync(Profile profile, CancellationToken cancellationToken)
+        public async Task<Profile> UpdateAsync(Profile profile, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            var profileUpdated = await _mongoDb.Profiles.ReplaceOneAsync(x=> x.Id == profile.Id,profile,cancellationToken:cancellationToken);
+            return profile;
         }
     }
 }

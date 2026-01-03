@@ -8,7 +8,7 @@ namespace Ekip.Application.Interfaces
     {
         Task <Profile> AddAsync(Profile profile, CancellationToken cancellationToken);
         Task <Profile> UpdateAsync(Profile profile, CancellationToken cancellationToken);
-        Task<Profile> GetByIdAsync(long profileRef, CancellationToken cancellationToken);
-        Task<bool> DoesProfileExistForUserAsync(long userRef, CancellationToken cancellationToken);
+        Task<Profile> GetByIdAsync(Guid profileRef, CancellationToken cancellationToken);
+        Task<bool> DoesProfileExistForUserAsync(Guid userRef, CancellationToken cancellationToken);
     }
 }

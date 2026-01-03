@@ -6,8 +6,8 @@ namespace Ekip.Application.Contracts.Events
 {
     public record RequestCreatedEvent
     {
-        public long RequestRef { get; init; }
-        public long CreatorRef { get; init; }
+        public Guid RequestRef { get; init; }
+        public Guid CreatorRef { get; init; }
         public string Title { get; init; }
         public int RequiredMembers { get; init; }
         public int? MaximumRequiredAssignmnets { get; init; }

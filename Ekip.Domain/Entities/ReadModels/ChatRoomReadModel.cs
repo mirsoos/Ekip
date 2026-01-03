@@ -10,15 +10,15 @@ namespace Ekip.Domain.Entities.ReadModels
 {
     public class ChatRoomReadModel
     {
-        public long Id { get; set; }
+        public Guid Id { get; set; }
         public DateTime CreateDate { get; set; }
         public ChatRoomType ChatRoomType { get; set; }
         public string Name { get; set; }
         public string AvatarUrl { get; set; }
-        public long RequestRef { get; set; }
-        public long CreatorRef { get; set; }
+        public Guid RequestRef { get; set; }
+        public Guid CreatorRef { get; set; }
         public string? LastMessagePreview { get; set; }
         public DateTime? LastMessageDate { get; set; }
-        public List<long> Participants { get; set; }
+        public List<Guid> Participants { get; set; }
     }
 }

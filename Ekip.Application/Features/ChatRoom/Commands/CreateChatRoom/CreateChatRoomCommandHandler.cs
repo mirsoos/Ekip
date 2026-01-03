@@ -10,14 +10,12 @@ namespace Ekip.Application.Features.ChatRoom.Commands.CreateChatRoom
     public class CreateChatRoomCommandHandler : IRequestHandler<CreateChatRoomCommand, ChatRoomDetailsDto>
     {
         private readonly IChatRoomWriteRepository _chatRoomWrite;
-        private readonly IRequestReadRepository _requestRead;
         private readonly IPublishEndpoint _publishEndpoint;
 
-        public CreateChatRoomCommandHandler(IChatRoomWriteRepository chatRoomWrite , IRequestReadRepository requestRead , IPublishEndpoint publishEndpoint)
+        public CreateChatRoomCommandHandler(IChatRoomWriteRepository chatRoomWrite , IPublishEndpoint publishEndpoint)
         {
             _chatRoomWrite = chatRoomWrite;
             _publishEndpoint = publishEndpoint;
-            _requestRead = requestRead;
         }
         public async Task<ChatRoomDetailsDto> Handle(CreateChatRoomCommand request, CancellationToken cancellationToken)
         {
@@ -31,10 +29,10 @@ namespace Ekip.Application.Features.ChatRoom.Commands.CreateChatRoom
                 ChatRoomRef = savedChatRoom.Id,
                 ChatRoomType = savedChatRoom.ChatRoomType,
                 CreateDate = savedChatRoom.CreateDate,
-                CreatorRef = savedChatRoom.ChatRoomOwnerId,
+                CreatorRef = savedChatRoom.Creator,
                 Name = savedChatRoom.Name,
                 RequestRef = savedChatRoom.RequestRef,
-                ChatRoomParticipants = savedChatRoom.Participants
+                ChatRoomParticipants = savedChatRoom.Participants.ToList()
             });
 
             var resultDto = new ChatRoomDetailsDto
@@ -43,10 +41,10 @@ namespace Ekip.Application.Features.ChatRoom.Commands.CreateChatRoom
                 ChatRoomRef = savedChatRoom.Id,
                 ChatRoomType = savedChatRoom.ChatRoomType,
                 CreateDate = savedChatRoom.CreateDate,
-                CreatorRef = savedChatRoom.ChatRoomOwnerId,
+                CreatorRef = savedChatRoom.Creator,
                 Name = savedChatRoom.Name,
                 RequestRef = savedChatRoom.RequestRef,
-                ChatRoomParticipants = savedChatRoom.Participants
+                ChatRoomParticipants = savedChatRoom.Participants.ToList()
             };
 
             return resultDto;

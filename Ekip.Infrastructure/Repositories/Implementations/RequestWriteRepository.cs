@@ -20,7 +20,7 @@ namespace Ekip.Infrastructure.Repositories.Implementations
             return request;
         }
 
-        public async Task<Request> GetRequestByIdAsync(long requestRef, CancellationToken cancellationToken)
+        public async Task<Request> GetRequestByIdAsync(Guid requestRef, CancellationToken cancellationToken)
         {
             var filters = Builders<Request>.Filter.Eq(r => r.Id, requestRef);
 

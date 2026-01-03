@@ -23,12 +23,12 @@ namespace Ekip.Infrastructure.Repositories.Implementations
             return chatRoomReadModel;
         }
 
-        public async Task<ChatRoomReadModel?> GetByIdAsync(long chatRoomRef, CancellationToken cancellationToken)
+        public async Task<ChatRoomReadModel?> GetByIdAsync(Guid chatRoomRef, CancellationToken cancellationToken)
         {
            return await _postgreDb.ChatRoomReads.AsNoTracking().FirstOrDefaultAsync(c=>c.Id == chatRoomRef , cancellationToken);
         }
 
-        public async Task<ChatRoomListDto?> GetListByIdAsync(long chatRoomRef, CancellationToken cancellationToken)
+        public async Task<ChatRoomListDto?> GetListByIdAsync(Guid chatRoomRef, CancellationToken cancellationToken)
         {
             var room = await _postgreDb.ChatRoomReads.AsNoTracking().Where(c => c.Id == chatRoomRef)
                 .Select(s => new ChatRoomListDto
@@ -45,7 +45,7 @@ namespace Ekip.Infrastructure.Repositories.Implementations
             return room;
         }
 
-        public async Task UpdateLastMessageAsync(long chatRoomRef, string LastMessagePreview, DateTime LastMessageDate, CancellationToken cancellationToken)
+        public async Task UpdateLastMessageAsync(Guid chatRoomRef, string LastMessagePreview, DateTime LastMessageDate, CancellationToken cancellationToken)
         {
 
             await _postgreDb.ChatRoomReads

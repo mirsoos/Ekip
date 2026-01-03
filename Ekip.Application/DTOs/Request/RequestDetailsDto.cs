@@ -5,7 +5,7 @@ namespace Ekip.Application.DTOs.Request
 {
     public class RequestDetailsDto
     {
-        public long Id { get; set; }
+        public Guid Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public RequestCreatorDto Creator { get; set; }

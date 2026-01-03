@@ -10,13 +10,13 @@ namespace Ekip.Application.Contracts.Events
 {
     public record ChatRoomCreatedEvent
     {
-        public long ChatRoomRef { get; init; }
+        public Guid ChatRoomRef { get; init; }
         public ChatRoomType ChatRoomType { get; init; }
         public string Name { get; init; }
         public string? AvatarUrl { get; init ; }
-        public long RequestRef { get; init; }
-        public long CreatorRef { get; init; }
-        public List<long>? ChatRoomParticipants { get; init; }
+        public Guid RequestRef { get; init; }
+        public Guid CreatorRef { get; init; }
+        public List<Guid>? ChatRoomParticipants { get; init; }
         public DateTime CreateDate { get; init; }
     }
 }

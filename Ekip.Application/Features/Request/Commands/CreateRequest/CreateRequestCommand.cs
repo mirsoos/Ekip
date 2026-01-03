@@ -8,7 +8,7 @@ namespace Ekip.Application.Features.Request.Commands.CreateRequest
 {
     public class CreateRequestCommand : IRequest<NewRequestDto>
     {
-        public long ProfileRef { get; set; }
+        public Guid ProfileRef { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public int RequiredMembers { get; set; }

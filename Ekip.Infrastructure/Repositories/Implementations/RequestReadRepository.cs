@@ -23,7 +23,7 @@ namespace Ekip.Infrastructure.Repositories.Implementations
             return requestReadModel;
         }
 
-        public async Task<RequestDetailsDto?> GetRequestByIdAsync(long requestRef, CancellationToken cancellationToken)
+        public async Task<RequestDetailsDto?> GetRequestByIdAsync(Guid requestRef, CancellationToken cancellationToken)
         {
 
             var request = await _postgreDb.RequestReads

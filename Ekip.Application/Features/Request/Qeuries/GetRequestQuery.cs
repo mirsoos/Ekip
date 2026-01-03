@@ -10,6 +10,6 @@ namespace Ekip.Application.Features.Request.Qeuries
 {
     public class GetRequestQuery : IRequest<RequestDetailsDto>
     {
-        public long RequestRef { get; set; }
+        public Guid RequestRef { get; set; }
     }
 }

@@ -33,15 +33,5 @@ namespace Ekip.WebApi.Controllers
 
             return Ok(result);
         }
-        [HttpPost("DoRegister")]
-        public async Task<ActionResult<AuthenticationResult>> DoRegister()
-        {
-            return null;
-        }
-        [HttpPost("DoLogin")]
-        public async Task<ActionResult<AuthenticationResult>> DoLogin()
-        {
-            return null;
-        }
     }
 }

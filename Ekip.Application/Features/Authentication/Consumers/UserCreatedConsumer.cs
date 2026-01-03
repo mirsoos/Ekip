@@ -19,6 +19,7 @@ namespace Ekip.Application.Features.Authentication.Consumers
             var mongoToPostgres = new UserReadModel
             {
                 Id = user.Id,
+                ProfileRef = user.ProfileRef,
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 UserName = user.UserName,
@@ -28,7 +29,8 @@ namespace Ekip.Application.Features.Authentication.Consumers
                 Gender = user.Gender,
                 PhoneNumber = user.PhoneNumber,
                 IsDeleted = user.IsDeleted,
-                Password = user.Password
+                Password = user.Password,
+                
             };
             await _userRead.AddUserAsync(mongoToPostgres, context.CancellationToken);
         }

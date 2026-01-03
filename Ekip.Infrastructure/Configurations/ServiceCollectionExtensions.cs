@@ -12,6 +12,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Driver;
 using StackExchange.Redis;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization;
+using MongoDB.Bson.Serialization.Serializers;
 
 namespace Ekip.Infrastructure.Configurations
 {
@@ -51,6 +54,8 @@ namespace Ekip.Infrastructure.Configurations
             services.AddDbContext<PostgresDbContext>(options =>
                     options.UseNpgsql(configuration.GetSection("InfrastructureSettings:PostgresConnection").Value));
 
+
+            BsonSerializer.RegisterSerializer(new GuidSerializer(GuidRepresentation.Standard));
 
             services.AddSingleton<IMongoClient>(sp =>
             {

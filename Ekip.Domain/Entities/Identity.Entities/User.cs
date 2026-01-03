@@ -3,7 +3,7 @@ using Ekip.Domain.ValueObjects;
 
 namespace Ekip.Domain.Entities.Identity.Entities
 {
-    public class User : BaseEntitiy
+    public class User : BaseEntity
     {
         public string FirstName { get; private set; }
         public string LastName { get; private set; }
@@ -16,7 +16,7 @@ namespace Ekip.Domain.Entities.Identity.Entities
         public bool IsLocked { get; private set; }
         public int Age { get; private set; }
         public string PhoneNumber { get; private set; }
-        public Profile Profile { get; private set; }
+        public Guid ProfileRef { get; private set; }
         private readonly List<UserCredential> _userCredentials = new();
         public IReadOnlyCollection<UserCredential> UserCredentials => _userCredentials.AsReadOnly();
 
@@ -24,13 +24,13 @@ namespace Ekip.Domain.Entities.Identity.Entities
         public User(string firstName , string lastName , string userName , string email , bool gender,int age,string phoneNumber)
         {
 
-            if (string.IsNullOrEmpty(firstName))
+            if (string.IsNullOrWhiteSpace(firstName))
                 throw new Exception("firstName cannot Be Empty");
-            if (string.IsNullOrEmpty(lastName))
+            if (string.IsNullOrWhiteSpace(lastName))
                 throw new Exception("lastName cannot Be Empty");
-            if (string.IsNullOrEmpty(userName))
+            if (string.IsNullOrWhiteSpace(userName))
                 throw new Exception("userName cannot Be Empty");
-            if (string.IsNullOrEmpty(phoneNumber))
+            if (string.IsNullOrWhiteSpace(phoneNumber))
                 throw new Exception("PhoneNumber cannot Be Empty");
 
             FirstName = firstName;
@@ -40,7 +40,6 @@ namespace Ekip.Domain.Entities.Identity.Entities
             Gender = gender;
             Age = age;
             PhoneNumber = phoneNumber;
-            CreateDate = DateTime.UtcNow;
             IsPremium = false;
             IsActive = true;
             IsLocked = false;
@@ -66,6 +65,13 @@ namespace Ekip.Domain.Entities.Identity.Entities
 
         public void DeActivate() => IsActive = false;
 
+        public void SetProfileId(Guid profileId)
+        {
+            if (profileId == Guid.Empty)
+                throw new ArgumentException("ProfileId cannot be empty");
+
+            ProfileRef = profileId;
+        }
         private User() { }
     }
 }

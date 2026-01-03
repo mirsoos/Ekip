@@ -4,11 +4,11 @@ using Ekip.Domain.ValueObjects;
 
 namespace Ekip.Domain.Entities.Requests.Entities
 {
-    public class Request : BaseEntitiy
+    public class Request : BaseEntity
     {
         public string Title { get; private set; }
         public string? Description { get; private set; }
-        public long Creator { get; private set; }
+        public Guid Creator { get; private set; }
         public RequestStatus Status { get; private set; }
         public bool IsValid { get; private set; }
         public int RequiredMembers { get; private set; }
@@ -31,7 +31,7 @@ namespace Ekip.Domain.Entities.Requests.Entities
         private List<RequestFilter> _requestFilters = new();
         public IReadOnlyCollection<RequestFilter>? RequestFilters => _requestFilters.AsReadOnly();
 
-        public Request(long creator, string title, int requiredMember, DateTime requestDateTime, string? description, string[]? tags, RequestType requestType, MemberType memberType, bool isAutoAccept, HashSet<RequestFilter>? requestFilters)
+        public Request(Guid creator, string title, int requiredMember, DateTime requestDateTime, string? description, string[]? tags, RequestType requestType, MemberType memberType, bool isAutoAccept, HashSet<RequestFilter>? requestFilters)
         {
             if (string.IsNullOrWhiteSpace(title))
                 throw new Exception("Request must have a Title");
@@ -55,7 +55,7 @@ namespace Ekip.Domain.Entities.Requests.Entities
             _assignments.Add(new RequestAssignment(creator, "Creator" , AssignmentStatus.Accepted));
         }
 
-        public RequestAssignment AddJoinRequest(long member, string description)
+        public RequestAssignment AddJoinRequest(Guid member, string description)
         {
             if (!this.IsRequestOpenToNewMember())
                 throw new Exception("Cannot add a member. Request is closed or full.");
@@ -73,7 +73,7 @@ namespace Ekip.Domain.Entities.Requests.Entities
             return newAssignment;
         }
 
-        public void AcceptMember(long owner, RequestAssignment assignmentToAccept)
+        public void AcceptMember(Guid owner, RequestAssignment assignmentToAccept)
         {
             if (owner != Creator)
                 throw new Exception("Only the Owner can Accept the Request");
@@ -92,7 +92,7 @@ namespace Ekip.Domain.Entities.Requests.Entities
             CheckForCompletion();
         }
 
-        public void RejectMember(long owner, RequestAssignment assignmentToReject)
+        public void RejectMember(Guid owner, RequestAssignment assignmentToReject)
         {
             if (owner != Creator)
                 throw new Exception("Only the Owner can Reject the Request");

@@ -2,6 +2,7 @@
 using Ekip.Application.DTOs.User;
 using Ekip.Application.Interfaces;
 using Ekip.Domain.Entities.Identity.Entities;
+using ProfileEntity = Ekip.Domain.Entities.Identity.Entities.Profile;
 using MassTransit;
 using MediatR;
 
@@ -11,13 +12,15 @@ namespace Ekip.Application.Features.Authentication.Commands.Register
     {
         private readonly IPasswordHasher _passwordHasher;
         private readonly IUserWriteRepository _userWriteRepository;
+        private readonly IProfileWriteRepository _profileWriteRepository;
         private readonly IJwtTokenGenerator _jwtTokenGenerator;
         private readonly IPublishEndpoint _publishEndpoint;
 
-        public RegisterCommandHandler(IPasswordHasher passwordHasher,IUserWriteRepository userWriteRepository,IJwtTokenGenerator jwtTokenGenerator,IPublishEndpoint publishEndpoint)
+        public RegisterCommandHandler(IPasswordHasher passwordHasher,IUserWriteRepository userWriteRepository,IJwtTokenGenerator jwtTokenGenerator,IPublishEndpoint publishEndpoint,IProfileWriteRepository profileWriteRepository)
         {
             _passwordHasher = passwordHasher;
             _userWriteRepository = userWriteRepository;
+            _profileWriteRepository = profileWriteRepository;
             _jwtTokenGenerator = jwtTokenGenerator;
             _publishEndpoint = publishEndpoint;
         }
@@ -42,10 +45,16 @@ namespace Ekip.Application.Features.Authentication.Commands.Register
 
             var user = new User(request.FirstName, request.LastName, request.UserName, request.Email, request.Gender, request.Age, request.PhoneNumber);
             user.SetPasswordHash(hashPassword);
+            var profile = new ProfileEntity(user);
+
+            user.SetProfileId(profile.Id);
 
             await _userWriteRepository.AddAsync(user, cancellationToken);
 
+            await _profileWriteRepository.AddAsync(profile, cancellationToken);
+
             var userToken = _jwtTokenGenerator.GenerateToken(user);
+
 
             await _publishEndpoint.Publish(new UserCreatedEvent
             {
@@ -56,9 +65,21 @@ namespace Ekip.Application.Features.Authentication.Commands.Register
                 Gender = user.Gender,
                 LastName = user.LastName,
                 PhoneNumber = user.PhoneNumber,
-                UserName = user.UserName
-                // ❌ Password حذف شد (امنیت)
+                UserName = user.UserName,
+                ProfileRef = user.ProfileRef,
+                Password = hashPassword,
+                CreateDate = user.CreateDate,
+                IsDeleted = user.IsDeleted
             }, cancellationToken);
+
+            await _publishEndpoint.Publish(new ProfileCreatedEvent
+            {
+                Id = profile.Id,
+                AvatarUrl = profile.AvatarUrl,
+                UserRef = profile.UserDetails.Id,
+                Experience = profile.Experience,
+                Score = profile.Score
+            });
 
             return new AuthenticationResult
             {

@@ -1,18 +1,16 @@
 ﻿using Ekip.Application.Interfaces;
 using Ekip.Domain.Entities.Chat.Entites;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Ekip.Infrastructure.Persistence;
 
 namespace Ekip.Infrastructure.Repositories.Implementations
 {
     public class ChatRoomWriteRepository : IChatRoomWriteRepository
     {
-        public Task<ChatRoom> AddChatRoomAsync(ChatRoom chatRoom, CancellationToken cancellationToken)
+        private readonly MongoDbContext _mongoDb;
+        public async Task<ChatRoom> AddChatRoomAsync(ChatRoom chatRoom, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            await _mongoDb.ChatRooms.InsertOneAsync(chatRoom, cancellationToken: cancellationToken);
+            return chatRoom;
         }
     }
 }

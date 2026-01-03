@@ -19,7 +19,7 @@ namespace Ekip.Infrastructure.Repositories.Implementations
             await _postgreDb.SaveChangesAsync(cancellationToken);
             return messageReadModel;
         }
-        public async Task<List<MessageReadModel>> GetMessagesAsync(long chatRoomRef, int take = 50, CancellationToken cancellationToken = default)
+        public async Task<List<MessageReadModel>> GetMessagesAsync(Guid chatRoomRef, int take = 50, CancellationToken cancellationToken = default)
         {
            return await _postgreDb.MessageReads
                 .AsNoTracking()

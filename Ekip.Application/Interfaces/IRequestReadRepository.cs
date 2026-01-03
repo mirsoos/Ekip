@@ -8,7 +8,7 @@ namespace Ekip.Application.Interfaces
     public interface IRequestReadRepository
     {
         Task<RequestReadModel> AddRequestAsync(RequestReadModel requestReadModel, CancellationToken cancellationToken);
-        Task<RequestDetailsDto> GetRequestByIdAsync(long requestRef,CancellationToken cancellationToken);
+        Task<RequestDetailsDto> GetRequestByIdAsync(Guid requestRef,CancellationToken cancellationToken);
         Task AddAssignmentAsync(RequestAssignmentReadModel requestAssignmentReadModel, CancellationToken cancellationToken);
     }
 }

@@ -4,9 +4,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Ekip.Domain.Entities.ReadModels
 {
-    public class RequestReadModel : BaseEntitiy
+    public class RequestReadModel
     {
-        public long CreatorRef { get; set; }
+        public Guid Id { get; set; }
+        public bool IsDeleted { get; set; }
+        public DateTime CreateDate { get; set; }
+        public Guid CreatorRef { get; set; }
         public string Title { get; set; }
         public int RequiredMembers { get; set; }
         public int? MaximumRequiredAssignmnets { get; set; }

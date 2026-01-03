@@ -9,15 +9,26 @@ namespace Ekip.Infrastructure.Persistence
     {
         public PostgresDbContext(DbContextOptions<PostgresDbContext> options)
         : base(options)
-            {
+        {
 
-            }
+        }
 
-        public DbSet<ChatRoomReadModel> ChatRoomReads { get; set; } 
-        public DbSet<MessageReadModel> MessageReads { get; set; } 
-        public DbSet<ProfileReadModel> ProfileReads { get; set; } 
-        public DbSet<RequestReadModel> RequestReads { get; set; } 
-        public DbSet<UserReadModel> UserReads { get; set; } 
-        public DbSet<RequestAssignmentReadModel> RequestAssignmentReads { get; set; } 
+        public DbSet<ChatRoomReadModel> ChatRoomReads { get; set; }
+        public DbSet<MessageReadModel> MessageReads { get; set; }
+        public DbSet<ProfileReadModel> ProfileReads { get; set; }
+        public DbSet<RequestReadModel> RequestReads { get; set; }
+        public DbSet<UserReadModel> UserReads { get; set; }
+        public DbSet<RequestAssignmentReadModel> RequestAssignmentReads { get; set; }
+
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<RequestReadModel>()
+            .Property(r => r.RequestFilters)
+            .HasColumnType("jsonb");
+        }
+
     }
 }

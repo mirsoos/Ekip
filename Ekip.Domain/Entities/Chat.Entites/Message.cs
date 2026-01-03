@@ -4,19 +4,19 @@ using Ekip.Domain.Enums.Chat.Enums;
 
 namespace Ekip.Domain.Entities.Chat.Entites
 {
-    public class Message : BaseEntitiy
+    public class Message : BaseEntity
     {
-        public long ChatRoomRef { get; private set; }
-        public long SenderRef { get; private set; }
+        public Guid ChatRoomRef { get; private set; }
+        public Guid SenderRef { get; private set; }
         public string MessageContent { get; private set; }
         public DateTime SentAt { get; private set; }
         public bool IsEdited { get; private set; }
-        private readonly List<long> _seenBy = new();
-        public IReadOnlyCollection<long> SeenBy => _seenBy.AsReadOnly();
-        public long? ReplyToMessageRef { get; private set; }
+        private readonly List<Guid> _seenBy = new();
+        public IReadOnlyCollection<Guid> SeenBy => _seenBy.AsReadOnly();
+        public Guid? ReplyToMessageRef { get; private set; }
         public MessageType Type { get; private set; }
 
-        public Message(long chatroomRef,long senderRef,string messageContent,long? replyToMessageRef)
+        public Message(Guid chatroomRef,Guid senderRef,string messageContent,Guid? replyToMessageRef)
         {
             if(string.IsNullOrEmpty(messageContent))
                 throw new ArgumentException("Message content cannot be empty.");
@@ -24,7 +24,6 @@ namespace Ekip.Domain.Entities.Chat.Entites
             SenderRef = senderRef;
             MessageContent = messageContent;
             SentAt = DateTime.UtcNow;
-            IsDeleted = false;
             IsEdited = false;
             Type = MessageType.Normal;
             ReplyToMessageRef = replyToMessageRef;
@@ -43,7 +42,7 @@ namespace Ekip.Domain.Entities.Chat.Entites
         public void Pin() => Type = MessageType.Pinned;
         public void UnPin() => Type = MessageType.Normal;
 
-        public void MarkAsRead(long userRef)
+        public void MarkAsRead(Guid userRef)
         {
             if (!_seenBy.Contains(userRef))
             {
