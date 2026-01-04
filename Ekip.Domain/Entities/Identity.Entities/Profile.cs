@@ -29,6 +29,13 @@ namespace Ekip.Domain.Entities.Identity.Entities
 
             _userContacts.Add(userContacts);
         }
+
+        public void SetAvatar(string avatarUrl)
+        {
+            if (string.IsNullOrWhiteSpace(avatarUrl))
+                throw new Exception("Avatar Url Not Found.");
+            AvatarUrl = avatarUrl;
+        }
         private Profile() { }
     }
 }

@@ -1,6 +1,8 @@
 ﻿using Ekip.Application.DTOs.User;
 using Ekip.Application.Features.Authentication.Commands.Register;
 using Ekip.Application.Features.Authentication.Queries.Login;
+using Ekip.Application.Features.Profile.Commands.SetUserAvatar;
+using Ekip.Application.Features.Profile.Commands.SetUserProfile;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,6 +17,7 @@ namespace Ekip.WebApi.Controllers
         {
             _mediator = mediator;
         }
+
         [HttpPost("Register")]
         public async Task<ActionResult<AuthenticationResult>> Register(RegisterCommand register)
         {
@@ -23,6 +26,7 @@ namespace Ekip.WebApi.Controllers
 
             return Ok(result);
         }
+
         [HttpPost("Login")]
         public async Task<ActionResult<AuthenticationResult>> Login(LoginQuery login)
         {
@@ -31,6 +35,16 @@ namespace Ekip.WebApi.Controllers
 
                 var result = await _mediator.Send(login);
 
+            return Ok(result);
+        }
+
+        [HttpPost("SetProfileAvatar")]
+        public async Task<ActionResult<string>> SetProfileAvatar(SetUserAvatarCommand setUserAvatar)
+        {
+            if (setUserAvatar == null)
+                return BadRequest();
+
+            var result = await _mediator.Send(setUserAvatar);
             return Ok(result);
         }
     }

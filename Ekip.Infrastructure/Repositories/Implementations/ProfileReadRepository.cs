@@ -157,5 +157,11 @@ namespace Ekip.Infrastructure.Repositories.Implementations
                     }).ToList()
             };
         }
+
+        public async Task UpdateAvatarAsync(Guid profileRef, string avatarUrl, CancellationToken cancellationToken)
+        {
+            var profile = await _postgreDb.ProfileReads.Where(x => x.Id == profileRef).ExecuteUpdateAsync(setters => 
+            setters.SetProperty(p=>p.AvatarUrl, avatarUrl),cancellationToken);
+        }
     }
 }
