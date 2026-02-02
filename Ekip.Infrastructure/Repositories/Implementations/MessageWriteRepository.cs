@@ -1,6 +1,6 @@
 ﻿using Ekip.Application.Interfaces;
 using Ekip.Domain.Entities.Chat.Entites;
-using Ekip.Infrastructure.Persistence;
+using Ekip.Infrastructure.Persistence.MongoDb.Contexts;
 
 namespace Ekip.Infrastructure.Repositories.Implementations
 {

@@ -1,7 +1,8 @@
 ﻿using Ekip.Application.DTOs.User;
 using Ekip.Application.Interfaces;
 using Ekip.Domain.Entities.Identity.Entities;
-using Ekip.Infrastructure.Persistence;
+using Ekip.Infrastructure.Persistence.MongoDb.Contexts;
+using MassTransit;
 using MongoDB.Driver;
 
 namespace Ekip.Infrastructure.Repositories.Implementations
@@ -15,7 +16,15 @@ namespace Ekip.Infrastructure.Repositories.Implementations
         }
         public async Task AddAsync(User user, CancellationToken cancellationToken)
         {
-            await _mongoDb.Users.InsertOneAsync(user,cancellationToken:cancellationToken);
+            try
+            {
+                await _mongoDb.Users.InsertOneAsync(user,cancellationToken:cancellationToken);
+
+            }
+            catch (ConcurrencyException)
+            {
+
+            }
         }
 
         public async Task<User?> GetByEmailAsync(string email, CancellationToken cancellationToken)

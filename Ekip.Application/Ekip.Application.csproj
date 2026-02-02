@@ -16,9 +16,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="MassTransit.Abstractions" Version="8.5.5" />
+    <PackageReference Include="MassTransit.Abstractions" Version="9.0.0" />
     <PackageReference Include="MediatR" Version="13.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.17" />
+    <PackageReference Include="Polly" Version="8.6.5" />
   </ItemGroup>
 
   <ItemGroup>

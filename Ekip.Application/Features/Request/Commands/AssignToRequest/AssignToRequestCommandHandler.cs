@@ -33,23 +33,23 @@ namespace Ekip.Application.Features.Request.Commands.AssignToRequest
 
             var newAssignment = currentRequest.AddJoinRequest(request.SenderRef ,request.Description);
 
-            await _requestWrite.UpdateAsync(currentRequest, cancellationToken);
+            var assign = await _requestWrite.AssignRequest(request.RequestRef,newAssignment, cancellationToken);
 
             await _publishEndpoint.Publish(new RequestAssignmentCreatedEvent
             {
-                Id = newAssignment.Id,
-                ActionDate = newAssignment.ActionDate,
-                CreateDate = newAssignment.CreateDate,
-                Description = newAssignment.Description,
-                SenderRef = newAssignment.SenderRef,
-                Status = newAssignment.Status
+                Id = assign.Id,
+                ActionDate = assign.ActionDate,
+                CreateDate = assign.CreateDate,
+                Description = assign.Description,
+                SenderRef = assign.SenderRef,
+                Status = assign.Status
             });
 
             return new AssignToRequestDto{
                 SenderRef = request.SenderRef,
                 Description = request.Description,
                 RequestRef = currentRequest.Id,
-                Status = newAssignment.Status
+                Status = assign.Status
             };
         }
     }

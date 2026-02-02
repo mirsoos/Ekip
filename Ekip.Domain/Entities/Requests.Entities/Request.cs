@@ -10,7 +10,6 @@ namespace Ekip.Domain.Entities.Requests.Entities
         public string? Description { get; private set; }
         public Guid Creator { get; private set; }
         public RequestStatus Status { get; private set; }
-        public bool IsValid { get; private set; }
         public int RequiredMembers { get; private set; }
         public int? MaximumRequiredMembers { get; private set; }
         public int? MaximumRequiredAge { get; set; }
@@ -110,11 +109,6 @@ namespace Ekip.Domain.Entities.Requests.Entities
             var validState = Status == RequestStatus.Open || Status == RequestStatus.InProgress;
 
             return hasSpace && validDateTime && validState;
-        }
-
-        public void ChangeValidity(bool newValue)
-        {
-            IsValid = newValue;
         }
 
         public void CheckForCompletion()

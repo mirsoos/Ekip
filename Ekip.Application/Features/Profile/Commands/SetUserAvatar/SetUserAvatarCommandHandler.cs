@@ -20,7 +20,7 @@ namespace Ekip.Application.Features.Profile.Commands.SetUserAvatar
         public async Task<string> Handle(SetUserAvatarCommand command, CancellationToken cancellationToken)
         {
             if (command.file == null)
-                throw new Exception("FIle Not Found");
+                throw new Exception("File Not Found");
 
             var profile = await _profileWrite.GetByIdAsync(command.ProfileRef,cancellationToken);
 

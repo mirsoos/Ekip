@@ -1,6 +1,8 @@
 ﻿using Ekip.Application.Features.Authentication.Consumers;
 using Ekip.Application.Interfaces;
-using Ekip.Infrastructure.Persistence;
+using Ekip.Infrastructure.Persistence.MongoDb.Configurations;
+using Ekip.Infrastructure.Persistence.MongoDb.Contexts;
+using Ekip.Infrastructure.Persistence.PostgreSql.Contexts;
 using Ekip.Infrastructure.Repositories.Implementations;
 using Ekip.Infrastructure.Repositories.Interfaces;
 using Ekip.Infrastructure.Security;
@@ -10,11 +12,11 @@ using MassTransit;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using MongoDB.Driver;
-using StackExchange.Redis;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Serializers;
+using MongoDB.Driver;
+using StackExchange.Redis;
 
 namespace Ekip.Infrastructure.Configurations
 {
@@ -45,6 +47,7 @@ namespace Ekip.Infrastructure.Configurations
                 });
             });
 
+            MongoDbConventionRegistry.Configure();
 
             services.Configure<InfrastructureSettings>(
                 configuration.GetSection("InfrastructureSettings")
@@ -77,6 +80,7 @@ namespace Ekip.Infrastructure.Configurations
             services.AddScoped<IProfileWriteRepository, ProfileWriteRepository>();
             services.AddScoped<IUserReadRepository, UserReadRepository>();
             services.AddScoped<IUserWriteRepository, UserWriteRepository>();
+            services.AddScoped<IFileService, FileService>();
 
 
             services.AddSingleton<IConnectionMultiplexer>(sp =>

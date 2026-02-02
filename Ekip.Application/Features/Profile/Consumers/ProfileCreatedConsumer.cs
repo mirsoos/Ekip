@@ -22,7 +22,6 @@ namespace Ekip.Application.Features.Profile.Consumers
             {
                 Id = profile.Id,
                 UserRef = profile.UserRef,
-                AvatarUrl = profile.AvatarUrl,
                 Experience = profile.Experience,
                 Score = profile.Score
             };

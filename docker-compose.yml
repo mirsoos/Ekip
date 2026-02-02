@@ -10,7 +10,7 @@ services:
       POSTGRES_PASSWORD: password123
       POSTGRES_DB: EkipReadDb
     ports:
-      - "5433:5432"                 # پورت بیرونی 5433
+      - "18800:5432"                 # پورت بیرونی 5433
     volumes:
       - postgres_data_final:/var/lib/postgresql/data # <--- والیوم جدید
 

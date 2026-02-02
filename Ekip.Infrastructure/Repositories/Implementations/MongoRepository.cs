@@ -1,4 +1,4 @@
-﻿using Ekip.Infrastructure.Persistence;
+﻿using Ekip.Infrastructure.Persistence.MongoDb.Contexts;
 using Ekip.Infrastructure.Repositories.Interfaces;
 using MongoDB.Driver;
 

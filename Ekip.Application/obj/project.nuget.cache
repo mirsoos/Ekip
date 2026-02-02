@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "C2EGg5cLt2g=",
+  "dgSpecHash": "zAZiB7mMN8Q=",
   "success": true,
   "projectFilePath": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Ekip.Application.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\amir\\.nuget\\packages\\masstransit.abstractions\\8.5.5\\masstransit.abstractions.8.5.5.nupkg.sha512",
+    "C:\\Users\\amir\\.nuget\\packages\\masstransit.abstractions\\9.0.0\\masstransit.abstractions.9.0.0.nupkg.sha512",
     "C:\\Users\\amir\\.nuget\\packages\\mediatr\\13.1.0\\mediatr.13.1.0.nupkg.sha512",
     "C:\\Users\\amir\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512",
     "C:\\Users\\amir\\.nuget\\packages\\microsoft.aspnetcore.http.features\\5.0.17\\microsoft.aspnetcore.http.features.5.0.17.nupkg.sha512",
@@ -15,6 +15,8 @@
     "C:\\Users\\amir\\.nuget\\packages\\microsoft.identitymodel.jsonwebtokens\\8.14.0\\microsoft.identitymodel.jsonwebtokens.8.14.0.nupkg.sha512",
     "C:\\Users\\amir\\.nuget\\packages\\microsoft.identitymodel.logging\\8.14.0\\microsoft.identitymodel.logging.8.14.0.nupkg.sha512",
     "C:\\Users\\amir\\.nuget\\packages\\microsoft.identitymodel.tokens\\8.14.0\\microsoft.identitymodel.tokens.8.14.0.nupkg.sha512",
+    "C:\\Users\\amir\\.nuget\\packages\\polly\\8.6.5\\polly.8.6.5.nupkg.sha512",
+    "C:\\Users\\amir\\.nuget\\packages\\polly.core\\8.6.5\\polly.core.8.6.5.nupkg.sha512",
     "C:\\Users\\amir\\.nuget\\packages\\system.io.pipelines\\5.0.2\\system.io.pipelines.5.0.2.nupkg.sha512"
   ],
   "logs": []

@@ -5,29 +5,29 @@ namespace Ekip.Domain.Entities.Identity.Entities
 {
     public class Profile : BaseEntity
     {  
-        public User UserDetails { get; private set; }
+        public Guid UserRef { get; private set; }
         public double? Score { get; private set; }
         public int Experience { get; private set; }
-        public string AvatarUrl { get; private set; }
-        private readonly List<User> _userContacts = new();
-        public IReadOnlyCollection<User> UserContacts => _userContacts.AsReadOnly();
-        public Profile(User userDetails)    
+        public string? AvatarUrl { get; private set; }
+        private readonly List<Guid> _userContacts = new();
+        public IReadOnlyCollection<Guid> UserContacts => _userContacts.AsReadOnly();
+        public Profile(Guid userRef)    
         {
-            if (userDetails == null)
-                throw new Exception("userDetails Not Found");
-            UserDetails = userDetails;
+            if (userRef == Guid.Empty)
+                throw new Exception("User Not Found");
+            UserRef = userRef;
             Score = null;
             Experience = 0;
         }
-        public void AddContact(User userContacts)
+        public void AddContact(Guid userRef)
         {
-            if (userContacts == null)
-                throw new Exception("userContacts Must Have Value To Add");
+            if (userRef == Guid.Empty)
+                throw new Exception("User Not Found.");
 
-            if (_userContacts.Any(c => c.Id == userContacts.Id))
+            if (_userContacts.Any(c => c == userRef))
                 throw new Exception("this Contact already Exsit");
 
-            _userContacts.Add(userContacts);
+            _userContacts.Add(userRef);
         }
 
         public void SetAvatar(string avatarUrl)

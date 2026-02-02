@@ -2,7 +2,7 @@
 using Ekip.Application.Interfaces;
 using Ekip.Domain.Entities.Chat.Entites;
 using Ekip.Domain.Entities.ReadModels;
-using Ekip.Infrastructure.Persistence;
+using Ekip.Infrastructure.Persistence.PostgreSql.Contexts;
 using Microsoft.EntityFrameworkCore;
 
 namespace Ekip.Infrastructure.Repositories.Implementations

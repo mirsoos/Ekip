@@ -1,6 +1,6 @@
 ﻿using Ekip.Application.Interfaces;
 using Ekip.Domain.Entities.Identity.Entities;
-using Ekip.Infrastructure.Persistence;
+using Ekip.Infrastructure.Persistence.MongoDb.Contexts;
 using MongoDB.Driver;
 
 namespace Ekip.Infrastructure.Repositories.Implementations
@@ -20,7 +20,7 @@ namespace Ekip.Infrastructure.Repositories.Implementations
 
         public async Task<bool> DoesProfileExistForUserAsync(Guid userRef, CancellationToken cancellationToken)
         {
-            var profileExist = await _mongoDb.Profiles.CountDocumentsAsync(x=>x.UserDetails.Id == userRef,cancellationToken:cancellationToken);
+            var profileExist = await _mongoDb.Profiles.CountDocumentsAsync(x=>x.UserRef == userRef,cancellationToken:cancellationToken);
             return profileExist > 0;
         }
 

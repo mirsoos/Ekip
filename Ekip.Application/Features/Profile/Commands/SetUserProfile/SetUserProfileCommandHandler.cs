@@ -32,28 +32,22 @@ namespace Ekip.Application.Features.Profile.Commands.SetUserProfile
             if (profileExists)
                 throw new InvalidOperationException($"A Profile already Exists for User '{request.UserName}'.");
             
-            var newProfile = new ProfileEntity(getUserDetails);
+            var newProfile = new ProfileEntity(getUserDetails.Id);
 
             var savedProfile = await _profileWrite.AddAsync(newProfile,cancellationToken);
 
             await _publishEndpoint.Publish(new ProfileCreatedEvent
             {
-                AvatarUrl = savedProfile.AvatarUrl,
                 Experience = savedProfile.Experience,
                 Score = savedProfile.Score,
                 Id = savedProfile.Id,
-                UserRef = savedProfile.UserDetails.Id
+                UserRef = savedProfile.UserRef
                 
             });
 
             var resultDto = new CreatedProfileDto {
                 ProfileRef = savedProfile.Id,
-                 FirstName = savedProfile.UserDetails.FirstName,
-                 LastName = savedProfile.UserDetails.LastName,
-                 Email = savedProfile.UserDetails.Email,
-                 Gender = savedProfile.UserDetails.Gender,
-                 UserName = savedProfile.UserDetails.UserName,
-                 AvatarUrl = savedProfile.AvatarUrl,
+                UserRef = savedProfile.UserRef,
                  Experience = savedProfile.Experience,
                  Score = savedProfile.Score
             };

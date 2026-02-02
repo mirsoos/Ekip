@@ -3,7 +3,7 @@ using Ekip.Application.DTOs.User;
 using Ekip.Application.Interfaces;
 using Ekip.Domain.Entities.ReadModels;
 using Ekip.Domain.Enums.Requests.Enums;
-using Ekip.Infrastructure.Persistence;
+using Ekip.Infrastructure.Persistence.PostgreSql.Contexts;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json;
 

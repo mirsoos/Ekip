@@ -1,6 +1,6 @@
 ﻿using Ekip.Application.Interfaces;
 using Ekip.Domain.Entities.Requests.Entities;
-using Ekip.Infrastructure.Persistence;
+using Ekip.Infrastructure.Persistence.MongoDb.Contexts;
 using MongoDB.Driver;
 
 namespace Ekip.Infrastructure.Repositories.Implementations
@@ -18,6 +18,22 @@ namespace Ekip.Infrastructure.Repositories.Implementations
         {
             await _mongoDb.Requests.InsertOneAsync(request, cancellationToken: cancellationToken);
             return request;
+        }
+
+        public async Task<RequestAssignment> AssignRequest(Guid requestRef,RequestAssignment requestAssignment, CancellationToken cancellationToken)
+        {
+            var request = await _mongoDb.Requests.Find(x=>x.Id == requestRef).FirstOrDefaultAsync();
+
+            if (request == null) 
+            {
+                throw new Exception($"Request {requestRef} Not Found.");
+            }
+
+            var assignment = request.AddJoinRequest(requestAssignment.SenderRef,requestAssignment.Description);
+
+            await _mongoDb.Requests.ReplaceOneAsync(r=>r.Id == requestRef,request);
+
+            return requestAssignment;
         }
 
         public async Task<Request> GetRequestByIdAsync(Guid requestRef, CancellationToken cancellationToken)
