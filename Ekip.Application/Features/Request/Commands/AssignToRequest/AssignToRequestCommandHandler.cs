@@ -42,7 +42,8 @@ namespace Ekip.Application.Features.Request.Commands.AssignToRequest
                 CreateDate = assign.CreateDate,
                 Description = assign.Description,
                 SenderRef = assign.SenderRef,
-                Status = assign.Status
+                Status = assign.Status,
+                RequestRef = currentRequest.Id
             });
 
             return new AssignToRequestDto{

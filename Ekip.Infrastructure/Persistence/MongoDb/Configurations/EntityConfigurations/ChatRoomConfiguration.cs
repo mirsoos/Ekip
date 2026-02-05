@@ -21,9 +21,7 @@ namespace Ekip.Infrastructure.Persistence.MongoDb.Configurations.EntityConfigura
                     cm.AutoMap();
                     cm.MapMember(c => c.ChatRoomType).SetSerializer(new EnumSerializer<ChatRoomType>(BsonType.String));
                     cm.MapMember(c => c.Creator).SetSerializer(new GuidSerializer(GuidRepresentation.Standard));
-                    cm.MapMember(c => c.CreateDate).SetSerializer(new DateTimeSerializer(DateTimeKind.Utc));
-                    cm.MapMember(c => c.Id).SetSerializer(new GuidSerializer(GuidRepresentation.Standard));
-                    cm.MapMember(c => c.Participants).SetSerializer(new EnumerableInterfaceImplementerSerializer<List<Guid>>(new GuidSerializer(GuidRepresentation.Standard)));
+                    cm.MapField("_participants").SetElementName("Participants");
                     cm.SetIgnoreExtraElements(true);
                 });
             }

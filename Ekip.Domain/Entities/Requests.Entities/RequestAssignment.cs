@@ -3,9 +3,6 @@ using Ekip.Domain.Enums.Requests.Enums;
 
 namespace Ekip.Domain.Entities.Requests.Entities
 {
-    /// <summary>
-    /// درخواست عضویت در اکیپ
-    /// </summary>
     public class RequestAssignment : BaseEntity
     {
         public AssignmentStatus Status { get; private set; }

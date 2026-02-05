@@ -44,10 +44,10 @@
           }
         }
       },
-      "MassTransit/8.5.5": {
+      "MassTransit/9.0.0": {
         "type": "package",
         "dependencies": {
-          "MassTransit.Abstractions": "8.5.5",
+          "MassTransit.Abstractions": "9.0.0",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0",
           "Microsoft.Extensions.Diagnostics.HealthChecks": "8.0.0",
           "Microsoft.Extensions.Hosting.Abstractions": "8.0.0",
@@ -78,11 +78,11 @@
           }
         }
       },
-      "MassTransit.RabbitMQ/8.5.5": {
+      "MassTransit.RabbitMQ/9.0.0": {
         "type": "package",
         "dependencies": {
-          "MassTransit": "8.5.5",
-          "RabbitMQ.Client": "7.1.2"
+          "MassTransit": "9.0.0",
+          "RabbitMQ.Client": "7.2.0"
         },
         "compile": {
           "lib/net8.0/MassTransit.RabbitMqTransport.dll": {
@@ -1220,7 +1220,7 @@
           }
         }
       },
-      "RabbitMQ.Client/7.1.2": {
+      "RabbitMQ.Client/7.2.0": {
         "type": "package",
         "dependencies": {
           "System.IO.Pipelines": "8.0.0",
@@ -1766,7 +1766,7 @@
           "BCrypt.Net-Next": "4.0.3",
           "Ekip.Application": "1.0.0",
           "Ekip.Domain": "1.0.0",
-          "MassTransit.RabbitMQ": "8.5.5",
+          "MassTransit.RabbitMQ": "9.0.0",
           "Microsoft.AspNetCore.Hosting.Abstractions": "2.3.0",
           "Microsoft.EntityFrameworkCore": "9.0.11",
           "Microsoft.Extensions.Configuration.Abstractions": "10.0.0",
@@ -1862,14 +1862,16 @@
         "logo.png"
       ]
     },
-    "MassTransit/8.5.5": {
-      "sha512": "bSg8k5q+rP1s+dIGXLLbctqDGdIkfDjdxwNWtCUH7xNCN9ZuM7mqSPQPIFgaYIi34e81m4FqAqo4CAHuWPkhRA==",
+    "MassTransit/9.0.0": {
+      "sha512": "Xn89pVknW7l+H98aY9V5EDF+dN6hU2isS0jR+9ujwA1g4wHEODYuVvNwfk1Abitr0yFav0JNFC06mVP7NU6JkQ==",
       "type": "package",
-      "path": "masstransit/8.5.5",
+      "path": "masstransit/9.0.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "NuGet.README.md",
+        "lib/net10.0/MassTransit.dll",
+        "lib/net10.0/MassTransit.xml",
         "lib/net472/MassTransit.dll",
         "lib/net472/MassTransit.xml",
         "lib/net8.0/MassTransit.dll",
@@ -1878,7 +1880,7 @@
         "lib/net9.0/MassTransit.xml",
         "lib/netstandard2.0/MassTransit.dll",
         "lib/netstandard2.0/MassTransit.xml",
-        "masstransit.8.5.5.nupkg.sha512",
+        "masstransit.9.0.0.nupkg.sha512",
         "masstransit.nuspec",
         "mt-logo-small.png"
       ]
@@ -1906,14 +1908,16 @@
         "mt-logo-small.png"
       ]
     },
-    "MassTransit.RabbitMQ/8.5.5": {
-      "sha512": "UxWn4o90YVMF9PBkJeoskOFPneh6YtnI1fLJHtvZiSAG0eoiRrWPGa+6FQCvjkQ/ljCKfjzok2eGZc/vmNZ01A==",
+    "MassTransit.RabbitMQ/9.0.0": {
+      "sha512": "nZMtHjMq8oVCO6d/sIky9mxHvPFvW+dH+7AL2YOVM28JncjHN1+gee1cjChxOZk//8QDgHGy19uOM8QDIOt1ww==",
       "type": "package",
-      "path": "masstransit.rabbitmq/8.5.5",
+      "path": "masstransit.rabbitmq/9.0.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "NuGet.README.md",
+        "lib/net10.0/MassTransit.RabbitMqTransport.dll",
+        "lib/net10.0/MassTransit.RabbitMqTransport.xml",
         "lib/net472/MassTransit.RabbitMqTransport.dll",
         "lib/net472/MassTransit.RabbitMqTransport.xml",
         "lib/net8.0/MassTransit.RabbitMqTransport.dll",
@@ -1922,7 +1926,7 @@
         "lib/net9.0/MassTransit.RabbitMqTransport.xml",
         "lib/netstandard2.0/MassTransit.RabbitMqTransport.dll",
         "lib/netstandard2.0/MassTransit.RabbitMqTransport.xml",
-        "masstransit.rabbitmq.8.5.5.nupkg.sha512",
+        "masstransit.rabbitmq.9.0.0.nupkg.sha512",
         "masstransit.rabbitmq.nuspec",
         "mt-logo-small.png"
       ]
@@ -4057,10 +4061,10 @@
         "polly.core.nuspec"
       ]
     },
-    "RabbitMQ.Client/7.1.2": {
-      "sha512": "y3c6ulgULScWthHw5PLM1ShHRLhxg0vCtzX/hh61gRgNecL3ZC3WoBW2HYHoXOVRqTl99Br9E7CZEytGZEsCyQ==",
+    "RabbitMQ.Client/7.2.0": {
+      "sha512": "PPQ7cF7lwbhqC4up6en1bTUZlz06YqQwJecOJzsguTtyhNA7oL5uNDZIx/h6ZfcyPZV4V3DYKSCxfm4RUFLcbA==",
       "type": "package",
-      "path": "rabbitmq.client/7.1.2",
+      "path": "rabbitmq.client/7.2.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -4070,7 +4074,7 @@
         "lib/net8.0/RabbitMQ.Client.xml",
         "lib/netstandard2.0/RabbitMQ.Client.dll",
         "lib/netstandard2.0/RabbitMQ.Client.xml",
-        "rabbitmq.client.7.1.2.nupkg.sha512",
+        "rabbitmq.client.7.2.0.nupkg.sha512",
         "rabbitmq.client.nuspec"
       ]
     },
@@ -5038,5 +5042,13 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.309/PortableRuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1900",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Error occurred while getting package vulnerability data: The download of 'https://api.nuget.org/v3-vulnerabilities/2026.02.03.23.47.18/vulnerability.base.json' timed out because no data was received for 60000ms."
+    }
+  ]
 }

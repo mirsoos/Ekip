@@ -18,9 +18,7 @@ namespace Ekip.Infrastructure.Persistence.MongoDb.Configurations.EntityConfigura
                 BsonClassMap.RegisterClassMap<Profile>(cm =>
                 {
                     cm.AutoMap();
-                    cm.MapMember(p=>p.UserContacts).SetSerializer(new EnumerableInterfaceImplementerSerializer<List<Guid>>(new GuidSerializer(GuidRepresentation.Standard)));
-                    cm.MapMember(p=>p.CreateDate).SetSerializer(new DateTimeSerializer(DateTimeKind.Utc));
-                    cm.MapMember(p=>p.Id).SetSerializer(new GuidSerializer(GuidRepresentation.Standard));
+                    cm.MapField("_userContacts").SetElementName("UserContacts");
                     cm.SetIgnoreExtraElements(true);
                 });
             }

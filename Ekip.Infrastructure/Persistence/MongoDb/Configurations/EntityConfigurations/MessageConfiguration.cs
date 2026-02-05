@@ -19,10 +19,8 @@ namespace Ekip.Infrastructure.Persistence.MongoDb.Configurations.EntityConfigura
                 {
                     cm.AutoMap();
                     cm.MapMember(m => m.ChatRoomRef).SetSerializer(new GuidSerializer(GuidRepresentation.Standard));
-                    cm.MapMember(m => m.CreateDate).SetSerializer(new DateTimeSerializer(DateTimeKind.Utc));
                     cm.MapMember(m => m.SentAt).SetSerializer(new DateTimeSerializer(DateTimeKind.Utc));
                     cm.MapMember(m => m.SenderRef).SetSerializer(new GuidSerializer(GuidRepresentation.Standard));
-                    cm.MapMember(m => m.Id).SetSerializer(new GuidSerializer(GuidRepresentation.Standard));
                     cm.MapMember(m => m.ReplyToMessageRef).SetSerializer(new GuidSerializer(GuidRepresentation.Standard));
                     cm.MapMember(m => m.RowVersion).SetSerializer(new GuidSerializer(GuidRepresentation.Standard));
                     cm.MapMember(m => m.SeenBy).SetSerializer(new GuidSerializer(GuidRepresentation.Standard));

@@ -17,7 +17,7 @@ namespace Ekip.Application.Features.Authentication.Commands.Register
         private readonly IJwtTokenGenerator _jwtTokenGenerator;
         private readonly IPublishEndpoint _publishEndpoint;
 
-        public RegisterCommandHandler(IPasswordHasher passwordHasher,IUserWriteRepository userWriteRepository,IJwtTokenGenerator jwtTokenGenerator,IPublishEndpoint publishEndpoint,IProfileWriteRepository profileWriteRepository,IUnitOfWork unitOfWork)
+        public RegisterCommandHandler(IPasswordHasher passwordHasher,IUserWriteRepository userWriteRepository,IJwtTokenGenerator jwtTokenGenerator,IPublishEndpoint publishEndpoint,IProfileWriteRepository profileWriteRepository)
         {
             _passwordHasher = passwordHasher;
             _userWriteRepository = userWriteRepository;
@@ -102,11 +102,11 @@ namespace Ekip.Application.Features.Authentication.Commands.Register
 
                
 
-            var userToken = _jwtTokenGenerator.GenerateToken(user);
+            var userToken = _jwtTokenGenerator.GenerateToken(user.Id,user.Email,user.UserName);
 
             return new AuthenticationResult
             {
-                UserId = user.Id,
+                ProfileRef = user.ProfileRef,
                 UserName = user.UserName,
                 Email = user.Email,
                 PhoneNumber = user.PhoneNumber,

@@ -25,7 +25,6 @@ namespace Ekip.Infrastructure.Persistence.MongoDb.Configurations.EntityConfigura
                     cm.MapMember(r => r.RepeatType).SetSerializer(new EnumSerializer<RequestRepeatType>(BsonType.String));
                     cm.MapMember(r => r.RequestType).SetSerializer(new EnumSerializer<RequestType>(BsonType.String));
                     cm.MapMember(r => r.Status).SetSerializer(new EnumSerializer<RequestStatus>(BsonType.String));                    
-                    cm.MapMember(r => r.CreateDate).SetSerializer(new DateTimeSerializer(DateTimeKind.Utc));
                     cm.MapMember(r => r.RequestDateTime).SetSerializer(new DateTimeSerializer(DateTimeKind.Utc));
                     cm.MapMember(r => r.RequestForbidDateTime).SetSerializer(new DateTimeSerializer(DateTimeKind.Utc));
 
@@ -49,7 +48,6 @@ namespace Ekip.Infrastructure.Persistence.MongoDb.Configurations.EntityConfigura
                     cm.SetIsRootClass(false);
                     cm.MapMember(ra => ra.Status).SetSerializer(new EnumSerializer<AssignmentStatus>(BsonType.String));
                     cm.MapMember(ra => ra.ActionDate).SetSerializer(new DateTimeSerializer(DateTimeKind.Utc));
-                    cm.MapMember(ra => ra.CreateDate).SetSerializer(new DateTimeSerializer(DateTimeKind.Utc));
                     cm.MapMember(ra => ra.SenderRef).SetSerializer(new GuidSerializer(GuidRepresentation.Standard));
                     cm.SetIgnoreExtraElements(true);
                 });

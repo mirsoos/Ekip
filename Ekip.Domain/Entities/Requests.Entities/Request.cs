@@ -17,7 +17,7 @@ namespace Ekip.Domain.Entities.Requests.Entities
         public string[]? Tags { get; private set; }
         public bool IsAutoAccept { get; private set; }
         public bool IsRepeatable { get; private set; }
-        public RequestRepeatType? RepeatType { get; set; }
+        public RequestRepeatType RepeatType { get; set; }
         public RequestType RequestType { get; private set; }
         public MemberType MemberType { get; set; }
 

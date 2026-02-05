@@ -218,7 +218,7 @@
             },
             "MassTransit.RabbitMQ": {
               "target": "Package",
-              "version": "[8.5.5, )"
+              "version": "[9.0.0, )"
             },
             "Microsoft.AspNetCore.Hosting.Abstractions": {
               "target": "Package",

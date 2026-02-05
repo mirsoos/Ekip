@@ -20,23 +20,17 @@ namespace Ekip.Infrastructure.Security
             _settings = settings.Value;
         }
 
-
-        public string GenerateToken(UserReadModel user)
+        public string GenerateToken(Guid id , string phoneNumber , string userName)
         {
-            return CreateToken(user.Id.ToString() , user.Email , user.UserName);
+            return CreateToken(id.ToString() , phoneNumber , userName);
         }
 
-        public string GenerateToken(User user)
-        {
-            return CreateToken(user.Id.ToString() , user.Email , user.UserName);
-        }
-
-        private string CreateToken(string userId , string email , string userName)
+        private string CreateToken(string userId , string phoneNumber , string userName)
         {
             var claims = new List<Claim>
             {
                 new Claim(JwtRegisteredClaimNames.Sub, userId),
-                new Claim(JwtRegisteredClaimNames.Email, email),
+                new Claim(JwtRegisteredClaimNames.PhoneNumber, phoneNumber),
                 new Claim("UserName", userName),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };

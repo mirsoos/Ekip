@@ -1,4 +1,5 @@
-﻿using Ekip.Application.Interfaces;
+﻿using Ekip.Application.DTOs.User;
+using Ekip.Application.Interfaces;
 using Ekip.Domain.Entities.ReadModels;
 using Ekip.Infrastructure.Persistence.PostgreSql.Contexts;
 using Microsoft.EntityFrameworkCore;
@@ -39,8 +40,34 @@ namespace Ekip.Infrastructure.Repositories.Implementations
 
         public async Task<UserReadModel> GetByUserNameOrEmailAsync(string userName, string email, CancellationToken cancellationToken)
         {
-            var user = await _postgresDb.UserReads.AsNoTracking().FirstOrDefaultAsync(x => x.UserName == userName || x.Email == email,cancellationToken);
+            var user = await _postgresDb.UserReads.AsNoTracking().FirstOrDefaultAsync(x => x.UserName == userName || x.Email == email);
             return user;
+        }
+
+        public async Task<ProfileReadModel> GetProfileByIdAsync(Guid profileRef, CancellationToken cancellationToken)
+        {
+            var profile = await _postgresDb.ProfileReads.AsNoTracking().FirstOrDefaultAsync(x=>x.Id == profileRef,cancellationToken);
+            return profile;
+        }
+
+        public async Task<UserWithProfileDto> GetUserWithProfileByEmailOrUserNameAsync(string? userName,string? email, CancellationToken cancellationToken)
+        {
+            var result = await (from u in _postgresDb.UserReads
+                                join p in _postgresDb.ProfileReads on u.ProfileRef equals p.Id
+                                where u.UserName == userName || u.Email == email
+                                select new { User = u, Profile = p })
+                                .AsNoTracking()
+                                .FirstOrDefaultAsync(cancellationToken);
+            return new UserWithProfileDto
+            {
+                ProfileRef = result.Profile.Id,
+                UserRef = result.User.Id,
+                Email = result.User.Email,
+                UserName = result.User.UserName,
+                PhoneNumber = result.User.PhoneNumber,
+                AvatarUrl = result.Profile.AvatarUrl,
+                Password = result.User.Password
+            };
         }
     }
 }

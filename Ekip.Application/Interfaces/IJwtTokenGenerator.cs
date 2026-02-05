@@ -5,7 +5,6 @@ namespace Ekip.Application.Interfaces
 {
     public interface IJwtTokenGenerator
     {
-        string GenerateToken(UserReadModel user);
-        string GenerateToken(User user);
+        string GenerateToken(Guid id ,string phoneNumber , string userName);
     }
 }
