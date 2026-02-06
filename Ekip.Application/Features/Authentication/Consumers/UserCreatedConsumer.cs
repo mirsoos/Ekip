@@ -8,15 +8,17 @@ namespace Ekip.Application.Features.Authentication.Consumers
     public class UserCreatedConsumer : IConsumer<UserCreatedEvent>
     {
         private readonly IUserReadRepository _userRead;
-        public UserCreatedConsumer(IUserReadRepository userRead)
+        private readonly IProfileReadRepository _profileRead;
+        public UserCreatedConsumer(IUserReadRepository userRead , IProfileReadRepository profileRead)
         {
             _userRead = userRead;
+            _profileRead = profileRead;
         }
         public async Task Consume(ConsumeContext<UserCreatedEvent> context)
         {
             var user = context.Message;
 
-            var mongoToPostgres = new UserReadModel
+            var userMongoToPostgres = new UserReadModel
             {
                 Id = user.Id,
                 ProfileRef = user.ProfileRef,
@@ -30,9 +32,18 @@ namespace Ekip.Application.Features.Authentication.Consumers
                 PhoneNumber = user.PhoneNumber,
                 IsDeleted = user.IsDeleted,
                 Password = user.Password,
-                
             };
-            await _userRead.AddUserAsync(mongoToPostgres, context.CancellationToken);
+
+            var profileMongoToPostgre = new ProfileReadModel
+            {
+                Id = user.ProfileRef,
+                UserRef = user.UserRef,
+                Experience = user.Experience,
+                Score = user.Score
+            };
+
+            await _userRead.AddUserAsync(userMongoToPostgres, context.CancellationToken);
+            await _profileRead.AddProfileAsync(profileMongoToPostgre, context.CancellationToken);
         }
     }
 }

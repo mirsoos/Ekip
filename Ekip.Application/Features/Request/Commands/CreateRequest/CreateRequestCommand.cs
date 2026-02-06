@@ -19,7 +19,7 @@ namespace Ekip.Application.Features.Request.Commands.CreateRequest
         public RequestType RequestType { get; set; }
         public MemberType MemberType { get; set; }
         public bool IsAutoAccept { get; set; }
-        public bool IsRepeatble { get; set; }
+        public bool IsRepeatable { get; set; }
         public RequestRepeatType? RepeatType { get; set; }
     }
 }

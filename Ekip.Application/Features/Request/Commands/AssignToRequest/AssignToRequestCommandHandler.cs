@@ -1,7 +1,6 @@
 ﻿using Ekip.Application.Contracts.Events;
 using Ekip.Application.DTOs.Request;
 using Ekip.Application.Interfaces;
-using Ekip.Domain.Enums.Requests.Enums;
 using MassTransit;
 using MediatR;
 
@@ -33,16 +32,23 @@ namespace Ekip.Application.Features.Request.Commands.AssignToRequest
 
             var newAssignment = currentRequest.AddJoinRequest(request.SenderRef ,request.Description);
 
-            var assign = await _requestWrite.AssignRequest(request.RequestRef,newAssignment, cancellationToken);
+            await _requestWrite.UpdateAsync(currentRequest,cancellationToken);
+
+            //await _requestWrite.AssignRequest(request.RequestRef,newAssignment, cancellationToken);
+            await _publishEndpoint.Publish(new RequestUpdatedEvent
+            {
+                RequestRef = currentRequest.Id,
+                Status = currentRequest.Status
+            });
 
             await _publishEndpoint.Publish(new RequestAssignmentCreatedEvent
             {
-                Id = assign.Id,
-                ActionDate = assign.ActionDate,
-                CreateDate = assign.CreateDate,
-                Description = assign.Description,
-                SenderRef = assign.SenderRef,
-                Status = assign.Status,
+                Id = newAssignment.Id,
+                ActionDate = newAssignment.ActionDate,
+                CreateDate = newAssignment.CreateDate,
+                Description = newAssignment.Description,
+                SenderRef = newAssignment.SenderRef,
+                Status = newAssignment.Status,
                 RequestRef = currentRequest.Id
             });
 
@@ -50,7 +56,7 @@ namespace Ekip.Application.Features.Request.Commands.AssignToRequest
                 SenderRef = request.SenderRef,
                 Description = request.Description,
                 RequestRef = currentRequest.Id,
-                Status = assign.Status
+                Status = newAssignment.Status
             };
         }
     }

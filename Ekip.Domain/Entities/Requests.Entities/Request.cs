@@ -24,7 +24,7 @@ namespace Ekip.Domain.Entities.Requests.Entities
         public DateTime RequestDateTime { get; private set; }
         public DateTime RequestForbidDateTime { get; private set; }
 
-        private readonly List<RequestAssignment> _assignments = new();
+        private List<RequestAssignment> _assignments;
         public IReadOnlyCollection<RequestAssignment> Assignments => _assignments.AsReadOnly();
 
         private List<RequestFilter> _requestFilters = new();
@@ -36,7 +36,7 @@ namespace Ekip.Domain.Entities.Requests.Entities
                 throw new Exception("Request must have a Title");
             if (requiredMember < 1)
                 throw new Exception("Request cannot be created with 0 required members");
-
+            _assignments = new List<RequestAssignment>();
             Creator = creator;
             Title = title;
             Status = RequestStatus.Open;
@@ -66,6 +66,11 @@ namespace Ekip.Domain.Entities.Requests.Entities
 
             var newAssignment = new RequestAssignment(member, description, assignmentStatus);
             _assignments.Add(newAssignment);
+
+            if (IsAutoAccept && Status == RequestStatus.Open)
+            {
+                Status = RequestStatus.InProgress;
+            }
 
             CheckForCompletion();
 
@@ -119,6 +124,8 @@ namespace Ekip.Domain.Entities.Requests.Entities
                 Status = RequestStatus.Completed;
         }
 
-        private Request() { }
+        private Request() {
+            _assignments = new List<RequestAssignment>();
+        }
     }
 }

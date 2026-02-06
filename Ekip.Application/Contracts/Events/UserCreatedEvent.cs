@@ -20,5 +20,8 @@ namespace Ekip.Application.Contracts.Events
         public bool Gender { get; init; }
         public int Age { get; init; }
         public string PhoneNumber { get; init; }
+        public Guid UserRef { get; set; }
+        public int Experience { get; set; }
+        public double? Score { get; set; }
     }
 }

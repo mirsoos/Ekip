@@ -20,21 +20,22 @@ namespace Ekip.Infrastructure.Repositories.Implementations
             return request;
         }
 
-        public async Task<RequestAssignment> AssignRequest(Guid requestRef,RequestAssignment requestAssignment, CancellationToken cancellationToken)
+        public async Task<RequestAssignment> AssignRequest(Guid requestRef, RequestAssignment requestAssignment, CancellationToken cancellationToken)
         {
-            var request = await _mongoDb.Requests.Find(x=>x.Id == requestRef).FirstOrDefaultAsync();
+            var update = Builders<Request>.Update.Push("_assignments", requestAssignment);
+            await _mongoDb.Requests.UpdateOneAsync(
+                r => r.Id == requestRef,
+                update,
+                cancellationToken: cancellationToken
+            );
 
-            if (request == null) 
-            {
-                throw new Exception($"Request {requestRef} Not Found.");
-            }
 
-            var assignment = request.AddJoinRequest(requestAssignment.SenderRef,requestAssignment.Description);
-
-            await _mongoDb.Requests.ReplaceOneAsync(r=>r.Id == requestRef,request);
+            //if (result.MatchedCount == 0)
+            //    throw new Exception($"Request {requestRef} Not Found.");
 
             return requestAssignment;
         }
+
 
         public async Task<Request> GetRequestByIdAsync(Guid requestRef, CancellationToken cancellationToken)
         {

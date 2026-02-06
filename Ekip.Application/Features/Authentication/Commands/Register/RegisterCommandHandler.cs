@@ -70,16 +70,19 @@ namespace Ekip.Application.Features.Authentication.Commands.Register
                         ProfileRef = user.ProfileRef,
                         Password = user.PasswordHash,
                         CreateDate = user.CreateDate,
-                        IsDeleted = user.IsDeleted
+                        IsDeleted = user.IsDeleted,
+                        Experience = profile.Experience,
+                        UserRef = profile.UserRef,
+                        Score = profile.Score
                     }, cancellationToken);
 
-                    await _publishEndpoint.Publish(new ProfileCreatedEvent
-                    {
-                        Id = profile.Id,
-                        UserRef = profile.UserRef,
-                        Experience = profile.Experience,
-                        Score = profile.Score
-                    });
+                    //await _publishEndpoint.Publish(new ProfileCreatedEvent
+                    //{
+                    //    Id = profile.Id,
+                    //    UserRef = profile.UserRef,
+                    //    Experience = profile.Experience,
+                    //    Score = profile.Score
+                    //});
                 });
             }
             catch (ConcurrencyException)

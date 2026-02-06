@@ -128,5 +128,10 @@ namespace Ekip.Infrastructure.Repositories.Implementations
             await _postgreDb.RequestAssignmentReads.AddAsync(assignment, cancellationToken);
             await _postgreDb.SaveChangesAsync(cancellationToken);
         }
+
+        public async Task UpdateAsync(Guid requestRef, RequestStatus status, CancellationToken cancellationToken)
+        {
+            await _postgreDb.RequestReads.Where(x => x.Id == requestRef).ExecuteUpdateAsync(r=> r.SetProperty(x=>x.Status,status),cancellationToken);
+        }
     }
 }
