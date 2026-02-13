@@ -1,5 +1,4 @@
 ﻿using Ekip.Domain.Entities.Base.Entities;
-using Ekip.Domain.Entities.Requests.Entities;
 using Ekip.Domain.Enums.Chat.Enums;
 
 
@@ -10,9 +9,10 @@ namespace Ekip.Domain.Entities.Chat.Entites
         public string Name { get; private set; }
         public ChatRoomType ChatRoomType { get; private set; }
         public Guid Creator { get; private set; }
-        private readonly List<Guid> _participants = new();
-        public IReadOnlyCollection<Guid> Participants => _participants.AsReadOnly(); public Guid RequestRef { get; private set; }
-        public string AvatarUrl { get; private set; }
+        private List<Guid> _participants;
+        public IReadOnlyCollection<Guid> Participants => _participants.AsReadOnly();
+        public Guid RequestRef { get; private set; }
+        public string? AvatarUrl { get; private set; }
         public ChatRoom(string name, Guid creator, ChatRoomType type, Guid requestRef)
         {
             if (string.IsNullOrWhiteSpace(name))
@@ -24,6 +24,14 @@ namespace Ekip.Domain.Entities.Chat.Entites
             ChatRoomType = type;
             Creator = creator;
             _participants = new List<Guid>() { creator };
+        }
+
+        public Message CreateMessage(Guid senderId, string content, Guid? replyTo = null)
+        {
+            if (!_participants.Contains(senderId))
+                throw new Exception("You are not a member of this chatroom and cannot send messages.");
+
+            return new Message(this.Id, senderId, content, replyTo);
         }
 
         public void AddParticipant(Guid userId)
@@ -60,6 +68,9 @@ namespace Ekip.Domain.Entities.Chat.Entites
             AvatarUrl = NewAvatar;
         }
 
-        private ChatRoom() { }
+        private ChatRoom() 
+        {
+            _participants = new List<Guid>();
+        }
     }
 }

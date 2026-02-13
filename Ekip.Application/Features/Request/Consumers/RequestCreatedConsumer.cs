@@ -8,10 +8,10 @@ namespace Ekip.Application.Features.Request.Consumer
 {
     public class RequestCreatedConsumer : IConsumer<RequestCreatedEvent>
     {
-        private readonly IRequestReadRepository _readRepository;
-        public RequestCreatedConsumer(IRequestReadRepository readRepository)
+        private readonly IRequestReadRepository _requestRead;
+        public RequestCreatedConsumer(IRequestReadRepository requestRead)
         {
-            _readRepository = readRepository;
+            _requestRead = requestRead;
         }
         public async Task Consume(ConsumeContext<RequestCreatedEvent> context)
         {
@@ -39,7 +39,7 @@ namespace Ekip.Application.Features.Request.Consumer
                 Status = message.Status
             };
 
-           await _readRepository.AddRequestAsync(mongoToPostgres, context.CancellationToken);
+           await _requestRead.AddRequestAsync(mongoToPostgres, context.CancellationToken);
         }
     }
 }

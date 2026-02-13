@@ -1,6 +1,7 @@
 ﻿using Ekip.Application.Contracts.Events;
 using Ekip.Application.DTOs.Request;
 using Ekip.Application.Interfaces;
+using Ekip.Domain.ValueObjects;
 using MassTransit;
 using MediatR;
 
@@ -30,7 +31,9 @@ namespace Ekip.Application.Features.Request.Commands.AssignToRequest
             if (SenderProfile == null)
                 throw new Exception("User Profile Not Found");
 
-            var newAssignment = currentRequest.AddJoinRequest(request.SenderRef ,request.Description);
+            var eligibility = new MemberEligibility(SenderProfile.Age , SenderProfile.Experience,SenderProfile.Score,SenderProfile.Gender);
+            
+            var newAssignment = currentRequest.AddJoinRequest(request.SenderRef, eligibility ,request.Description);
 
             await _requestWrite.UpdateAsync(currentRequest,cancellationToken);
 

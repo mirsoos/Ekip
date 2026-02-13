@@ -76,34 +76,12 @@ namespace Ekip.Application.Features.Authentication.Commands.Register
                         Score = profile.Score
                     }, cancellationToken);
 
-                    //await _publishEndpoint.Publish(new ProfileCreatedEvent
-                    //{
-                    //    Id = profile.Id,
-                    //    UserRef = profile.UserRef,
-                    //    Experience = profile.Experience,
-                    //    Score = profile.Score
-                    //});
                 });
             }
             catch (ConcurrencyException)
             {
                 throw new Exception("Username or Email already exists.");
             }
-
-
-
-
-            //var existingUser = await _userWriteRepository.GetByUserNameAsync(request.UserName, cancellationToken);
-            //if (existingUser != null)
-            //    throw new Exception("This UserName already exists");
-
-            //var existingEmail = await _userWriteRepository.GetByEmailAsync(request.Email, cancellationToken);
-            //if (existingEmail != null)
-            //    throw new Exception("This Email already exists");
-
-
-
-               
 
             var userToken = _jwtTokenGenerator.GenerateToken(user.Id,user.Email,user.UserName);
 

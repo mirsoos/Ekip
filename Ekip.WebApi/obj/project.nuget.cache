@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "cI4WRxqXzJM=",
+  "dgSpecHash": "/PLRn+iSsPs=",
   "success": true,
   "projectFilePath": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.WebApi\\Ekip.WebApi.csproj",
   "expectedPackageFiles": [
@@ -12,10 +12,14 @@
     "C:\\Users\\amir\\.nuget\\packages\\masstransit.rabbitmq\\9.0.0\\masstransit.rabbitmq.9.0.0.nupkg.sha512",
     "C:\\Users\\amir\\.nuget\\packages\\mediatr\\13.1.0\\mediatr.13.1.0.nupkg.sha512",
     "C:\\Users\\amir\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512",
+    "C:\\Users\\amir\\.nuget\\packages\\messagepack\\2.5.187\\messagepack.2.5.187.nupkg.sha512",
+    "C:\\Users\\amir\\.nuget\\packages\\messagepack.annotations\\2.5.187\\messagepack.annotations.2.5.187.nupkg.sha512",
+    "C:\\Users\\amir\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\8.0.24\\microsoft.aspnetcore.authentication.jwtbearer.8.0.24.nupkg.sha512",
     "C:\\Users\\amir\\.nuget\\packages\\microsoft.aspnetcore.hosting.abstractions\\2.3.0\\microsoft.aspnetcore.hosting.abstractions.2.3.0.nupkg.sha512",
     "C:\\Users\\amir\\.nuget\\packages\\microsoft.aspnetcore.hosting.server.abstractions\\2.3.0\\microsoft.aspnetcore.hosting.server.abstractions.2.3.0.nupkg.sha512",
     "C:\\Users\\amir\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.3.0\\microsoft.aspnetcore.http.abstractions.2.3.0.nupkg.sha512",
     "C:\\Users\\amir\\.nuget\\packages\\microsoft.aspnetcore.http.features\\5.0.17\\microsoft.aspnetcore.http.features.5.0.17.nupkg.sha512",
+    "C:\\Users\\amir\\.nuget\\packages\\microsoft.aspnetcore.signalr.stackexchangeredis\\8.0.24\\microsoft.aspnetcore.signalr.stackexchangeredis.8.0.24.nupkg.sha512",
     "C:\\Users\\amir\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\7.0.0\\microsoft.bcl.asyncinterfaces.7.0.0.nupkg.sha512",
     "C:\\Users\\amir\\.nuget\\packages\\microsoft.build.framework\\17.8.3\\microsoft.build.framework.17.8.3.nupkg.sha512",
     "C:\\Users\\amir\\.nuget\\packages\\microsoft.build.locator\\1.7.8\\microsoft.build.locator.1.7.8.nupkg.sha512",
@@ -52,7 +56,10 @@
     "C:\\Users\\amir\\.nuget\\packages\\microsoft.identitymodel.abstractions\\8.15.0\\microsoft.identitymodel.abstractions.8.15.0.nupkg.sha512",
     "C:\\Users\\amir\\.nuget\\packages\\microsoft.identitymodel.jsonwebtokens\\8.15.0\\microsoft.identitymodel.jsonwebtokens.8.15.0.nupkg.sha512",
     "C:\\Users\\amir\\.nuget\\packages\\microsoft.identitymodel.logging\\8.15.0\\microsoft.identitymodel.logging.8.15.0.nupkg.sha512",
+    "C:\\Users\\amir\\.nuget\\packages\\microsoft.identitymodel.protocols\\7.1.2\\microsoft.identitymodel.protocols.7.1.2.nupkg.sha512",
+    "C:\\Users\\amir\\.nuget\\packages\\microsoft.identitymodel.protocols.openidconnect\\7.1.2\\microsoft.identitymodel.protocols.openidconnect.7.1.2.nupkg.sha512",
     "C:\\Users\\amir\\.nuget\\packages\\microsoft.identitymodel.tokens\\8.15.0\\microsoft.identitymodel.tokens.8.15.0.nupkg.sha512",
+    "C:\\Users\\amir\\.nuget\\packages\\microsoft.net.stringtools\\17.6.3\\microsoft.net.stringtools.17.6.3.nupkg.sha512",
     "C:\\Users\\amir\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
     "C:\\Users\\amir\\.nuget\\packages\\microsoft.openapi\\2.3.0\\microsoft.openapi.2.3.0.nupkg.sha512",
     "C:\\Users\\amir\\.nuget\\packages\\microsoft.win32.registry\\5.0.0\\microsoft.win32.registry.5.0.0.nupkg.sha512",
@@ -96,15 +103,5 @@
     "C:\\Users\\amir\\.nuget\\packages\\system.threading.ratelimiting\\8.0.0\\system.threading.ratelimiting.8.0.0.nupkg.sha512",
     "C:\\Users\\amir\\.nuget\\packages\\zstdsharp.port\\0.7.3\\zstdsharp.port.0.7.3.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1900",
-      "level": "Warning",
-      "message": "Error occurred while getting package vulnerability data: The download of 'https://api.nuget.org/v3-vulnerabilities/2026.02.03.23.47.18/vulnerability.base.json' timed out because no data was received for 60000ms.",
-      "projectPath": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.WebApi\\Ekip.WebApi.csproj",
-      "warningLevel": 1,
-      "filePath": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.WebApi\\Ekip.WebApi.csproj",
-      "targetGraphs": []
-    }
-  ]
+  "logs": []
 }

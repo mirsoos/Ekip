@@ -10,7 +10,7 @@ namespace Ekip.Application.Interfaces
         Task<UserReadModel> GetByEmailAsync(string email, CancellationToken cancellationToken);
         Task<UserReadModel> GetByUserNameOrEmailAsync(string userName , string email,CancellationToken cancellationToken);
         Task<ProfileReadModel> GetProfileByIdAsync(Guid profileRef,CancellationToken cancellationToken);
-        Task<UserWithProfileDto> GetUserWithProfileByEmailOrUserNameAsync(string? userName,string? email,CancellationToken cancellationToken);
+        Task<UserWithProfileDto?> GetUserWithProfileByEmailOrUserNameAsync(string? userName,string? email,CancellationToken cancellationToken);
         Task AddUserAsync(UserReadModel user, CancellationToken cancellationToken);
     }
 }

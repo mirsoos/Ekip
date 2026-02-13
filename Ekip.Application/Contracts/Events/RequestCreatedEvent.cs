@@ -1,6 +1,5 @@
 ﻿using Ekip.Application.DTOs.Request;
 using Ekip.Domain.Enums.Requests.Enums;
-using Ekip.Domain.ValueObjects;
 
 namespace Ekip.Application.Contracts.Events
 {

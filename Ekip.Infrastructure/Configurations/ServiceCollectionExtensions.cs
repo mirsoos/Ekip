@@ -9,6 +9,7 @@ using Ekip.Infrastructure.Security;
 using Ekip.Infrastructure.Services.Implementations;
 using Ekip.Infrastructure.Services.Interfaces;
 using MassTransit;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -43,6 +44,11 @@ namespace Ekip.Infrastructure.Configurations
                         h.Password(infraSettings.RabbitMqPassword);
                     });
 
+                    cfg.UseMessageRetry(r =>
+                    {
+                        r.Interval(3, TimeSpan.FromSeconds(5));
+                    });
+
                     cfg.ConfigureEndpoints(context);
                 });
             });
@@ -53,10 +59,27 @@ namespace Ekip.Infrastructure.Configurations
                 configuration.GetSection("InfrastructureSettings")
             );
 
-
             services.AddDbContext<PostgresDbContext>(options =>
                     options.UseNpgsql(configuration.GetSection("InfrastructureSettings:PostgresConnection").Value));
 
+            services.Configure<JwtBearerOptions>(JwtBearerDefaults.AuthenticationScheme, options =>
+            {
+                options.Events = new JwtBearerEvents
+                {
+                    OnMessageReceived = context =>
+                    {
+                        var accessToken = context.Request.Query["access_token"];
+                        var path = context.HttpContext.Request.Path;
+                        if (!string.IsNullOrEmpty(accessToken) && path.StartsWithSegments("/chathub"))
+                        {
+                            context.Token = accessToken;
+                        }
+                        return Task.CompletedTask;
+                    }
+                };
+            });
+
+            services.AddSignalR().AddStackExchangeRedis(configuration.GetSection("InfrastructureSettings:RedisConnection").Value);
 
             BsonSerializer.RegisterSerializer(new GuidSerializer(GuidRepresentation.Standard));
 
@@ -81,6 +104,7 @@ namespace Ekip.Infrastructure.Configurations
             services.AddScoped<IUserReadRepository, UserReadRepository>();
             services.AddScoped<IUserWriteRepository, UserWriteRepository>();
             services.AddScoped<IFileService, FileService>();
+            services.AddScoped<IChatService, ChatService>();
 
 
             services.AddSingleton<IConnectionMultiplexer>(sp =>

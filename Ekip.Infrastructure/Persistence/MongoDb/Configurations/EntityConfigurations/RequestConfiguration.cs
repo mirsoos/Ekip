@@ -28,6 +28,7 @@ namespace Ekip.Infrastructure.Persistence.MongoDb.Configurations.EntityConfigura
                     cm.MapMember(r => r.RequestDateTime).SetSerializer(new DateTimeSerializer(DateTimeKind.Utc));
                     cm.MapMember(r => r.RequestForbidDateTime).SetSerializer(new DateTimeSerializer(DateTimeKind.Utc));
                     cm.MapField("_assignments").SetElementName("Assignments");
+                    cm.MapField("_requestFilters").SetElementName("RequestFilters");
                     cm.SetIgnoreExtraElements(true);
                 });
             }

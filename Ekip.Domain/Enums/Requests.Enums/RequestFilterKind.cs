@@ -9,5 +9,7 @@ namespace Ekip.Domain.Enums.Requests.Enums
         Equal=1,
         GreaterThan,
         LessThan,
+        GreaterOrEqual,
+        LessOrEqual
     }
 }

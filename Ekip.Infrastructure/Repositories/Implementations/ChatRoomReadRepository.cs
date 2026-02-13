@@ -18,9 +18,19 @@ namespace Ekip.Infrastructure.Repositories.Implementations
 
         public async Task<ChatRoomReadModel> AddChatRoomAsync(ChatRoomReadModel chatRoomReadModel, CancellationToken cancellationToken)
         {
-            await _postgreDb.ChatRoomReads.AddAsync(chatRoomReadModel, cancellationToken: cancellationToken);
-            await _postgreDb.SaveChangesAsync(cancellationToken);
-            return chatRoomReadModel;
+
+
+            try
+            {
+                await _postgreDb.ChatRoomReads.AddAsync(chatRoomReadModel, cancellationToken: cancellationToken);
+                await _postgreDb.SaveChangesAsync(cancellationToken);
+                return chatRoomReadModel;
+            }
+            catch(Exception ex)
+            {
+                var a = ex.InnerException;
+                return chatRoomReadModel;
+            }
         }
 
         public async Task<ChatRoomReadModel?> GetByIdAsync(Guid chatRoomRef, CancellationToken cancellationToken)

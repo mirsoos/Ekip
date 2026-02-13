@@ -37,7 +37,9 @@ namespace Ekip.Infrastructure.Repositories.Implementations
                 AvatarUrl = s.AvatarUrl,
                 JoinRequests = new List<JoinRequestDto>(),
                 MyEkips = new List<MyEkipDto>(),
-                Requests = new List<NewRequestDto>()
+                Requests = new List<NewRequestDto>(),
+                Age = s.User.Age,
+
             }).FirstOrDefaultAsync(cancellationToken);
 
             return profile;

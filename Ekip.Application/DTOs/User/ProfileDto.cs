@@ -9,6 +9,7 @@ namespace Ekip.Application.DTOs.User
         public string UserName { get; set; }
         public string? AvatarUrl { get; set; }
         public double? Score { get; set; }
+        public int Age { get; set; }
         public string Email { get; set; }
         public bool Gender { get; set; }
         public int Experience { get; set; }

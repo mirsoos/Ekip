@@ -50,14 +50,17 @@ namespace Ekip.Infrastructure.Repositories.Implementations
             return profile;
         }
 
-        public async Task<UserWithProfileDto> GetUserWithProfileByEmailOrUserNameAsync(string? userName,string? email, CancellationToken cancellationToken)
+        public async Task<UserWithProfileDto?> GetUserWithProfileByEmailOrUserNameAsync(string? userName,string? email, CancellationToken cancellationToken)
         {
             var result = await (from u in _postgresDb.UserReads
                                 join p in _postgresDb.ProfileReads on u.ProfileRef equals p.Id
-                                where u.UserName == userName || u.Email == email
+                                where (userName != null && u.UserName == userName) || (email != null && u.Email == email)
                                 select new { User = u, Profile = p })
                                 .AsNoTracking()
                                 .FirstOrDefaultAsync(cancellationToken);
+
+            if (result == null) return null;
+
             return new UserWithProfileDto
             {
                 ProfileRef = result.Profile.Id,

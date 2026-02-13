@@ -3,34 +3,33 @@ using Ekip.Application.DTOs.Chat;
 using Ekip.Application.Interfaces;
 using MassTransit;
 using MediatR;
-using MessageEntity = Ekip.Domain.Entities.Chat.Entites.Message;
 
 
 namespace Ekip.Application.Features.Messages.Commands.SendMessage
 {
     public class SendMessageCommandHandler : IRequestHandler<SendMessageCommand,MessageDto>
     {
-        private readonly IMessageWriteRepository _writeMessage;
-        private readonly IChatRoomReadRepository _chatRoomRepository;
+        private readonly IMessageWriteRepository _messageWrite;
+        private readonly IChatRoomWriteRepository _chatRoomWrite;
         private readonly IPublishEndpoint _publishEndpoint;
-        public SendMessageCommandHandler(IMessageWriteRepository writeMessage,IChatRoomReadRepository chatRoomRepository , IPublishEndpoint publishEndpoint) 
+        public SendMessageCommandHandler(IMessageWriteRepository writeMessage,IChatRoomWriteRepository chatRoomWrite , IPublishEndpoint publishEndpoint) 
             {
-                _writeMessage = writeMessage;
-                _chatRoomRepository = chatRoomRepository;
+                _messageWrite = writeMessage;
+                _chatRoomWrite = chatRoomWrite;
                 _publishEndpoint = publishEndpoint;
         }
 
         public async Task<MessageDto> Handle(SendMessageCommand request ,CancellationToken cancellationToken)
         {
 
-            var chatRoom = await _chatRoomRepository.GetByIdAsync(request.ChatRoomRef, cancellationToken);
+            var chatRoom = await _chatRoomWrite.GetByIdAsync(request.ChatRoomRef, cancellationToken);
 
             if (chatRoom == null)
-                throw new Exception("ChatRoom Not Found");
+                throw new Exception("ChatRoom Not Found.");
 
-            var message = new MessageEntity(request.ChatRoomRef,request.SenderRef,request.MessageContent,request.ReplyToMessageRef);
+            var message = chatRoom.CreateMessage(request.SenderRef , request.MessageContent , request.ReplyToMessageRef);
 
-            var savedMessage = await _writeMessage.AddAsync(message, cancellationToken);
+            var savedMessage = await _messageWrite.AddAsync(message, cancellationToken);
 
             await _publishEndpoint.Publish(new MessageCreatedEvent
             {

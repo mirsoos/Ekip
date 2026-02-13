@@ -12,22 +12,21 @@ namespace Ekip.Domain.Entities.Requests.Entities
         public RequestStatus Status { get; private set; }
         public int RequiredMembers { get; private set; }
         public int? MaximumRequiredMembers { get; private set; }
-        public int? MaximumRequiredAge { get; set; }
-        public int? MinimumRequiredAge { get; set; }
+        public int? MaximumRequiredAge { get; private set; }
+        public int? MinimumRequiredAge { get; private set; }
         public string[]? Tags { get; private set; }
         public bool IsAutoAccept { get; private set; }
         public bool IsRepeatable { get; private set; }
-        public RequestRepeatType RepeatType { get; set; }
+        public RequestRepeatType RepeatType { get; private set; }
         public RequestType RequestType { get; private set; }
-        public MemberType MemberType { get; set; }
-
+        public MemberType MemberType { get; private set; }
         public DateTime RequestDateTime { get; private set; }
         public DateTime RequestForbidDateTime { get; private set; }
 
         private List<RequestAssignment> _assignments;
         public IReadOnlyCollection<RequestAssignment> Assignments => _assignments.AsReadOnly();
 
-        private List<RequestFilter> _requestFilters = new();
+        private List<RequestFilter> _requestFilters;
         public IReadOnlyCollection<RequestFilter>? RequestFilters => _requestFilters.AsReadOnly();
 
         public Request(Guid creator, string title, int requiredMember, DateTime requestDateTime, string? description, string[]? tags, RequestType requestType, MemberType memberType, bool isAutoAccept, HashSet<RequestFilter>? requestFilters)
@@ -37,6 +36,7 @@ namespace Ekip.Domain.Entities.Requests.Entities
             if (requiredMember < 1)
                 throw new Exception("Request cannot be created with 0 required members");
             _assignments = new List<RequestAssignment>();
+            _requestFilters = new List<RequestFilter>();
             Creator = creator;
             Title = title;
             Status = RequestStatus.Open;
@@ -54,10 +54,13 @@ namespace Ekip.Domain.Entities.Requests.Entities
             _assignments.Add(new RequestAssignment(creator, "Creator" , AssignmentStatus.Accepted));
         }
 
-        public RequestAssignment AddJoinRequest(Guid member, string description)
+        public RequestAssignment AddJoinRequest(Guid member,MemberEligibility memberEligibility , string description)
         {
             if (!this.IsRequestOpenToNewMember())
                 throw new Exception("Cannot add a member. Request is closed or full.");
+
+            if (!this.AssignmentRequirements(memberEligibility))
+                throw new Exception("you dont meet Requirements to Join.");
 
             if (_assignments.Any(jr => jr.SenderRef == member))
                 throw new Exception("This User already sent a Join Request");
@@ -124,8 +127,18 @@ namespace Ekip.Domain.Entities.Requests.Entities
                 Status = RequestStatus.Completed;
         }
 
+        public bool AssignmentRequirements(MemberEligibility member)
+        {
+            if (_requestFilters == null || !_requestFilters.Any())
+                return true;
+
+            return _requestFilters.All(filter => filter.IsSatisfiedBy(member));
+        }
+
         private Request() {
             _assignments = new List<RequestAssignment>();
+            _requestFilters = new List<RequestFilter>();
+
         }
     }
 }

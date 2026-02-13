@@ -7,8 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Features\ChatRoom\Commands\CreateChatRoom\CreateChatRoomCommand.cs" />
+    <Compile Remove="Features\ChatRoom\Commands\CreateChatRoom\CreateChatRoomCommandHandler.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Behaviors\" />
     <Folder Include="Common\" />
+    <Folder Include="Features\ChatRoom\Commands\CreateChatRoom\" />
   </ItemGroup>
 
   <ItemGroup>
