@@ -66,5 +66,11 @@ namespace Ekip.Infrastructure.Repositories.Implementations
                     cancellationToken
                 );
         }
+        public Task<bool> IsUserParticipant(Guid chatRoomRef, Guid userRef, CancellationToken cancellationToken)
+        {
+            return _postgreDb.ChatRoomReads
+                .AsNoTracking()
+                .AnyAsync(c => c.Id == chatRoomRef && c.Participants.Contains(userRef),cancellationToken);
+        }
     }
 }

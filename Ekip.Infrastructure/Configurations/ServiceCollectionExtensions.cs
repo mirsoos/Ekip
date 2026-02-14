@@ -62,24 +62,38 @@ namespace Ekip.Infrastructure.Configurations
             services.AddDbContext<PostgresDbContext>(options =>
                     options.UseNpgsql(configuration.GetSection("InfrastructureSettings:PostgresConnection").Value));
 
-            services.Configure<JwtBearerOptions>(JwtBearerDefaults.AuthenticationScheme, options =>
+            services.AddAuthentication(options =>
             {
-                options.Events = new JwtBearerEvents
-                {
-                    OnMessageReceived = context =>
-                    {
-                        var accessToken = context.Request.Query["access_token"];
-                        var path = context.HttpContext.Request.Path;
-                        if (!string.IsNullOrEmpty(accessToken) && path.StartsWithSegments("/chathub"))
-                        {
-                            context.Token = accessToken;
-                        }
-                        return Task.CompletedTask;
-                    }
-                };
-            });
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+              .AddJwtBearer(options =>
+              {
+                  options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+                  {
+                      ValidateIssuerSigningKey = true,
+                      IssuerSigningKey = new Microsoft.IdentityModel.Tokens.SymmetricSecurityKey(
+                          System.Text.Encoding.UTF8.GetBytes(infraSettings.JwtSecret)),
+                      ValidateIssuer = false,
+                      ValidateAudience = false,
+                      ValidateLifetime = true
+                  };
 
-            services.AddSignalR().AddStackExchangeRedis(configuration.GetSection("InfrastructureSettings:RedisConnection").Value);
+                  options.Events = new JwtBearerEvents
+                  {
+                      OnMessageReceived = context =>
+                      {
+                          var accessToken = context.Request.Query["access_token"];
+                          var path = context.HttpContext.Request.Path;
+                          if (!string.IsNullOrEmpty(accessToken) && path.StartsWithSegments("/chathub"))
+                          {
+                              context.Token = accessToken;
+                          }
+                          return Task.CompletedTask;
+                      }
+                  };
+              });
+            services.AddSignalR().AddStackExchangeRedis(infraSettings.RedisConnection);
 
             BsonSerializer.RegisterSerializer(new GuidSerializer(GuidRepresentation.Standard));
 
@@ -106,12 +120,6 @@ namespace Ekip.Infrastructure.Configurations
             services.AddScoped<IFileService, FileService>();
             services.AddScoped<IChatService, ChatService>();
 
-
-            services.AddSingleton<IConnectionMultiplexer>(sp =>
-            {
-                var redisConnection = configuration.GetSection("InfrastructureSettings:RedisConnection").Value;
-                return ConnectionMultiplexer.Connect(redisConnection);
-            });
             services.AddScoped<IRedisService, RedisService>();
 
 

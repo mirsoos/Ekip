@@ -1,52 +1,48 @@
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Ekip.Infrastructure.Configurations;
-using Ekip.Infrastructure.Persistence;
-using Ekip.Infrastructure.Repositories;
-using Ekip.Infrastructure.Services.Interfaces;
 using Ekip.Application;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// -------------------------------------------------
-// 1️⃣ Configuration + Infrastructure
-// -------------------------------------------------
 builder.Services.AddApplicationServices();
-// DI کامل Infrastructure (Postgres Read + Mongo Write + Services)
 builder.Services.AddInfrastructure(builder.Configuration);
 
-// -------------------------------------------------
-// 2️⃣ Controllers & Swagger
-// -------------------------------------------------
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// -------------------------------------------------
-// 3️⃣ Middlewares / Pipeline
-// -------------------------------------------------
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("SignalRCors", policy =>
+    {
+        policy
+            .WithOrigins(
+                "http://127.0.0.1:5500",
+                "http://localhost:5500",
+                "http://localhost:17177"
+            )
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+            .AllowCredentials();
+    });
+});
+
+
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())    
+if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI(options =>
-    {
-        options.SwaggerEndpoint("/swagger/v1/swagger.json", "Ekip API V1");
-        options.RoutePrefix = string.Empty;
-    });
+    app.UseSwaggerUI();
 }
 
-// اجباری: HTTPS Redirection
-app.UseHttpsRedirection();
+app.UseRouting();
 
-// Authorization (JWT یا هر Policy که بعدا تعریف می‌کنیم)
+app.UseCors("SignalRCors");
+app.UseAuthentication();
 app.UseAuthorization();
-
-// Map Controllerها
+app.UseStaticFiles();
 app.MapControllers();
 
-// Run برنامه
+app.MapHub<Ekip.Infrastructure.Services.SignalR.ChatHub>("/chathub");
+
 app.Run();

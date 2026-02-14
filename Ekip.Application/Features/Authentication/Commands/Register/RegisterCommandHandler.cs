@@ -83,7 +83,7 @@ namespace Ekip.Application.Features.Authentication.Commands.Register
                 throw new Exception("Username or Email already exists.");
             }
 
-            var userToken = _jwtTokenGenerator.GenerateToken(user.Id,user.Email,user.UserName);
+            var userToken = _jwtTokenGenerator.GenerateToken(user.ProfileRef,user.Email,user.UserName);
 
             return new AuthenticationResult
             {

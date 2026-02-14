@@ -10,5 +10,6 @@ namespace Ekip.Application.Interfaces
         Task<ChatRoomReadModel?> GetByIdAsync(Guid chatRoomRef, CancellationToken cancellationToken);
         Task<ChatRoomListDto?> GetListByIdAsync(Guid chatRoomRef, CancellationToken cancellationToken);
         Task UpdateLastMessageAsync(Guid chatRoomRef, string LastMessagePreview, DateTime LastMessageDate,CancellationToken cancellationToken);
+        Task<bool> IsUserParticipant(Guid chatRoomRef , Guid userRef , CancellationToken cancellationToken);
     }
 }

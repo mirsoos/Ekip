@@ -33,7 +33,7 @@ namespace Ekip.Application.Features.Authentication.Queries.Login
             if (!isPasswordValid)
                 throw new Exception("username/email or password Not Valid");
 
-            var token = _jwtTokenGenerator.GenerateToken(user.UserRef,user.PhoneNumber,user.UserName);
+            var token = _jwtTokenGenerator.GenerateToken(user.ProfileRef,user.PhoneNumber,user.UserName);
 
             return new AuthenticationResult
             {
