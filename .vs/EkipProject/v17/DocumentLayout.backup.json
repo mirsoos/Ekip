@@ -3,24 +3,148 @@
   "WorkspaceRootPath": "C:\\Users\\amir\\source\\repos\\EkipProject\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|c:\\users\\amir\\source\\repos\\ekipproject\\ekip.infrastructure\\configurations\\servicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|solutionrelative:ekip.infrastructure\\configurations\\servicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|c:\\users\\amir\\source\\repos\\ekipproject\\ekip.infrastructure\\repositories\\implementations\\profilereadrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|solutionrelative:ekip.infrastructure\\repositories\\implementations\\profilereadrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{77819852-FFDD-407B-9192-0C911A80E147}|Ekip.WebApi\\Ekip.WebApi.csproj|c:\\users\\amir\\source\\repos\\ekipproject\\ekip.webapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{77819852-FFDD-407B-9192-0C911A80E147}|Ekip.WebApi\\Ekip.WebApi.csproj|solutionrelative:ekip.webapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\amir\\source\\repos\\ekipproject\\ekip.application\\interfaces\\iprofilereadrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\interfaces\\iprofilereadrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{77819852-FFDD-407B-9192-0C911A80E147}|Ekip.WebApi\\Ekip.WebApi.csproj|c:\\users\\amir\\source\\repos\\ekipproject\\ekip.webapi\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{77819852-FFDD-407B-9192-0C911A80E147}|Ekip.WebApi\\Ekip.WebApi.csproj|solutionrelative:ekip.webapi\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\amir\\source\\repos\\ekipproject\\ekip.application\\features\\authentication\\consumers\\faceverificationconsumer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\features\\authentication\\consumers\\faceverificationconsumer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\amir\\source\\repos\\ekipproject\\ekip.application\\contracts\\events\\faceverificationcompletedevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\contracts\\events\\faceverificationcompletedevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6619533C-51D9-499B-834C-5EECEBBE2867}|Ekip.Domain\\Ekip.Domain.csproj|c:\\users\\amir\\source\\repos\\ekipproject\\ekip.domain\\enums\\identity.enums\\verificationlevel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6619533C-51D9-499B-834C-5EECEBBE2867}|Ekip.Domain\\Ekip.Domain.csproj|solutionrelative:ekip.domain\\enums\\identity.enums\\verificationlevel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\amir\\source\\repos\\ekipproject\\ekip.application\\interfaces\\iprofilewriterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\interfaces\\iprofilewriterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\amir\\source\\repos\\ekipproject\\ekip.application\\features\\authentication\\consumers\\faceverificationcompletedconsumer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\features\\authentication\\consumers\\faceverificationcompletedconsumer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6619533C-51D9-499B-834C-5EECEBBE2867}|Ekip.Domain\\Ekip.Domain.csproj|c:\\users\\amir\\source\\repos\\ekipproject\\ekip.domain\\entities\\readmodels\\profilereadmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6619533C-51D9-499B-834C-5EECEBBE2867}|Ekip.Domain\\Ekip.Domain.csproj|solutionrelative:ekip.domain\\entities\\readmodels\\profilereadmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|c:\\users\\amir\\source\\repos\\ekipproject\\ekip.infrastructure\\repositories\\implementations\\profilewriterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|solutionrelative:ekip.infrastructure\\repositories\\implementations\\profilewriterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6619533C-51D9-499B-834C-5EECEBBE2867}|Ekip.Domain\\Ekip.Domain.csproj|c:\\users\\amir\\source\\repos\\ekipproject\\ekip.domain\\entities\\identity.entities\\profile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6619533C-51D9-499B-834C-5EECEBBE2867}|Ekip.Domain\\Ekip.Domain.csproj|solutionrelative:ekip.domain\\entities\\identity.entities\\profile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6619533C-51D9-499B-834C-5EECEBBE2867}|Ekip.Domain\\Ekip.Domain.csproj|c:\\users\\amir\\source\\repos\\ekipproject\\ekip.domain\\valueobjects\\photoevidence.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6619533C-51D9-499B-834C-5EECEBBE2867}|Ekip.Domain\\Ekip.Domain.csproj|solutionrelative:ekip.domain\\valueobjects\\photoevidence.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\amir\\source\\repos\\ekipproject\\ekip.application\\interfaces\\ifaceverificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\interfaces\\ifaceverificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|c:\\users\\amir\\source\\repos\\ekipproject\\ekip.infrastructure\\externalservices\\faceai\\insightfaceverificationservice .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|solutionrelative:ekip.infrastructure\\externalservices\\faceai\\insightfaceverificationservice .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|c:\\users\\amir\\source\\repos\\ekipproject\\ekip.infrastructure\\externalservices\\faceai\\insightfaceengine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|solutionrelative:ekip.infrastructure\\externalservices\\faceai\\insightfaceengine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|c:\\users\\amir\\source\\repos\\ekipproject\\ekip.infrastructure\\services\\faceai\\models\\anchor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|solutionrelative:ekip.infrastructure\\services\\faceai\\models\\anchor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|c:\\users\\amir\\source\\repos\\ekipproject\\ekip.infrastructure\\services\\faceai\\constants\\faceaiconstants.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|solutionrelative:ekip.infrastructure\\services\\faceai\\constants\\faceaiconstants.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|c:\\users\\amir\\source\\repos\\ekipproject\\ekip.infrastructure\\services\\faceai\\models\\faceinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|solutionrelative:ekip.infrastructure\\services\\faceai\\models\\faceinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|c:\\users\\amir\\source\\repos\\ekipproject\\ekip.infrastructure\\services\\implementations\\fileservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|solutionrelative:ekip.infrastructure\\services\\implementations\\fileservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\amir\\source\\repos\\ekipproject\\ekip.application\\contracts\\events\\faceverificationevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\contracts\\events\\faceverificationevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\amir\\source\\repos\\ekipproject\\ekip.application\\features\\authentication\\commands\\userverification\\faceverificationcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\features\\authentication\\commands\\userverification\\faceverificationcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{77819852-FFDD-407B-9192-0C911A80E147}|Ekip.WebApi\\Ekip.WebApi.csproj|c:\\users\\amir\\source\\repos\\ekipproject\\ekip.webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{77819852-FFDD-407B-9192-0C911A80E147}|Ekip.WebApi\\Ekip.WebApi.csproj|solutionrelative:ekip.webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{77819852-FFDD-407B-9192-0C911A80E147}|Ekip.WebApi\\Ekip.WebApi.csproj|c:\\users\\amir\\source\\repos\\ekipproject\\ekip.webapi\\controllers\\profilecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{77819852-FFDD-407B-9192-0C911A80E147}|Ekip.WebApi\\Ekip.WebApi.csproj|solutionrelative:ekip.webapi\\controllers\\profilecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\amir\\source\\repos\\ekipproject\\ekip.application\\features\\authentication\\commands\\userverification\\faceverificationcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\features\\authentication\\commands\\userverification\\faceverificationcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{77819852-FFDD-407B-9192-0C911A80E147}|Ekip.WebApi\\Ekip.WebApi.csproj|c:\\users\\amir\\source\\repos\\ekipproject\\ekip.webapi\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{77819852-FFDD-407B-9192-0C911A80E147}|Ekip.WebApi\\Ekip.WebApi.csproj|solutionrelative:ekip.webapi\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|c:\\users\\amir\\source\\repos\\ekipproject\\ekip.infrastructure\\configurations\\servicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|solutionrelative:ekip.infrastructure\\configurations\\servicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|c:\\users\\amir\\source\\repos\\ekipproject\\ekip.infrastructure\\configurations\\infrastructuresettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|solutionrelative:ekip.infrastructure\\configurations\\infrastructuresettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\amir\\source\\repos\\ekipproject\\ekip.application\\contracts\\events\\messagecreatedevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\contracts\\events\\messagecreatedevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|c:\\users\\amir\\source\\repos\\ekipproject\\ekip.infrastructure\\services\\interfaces\\ifileservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|solutionrelative:ekip.infrastructure\\services\\interfaces\\ifileservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\amir\\source\\repos\\ekipproject\\ekip.application\\features\\profile\\commands\\setuseravatar\\setuseravatarcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\features\\profile\\commands\\setuseravatar\\setuseravatarcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\amir\\source\\repos\\ekipproject\\ekip.application\\features\\profile\\commands\\setuseravatar\\setuseravatarcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\features\\profile\\commands\\setuseravatar\\setuseravatarcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\amir\\source\\repos\\ekipproject\\ekip.application\\features\\profile\\commands\\setuserprofile\\setuserprofilecommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\features\\profile\\commands\\setuserprofile\\setuserprofilecommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\amir\\source\\repos\\ekipproject\\ekip.application\\features\\authentication\\commands\\register\\registercommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\features\\authentication\\commands\\register\\registercommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\amir\\source\\repos\\ekipproject\\ekip.application\\dtos\\user\\assignmentmemberdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\dtos\\user\\assignmentmemberdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6619533C-51D9-499B-834C-5EECEBBE2867}|Ekip.Domain\\Ekip.Domain.csproj|c:\\users\\amir\\source\\repos\\ekipproject\\ekip.domain\\valueobjects\\identityevidence.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6619533C-51D9-499B-834C-5EECEBBE2867}|Ekip.Domain\\Ekip.Domain.csproj|solutionrelative:ekip.domain\\valueobjects\\identityevidence.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6619533C-51D9-499B-834C-5EECEBBE2867}|Ekip.Domain\\Ekip.Domain.csproj|c:\\users\\amir\\source\\repos\\ekipproject\\ekip.domain\\valueobjects\\requestfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6619533C-51D9-499B-834C-5EECEBBE2867}|Ekip.Domain\\Ekip.Domain.csproj|solutionrelative:ekip.domain\\valueobjects\\requestfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6619533C-51D9-499B-834C-5EECEBBE2867}|Ekip.Domain\\Ekip.Domain.csproj|c:\\users\\amir\\source\\repos\\ekipproject\\ekip.domain\\valueobjects\\membereligibility.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6619533C-51D9-499B-834C-5EECEBBE2867}|Ekip.Domain\\Ekip.Domain.csproj|solutionrelative:ekip.domain\\valueobjects\\membereligibility.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\amir\\source\\repos\\ekipproject\\ekip.application\\features\\authentication\\queries\\login\\loginqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -39,24 +163,12 @@
       "RelativeMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|solutionrelative:ekip.infrastructure\\security\\jwttokengenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{77819852-FFDD-407B-9192-0C911A80E147}|Ekip.WebApi\\Ekip.WebApi.csproj|c:\\users\\amir\\source\\repos\\ekipproject\\ekip.webapi\\controllers\\requestcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{77819852-FFDD-407B-9192-0C911A80E147}|Ekip.WebApi\\Ekip.WebApi.csproj|solutionrelative:ekip.webapi\\controllers\\requestcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{77819852-FFDD-407B-9192-0C911A80E147}|Ekip.WebApi\\Ekip.WebApi.csproj|c:\\users\\amir\\source\\repos\\ekipproject\\ekip.webapi\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{77819852-FFDD-407B-9192-0C911A80E147}|Ekip.WebApi\\Ekip.WebApi.csproj|solutionrelative:ekip.webapi\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\amir\\source\\repos\\ekipproject\\ekip.application\\interfaces\\ichatroomreadrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\interfaces\\ichatroomreadrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|c:\\users\\amir\\source\\repos\\ekipproject\\ekip.infrastructure\\repositories\\implementations\\chatroomreadrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|solutionrelative:ekip.infrastructure\\repositories\\implementations\\chatroomreadrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|c:\\users\\amir\\source\\repos\\ekipproject\\ekip.infrastructure\\configurations\\infrastructuresettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|solutionrelative:ekip.infrastructure\\configurations\\infrastructuresettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6619533C-51D9-499B-834C-5EECEBBE2867}|Ekip.Domain\\Ekip.Domain.csproj|c:\\users\\amir\\source\\repos\\ekipproject\\ekip.domain\\entities\\readmodels\\chatroomreadmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -123,10 +235,6 @@
       "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\features\\messages\\commands\\sendmessage\\sendmessagecommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\amir\\source\\repos\\ekipproject\\ekip.application\\features\\chatroom\\commands\\createchatroom\\createchatroomcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\features\\chatroom\\commands\\createchatroom\\createchatroomcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\amir\\source\\repos\\ekipproject\\ekip.application\\features\\request\\consumers\\requestcreatedconsumer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\features\\request\\consumers\\requestcreatedconsumer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -143,16 +251,8 @@
       "RelativeMoniker": "D:0:0:{6619533C-51D9-499B-834C-5EECEBBE2867}|Ekip.Domain\\Ekip.Domain.csproj|solutionrelative:ekip.domain\\enums\\chat.enums\\chatroomtype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6619533C-51D9-499B-834C-5EECEBBE2867}|Ekip.Domain\\Ekip.Domain.csproj|c:\\users\\amir\\source\\repos\\ekipproject\\ekip.domain\\valueobjects\\requestfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6619533C-51D9-499B-834C-5EECEBBE2867}|Ekip.Domain\\Ekip.Domain.csproj|solutionrelative:ekip.domain\\valueobjects\\requestfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\amir\\source\\repos\\ekipproject\\ekip.application\\features\\request\\commands\\assigntorequest\\assigntorequestcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\features\\request\\commands\\assigntorequest\\assigntorequestcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6619533C-51D9-499B-834C-5EECEBBE2867}|Ekip.Domain\\Ekip.Domain.csproj|c:\\users\\amir\\source\\repos\\ekipproject\\ekip.domain\\valueobjects\\membereligibility.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6619533C-51D9-499B-834C-5EECEBBE2867}|Ekip.Domain\\Ekip.Domain.csproj|solutionrelative:ekip.domain\\valueobjects\\membereligibility.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|c:\\users\\amir\\source\\repos\\ekipproject\\ekip.infrastructure\\persistence\\mongodb\\configurations\\entityconfigurations\\requestconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -161,14 +261,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\amir\\source\\repos\\ekipproject\\ekip.application\\dtos\\user\\userwithprofiledto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\dtos\\user\\userwithprofiledto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6619533C-51D9-499B-834C-5EECEBBE2867}|Ekip.Domain\\Ekip.Domain.csproj|c:\\users\\amir\\source\\repos\\ekipproject\\ekip.domain\\entities\\identity.entities\\profile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6619533C-51D9-499B-834C-5EECEBBE2867}|Ekip.Domain\\Ekip.Domain.csproj|solutionrelative:ekip.domain\\entities\\identity.entities\\profile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|c:\\users\\amir\\source\\repos\\ekipproject\\ekip.infrastructure\\repositories\\implementations\\profilereadrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|solutionrelative:ekip.infrastructure\\repositories\\implementations\\profilereadrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\amir\\source\\repos\\ekipproject\\ekip.application\\dtos\\user\\profiledto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -205,457 +297,453 @@
           "SelectedChildIndex": 6,
           "Children": [
             {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "IProfileReadRepository.cs",
+              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Interfaces\\IProfileReadRepository.cs",
+              "RelativeDocumentMoniker": "Ekip.Application\\Interfaces\\IProfileReadRepository.cs",
+              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Interfaces\\IProfileReadRepository.cs",
+              "RelativeToolTip": "Ekip.Application\\Interfaces\\IProfileReadRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-18T18:42:19.425Z",
+              "EditorCaption": ""
+            },
+            {
               "$type": "Bookmark",
               "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "LoginQueryHandler.cs",
-              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Features\\Authentication\\Queries\\Login\\LoginQueryHandler.cs",
-              "RelativeDocumentMoniker": "Ekip.Application\\Features\\Authentication\\Queries\\Login\\LoginQueryHandler.cs",
-              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Features\\Authentication\\Queries\\Login\\LoginQueryHandler.cs",
-              "RelativeToolTip": "Ekip.Application\\Features\\Authentication\\Queries\\Login\\LoginQueryHandler.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAADwvyMAAABIAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "FaceVerificationConsumer.cs",
+              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Features\\Authentication\\Consumers\\FaceVerificationConsumer.cs",
+              "RelativeDocumentMoniker": "Ekip.Application\\Features\\Authentication\\Consumers\\FaceVerificationConsumer.cs",
+              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Features\\Authentication\\Consumers\\FaceVerificationConsumer.cs",
+              "RelativeToolTip": "Ekip.Application\\Features\\Authentication\\Consumers\\FaceVerificationConsumer.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAYwC0AAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-14T20:37:30.169Z",
+              "WhenOpened": "2026-02-15T21:46:23.518Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "RegisterCommandHandler.cs",
-              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Features\\Authentication\\Commands\\Register\\RegisterCommandHandler.cs",
-              "RelativeDocumentMoniker": "Ekip.Application\\Features\\Authentication\\Commands\\Register\\RegisterCommandHandler.cs",
-              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Features\\Authentication\\Commands\\Register\\RegisterCommandHandler.cs",
-              "RelativeToolTip": "Ekip.Application\\Features\\Authentication\\Commands\\Register\\RegisterCommandHandler.cs",
-              "ViewState": "AgIAAD0AAAAAAAAAAADwv1UAAABMAAAAAAAAAA==",
+              "DocumentIndex": 5,
+              "Title": "IProfileWriteRepository.cs",
+              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Interfaces\\IProfileWriteRepository.cs",
+              "RelativeDocumentMoniker": "Ekip.Application\\Interfaces\\IProfileWriteRepository.cs",
+              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Interfaces\\IProfileWriteRepository.cs",
+              "RelativeToolTip": "Ekip.Application\\Interfaces\\IProfileWriteRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAABDAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-08T18:00:02.531Z",
+              "WhenOpened": "2026-02-15T21:59:56.861Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.WebApi\\Program.cs",
-              "RelativeDocumentMoniker": "Ekip.WebApi\\Program.cs",
-              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.WebApi\\Program.cs",
-              "RelativeToolTip": "Ekip.WebApi\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAApAAAAAAAAAA==",
+              "Title": "FaceVerificationCompletedEvent.cs",
+              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Contracts\\Events\\FaceVerificationCompletedEvent.cs",
+              "RelativeDocumentMoniker": "Ekip.Application\\Contracts\\Events\\FaceVerificationCompletedEvent.cs",
+              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Contracts\\Events\\FaceVerificationCompletedEvent.cs",
+              "RelativeToolTip": "Ekip.Application\\Contracts\\Events\\FaceVerificationCompletedEvent.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-13T22:18:26.433Z",
+              "WhenOpened": "2026-02-18T18:31:53.815Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "launchSettings.json",
-              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.WebApi\\Properties\\launchSettings.json",
-              "RelativeDocumentMoniker": "Ekip.WebApi\\Properties\\launchSettings.json",
-              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.WebApi\\Properties\\launchSettings.json",
-              "RelativeToolTip": "Ekip.WebApi\\Properties\\launchSettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAeAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-02-14T20:11:25.004Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.WebApi\\appsettings.json",
-              "RelativeDocumentMoniker": "Ekip.WebApi\\appsettings.json",
-              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.WebApi\\appsettings.json",
-              "RelativeToolTip": "Ekip.WebApi\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAArAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-02-13T22:32:27.577Z",
+              "DocumentIndex": 4,
+              "Title": "VerificationLevel.cs",
+              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Domain\\Enums\\Identity.Enums\\VerificationLevel.cs",
+              "RelativeDocumentMoniker": "Ekip.Domain\\Enums\\Identity.Enums\\VerificationLevel.cs",
+              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Domain\\Enums\\Identity.Enums\\VerificationLevel.cs",
+              "RelativeToolTip": "Ekip.Domain\\Enums\\Identity.Enums\\VerificationLevel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-15T17:44:57.44Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ServiceCollectionExtensions.cs",
-              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Infrastructure\\Configurations\\ServiceCollectionExtensions.cs",
-              "RelativeDocumentMoniker": "Ekip.Infrastructure\\Configurations\\ServiceCollectionExtensions.cs",
-              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Infrastructure\\Configurations\\ServiceCollectionExtensions.cs",
-              "RelativeToolTip": "Ekip.Infrastructure\\Configurations\\ServiceCollectionExtensions.cs",
-              "ViewState": "AgIAADoAAAAAAAAAAAAQwFAAAAAAAAAAAAAAAA==",
+              "Title": "ProfileReadRepository.cs",
+              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Infrastructure\\Repositories\\Implementations\\ProfileReadRepository.cs",
+              "RelativeDocumentMoniker": "Ekip.Infrastructure\\Repositories\\Implementations\\ProfileReadRepository.cs",
+              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Infrastructure\\Repositories\\Implementations\\ProfileReadRepository.cs",
+              "RelativeToolTip": "Ekip.Infrastructure\\Repositories\\Implementations\\ProfileReadRepository.cs",
+              "ViewState": "AgIAAJgAAAAAAAAAAAAAwLEAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-12T15:34:20.324Z",
+              "WhenOpened": "2026-02-09T16:58:20.134Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "IJwtTokenGenerator.cs",
-              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Interfaces\\IJwtTokenGenerator.cs",
-              "RelativeDocumentMoniker": "Ekip.Application\\Interfaces\\IJwtTokenGenerator.cs",
-              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Interfaces\\IJwtTokenGenerator.cs",
-              "RelativeToolTip": "Ekip.Application\\Interfaces\\IJwtTokenGenerator.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAnAAAAAAAAAA==",
+              "Title": "FaceVerificationCompletedConsumer.cs",
+              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Features\\Authentication\\Consumers\\FaceVerificationCompletedConsumer.cs",
+              "RelativeDocumentMoniker": "Ekip.Application\\Features\\Authentication\\Consumers\\FaceVerificationCompletedConsumer.cs",
+              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Features\\Authentication\\Consumers\\FaceVerificationCompletedConsumer.cs",
+              "RelativeToolTip": "Ekip.Application\\Features\\Authentication\\Consumers\\FaceVerificationCompletedConsumer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-14T20:37:39.653Z",
+              "WhenOpened": "2026-02-18T18:39:57.47Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "ChatHub.cs",
-              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Infrastructure\\Services\\SignalR\\ChatHub.cs",
-              "RelativeDocumentMoniker": "Ekip.Infrastructure\\Services\\SignalR\\ChatHub.cs",
-              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Infrastructure\\Services\\SignalR\\ChatHub.cs",
-              "RelativeToolTip": "Ekip.Infrastructure\\Services\\SignalR\\ChatHub.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAQAAAAAAAAAA==",
+              "Title": "ProfileReadModel.cs",
+              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Domain\\Entities\\ReadModels\\ProfileReadModel.cs",
+              "RelativeDocumentMoniker": "Ekip.Domain\\Entities\\ReadModels\\ProfileReadModel.cs",
+              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Domain\\Entities\\ReadModels\\ProfileReadModel.cs",
+              "RelativeToolTip": "Ekip.Domain\\Entities\\ReadModels\\ProfileReadModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-13T18:22:22.086Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "ChatRoomReadRepository.cs",
-              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Infrastructure\\Repositories\\Implementations\\ChatRoomReadRepository.cs",
-              "RelativeDocumentMoniker": "Ekip.Infrastructure\\Repositories\\Implementations\\ChatRoomReadRepository.cs",
-              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Infrastructure\\Repositories\\Implementations\\ChatRoomReadRepository.cs",
-              "RelativeToolTip": "Ekip.Infrastructure\\Repositories\\Implementations\\ChatRoomReadRepository.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAhwC8AAAA7AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-13T17:01:18.5Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "IChatRoomReadRepository.cs",
-              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Interfaces\\IChatRoomReadRepository.cs",
-              "RelativeDocumentMoniker": "Ekip.Application\\Interfaces\\IChatRoomReadRepository.cs",
-              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Interfaces\\IChatRoomReadRepository.cs",
-              "RelativeToolTip": "Ekip.Application\\Interfaces\\IChatRoomReadRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAeAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-13T21:26:03.572Z",
+              "WhenOpened": "2026-02-18T18:44:56.889Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 8,
-              "Title": "JwtTokenGenerator.cs",
-              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Infrastructure\\Security\\JwtTokenGenerator.cs",
-              "RelativeDocumentMoniker": "Ekip.Infrastructure\\Security\\JwtTokenGenerator.cs",
-              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Infrastructure\\Security\\JwtTokenGenerator.cs",
-              "RelativeToolTip": "Ekip.Infrastructure\\Security\\JwtTokenGenerator.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAABYAAAAMAAAAAAAAAA==",
+              "Title": "ProfileWriteRepository.cs",
+              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Infrastructure\\Repositories\\Implementations\\ProfileWriteRepository.cs",
+              "RelativeDocumentMoniker": "Ekip.Infrastructure\\Repositories\\Implementations\\ProfileWriteRepository.cs",
+              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Infrastructure\\Repositories\\Implementations\\ProfileWriteRepository.cs",
+              "RelativeToolTip": "Ekip.Infrastructure\\Repositories\\Implementations\\ProfileWriteRepository.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAhwCwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-14T20:37:09.082Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "AccountController.cs",
-              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.WebApi\\Controllers\\AccountController.cs",
-              "RelativeDocumentMoniker": "Ekip.WebApi\\Controllers\\AccountController.cs",
-              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.WebApi\\Controllers\\AccountController.cs",
-              "RelativeToolTip": "Ekip.WebApi\\Controllers\\AccountController.cs",
-              "ViewState": "AgIAABgAAAAAAAAAAAAYwC8AAAA9AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-12T16:07:41.771Z",
+              "WhenOpened": "2026-02-16T17:00:26.16Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 9,
-              "Title": "RequestController.cs",
-              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.WebApi\\Controllers\\RequestController.cs",
-              "RelativeDocumentMoniker": "Ekip.WebApi\\Controllers\\RequestController.cs",
-              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.WebApi\\Controllers\\RequestController.cs",
-              "RelativeToolTip": "Ekip.WebApi\\Controllers\\RequestController.cs",
-              "ViewState": "AgIAABQAAAAAAAAAAAAjwCcAAAAJAAAAAAAAAA==",
+              "Title": "Profile.cs",
+              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Domain\\Entities\\Identity.Entities\\Profile.cs",
+              "RelativeDocumentMoniker": "Ekip.Domain\\Entities\\Identity.Entities\\Profile.cs",
+              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Domain\\Entities\\Identity.Entities\\Profile.cs",
+              "RelativeToolTip": "Ekip.Domain\\Entities\\Identity.Entities\\Profile.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-12T16:10:22.504Z",
+              "WhenOpened": "2026-02-09T17:12:43.384Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "MessageCreatedSignalRConsumer.cs",
-              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Features\\Messages\\Consumers\\MessageCreatedSignalRConsumer.cs",
-              "RelativeDocumentMoniker": "Ekip.Application\\Features\\Messages\\Consumers\\MessageCreatedSignalRConsumer.cs",
-              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Features\\Messages\\Consumers\\MessageCreatedSignalRConsumer.cs",
-              "RelativeToolTip": "Ekip.Application\\Features\\Messages\\Consumers\\MessageCreatedSignalRConsumer.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAABPAAAAAAAAAA==",
+              "DocumentIndex": 10,
+              "Title": "PhotoEvidence.cs",
+              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Domain\\ValueObjects\\PhotoEvidence.cs",
+              "RelativeDocumentMoniker": "Ekip.Domain\\ValueObjects\\PhotoEvidence.cs",
+              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Domain\\ValueObjects\\PhotoEvidence.cs",
+              "RelativeToolTip": "Ekip.Domain\\ValueObjects\\PhotoEvidence.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAMAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-13T18:24:22.413Z",
+              "WhenOpened": "2026-02-15T17:51:30.364Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "IFaceVerificationService.cs",
+              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Interfaces\\IFaceVerificationService.cs",
+              "RelativeDocumentMoniker": "Ekip.Application\\Interfaces\\IFaceVerificationService.cs",
+              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Interfaces\\IFaceVerificationService.cs",
+              "RelativeToolTip": "Ekip.Application\\Interfaces\\IFaceVerificationService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-15T18:11:22.182Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "InsightFaceVerificationService .cs",
+              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Infrastructure\\ExternalServices\\FaceAI\\InsightFaceVerificationService .cs",
+              "RelativeDocumentMoniker": "Ekip.Infrastructure\\ExternalServices\\FaceAI\\InsightFaceVerificationService .cs",
+              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Infrastructure\\ExternalServices\\FaceAI\\InsightFaceVerificationService .cs",
+              "RelativeToolTip": "Ekip.Infrastructure\\ExternalServices\\FaceAI\\InsightFaceVerificationService .cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAQwBcAAABMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-15T18:17:10.654Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 13,
-              "Title": "InfrastructureSettings.cs",
-              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Infrastructure\\Configurations\\InfrastructureSettings.cs",
-              "RelativeDocumentMoniker": "Ekip.Infrastructure\\Configurations\\InfrastructureSettings.cs",
-              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Infrastructure\\Configurations\\InfrastructureSettings.cs",
-              "RelativeToolTip": "Ekip.Infrastructure\\Configurations\\InfrastructureSettings.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAgwA4AAAA9AAAAAAAAAA==",
+              "Title": "InsightFaceEngine.cs",
+              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Infrastructure\\ExternalServices\\FaceAI\\InsightFaceEngine.cs",
+              "RelativeDocumentMoniker": "Ekip.Infrastructure\\ExternalServices\\FaceAI\\InsightFaceEngine.cs",
+              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Infrastructure\\ExternalServices\\FaceAI\\InsightFaceEngine.cs",
+              "RelativeToolTip": "Ekip.Infrastructure\\ExternalServices\\FaceAI\\InsightFaceEngine.cs",
+              "ViewState": "AgIAAC0BAAAAAAAAAAAWwD0BAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-13T22:30:41.613Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "ChatRoomReadModel.cs",
-              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Domain\\Entities\\ReadModels\\ChatRoomReadModel.cs",
-              "RelativeDocumentMoniker": "Ekip.Domain\\Entities\\ReadModels\\ChatRoomReadModel.cs",
-              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Domain\\Entities\\ReadModels\\ChatRoomReadModel.cs",
-              "RelativeToolTip": "Ekip.Domain\\Entities\\ReadModels\\ChatRoomReadModel.cs",
-              "ViewState": "AgIAAAIAAAAAAAAAAAAtwBUAAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-13T17:01:04.741Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "IChatService.cs",
-              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Interfaces\\IChatService.cs",
-              "RelativeDocumentMoniker": "Ekip.Application\\Interfaces\\IChatService.cs",
-              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Interfaces\\IChatService.cs",
-              "RelativeToolTip": "Ekip.Application\\Interfaces\\IChatService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-13T18:40:32.869Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "ChatService.cs",
-              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Infrastructure\\Services\\Implementations\\ChatService.cs",
-              "RelativeDocumentMoniker": "Ekip.Infrastructure\\Services\\Implementations\\ChatService.cs",
-              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Infrastructure\\Services\\Implementations\\ChatService.cs",
-              "RelativeToolTip": "Ekip.Infrastructure\\Services\\Implementations\\ChatService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-13T18:41:24.188Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "Chatroom.cs",
-              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Domain\\Entities\\Chat.Entites\\Chatroom.cs",
-              "RelativeDocumentMoniker": "Ekip.Domain\\Entities\\Chat.Entites\\Chatroom.cs",
-              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Domain\\Entities\\Chat.Entites\\Chatroom.cs",
-              "RelativeToolTip": "Ekip.Domain\\Entities\\Chat.Entites\\Chatroom.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAMwB0AAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-12T11:51:22.392Z",
+              "WhenOpened": "2026-02-16T18:26:10.665Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 18,
-              "Title": "SendMessageCommandHandler.cs",
-              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Features\\Messages\\Commands\\SendMessage\\SendMessageCommandHandler.cs",
-              "RelativeDocumentMoniker": "Ekip.Application\\Features\\Messages\\Commands\\SendMessage\\SendMessageCommandHandler.cs",
-              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Features\\Messages\\Commands\\SendMessage\\SendMessageCommandHandler.cs",
-              "RelativeToolTip": "Ekip.Application\\Features\\Messages\\Commands\\SendMessage\\SendMessageCommandHandler.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAMwBMAAAAJAAAAAAAAAA==",
+              "Title": "FaceVerificationEvent.cs",
+              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Contracts\\Events\\FaceVerificationEvent.cs",
+              "RelativeDocumentMoniker": "Ekip.Application\\Contracts\\Events\\FaceVerificationEvent.cs",
+              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Contracts\\Events\\FaceVerificationEvent.cs",
+              "RelativeToolTip": "Ekip.Application\\Contracts\\Events\\FaceVerificationEvent.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAgAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-12T16:14:58.814Z",
+              "WhenOpened": "2026-02-15T21:47:12.502Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "ChatRoomWriteRepository.cs",
-              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Infrastructure\\Repositories\\Implementations\\ChatRoomWriteRepository.cs",
-              "RelativeDocumentMoniker": "Ekip.Infrastructure\\Repositories\\Implementations\\ChatRoomWriteRepository.cs",
-              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Infrastructure\\Repositories\\Implementations\\ChatRoomWriteRepository.cs",
-              "RelativeToolTip": "Ekip.Infrastructure\\Repositories\\Implementations\\ChatRoomWriteRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "DocumentIndex": 15,
+              "Title": "FaceAiConstants.cs",
+              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Infrastructure\\Services\\FaceAI\\Constants\\FaceAiConstants.cs",
+              "RelativeDocumentMoniker": "Ekip.Infrastructure\\Services\\FaceAI\\Constants\\FaceAiConstants.cs",
+              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Infrastructure\\Services\\FaceAI\\Constants\\FaceAiConstants.cs",
+              "RelativeToolTip": "Ekip.Infrastructure\\Services\\FaceAI\\Constants\\FaceAiConstants.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-13T16:39:18.223Z",
+              "WhenOpened": "2026-02-18T18:09:06.008Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "FaceInfo.cs",
+              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Infrastructure\\Services\\FaceAI\\Models\\FaceInfo.cs",
+              "RelativeDocumentMoniker": "Ekip.Infrastructure\\Services\\FaceAI\\Models\\FaceInfo.cs",
+              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Infrastructure\\Services\\FaceAI\\Models\\FaceInfo.cs",
+              "RelativeToolTip": "Ekip.Infrastructure\\Services\\FaceAI\\Models\\FaceInfo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-18T18:11:05.055Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Anchor.cs",
+              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Infrastructure\\Services\\FaceAI\\Models\\Anchor.cs",
+              "RelativeDocumentMoniker": "Ekip.Infrastructure\\Services\\FaceAI\\Models\\Anchor.cs",
+              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Infrastructure\\Services\\FaceAI\\Models\\Anchor.cs",
+              "RelativeToolTip": "Ekip.Infrastructure\\Services\\FaceAI\\Models\\Anchor.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-18T18:12:30.034Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "FileService.cs",
+              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Infrastructure\\Services\\Implementations\\FileService.cs",
+              "RelativeDocumentMoniker": "Ekip.Infrastructure\\Services\\Implementations\\FileService.cs",
+              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Infrastructure\\Services\\Implementations\\FileService.cs",
+              "RelativeToolTip": "Ekip.Infrastructure\\Services\\Implementations\\FileService.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAjwB4AAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-15T21:12:23.26Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "FaceVerificationCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Features\\Authentication\\Commands\\UserVerification\\FaceVerificationCommandHandler.cs",
+              "RelativeDocumentMoniker": "Ekip.Application\\Features\\Authentication\\Commands\\UserVerification\\FaceVerificationCommandHandler.cs",
+              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Features\\Authentication\\Commands\\UserVerification\\FaceVerificationCommandHandler.cs",
+              "RelativeToolTip": "Ekip.Application\\Features\\Authentication\\Commands\\UserVerification\\FaceVerificationCommandHandler.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAqwCEAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-15T20:35:27.42Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 20,
-              "Title": "Message.cs",
-              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Domain\\Entities\\Chat.Entites\\Message.cs",
-              "RelativeDocumentMoniker": "Ekip.Domain\\Entities\\Chat.Entites\\Message.cs",
-              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Domain\\Entities\\Chat.Entites\\Message.cs",
-              "RelativeToolTip": "Ekip.Domain\\Entities\\Chat.Entites\\Message.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAA1wB4AAAAIAAAAAAAAAA==",
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.WebApi\\Program.cs",
+              "RelativeDocumentMoniker": "Ekip.WebApi\\Program.cs",
+              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.WebApi\\Program.cs",
+              "RelativeToolTip": "Ekip.WebApi\\Program.cs",
+              "ViewState": "AgIAAD0AAAAAAAAAAAAuwEoAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-12T14:37:54.927Z"
+              "WhenOpened": "2026-02-17T16:33:47.86Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "ProfileController.cs",
+              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.WebApi\\Controllers\\ProfileController.cs",
+              "RelativeDocumentMoniker": "Ekip.WebApi\\Controllers\\ProfileController.cs",
+              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.WebApi\\Controllers\\ProfileController.cs",
+              "RelativeToolTip": "Ekip.WebApi\\Controllers\\ProfileController.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAQwBcAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-17T16:37:25.386Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 22,
-              "Title": "IChatRoomWriteRepository.cs",
-              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Interfaces\\IChatRoomWriteRepository.cs",
-              "RelativeDocumentMoniker": "Ekip.Application\\Interfaces\\IChatRoomWriteRepository.cs",
-              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Interfaces\\IChatRoomWriteRepository.cs",
-              "RelativeToolTip": "Ekip.Application\\Interfaces\\IChatRoomWriteRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAFAAAAAAAAAA==",
+              "Title": "FaceVerificationCommand.cs",
+              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Features\\Authentication\\Commands\\UserVerification\\FaceVerificationCommand.cs",
+              "RelativeDocumentMoniker": "Ekip.Application\\Features\\Authentication\\Commands\\UserVerification\\FaceVerificationCommand.cs",
+              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Features\\Authentication\\Commands\\UserVerification\\FaceVerificationCommand.cs",
+              "RelativeToolTip": "Ekip.Application\\Features\\Authentication\\Commands\\UserVerification\\FaceVerificationCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAQAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-13T17:21:04.071Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-15T20:13:54.294Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 23,
-              "Title": "ChatRoomCreatedConsumer.cs",
-              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Features\\ChatRoom\\Consumers\\ChatRoomCreatedConsumer.cs",
-              "RelativeDocumentMoniker": "Ekip.Application\\Features\\ChatRoom\\Consumers\\ChatRoomCreatedConsumer.cs",
-              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Features\\ChatRoom\\Consumers\\ChatRoomCreatedConsumer.cs",
-              "RelativeToolTip": "Ekip.Application\\Features\\ChatRoom\\Consumers\\ChatRoomCreatedConsumer.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAIAAAAAAAAAA==",
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.WebApi\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "Ekip.WebApi\\Controllers\\AccountController.cs",
+              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.WebApi\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "Ekip.WebApi\\Controllers\\AccountController.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAYwEEAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-12T15:42:27.911Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "CreateChatroomForRequestConsumer.cs",
-              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Features\\ChatRoom\\Consumers\\CreateChatroomForRequestConsumer.cs",
-              "RelativeDocumentMoniker": "Ekip.Application\\Features\\ChatRoom\\Consumers\\CreateChatroomForRequestConsumer.cs",
-              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Features\\ChatRoom\\Consumers\\CreateChatroomForRequestConsumer.cs",
-              "RelativeToolTip": "Ekip.Application\\Features\\ChatRoom\\Consumers\\CreateChatroomForRequestConsumer.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAxwCYAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-12T15:44:36.298Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "ChatRoomConfiguration.cs",
-              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Infrastructure\\Persistence\\MongoDb\\Configurations\\EntityConfigurations\\ChatRoomConfiguration.cs",
-              "RelativeDocumentMoniker": "Ekip.Infrastructure\\Persistence\\MongoDb\\Configurations\\EntityConfigurations\\ChatRoomConfiguration.cs",
-              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Infrastructure\\Persistence\\MongoDb\\Configurations\\EntityConfigurations\\ChatRoomConfiguration.cs",
-              "RelativeToolTip": "Ekip.Infrastructure\\Persistence\\MongoDb\\Configurations\\EntityConfigurations\\ChatRoomConfiguration.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-13T16:50:52.568Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 27,
-              "Title": "MessageConfiguration.cs",
-              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Infrastructure\\Persistence\\MongoDb\\Configurations\\EntityConfigurations\\MessageConfiguration.cs",
-              "RelativeDocumentMoniker": "Ekip.Infrastructure\\Persistence\\MongoDb\\Configurations\\EntityConfigurations\\MessageConfiguration.cs",
-              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Infrastructure\\Persistence\\MongoDb\\Configurations\\EntityConfigurations\\MessageConfiguration.cs",
-              "RelativeToolTip": "Ekip.Infrastructure\\Persistence\\MongoDb\\Configurations\\EntityConfigurations\\MessageConfiguration.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-13T16:51:08.944Z"
+              "WhenOpened": "2026-02-17T16:34:38.08Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 25,
-              "Title": "Request.cs",
-              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Domain\\Entities\\Requests.Entities\\Request.cs",
-              "RelativeDocumentMoniker": "Ekip.Domain\\Entities\\Requests.Entities\\Request.cs",
-              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Domain\\Entities\\Requests.Entities\\Request.cs",
-              "RelativeToolTip": "Ekip.Domain\\Entities\\Requests.Entities\\Request.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAIA3wDAAAAAmAAAAAAAAAA==",
+              "Title": "InfrastructureSettings.cs",
+              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Infrastructure\\Configurations\\InfrastructureSettings.cs",
+              "RelativeDocumentMoniker": "Ekip.Infrastructure\\Configurations\\InfrastructureSettings.cs",
+              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Infrastructure\\Configurations\\InfrastructureSettings.cs",
+              "RelativeToolTip": "Ekip.Infrastructure\\Configurations\\InfrastructureSettings.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAA3wA4AAAA9AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-08T17:57:30.112Z"
+              "WhenOpened": "2026-02-13T22:30:41.613Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "ServiceCollectionExtensions.cs",
+              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Infrastructure\\Configurations\\ServiceCollectionExtensions.cs",
+              "RelativeDocumentMoniker": "Ekip.Infrastructure\\Configurations\\ServiceCollectionExtensions.cs",
+              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Infrastructure\\Configurations\\ServiceCollectionExtensions.cs",
+              "RelativeToolTip": "Ekip.Infrastructure\\Configurations\\ServiceCollectionExtensions.cs",
+              "ViewState": "AgIAAHsAAAAAAAAAAAAowIIAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-12T15:34:20.324Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "MessageCreatedEvent.cs",
+              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Contracts\\Events\\MessageCreatedEvent.cs",
+              "RelativeDocumentMoniker": "Ekip.Application\\Contracts\\Events\\MessageCreatedEvent.cs",
+              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Contracts\\Events\\MessageCreatedEvent.cs",
+              "RelativeToolTip": "Ekip.Application\\Contracts\\Events\\MessageCreatedEvent.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-15T21:48:06.401Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "IFileService.cs",
+              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Infrastructure\\Services\\Interfaces\\IFileService.cs",
+              "RelativeDocumentMoniker": "Ekip.Infrastructure\\Services\\Interfaces\\IFileService.cs",
+              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Infrastructure\\Services\\Interfaces\\IFileService.cs",
+              "RelativeToolTip": "Ekip.Infrastructure\\Services\\Interfaces\\IFileService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-15T21:11:50.005Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 28,
-              "Title": "MessageCreatedConsumer.cs",
-              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Features\\Messages\\Consumers\\MessageCreatedConsumer.cs",
-              "RelativeDocumentMoniker": "Ekip.Application\\Features\\Messages\\Consumers\\MessageCreatedConsumer.cs",
-              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Features\\Messages\\Consumers\\MessageCreatedConsumer.cs",
-              "RelativeToolTip": "Ekip.Application\\Features\\Messages\\Consumers\\MessageCreatedConsumer.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "SetUserAvatarCommand.cs",
+              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Features\\Profile\\Commands\\SetUserAvatar\\SetUserAvatarCommand.cs",
+              "RelativeDocumentMoniker": "Ekip.Application\\Features\\Profile\\Commands\\SetUserAvatar\\SetUserAvatarCommand.cs",
+              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Features\\Profile\\Commands\\SetUserAvatar\\SetUserAvatarCommand.cs",
+              "RelativeToolTip": "Ekip.Application\\Features\\Profile\\Commands\\SetUserAvatar\\SetUserAvatarCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-13T16:37:53.082Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-15T20:53:57.038Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 29,
-              "Title": "SendMessageCommand.cs",
-              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Features\\Messages\\Commands\\SendMessage\\SendMessageCommand.cs",
-              "RelativeDocumentMoniker": "Ekip.Application\\Features\\Messages\\Commands\\SendMessage\\SendMessageCommand.cs",
-              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Features\\Messages\\Commands\\SendMessage\\SendMessageCommand.cs",
-              "RelativeToolTip": "Ekip.Application\\Features\\Messages\\Commands\\SendMessage\\SendMessageCommand.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "Title": "SetUserAvatarCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Features\\Profile\\Commands\\SetUserAvatar\\SetUserAvatarCommandHandler.cs",
+              "RelativeDocumentMoniker": "Ekip.Application\\Features\\Profile\\Commands\\SetUserAvatar\\SetUserAvatarCommandHandler.cs",
+              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Features\\Profile\\Commands\\SetUserAvatar\\SetUserAvatarCommandHandler.cs",
+              "RelativeToolTip": "Ekip.Application\\Features\\Profile\\Commands\\SetUserAvatar\\SetUserAvatarCommandHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-12T16:20:33.139Z"
+              "WhenOpened": "2026-02-15T20:53:56.13Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 30,
-              "Title": "CreateChatRoomCommandHandler.cs",
-              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Features\\ChatRoom\\Commands\\CreateChatRoom\\CreateChatRoomCommandHandler.cs",
-              "RelativeDocumentMoniker": "Ekip.Application\\Features\\ChatRoom\\Commands\\CreateChatRoom\\CreateChatRoomCommandHandler.cs",
-              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Features\\ChatRoom\\Commands\\CreateChatRoom\\CreateChatRoomCommandHandler.cs",
-              "RelativeToolTip": "Ekip.Application\\Features\\ChatRoom\\Commands\\CreateChatRoom\\CreateChatRoomCommandHandler.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAAwDQAAAANAAAAAAAAAA==",
+              "Title": "SetUserProfileCommand.cs",
+              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Features\\Profile\\Commands\\SetUserProfile\\SetUserProfileCommand.cs",
+              "RelativeDocumentMoniker": "Ekip.Application\\Features\\Profile\\Commands\\SetUserProfile\\SetUserProfileCommand.cs",
+              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Features\\Profile\\Commands\\SetUserProfile\\SetUserProfileCommand.cs",
+              "RelativeToolTip": "Ekip.Application\\Features\\Profile\\Commands\\SetUserProfile\\SetUserProfileCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-12T15:42:39.41Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 34,
-              "Title": "ChatRoomType.cs",
-              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Domain\\Enums\\Chat.Enums\\ChatRoomType.cs",
-              "RelativeDocumentMoniker": "Ekip.Domain\\Enums\\Chat.Enums\\ChatRoomType.cs",
-              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Domain\\Enums\\Chat.Enums\\ChatRoomType.cs",
-              "RelativeToolTip": "Ekip.Domain\\Enums\\Chat.Enums\\ChatRoomType.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-12T14:51:22.605Z"
+              "WhenOpened": "2026-02-15T20:53:49.432Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 31,
-              "Title": "RequestCreatedConsumer.cs",
-              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Features\\Request\\Consumers\\RequestCreatedConsumer.cs",
-              "RelativeDocumentMoniker": "Ekip.Application\\Features\\Request\\Consumers\\RequestCreatedConsumer.cs",
-              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Features\\Request\\Consumers\\RequestCreatedConsumer.cs",
-              "RelativeToolTip": "Ekip.Application\\Features\\Request\\Consumers\\RequestCreatedConsumer.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
+              "Title": "RegisterCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Features\\Authentication\\Commands\\Register\\RegisterCommandHandler.cs",
+              "RelativeDocumentMoniker": "Ekip.Application\\Features\\Authentication\\Commands\\Register\\RegisterCommandHandler.cs",
+              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Features\\Authentication\\Commands\\Register\\RegisterCommandHandler.cs",
+              "RelativeToolTip": "Ekip.Application\\Features\\Authentication\\Commands\\Register\\RegisterCommandHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFUAAABMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-12T14:46:11.882Z"
+              "WhenOpened": "2026-02-08T18:00:02.531Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 32,
-              "Title": "RequestCreatedEvent.cs",
-              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Contracts\\Events\\RequestCreatedEvent.cs",
-              "RelativeDocumentMoniker": "Ekip.Application\\Contracts\\Events\\RequestCreatedEvent.cs",
-              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Contracts\\Events\\RequestCreatedEvent.cs",
-              "RelativeToolTip": "Ekip.Application\\Contracts\\Events\\RequestCreatedEvent.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAUAAAASAAAAAAAAAA==",
+              "Title": "AssignmentMemberDto.cs",
+              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\DTOs\\User\\AssignmentMemberDto.cs",
+              "RelativeDocumentMoniker": "Ekip.Application\\DTOs\\User\\AssignmentMemberDto.cs",
+              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\DTOs\\User\\AssignmentMemberDto.cs",
+              "RelativeToolTip": "Ekip.Application\\DTOs\\User\\AssignmentMemberDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-12T14:46:00.633Z"
+              "WhenOpened": "2026-02-15T20:09:01.056Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 33,
-              "Title": "CreateRequestCommandHandler.cs",
-              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Features\\Request\\Commands\\CreateRequest\\CreateRequestCommandHandler.cs",
-              "RelativeDocumentMoniker": "Ekip.Application\\Features\\Request\\Commands\\CreateRequest\\CreateRequestCommandHandler.cs",
-              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Features\\Request\\Commands\\CreateRequest\\CreateRequestCommandHandler.cs",
-              "RelativeToolTip": "Ekip.Application\\Features\\Request\\Commands\\CreateRequest\\CreateRequestCommandHandler.cs",
-              "ViewState": "AgIAADIAAAAAAAAAAAAAwEoAAAAAAAAAAAAAAA==",
+              "Title": "IdentityEvidence.cs",
+              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Domain\\ValueObjects\\IdentityEvidence.cs",
+              "RelativeDocumentMoniker": "Ekip.Domain\\ValueObjects\\IdentityEvidence.cs",
+              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Domain\\ValueObjects\\IdentityEvidence.cs",
+              "RelativeToolTip": "Ekip.Domain\\ValueObjects\\IdentityEvidence.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-12T14:40:20.331Z"
+              "WhenOpened": "2026-02-15T17:57:53.386Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 34,
+              "Title": "RequestFilter.cs",
+              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Domain\\ValueObjects\\RequestFilter.cs",
+              "RelativeDocumentMoniker": "Ekip.Domain\\ValueObjects\\RequestFilter.cs",
+              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Domain\\ValueObjects\\RequestFilter.cs",
+              "RelativeToolTip": "Ekip.Domain\\ValueObjects\\RequestFilter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADUAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T16:13:35.245Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
               "Title": "MemberEligibility.cs",
               "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Domain\\ValueObjects\\MemberEligibility.cs",
               "RelativeDocumentMoniker": "Ekip.Domain\\ValueObjects\\MemberEligibility.cs",
@@ -667,19 +755,319 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
-              "Title": "RequestFilter.cs",
-              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Domain\\ValueObjects\\RequestFilter.cs",
-              "RelativeDocumentMoniker": "Ekip.Domain\\ValueObjects\\RequestFilter.cs",
-              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Domain\\ValueObjects\\RequestFilter.cs",
-              "RelativeToolTip": "Ekip.Domain\\ValueObjects\\RequestFilter.cs",
-              "ViewState": "AgIAABwAAAAAAAAAAAAewDUAAAAIAAAAAAAAAA==",
+              "DocumentIndex": 36,
+              "Title": "LoginQueryHandler.cs",
+              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Features\\Authentication\\Queries\\Login\\LoginQueryHandler.cs",
+              "RelativeDocumentMoniker": "Ekip.Application\\Features\\Authentication\\Queries\\Login\\LoginQueryHandler.cs",
+              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Features\\Authentication\\Queries\\Login\\LoginQueryHandler.cs",
+              "RelativeToolTip": "Ekip.Application\\Features\\Authentication\\Queries\\Login\\LoginQueryHandler.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAADwvyMAAABIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-09T16:13:35.245Z"
+              "WhenOpened": "2026-02-14T20:37:30.169Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "IJwtTokenGenerator.cs",
+              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Interfaces\\IJwtTokenGenerator.cs",
+              "RelativeDocumentMoniker": "Ekip.Application\\Interfaces\\IJwtTokenGenerator.cs",
+              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Interfaces\\IJwtTokenGenerator.cs",
+              "RelativeToolTip": "Ekip.Application\\Interfaces\\IJwtTokenGenerator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-14T20:37:39.653Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "ChatHub.cs",
+              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Infrastructure\\Services\\SignalR\\ChatHub.cs",
+              "RelativeDocumentMoniker": "Ekip.Infrastructure\\Services\\SignalR\\ChatHub.cs",
+              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Infrastructure\\Services\\SignalR\\ChatHub.cs",
+              "RelativeToolTip": "Ekip.Infrastructure\\Services\\SignalR\\ChatHub.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-13T18:22:22.086Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "ChatRoomReadRepository.cs",
+              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Infrastructure\\Repositories\\Implementations\\ChatRoomReadRepository.cs",
+              "RelativeDocumentMoniker": "Ekip.Infrastructure\\Repositories\\Implementations\\ChatRoomReadRepository.cs",
+              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Infrastructure\\Repositories\\Implementations\\ChatRoomReadRepository.cs",
+              "RelativeToolTip": "Ekip.Infrastructure\\Repositories\\Implementations\\ChatRoomReadRepository.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAhwC8AAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-13T17:01:18.5Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "IChatRoomReadRepository.cs",
+              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Interfaces\\IChatRoomReadRepository.cs",
+              "RelativeDocumentMoniker": "Ekip.Application\\Interfaces\\IChatRoomReadRepository.cs",
+              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Interfaces\\IChatRoomReadRepository.cs",
+              "RelativeToolTip": "Ekip.Application\\Interfaces\\IChatRoomReadRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-13T21:26:03.572Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 39,
+              "Title": "JwtTokenGenerator.cs",
+              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Infrastructure\\Security\\JwtTokenGenerator.cs",
+              "RelativeDocumentMoniker": "Ekip.Infrastructure\\Security\\JwtTokenGenerator.cs",
+              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Infrastructure\\Security\\JwtTokenGenerator.cs",
+              "RelativeToolTip": "Ekip.Infrastructure\\Security\\JwtTokenGenerator.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAIBJwBYAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-14T20:37:09.082Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 43,
+              "Title": "MessageCreatedSignalRConsumer.cs",
+              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Features\\Messages\\Consumers\\MessageCreatedSignalRConsumer.cs",
+              "RelativeDocumentMoniker": "Ekip.Application\\Features\\Messages\\Consumers\\MessageCreatedSignalRConsumer.cs",
+              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Features\\Messages\\Consumers\\MessageCreatedSignalRConsumer.cs",
+              "RelativeToolTip": "Ekip.Application\\Features\\Messages\\Consumers\\MessageCreatedSignalRConsumer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAABPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-13T18:24:22.413Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "ChatRoomReadModel.cs",
+              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Domain\\Entities\\ReadModels\\ChatRoomReadModel.cs",
+              "RelativeDocumentMoniker": "Ekip.Domain\\Entities\\ReadModels\\ChatRoomReadModel.cs",
+              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Domain\\Entities\\ReadModels\\ChatRoomReadModel.cs",
+              "RelativeToolTip": "Ekip.Domain\\Entities\\ReadModels\\ChatRoomReadModel.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAtwBUAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-13T17:01:04.741Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 44,
+              "Title": "IChatService.cs",
+              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Interfaces\\IChatService.cs",
+              "RelativeDocumentMoniker": "Ekip.Application\\Interfaces\\IChatService.cs",
+              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Interfaces\\IChatService.cs",
+              "RelativeToolTip": "Ekip.Application\\Interfaces\\IChatService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-13T18:40:32.869Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 45,
+              "Title": "ChatService.cs",
+              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Infrastructure\\Services\\Implementations\\ChatService.cs",
+              "RelativeDocumentMoniker": "Ekip.Infrastructure\\Services\\Implementations\\ChatService.cs",
+              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Infrastructure\\Services\\Implementations\\ChatService.cs",
+              "RelativeToolTip": "Ekip.Infrastructure\\Services\\Implementations\\ChatService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-13T18:41:24.188Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 47,
+              "Title": "Chatroom.cs",
+              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Domain\\Entities\\Chat.Entites\\Chatroom.cs",
+              "RelativeDocumentMoniker": "Ekip.Domain\\Entities\\Chat.Entites\\Chatroom.cs",
+              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Domain\\Entities\\Chat.Entites\\Chatroom.cs",
+              "RelativeToolTip": "Ekip.Domain\\Entities\\Chat.Entites\\Chatroom.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAIAwwB0AAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-12T11:51:22.392Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 46,
+              "Title": "SendMessageCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Features\\Messages\\Commands\\SendMessage\\SendMessageCommandHandler.cs",
+              "RelativeDocumentMoniker": "Ekip.Application\\Features\\Messages\\Commands\\SendMessage\\SendMessageCommandHandler.cs",
+              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Features\\Messages\\Commands\\SendMessage\\SendMessageCommandHandler.cs",
+              "RelativeToolTip": "Ekip.Application\\Features\\Messages\\Commands\\SendMessage\\SendMessageCommandHandler.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAMwBMAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-12T16:14:58.814Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 49,
+              "Title": "ChatRoomWriteRepository.cs",
+              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Infrastructure\\Repositories\\Implementations\\ChatRoomWriteRepository.cs",
+              "RelativeDocumentMoniker": "Ekip.Infrastructure\\Repositories\\Implementations\\ChatRoomWriteRepository.cs",
+              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Infrastructure\\Repositories\\Implementations\\ChatRoomWriteRepository.cs",
+              "RelativeToolTip": "Ekip.Infrastructure\\Repositories\\Implementations\\ChatRoomWriteRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-13T16:39:18.223Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 48,
+              "Title": "Message.cs",
+              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Domain\\Entities\\Chat.Entites\\Message.cs",
+              "RelativeDocumentMoniker": "Ekip.Domain\\Entities\\Chat.Entites\\Message.cs",
+              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Domain\\Entities\\Chat.Entites\\Message.cs",
+              "RelativeToolTip": "Ekip.Domain\\Entities\\Chat.Entites\\Message.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAxwB4AAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-12T14:37:54.927Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 50,
+              "Title": "IChatRoomWriteRepository.cs",
+              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Interfaces\\IChatRoomWriteRepository.cs",
+              "RelativeDocumentMoniker": "Ekip.Application\\Interfaces\\IChatRoomWriteRepository.cs",
+              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Interfaces\\IChatRoomWriteRepository.cs",
+              "RelativeToolTip": "Ekip.Application\\Interfaces\\IChatRoomWriteRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-13T17:21:04.071Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 51,
+              "Title": "ChatRoomCreatedConsumer.cs",
+              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Features\\ChatRoom\\Consumers\\ChatRoomCreatedConsumer.cs",
+              "RelativeDocumentMoniker": "Ekip.Application\\Features\\ChatRoom\\Consumers\\ChatRoomCreatedConsumer.cs",
+              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Features\\ChatRoom\\Consumers\\ChatRoomCreatedConsumer.cs",
+              "RelativeToolTip": "Ekip.Application\\Features\\ChatRoom\\Consumers\\ChatRoomCreatedConsumer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-12T15:42:27.911Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 52,
+              "Title": "CreateChatroomForRequestConsumer.cs",
+              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Features\\ChatRoom\\Consumers\\CreateChatroomForRequestConsumer.cs",
+              "RelativeDocumentMoniker": "Ekip.Application\\Features\\ChatRoom\\Consumers\\CreateChatroomForRequestConsumer.cs",
+              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Features\\ChatRoom\\Consumers\\CreateChatroomForRequestConsumer.cs",
+              "RelativeToolTip": "Ekip.Application\\Features\\ChatRoom\\Consumers\\CreateChatroomForRequestConsumer.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAxwCYAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-12T15:44:36.298Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 54,
+              "Title": "ChatRoomConfiguration.cs",
+              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Infrastructure\\Persistence\\MongoDb\\Configurations\\EntityConfigurations\\ChatRoomConfiguration.cs",
+              "RelativeDocumentMoniker": "Ekip.Infrastructure\\Persistence\\MongoDb\\Configurations\\EntityConfigurations\\ChatRoomConfiguration.cs",
+              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Infrastructure\\Persistence\\MongoDb\\Configurations\\EntityConfigurations\\ChatRoomConfiguration.cs",
+              "RelativeToolTip": "Ekip.Infrastructure\\Persistence\\MongoDb\\Configurations\\EntityConfigurations\\ChatRoomConfiguration.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-13T16:50:52.568Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 55,
+              "Title": "MessageConfiguration.cs",
+              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Infrastructure\\Persistence\\MongoDb\\Configurations\\EntityConfigurations\\MessageConfiguration.cs",
+              "RelativeDocumentMoniker": "Ekip.Infrastructure\\Persistence\\MongoDb\\Configurations\\EntityConfigurations\\MessageConfiguration.cs",
+              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Infrastructure\\Persistence\\MongoDb\\Configurations\\EntityConfigurations\\MessageConfiguration.cs",
+              "RelativeToolTip": "Ekip.Infrastructure\\Persistence\\MongoDb\\Configurations\\EntityConfigurations\\MessageConfiguration.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-13T16:51:08.944Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 53,
+              "Title": "Request.cs",
+              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Domain\\Entities\\Requests.Entities\\Request.cs",
+              "RelativeDocumentMoniker": "Ekip.Domain\\Entities\\Requests.Entities\\Request.cs",
+              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Domain\\Entities\\Requests.Entities\\Request.cs",
+              "RelativeToolTip": "Ekip.Domain\\Entities\\Requests.Entities\\Request.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAIAzwDAAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-08T17:57:30.112Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 56,
+              "Title": "MessageCreatedConsumer.cs",
+              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Features\\Messages\\Consumers\\MessageCreatedConsumer.cs",
+              "RelativeDocumentMoniker": "Ekip.Application\\Features\\Messages\\Consumers\\MessageCreatedConsumer.cs",
+              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Features\\Messages\\Consumers\\MessageCreatedConsumer.cs",
+              "RelativeToolTip": "Ekip.Application\\Features\\Messages\\Consumers\\MessageCreatedConsumer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAIBZwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-13T16:37:53.082Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 57,
+              "Title": "SendMessageCommand.cs",
+              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Features\\Messages\\Commands\\SendMessage\\SendMessageCommand.cs",
+              "RelativeDocumentMoniker": "Ekip.Application\\Features\\Messages\\Commands\\SendMessage\\SendMessageCommand.cs",
+              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Features\\Messages\\Commands\\SendMessage\\SendMessageCommand.cs",
+              "RelativeToolTip": "Ekip.Application\\Features\\Messages\\Commands\\SendMessage\\SendMessageCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-12T16:20:33.139Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 61,
+              "Title": "ChatRoomType.cs",
+              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Domain\\Enums\\Chat.Enums\\ChatRoomType.cs",
+              "RelativeDocumentMoniker": "Ekip.Domain\\Enums\\Chat.Enums\\ChatRoomType.cs",
+              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Domain\\Enums\\Chat.Enums\\ChatRoomType.cs",
+              "RelativeToolTip": "Ekip.Domain\\Enums\\Chat.Enums\\ChatRoomType.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-12T14:51:22.605Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 58,
+              "Title": "RequestCreatedConsumer.cs",
+              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Features\\Request\\Consumers\\RequestCreatedConsumer.cs",
+              "RelativeDocumentMoniker": "Ekip.Application\\Features\\Request\\Consumers\\RequestCreatedConsumer.cs",
+              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Features\\Request\\Consumers\\RequestCreatedConsumer.cs",
+              "RelativeToolTip": "Ekip.Application\\Features\\Request\\Consumers\\RequestCreatedConsumer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-12T14:46:11.882Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 59,
+              "Title": "RequestCreatedEvent.cs",
+              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Contracts\\Events\\RequestCreatedEvent.cs",
+              "RelativeDocumentMoniker": "Ekip.Application\\Contracts\\Events\\RequestCreatedEvent.cs",
+              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Contracts\\Events\\RequestCreatedEvent.cs",
+              "RelativeToolTip": "Ekip.Application\\Contracts\\Events\\RequestCreatedEvent.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAUAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-12T14:46:00.633Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 60,
+              "Title": "CreateRequestCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Features\\Request\\Commands\\CreateRequest\\CreateRequestCommandHandler.cs",
+              "RelativeDocumentMoniker": "Ekip.Application\\Features\\Request\\Commands\\CreateRequest\\CreateRequestCommandHandler.cs",
+              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Features\\Request\\Commands\\CreateRequest\\CreateRequestCommandHandler.cs",
+              "RelativeToolTip": "Ekip.Application\\Features\\Request\\Commands\\CreateRequest\\CreateRequestCommandHandler.cs",
+              "ViewState": "AgIAADIAAAAAAAAAAAAAwEoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-12T14:40:20.331Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 64,
               "Title": "UserWithProfileDto.cs",
               "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\DTOs\\User\\UserWithProfileDto.cs",
               "RelativeDocumentMoniker": "Ekip.Application\\DTOs\\User\\UserWithProfileDto.cs",
@@ -691,31 +1079,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
-              "Title": "ProfileReadRepository.cs",
-              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Infrastructure\\Repositories\\Implementations\\ProfileReadRepository.cs",
-              "RelativeDocumentMoniker": "Ekip.Infrastructure\\Repositories\\Implementations\\ProfileReadRepository.cs",
-              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Infrastructure\\Repositories\\Implementations\\ProfileReadRepository.cs",
-              "RelativeToolTip": "Ekip.Infrastructure\\Repositories\\Implementations\\ProfileReadRepository.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAA5wCkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-09T16:58:20.134Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 40,
-              "Title": "Profile.cs",
-              "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Domain\\Entities\\Identity.Entities\\Profile.cs",
-              "RelativeDocumentMoniker": "Ekip.Domain\\Entities\\Identity.Entities\\Profile.cs",
-              "ToolTip": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Domain\\Entities\\Identity.Entities\\Profile.cs",
-              "RelativeToolTip": "Ekip.Domain\\Entities\\Identity.Entities\\Profile.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAyAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-09T17:12:43.384Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 62,
               "Title": "AssignToRequestCommandHandler.cs",
               "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Features\\Request\\Commands\\AssignToRequest\\AssignToRequestCommandHandler.cs",
               "RelativeDocumentMoniker": "Ekip.Application\\Features\\Request\\Commands\\AssignToRequest\\AssignToRequestCommandHandler.cs",
@@ -727,7 +1091,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 63,
               "Title": "RequestConfiguration.cs",
               "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Infrastructure\\Persistence\\MongoDb\\Configurations\\EntityConfigurations\\RequestConfiguration.cs",
               "RelativeDocumentMoniker": "Ekip.Infrastructure\\Persistence\\MongoDb\\Configurations\\EntityConfigurations\\RequestConfiguration.cs",
@@ -739,7 +1103,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 65,
               "Title": "ProfileDto.cs",
               "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\DTOs\\User\\ProfileDto.cs",
               "RelativeDocumentMoniker": "Ekip.Application\\DTOs\\User\\ProfileDto.cs",
@@ -751,7 +1115,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 66,
               "Title": "RequestFilterKind.cs",
               "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Domain\\Enums\\Requests.Enums\\RequestFilterKind.cs",
               "RelativeDocumentMoniker": "Ekip.Domain\\Enums\\Requests.Enums\\RequestFilterKind.cs",
@@ -763,7 +1127,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 45,
+              "DocumentIndex": 68,
               "Title": "UserReadRepository.cs",
               "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Infrastructure\\Repositories\\Implementations\\UserReadRepository.cs",
               "RelativeDocumentMoniker": "Ekip.Infrastructure\\Repositories\\Implementations\\UserReadRepository.cs",
@@ -775,7 +1139,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 44,
+              "DocumentIndex": 67,
               "Title": "IUserReadRepository.cs",
               "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Interfaces\\IUserReadRepository.cs",
               "RelativeDocumentMoniker": "Ekip.Application\\Interfaces\\IUserReadRepository.cs",
@@ -787,7 +1151,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 46,
+              "DocumentIndex": 69,
               "Title": "UserCreatedConsumer.cs",
               "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Features\\Authentication\\Consumers\\UserCreatedConsumer.cs",
               "RelativeDocumentMoniker": "Ekip.Application\\Features\\Authentication\\Consumers\\UserCreatedConsumer.cs",
@@ -799,7 +1163,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 47,
+              "DocumentIndex": 70,
               "Title": "UserCreatedEvent.cs",
               "DocumentMoniker": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Contracts\\Events\\UserCreatedEvent.cs",
               "RelativeDocumentMoniker": "Ekip.Application\\Contracts\\Events\\UserCreatedEvent.cs",

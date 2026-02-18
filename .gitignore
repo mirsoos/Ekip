@@ -8,6 +8,11 @@
 .vs/
 .vscode/
 
+
+# InsightFace models
+/FaceModels/
+*.onnx
+
 # Build results
 [Bb]in/
 [Oo]bj/

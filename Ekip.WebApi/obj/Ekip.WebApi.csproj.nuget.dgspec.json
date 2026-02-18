@@ -63,10 +63,6 @@
               "target": "Package",
               "version": "[13.1.0, )"
             },
-            "Microsoft.AspNetCore.Http.Features": {
-              "target": "Package",
-              "version": "[5.0.17, )"
-            },
             "Polly": {
               "target": "Package",
               "version": "[8.6.5, )"
@@ -250,6 +246,14 @@
               "target": "Package",
               "version": "[9.0.11, )"
             },
+            "Microsoft.ML.OnnxRuntime": {
+              "target": "Package",
+              "version": "[1.24.1, )"
+            },
+            "Microsoft.ML.OnnxRuntime.Managed": {
+              "target": "Package",
+              "version": "[1.24.1, )"
+            },
             "MongoDB.Driver": {
               "target": "Package",
               "version": "[3.5.1, )"
@@ -257,6 +261,14 @@
             "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",
               "version": "[9.0.4, )"
+            },
+            "OpenCvSharp4": {
+              "target": "Package",
+              "version": "[4.13.0.20260214, )"
+            },
+            "OpenCvSharp4.runtime.win": {
+              "target": "Package",
+              "version": "[4.13.0.20260214, )"
             },
             "StackExchange.Redis": {
               "target": "Package",
@@ -358,7 +370,7 @@
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[10.0.1, )"
+              "version": "[6.6.2, )"
             }
           },
           "imports": [

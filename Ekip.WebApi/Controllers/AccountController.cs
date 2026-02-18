@@ -2,8 +2,7 @@
 using Ekip.Application.Features.Authentication.Commands.Register;
 using Ekip.Application.Features.Authentication.Queries.Login;
 using Ekip.Application.Features.Profile.Commands.SetUserAvatar;
-using Ekip.Application.Features.Request.Commands.AssignToRequest;
-using Ekip.Application.Features.Request.Commands.CreateRequest;
+using Ekip.Infrastructure.Services.Interfaces;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,12 +10,15 @@ namespace Ekip.WebApi.Controllers
 {
     [Route("EkipApi/[controller]")]
     [ApiController]
+    //[Authorize]
     public class AccountController : ControllerBase
     {
         private readonly IMediator _mediator;
-        public AccountController(IMediator mediator)
+        private readonly IFileService _fileService;
+        public AccountController(IMediator mediator , IFileService fileService)
         {
             _mediator = mediator;
+            _fileService = fileService;
         }
 
         [HttpPost("Register")]
@@ -40,13 +42,39 @@ namespace Ekip.WebApi.Controllers
         }
 
         [HttpPost("SetProfileAvatar")]
-        public async Task<ActionResult<string>> SetProfileAvatar(SetUserAvatarCommand setUserAvatar)
+        public async Task<ActionResult<string>> SetProfileAvatar(IFormFile file, CancellationToken cancellationToken)
         {
-            if (setUserAvatar == null)
-                return BadRequest();
+            if (file == null || file.Length == 0)
+                return BadRequest("file does not Recieved");
 
-            var result = await _mediator.Send(setUserAvatar);
-            return Ok(result);
+            var userIdClaim = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(userIdClaim))
+                return Unauthorized();
+
+            var profileId = Guid.Parse(userIdClaim);
+
+            string avatarUrl;
+            using (var stream = file.OpenReadStream())
+            {
+                avatarUrl = await _fileService.UploadImageAsync(stream, file.FileName, "Avatars", cancellationToken);
+            }
+
+            var command = new SetUserAvatarCommand
+            {
+                AvatarUrl = avatarUrl,
+                ProfileRef = profileId
+            };
+
+            try
+            {
+                var result = await _mediator.Send(command, cancellationToken);
+                return Ok( result );
+            }
+            catch (Exception)
+            {
+                await _fileService.DeleteFile(avatarUrl, cancellationToken);
+                throw;
+            }
         }
     }
 }

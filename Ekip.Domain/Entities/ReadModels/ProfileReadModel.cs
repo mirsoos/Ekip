@@ -1,4 +1,5 @@
 ﻿
+using Ekip.Domain.Enums.Identity.Enums;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Ekip.Domain.Entities.ReadModels
@@ -10,6 +11,7 @@ namespace Ekip.Domain.Entities.ReadModels
         public string? AvatarUrl { get; set; }
         public double? Score { get; set; }
         public int Experience { get; set; }
+        public VerificationLevel VerificationLevel { get; set; }
 
         [ForeignKey("UserRef")]
         public virtual UserReadModel User { get; set; }

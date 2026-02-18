@@ -1,5 +1,6 @@
 ﻿using Ekip.Application.Features.Authentication.Consumers;
 using Ekip.Application.Interfaces;
+using Ekip.Infrastructure.ExternalServices.FaceAI;
 using Ekip.Infrastructure.Persistence.MongoDb.Configurations;
 using Ekip.Infrastructure.Persistence.MongoDb.Contexts;
 using Ekip.Infrastructure.Persistence.PostgreSql.Contexts;
@@ -121,12 +122,14 @@ namespace Ekip.Infrastructure.Configurations
             services.AddScoped<IChatService, ChatService>();
 
             services.AddScoped<IRedisService, RedisService>();
-
-
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
             services.AddScoped<IPasswordHasher, PasswordHasher>();
             services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
+
+            services.AddSingleton<InsightFaceEngine>();
+            services.AddScoped<IFaceVerificationService, InsightFaceVerificationService>();
+
 
             //services.AddScoped<IEmailService, EmailService>();
             //services.AddScoped<IMessageQueueService, RabbitMqService>();

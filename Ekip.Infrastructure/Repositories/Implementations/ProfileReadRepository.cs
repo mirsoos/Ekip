@@ -2,6 +2,7 @@
 using Ekip.Application.DTOs.User;
 using Ekip.Application.Interfaces;
 using Ekip.Domain.Entities.ReadModels;
+using Ekip.Domain.Enums.Identity.Enums;
 using Ekip.Domain.Enums.Requests.Enums;
 using Ekip.Infrastructure.Persistence.PostgreSql.Contexts;
 using MassTransit.Initializers;
@@ -164,6 +165,15 @@ namespace Ekip.Infrastructure.Repositories.Implementations
         {
             var profile = await _postgreDb.ProfileReads.Where(x => x.Id == profileRef).ExecuteUpdateAsync(setters => 
             setters.SetProperty(p=>p.AvatarUrl, avatarUrl),cancellationToken);
+        }
+
+        public async Task UpdateFaceVerificationStatusAsync(Guid profileRef, VerificationLevel verificationLevel, CancellationToken cancellationToken)
+        {
+            var validStates = new[] { VerificationLevel.None, VerificationLevel.rejected };
+
+            await _postgreDb.ProfileReads
+                .Where(x => x.Id == profileRef && validStates.Contains(x.VerificationLevel))
+                .ExecuteUpdateAsync(setters => setters.SetProperty(p => p.VerificationLevel, verificationLevel),cancellationToken);
         }
     }
 }

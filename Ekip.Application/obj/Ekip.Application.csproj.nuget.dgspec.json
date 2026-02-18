@@ -63,10 +63,6 @@
               "target": "Package",
               "version": "[13.1.0, )"
             },
-            "Microsoft.AspNetCore.Http.Features": {
-              "target": "Package",
-              "version": "[5.0.17, )"
-            },
             "Polly": {
               "target": "Package",
               "version": "[8.6.5, )"

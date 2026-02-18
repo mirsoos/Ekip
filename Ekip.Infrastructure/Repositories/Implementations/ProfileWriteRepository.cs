@@ -34,5 +34,18 @@ namespace Ekip.Infrastructure.Repositories.Implementations
             var profileUpdated = await _mongoDb.Profiles.ReplaceOneAsync(x=> x.Id == profile.Id,profile,cancellationToken:cancellationToken);
             return profile;
         }
+        public async Task UpdateFaceVerificationStatusAsync(Guid profileRef, Guid referenceId, string permanentUrl,string provider, CancellationToken ct)
+        {
+            var filter = Builders<Profile>.Filter.Eq(p => p.Id, profileRef);
+
+            var profile = await _mongoDb.Profiles.Find(filter).FirstOrDefaultAsync(ct);
+
+            if (profile == null)
+                throw new Exception("Profile not Found.");
+
+            profile.UpdateVerificationPhoto(referenceId,provider, permanentUrl);
+
+            await _mongoDb.Profiles.ReplaceOneAsync(filter, profile, cancellationToken: ct);
+        }
     }
 }

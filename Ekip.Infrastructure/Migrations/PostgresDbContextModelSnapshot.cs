@@ -30,7 +30,6 @@ namespace Ekip.Infrastructure.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<string>("AvatarUrl")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int>("ChatRoomType")

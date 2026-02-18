@@ -1,44 +1,39 @@
-﻿using Ekip.Application.Interfaces;
-using Microsoft.AspNetCore.Http;
+﻿using Ekip.Infrastructure.Services.Interfaces;
 using Microsoft.AspNetCore.Hosting;
 
-namespace Ekip.Infrastructure.Repositories.Implementations
+namespace Ekip.Infrastructure.Services.Implementations
 {
     public class FileService : IFileService
-    {   
+    {
         private readonly IWebHostEnvironment _environment;
         public FileService(IWebHostEnvironment environment)
         {
             _environment = environment;
         }
 
-        public async Task<string> UploadImageAsync(IFormFile file, string folderName ,CancellationToken cancellationToken)
+        public async Task<string> UploadImageAsync(Stream fileStream, string fileName, string folderName, CancellationToken cancellationToken)
         {
-            if (file == null || file.Length == 0)
-                throw new Exception("File is empty");
+            if (fileStream == null || fileStream.Length == 0)
+                throw new Exception("File stream is empty");
 
-            string wwwRootPath = _environment.WebRootPath;
-            if (string.IsNullOrEmpty(wwwRootPath))
-            {
-                wwwRootPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot");
-            }
-
+            string wwwRootPath = _environment.WebRootPath ?? Path.Combine(Directory.GetCurrentDirectory(), "wwwroot");
             string uploadsFolder = Path.Combine(wwwRootPath, "images", folderName);
 
             if (!Directory.Exists(uploadsFolder))
                 Directory.CreateDirectory(uploadsFolder);
 
-            string uniqueFileName = Guid.NewGuid().ToString() + "_" + file.FileName;
+            string uniqueFileName = $"{Guid.NewGuid()}_{fileName}";
             string filePath = Path.Combine(uploadsFolder, uniqueFileName);
 
-            using (var fileStream = new FileStream(filePath, FileMode.Create))
+            using (var fs = new FileStream(filePath, FileMode.Create))
             {
-                await file.CopyToAsync(fileStream);
+                await fileStream.CopyToAsync(fs, cancellationToken);
             }
+
             return $"/images/{folderName}/{uniqueFileName}";
         }
 
-        public async ValueTask DeleteFile(string fileUrl,CancellationToken cancellationToken)
+        public async ValueTask DeleteFile(string fileUrl, CancellationToken cancellationToken)
         {
             if (string.IsNullOrWhiteSpace(fileUrl)) return;
 
