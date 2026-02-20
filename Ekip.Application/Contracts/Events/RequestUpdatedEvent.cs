@@ -1,4 +1,5 @@
-﻿using Ekip.Domain.Enums.Requests.Enums;
+﻿
+using Ekip.Domain.Enums.Requests.Enums;
 
 namespace Ekip.Application.Contracts.Events
 {

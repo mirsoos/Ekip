@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Ekip.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class baseMigrationCreatePostgres : Migration
+    public partial class InitPostgresClean : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -20,7 +20,7 @@ namespace Ekip.Infrastructure.Migrations
                     CreateDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     ChatRoomType = table.Column<int>(type: "integer", nullable: false),
                     Name = table.Column<string>(type: "text", nullable: false),
-                    AvatarUrl = table.Column<string>(type: "text", nullable: false),
+                    AvatarUrl = table.Column<string>(type: "text", nullable: true),
                     RequestRef = table.Column<Guid>(type: "uuid", nullable: false),
                     CreatorRef = table.Column<Guid>(type: "uuid", nullable: false),
                     LastMessagePreview = table.Column<string>(type: "text", nullable: true),
@@ -81,7 +81,8 @@ namespace Ekip.Infrastructure.Migrations
                     UserRef = table.Column<Guid>(type: "uuid", nullable: false),
                     AvatarUrl = table.Column<string>(type: "text", nullable: true),
                     Score = table.Column<double>(type: "double precision", nullable: true),
-                    Experience = table.Column<int>(type: "integer", nullable: false)
+                    Experience = table.Column<int>(type: "integer", nullable: false),
+                    VerificationLevel = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {

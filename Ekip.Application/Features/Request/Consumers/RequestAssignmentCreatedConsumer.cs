@@ -5,14 +5,14 @@ using MassTransit;
 
 namespace Ekip.Application.Features.Request.Consumers
 {
-    public class RequestAssignmentCreatedConsumer : IConsumer<RequestAssignmentCreatedEvent>
+    public class RequestAssignmentCreatedConsumer : IConsumer<AssignmentProcessedEvent>
     {
         private readonly IRequestReadRepository _requestRead;
         public RequestAssignmentCreatedConsumer(IRequestReadRepository requestRead)
         {
             _requestRead = requestRead;
         }
-        public async Task Consume(ConsumeContext<RequestAssignmentCreatedEvent> context)
+        public async Task Consume(ConsumeContext<AssignmentProcessedEvent> context)
         {
             var requestAssignment = context.Message;
 
@@ -20,7 +20,7 @@ namespace Ekip.Application.Features.Request.Consumers
             {
                 Id = requestAssignment.Id,
                 RequestRef = requestAssignment.RequestRef,
-                Status = requestAssignment.Status,
+                Status = requestAssignment.AssignmentStatus,
                 SenderRef = requestAssignment.SenderRef,
                 CreateDate = requestAssignment.CreateDate,
                 Description = requestAssignment.Description,

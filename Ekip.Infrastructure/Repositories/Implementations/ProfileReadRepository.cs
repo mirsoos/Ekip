@@ -171,6 +171,9 @@ namespace Ekip.Infrastructure.Repositories.Implementations
         {
             var validStates = new[] { VerificationLevel.None, VerificationLevel.rejected };
 
+            var a = _postgreDb.ProfileReads
+                .Where(x => x.Id == profileRef && x.VerificationLevel == VerificationLevel.None).FirstOrDefault();
+
             await _postgreDb.ProfileReads
                 .Where(x => x.Id == profileRef && validStates.Contains(x.VerificationLevel))
                 .ExecuteUpdateAsync(setters => setters.SetProperty(p => p.VerificationLevel, verificationLevel),cancellationToken);

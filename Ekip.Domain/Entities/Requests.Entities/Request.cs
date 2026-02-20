@@ -29,7 +29,7 @@ namespace Ekip.Domain.Entities.Requests.Entities
         private List<RequestFilter> _requestFilters;
         public IReadOnlyCollection<RequestFilter>? RequestFilters => _requestFilters.AsReadOnly();
 
-        public Request(Guid creator, string title, int requiredMember, DateTime requestDateTime, string? description, string[]? tags, RequestType requestType, MemberType memberType, bool isAutoAccept, HashSet<RequestFilter>? requestFilters)
+        public Request(Guid creator, string title, int requiredMember, DateTime requestDateTime, string? description, string[]? tags, RequestType requestType, MemberType memberType, bool isAutoAccept,bool isRepeatable ,RequestRepeatType? repeatType ,HashSet<RequestFilter>? requestFilters)
         {
             if (string.IsNullOrWhiteSpace(title))
                 throw new Exception("Request must have a Title");
@@ -43,7 +43,8 @@ namespace Ekip.Domain.Entities.Requests.Entities
             RequiredMembers = requiredMember;
             RequestDateTime = requestDateTime;
             RequestForbidDateTime = requestDateTime.AddHours(-12);
-
+            IsRepeatable = isRepeatable;
+            RepeatType = repeatType ?? RequestRepeatType.None;
             Description = description;
             Tags = tags;
             RequestType = requestType;
@@ -80,18 +81,25 @@ namespace Ekip.Domain.Entities.Requests.Entities
             return newAssignment;
         }
 
-        public void AcceptMember(Guid owner, RequestAssignment assignmentToAccept)
+        public void AcceptMember(Guid ownerId, Guid assignmentId)
         {
-            if (owner != Creator)
-                throw new Exception("Only the Owner can Accept the Request");
+            if (ownerId != Creator)
+                throw new Exception("Only the owner can accept members.");
+
+            var assignment = _assignments.FirstOrDefault(a => a.Id == assignmentId);
+
+            if (assignment == null)
+                throw new Exception("This assignment does not belong to this request.");
+
+            if (assignment.Status != AssignmentStatus.Pending)
+                throw new Exception("Assignment is not in a pending state.");
 
             var acceptedCount = _assignments.Count(a => a.Status == AssignmentStatus.Accepted);
             var capacity = MaximumRequiredMembers ?? RequiredMembers;
-
             if (acceptedCount >= capacity)
-                throw new Exception("Ekip is already full");
+                throw new Exception("Request capacity is full.");
 
-            assignmentToAccept.Accept();
+            assignment.Accept();
 
             if (Status == RequestStatus.Open)
                 Status = RequestStatus.InProgress;
@@ -99,12 +107,17 @@ namespace Ekip.Domain.Entities.Requests.Entities
             CheckForCompletion();
         }
 
-        public void RejectMember(Guid owner, RequestAssignment assignmentToReject)
+        public void RejectMember(Guid ownerId, Guid assignmentId)
         {
-            if (owner != Creator)
-                throw new Exception("Only the Owner can Reject the Request");
+            if (ownerId != Creator)
+                throw new Exception("Only the owner can reject members.");
 
-            assignmentToReject.Decline();
+            var assignment = _assignments.FirstOrDefault(a => a.Id == assignmentId);
+
+            if (assignment == null)
+                throw new Exception("Assignment not found in this request.");
+
+            assignment.Decline();
         }
 
         public bool IsRequestOpenToNewMember()

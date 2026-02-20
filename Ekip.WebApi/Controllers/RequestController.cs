@@ -1,14 +1,17 @@
-﻿using Ekip.Application.Features.Request.Commands.AssignToRequest;
-using Ekip.Application.Features.Request.Commands.CreateRequest;
-using Microsoft.AspNetCore.Mvc;
-using MediatR;
+﻿using Ekip.Application.DTOs.Chat;
 using Ekip.Application.Features.Messages.Commands.SendMessage;
-using Ekip.Application.DTOs.Chat;
+using Ekip.Application.Features.Request.Commands.AcceptOrRejectAssignment;
+using Ekip.Application.Features.Request.Commands.AssignToRequest;
+using Ekip.Application.Features.Request.Commands.CreateRequest;
+using MediatR;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Ekip.WebApi.Controllers
 {
     [Route("EkipApi/[controller]")]
     [ApiController]
+    [Authorize]
     public class RequestController : ControllerBase
     {
         private readonly IMediator _mediator;
@@ -35,6 +38,20 @@ namespace Ekip.WebApi.Controllers
         public async Task<ActionResult<MessageDto>> SendMessage(SendMessageCommand message)
         {
             var result = await _mediator.Send(message);
+            return Ok(result);
+        }
+
+        [HttpPost("AcceptAssignment")]
+        public async Task<ActionResult<MessageDto>> AcceptAssignment(AcceptOrRejectAssignmentCommand decision)
+        {
+            var result = await _mediator.Send(decision);
+            return Ok(result);
+        }
+
+        [HttpPost("RejectAssignment")]
+        public async Task<ActionResult<MessageDto>> RejectAssignment(AcceptOrRejectAssignmentCommand decision)
+        {
+            var result = await _mediator.Send(decision);
             return Ok(result);
         }
     }

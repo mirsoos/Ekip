@@ -13,8 +13,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Ekip.Infrastructure.Migrations
 {
     [DbContext(typeof(PostgresDbContext))]
-    [Migration("20260103201310_baseMigration-CreatePostgres")]
-    partial class baseMigrationCreatePostgres
+    [Migration("20260220120502_InitPostgresClean")]
+    partial class InitPostgresClean
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,7 +33,6 @@ namespace Ekip.Infrastructure.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<string>("AvatarUrl")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int>("ChatRoomType")
@@ -120,6 +119,9 @@ namespace Ekip.Infrastructure.Migrations
 
                     b.Property<Guid>("UserRef")
                         .HasColumnType("uuid");
+
+                    b.Property<int>("VerificationLevel")
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 

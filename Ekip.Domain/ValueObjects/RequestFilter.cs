@@ -4,88 +4,76 @@ namespace Ekip.Domain.ValueObjects
 {
     public record RequestFilter
     {
-        public string Value { get;}
-        public RequestFilterType Type { get;}
-        public RequestFilterKind Kind { get;}
+        public string Value { get; }
+        public RequestFilterType Type { get; }
+        public RequestFilterKind Kind { get; }
+
+        private readonly int? _parsedInt;
+        private readonly double? _parsedDouble;
+        private readonly bool? _parsedBool;
 
         public RequestFilter(string value, RequestFilterType type, RequestFilterKind kind)
         {
-
-            if(string.IsNullOrWhiteSpace(value))
-                throw new ArgumentNullException(nameof(value), "Filter value cannot be Null");
-
-
-            switch (type)
-            {
-                case RequestFilterType.Age:
-                case RequestFilterType.Level:
-                case RequestFilterType.Score:
-                    if(!double.TryParse(value,out _))
-                    {
-                        throw new ArgumentException($"The value for a filter of type '{type}' must be a valid Int.");
-                    }
-                    break;
-                case RequestFilterType.Gender:
-                    if(kind != RequestFilterKind.Equal)
-                    {
-                        throw new ArgumentException($"The operation for a filter of type '{type}' must be 'Equal'.");
-                    }
-                    break;
-            }
+            if (string.IsNullOrWhiteSpace(value))
+                throw new ArgumentNullException(nameof(value), "RequestFilter cannot be Null.");
 
             Value = value;
             Type = type;
             Kind = kind;
-        }
 
+            switch (type)
+            {
+                case RequestFilterType.Age or RequestFilterType.Level:
+                    if (!int.TryParse(value, out var iVal))
+                        throw new ArgumentException($"RequestFilter {type} property is not Valid.");
+                    _parsedInt = iVal;
+                    break;
+
+                case RequestFilterType.Score:
+                    if (!double.TryParse(value, out var dVal))
+                        throw new ArgumentException($"RequestFilter {type} property is not Valid.");
+                    _parsedDouble = dVal;
+                    break;
+
+                case RequestFilterType.Gender:
+                    if (kind != RequestFilterKind.Equal)
+                        throw new ArgumentException($"RequestFilter {type} property support [Equal] only");
+
+                    if (!bool.TryParse(value, out var bVal))
+                        throw new ArgumentException($"RequestFilter {type} property is not Valid.");
+                    _parsedBool = bVal;
+                    break;
+            }
+        }
 
         public bool IsSatisfiedBy(MemberEligibility member)
         {
             return Type switch
             {
-                RequestFilterType.Age => Compare(member.Age),
-                RequestFilterType.Level => Compare(member.Level),
+                RequestFilterType.Age => Evaluate(_parsedInt!.Value, member.Age),
+
+                RequestFilterType.Level => Evaluate(_parsedInt!.Value, member.Level),
+
                 RequestFilterType.Score => member.Score.HasValue
-                                           ? Compare(member.Score.Value)
+                                           ? Evaluate(_parsedDouble!.Value, member.Score.Value)
                                            : false,
-                RequestFilterType.Gender => CompareGender(member.Gender),
+
+                RequestFilterType.Gender => member.Gender == _parsedBool!.Value,
+
                 _ => true
             };
         }
-
-        private bool Compare(int actual)
-        {
-            if (!int.TryParse(Value, out var expected)) return false;
-            return Evaluate(actual, expected);
-        }
-
-        private bool Compare(double actual)
-        {
-            if (!double.TryParse(Value, out var expected)) return false;
-            return Evaluate(actual, expected);
-        }
-
-        private bool Evaluate(double actual, double expected)
+        private bool Evaluate(double expected, double actual)
         {
             return Kind switch
             {
                 RequestFilterKind.Equal => Math.Abs(actual - expected) < 0.001,
                 RequestFilterKind.GreaterThan => actual > expected,
                 RequestFilterKind.LessThan => actual < expected,
-                RequestFilterKind.GreaterOrEqual => actual >= expected,
-                RequestFilterKind.LessOrEqual => actual <= expected,
+                RequestFilterKind.GreaterOrEqual => actual >= expected || Math.Abs(actual - expected) < 0.001,
+                RequestFilterKind.LessOrEqual => actual <= expected || Math.Abs(actual - expected) < 0.001,
                 _ => false
             };
         }
-
-        private bool CompareGender(bool actual)
-        {
-            if (bool.TryParse(Value, out var expected))
-            {
-                return actual == expected;
-            }
-            return false;
-        }
-
     }
 }

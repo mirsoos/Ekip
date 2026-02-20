@@ -117,6 +117,9 @@ namespace Ekip.Infrastructure.Migrations
                     b.Property<Guid>("UserRef")
                         .HasColumnType("uuid");
 
+                    b.Property<int>("VerificationLevel")
+                        .HasColumnType("integer");
+
                     b.HasKey("Id");
 
                     b.HasIndex("UserRef");

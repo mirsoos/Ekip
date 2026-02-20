@@ -1,6 +1,7 @@
 ﻿using Ekip.Application.Contracts.Events;
 using Ekip.Application.Interfaces;
 using Ekip.Domain.Entities.ReadModels;
+using Ekip.Domain.Enums.Identity.Enums;
 using MassTransit;
 
 namespace Ekip.Application.Features.Authentication.Consumers
@@ -32,6 +33,7 @@ namespace Ekip.Application.Features.Authentication.Consumers
                 PhoneNumber = user.PhoneNumber,
                 IsDeleted = user.IsDeleted,
                 Password = user.Password,
+                
             };
 
             var profileMongoToPostgre = new ProfileReadModel
@@ -39,7 +41,8 @@ namespace Ekip.Application.Features.Authentication.Consumers
                 Id = user.ProfileRef,
                 UserRef = user.UserRef,
                 Experience = user.Experience,
-                Score = user.Score
+                Score = user.Score,
+                VerificationLevel = VerificationLevel.None
             };
 
             await _userRead.AddUserAsync(userMongoToPostgres, context.CancellationToken);

@@ -44,6 +44,8 @@ namespace Ekip.Application.Features.Request.Commands.CreateRequest
                 request.RequestType,
                 request.MemberType,
                 request.IsAutoAccept,
+                request.IsRepeatable,
+                request.RepeatType,
                 requestFilter
                 );
 

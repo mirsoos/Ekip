@@ -37,23 +37,18 @@ namespace Ekip.Application.Features.Request.Commands.AssignToRequest
 
             await _requestWrite.UpdateAsync(currentRequest,cancellationToken);
 
-            //await _requestWrite.AssignRequest(request.RequestRef,newAssignment, cancellationToken);
-            await _publishEndpoint.Publish(new RequestUpdatedEvent
-            {
-                RequestRef = currentRequest.Id,
-                Status = currentRequest.Status
-            });
-
-            await _publishEndpoint.Publish(new RequestAssignmentCreatedEvent
+            await _publishEndpoint.Publish(new AssignmentProcessedEvent
             {
                 Id = newAssignment.Id,
                 ActionDate = newAssignment.ActionDate,
                 CreateDate = newAssignment.CreateDate,
                 Description = newAssignment.Description,
                 SenderRef = newAssignment.SenderRef,
-                Status = newAssignment.Status,
-                RequestRef = currentRequest.Id
+                AssignmentStatus = newAssignment.Status,
+                RequestRef = currentRequest.Id,
+                RequestStatus = currentRequest.Status
             });
+
 
             return new AssignToRequestDto{
                 SenderRef = request.SenderRef,
