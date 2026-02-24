@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.WebApi\\Ekip.WebApi.csproj": {}
+    "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.WebApi\\Ekip.WebApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Ekip.Application.csproj": {
+    "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Ekip.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Ekip.Application.csproj",
+        "projectUniqueName": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Ekip.Application.csproj",
         "projectName": "Ekip.Application",
-        "projectPath": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Ekip.Application.csproj",
-        "packagesPath": "C:\\Users\\amir\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\obj\\",
+        "projectPath": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Ekip.Application.csproj",
+        "packagesPath": "C:\\Users\\Mirsoos\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\amir\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Mirsoos\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,15 +26,14 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Domain\\Ekip.Domain.csproj": {
-                "projectPath": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Domain\\Ekip.Domain.csproj"
+              "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Domain\\Ekip.Domain.csproj": {
+                "projectPath": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Domain\\Ekip.Domain.csproj"
               }
             }
           }
@@ -88,20 +87,20 @@
         }
       }
     },
-    "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Domain\\Ekip.Domain.csproj": {
+    "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Domain\\Ekip.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Domain\\Ekip.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Domain\\Ekip.Domain.csproj",
         "projectName": "Ekip.Domain",
-        "projectPath": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Domain\\Ekip.Domain.csproj",
-        "packagesPath": "C:\\Users\\amir\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Domain\\obj\\",
+        "projectPath": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Domain\\Ekip.Domain.csproj",
+        "packagesPath": "C:\\Users\\Mirsoos\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\amir\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Mirsoos\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -110,7 +109,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -154,20 +152,20 @@
         }
       }
     },
-    "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Infrastructure\\Ekip.Infrastructure.csproj": {
+    "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Infrastructure\\Ekip.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Infrastructure\\Ekip.Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Infrastructure\\Ekip.Infrastructure.csproj",
         "projectName": "Ekip.Infrastructure",
-        "projectPath": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Infrastructure\\Ekip.Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\amir\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Infrastructure\\obj\\",
+        "projectPath": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Infrastructure\\Ekip.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\Mirsoos\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\amir\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Mirsoos\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -176,18 +174,17 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Ekip.Application.csproj": {
-                "projectPath": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Ekip.Application.csproj"
+              "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Ekip.Application.csproj": {
+                "projectPath": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Ekip.Application.csproj"
               },
-              "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Domain\\Ekip.Domain.csproj": {
-                "projectPath": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Domain\\Ekip.Domain.csproj"
+              "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Domain\\Ekip.Domain.csproj": {
+                "projectPath": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Domain\\Ekip.Domain.csproj"
               }
             }
           }
@@ -302,20 +299,20 @@
         }
       }
     },
-    "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.WebApi\\Ekip.WebApi.csproj": {
+    "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.WebApi\\Ekip.WebApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.WebApi\\Ekip.WebApi.csproj",
+        "projectUniqueName": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.WebApi\\Ekip.WebApi.csproj",
         "projectName": "Ekip.WebApi",
-        "projectPath": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.WebApi\\Ekip.WebApi.csproj",
-        "packagesPath": "C:\\Users\\amir\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.WebApi\\obj\\",
+        "projectPath": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.WebApi\\Ekip.WebApi.csproj",
+        "packagesPath": "C:\\Users\\Mirsoos\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.WebApi\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\amir\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Mirsoos\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -324,18 +321,17 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Ekip.Application.csproj": {
-                "projectPath": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Application\\Ekip.Application.csproj"
+              "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Ekip.Application.csproj": {
+                "projectPath": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Ekip.Application.csproj"
               },
-              "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Infrastructure\\Ekip.Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\amir\\source\\repos\\EkipProject\\Ekip.Infrastructure\\Ekip.Infrastructure.csproj"
+              "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Infrastructure\\Ekip.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Infrastructure\\Ekip.Infrastructure.csproj"
               }
             }
           }

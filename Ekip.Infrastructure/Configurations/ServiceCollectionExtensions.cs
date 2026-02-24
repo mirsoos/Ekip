@@ -9,6 +9,7 @@ using Ekip.Infrastructure.Repositories.Interfaces;
 using Ekip.Infrastructure.Security;
 using Ekip.Infrastructure.Services.Implementations;
 using Ekip.Infrastructure.Services.Interfaces;
+using Ekip.Infrastructure.Services.Redis;
 using MassTransit;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;

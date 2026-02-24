@@ -6,11 +6,17 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="ExternalServices\FaceAI\InsightFaceEngine.cs" />
+    <Compile Remove="ExternalServices\FaceAI\InsightFaceVerificationService .cs" />
+  </ItemGroup>
+
 	<ItemGroup>
 		<FrameworkReference Include="Microsoft.AspNetCore.App" />
 	</ItemGroup>
 
   <ItemGroup>
+    <Folder Include="ExternalServices\FaceAI\" />
     <Folder Include="Persistence\Migrations\" />
   </ItemGroup>
 

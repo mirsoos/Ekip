@@ -2,10 +2,11 @@
 using Ekip.Application.DTOs.User;
 using Ekip.Application.Interfaces;
 using Ekip.Domain.Entities.Identity.Entities;
-using ProfileEntity = Ekip.Domain.Entities.Identity.Entities.Profile;
 using MassTransit;
 using MediatR;
 using Polly;
+using System.Text.RegularExpressions;
+using ProfileEntity = Ekip.Domain.Entities.Identity.Entities.Profile;
 
 namespace Ekip.Application.Features.Authentication.Commands.Register
 {
@@ -31,6 +32,10 @@ namespace Ekip.Application.Features.Authentication.Commands.Register
 
             if (string.IsNullOrWhiteSpace(request.UserName) || string.IsNullOrWhiteSpace(request.Email))
                 throw new Exception("User must have Email and UserName");
+
+            var emailPattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+            if (!Regex.IsMatch(request.Email, emailPattern))
+                throw new Exception("Invalid email format");
 
             if (request.PhoneNumber.Length != 11 )
                 throw new Exception("PhoneNumber is Not Valid");

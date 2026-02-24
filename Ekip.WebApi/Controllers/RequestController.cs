@@ -41,18 +41,12 @@ namespace Ekip.WebApi.Controllers
             return Ok(result);
         }
 
-        [HttpPost("AcceptAssignment")]
-        public async Task<ActionResult<MessageDto>> AcceptAssignment(AcceptOrRejectAssignmentCommand decision)
+        [HttpPost("HandleAssignment")]
+        public async Task<ActionResult<MessageDto>> HandleAssignment(AcceptOrRejectAssignmentCommand decision)
         {
             var result = await _mediator.Send(decision);
             return Ok(result);
         }
 
-        [HttpPost("RejectAssignment")]
-        public async Task<ActionResult<MessageDto>> RejectAssignment(AcceptOrRejectAssignmentCommand decision)
-        {
-            var result = await _mediator.Send(decision);
-            return Ok(result);
-        }
     }
 }

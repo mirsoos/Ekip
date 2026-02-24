@@ -10,3 +10,15 @@ C:\Users\amir\source\repos\EkipProject\Ekip.Domain\obj\Debug\net8.0\Ekip.Domain.
 C:\Users\amir\source\repos\EkipProject\Ekip.Domain\obj\Debug\net8.0\refint\Ekip.Domain.dll
 C:\Users\amir\source\repos\EkipProject\Ekip.Domain\obj\Debug\net8.0\Ekip.Domain.pdb
 C:\Users\amir\source\repos\EkipProject\Ekip.Domain\obj\Debug\net8.0\ref\Ekip.Domain.dll
+C:\Users\Mirsoos\source\repos\Ekip\Ekip.Domain\bin\Debug\net8.0\Ekip.Domain.deps.json
+C:\Users\Mirsoos\source\repos\Ekip\Ekip.Domain\bin\Debug\net8.0\Ekip.Domain.dll
+C:\Users\Mirsoos\source\repos\Ekip\Ekip.Domain\bin\Debug\net8.0\Ekip.Domain.pdb
+C:\Users\Mirsoos\source\repos\Ekip\Ekip.Domain\obj\Debug\net8.0\Ekip.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Mirsoos\source\repos\Ekip\Ekip.Domain\obj\Debug\net8.0\Ekip.Domain.AssemblyInfoInputs.cache
+C:\Users\Mirsoos\source\repos\Ekip\Ekip.Domain\obj\Debug\net8.0\Ekip.Domain.AssemblyInfo.cs
+C:\Users\Mirsoos\source\repos\Ekip\Ekip.Domain\obj\Debug\net8.0\Ekip.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Mirsoos\source\repos\Ekip\Ekip.Domain\obj\Debug\net8.0\Ekip.Domain.sourcelink.json
+C:\Users\Mirsoos\source\repos\Ekip\Ekip.Domain\obj\Debug\net8.0\Ekip.Domain.dll
+C:\Users\Mirsoos\source\repos\Ekip\Ekip.Domain\obj\Debug\net8.0\refint\Ekip.Domain.dll
+C:\Users\Mirsoos\source\repos\Ekip\Ekip.Domain\obj\Debug\net8.0\Ekip.Domain.pdb
+C:\Users\Mirsoos\source\repos\Ekip\Ekip.Domain\obj\Debug\net8.0\ref\Ekip.Domain.dll
