@@ -7,15 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Features\ChatRoom\Commands\CreateChatRoom\CreateChatRoomCommand.cs" />
-    <Compile Remove="Features\ChatRoom\Commands\CreateChatRoom\CreateChatRoomCommandHandler.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="Behaviors\" />
     <Folder Include="Common\" />
     <Folder Include="DTOs\Verification\" />
-    <Folder Include="Features\ChatRoom\Commands\CreateChatRoom\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,9 +17,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="MassTransit.Abstractions" Version="9.0.0" />
+    <PackageReference Include="MassTransit.Abstractions" Version="9.1.0" />
     <PackageReference Include="MediatR" Version="13.1.0" />
-    <PackageReference Include="Polly" Version="8.6.5" />
+    <PackageReference Include="Polly" Version="8.6.6" />
   </ItemGroup>
 
   <ItemGroup>

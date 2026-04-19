@@ -12,7 +12,7 @@ namespace Ekip.Domain.Entities.ReadModels
         public Guid CreatorRef { get; set; }
         public string Title { get; set; }
         public int RequiredMembers { get; set; }
-        public int? MaximumRequiredAssignmnets { get; set; }
+        public int? MaximumRequiredAssignments { get; set; }
         public DateTime RequestDateTime { get; set; }
         public DateTime RequestForbidDateTime { get; set; }
         public string Description { get; set; }

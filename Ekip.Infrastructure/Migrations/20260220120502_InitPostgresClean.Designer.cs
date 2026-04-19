@@ -188,7 +188,7 @@ namespace Ekip.Infrastructure.Migrations
                     b.Property<bool>("IsRepeatable")
                         .HasColumnType("boolean");
 
-                    b.Property<int?>("MaximumRequiredAssignmnets")
+                    b.Property<int?>("MaximumRequiredAssignments")
                         .HasColumnType("integer");
 
                     b.Property<int>("MemberType")

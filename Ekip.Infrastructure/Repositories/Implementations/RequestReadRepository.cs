@@ -35,7 +35,7 @@ namespace Ekip.Infrastructure.Repositories.Implementations
                     s.Title,
                     s.Description,
                     s.RequiredMembers,
-                    s.MaximumRequiredAssignmnets,
+                    s.MaximumRequiredAssignments,
                     s.Status,
                     s.CreateDate,
                     s.RequestDateTime,
@@ -78,7 +78,7 @@ namespace Ekip.Infrastructure.Repositories.Implementations
                 Description = request.Description,
                 Creator = request.Creator,
                 RequiredMembers = request.RequiredMembers,
-                MaximumRequiredMembers = request.MaximumRequiredAssignmnets,
+                MaximumRequiredMembers = request.MaximumRequiredAssignments,
                 Status = request.Status,
                 Members = request.Members,
                 RequestCreateDate = request.CreateDate,
@@ -96,7 +96,7 @@ namespace Ekip.Infrastructure.Repositories.Implementations
                 RequestFilters = !string.IsNullOrEmpty(request.RequestFiltersJson)
                     ? JsonSerializer.Deserialize<List<RequestFilterDto>>(request.RequestFiltersJson)
                     : new List<RequestFilterDto>(),
-                CanAssignRequest = CanAssign(request.Status, request.Members.Count(m => m.Status == AssignmentStatus.Accepted), request.MaximumRequiredAssignmnets ?? request.RequiredMembers, request.RequestForbidDateTime)
+                CanAssignRequest = CanAssign(request.Status, request.Members.Count(m => m.Status == AssignmentStatus.Accepted), request.MaximumRequiredAssignments ?? request.RequiredMembers, request.RequestForbidDateTime)
             };
         }
 
@@ -106,7 +106,7 @@ namespace Ekip.Infrastructure.Repositories.Implementations
             bool hasSpace = currentMemberCount < capacity;
             bool isValidTime = DateTime.UtcNow < forbidTime;
 
-            return isOpen & hasSpace & isValidTime;
+            return isOpen && hasSpace && isValidTime;
         }
 
         DateTime? NextRepeatDate(DateTime createDate, RequestRepeatType repeatType)
@@ -131,7 +131,12 @@ namespace Ekip.Infrastructure.Repositories.Implementations
 
         public async Task UpdateAsync(Guid requestRef, RequestStatus status, CancellationToken cancellationToken)
         {
-            await _postgreDb.RequestReads.Where(x => x.Id == requestRef).ExecuteUpdateAsync(r=> r.SetProperty(x=>x.Status,status),cancellationToken);
+            await _postgreDb.RequestReads.Where(x => x.Id == requestRef).ExecuteUpdateAsync(r => r.SetProperty(x => x.Status, status), cancellationToken);
+        }
+
+        public async Task UpdateAssignmentDecisionAsync(Guid assignmentRef, AssignmentStatus newStatus, CancellationToken cancellationToken)
+        {
+            await _postgreDb.RequestAssignmentReads.Where(x => x.Id == assignmentRef).ExecuteUpdateAsync(a => a.SetProperty(s => s.Status, newStatus).SetProperty(s => s.ActionDate, DateTime.UtcNow), cancellationToken);
         }
     }
 }

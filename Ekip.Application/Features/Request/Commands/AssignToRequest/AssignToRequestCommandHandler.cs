@@ -1,4 +1,5 @@
-﻿using Ekip.Application.Contracts.Events;
+﻿using Ekip.Application.Constants;
+using Ekip.Application.Contracts.Events;
 using Ekip.Application.DTOs.Request;
 using Ekip.Application.Interfaces;
 using Ekip.Domain.ValueObjects;
@@ -12,11 +13,13 @@ namespace Ekip.Application.Features.Request.Commands.AssignToRequest
         private readonly IRequestWriteRepository _requestWrite;
         private readonly IProfileReadRepository _profileRead;
         private readonly IPublishEndpoint _publishEndpoint;
-        public AssignToRequestCommandHandler(IRequestWriteRepository requestWrite, IProfileReadRepository profileRead, IPublishEndpoint publishEndpoint)
+        private readonly IRedisCacheService _redisCache;
+        public AssignToRequestCommandHandler(IRequestWriteRepository requestWrite, IProfileReadRepository profileRead, IPublishEndpoint publishEndpoint , IRedisCacheService redisCache)
         {
             _requestWrite = requestWrite;
             _profileRead = profileRead;
             _publishEndpoint = publishEndpoint;
+            _redisCache = redisCache;
         }
 
         public async Task<AssignToRequestDto> Handle(AssignToRequestCommand request, CancellationToken cancellationToken)
@@ -49,6 +52,8 @@ namespace Ekip.Application.Features.Request.Commands.AssignToRequest
                 RequestStatus = currentRequest.Status
             });
 
+            await _redisCache.RemoveAsync(CacheKeySchema.UserAssignmentsKey(newAssignment.SenderRef), cancellationToken);
+            await _redisCache.RemoveAsync(CacheKeySchema.RequestKey(currentRequest.Id), cancellationToken);
 
             return new AssignToRequestDto{
                 SenderRef = request.SenderRef,

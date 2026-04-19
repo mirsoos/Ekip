@@ -11,7 +11,7 @@ namespace Ekip.Application.DTOs.Request
         public string? Description { get; set; }
         public Guid Creator { get; set; }
         public int RequiredMembers { get; set; }
-        public int? MaximumRequiredAssignmnets { get; set; }
+        public int? MaximumRequiredAssignments { get; set; }
         public string[]? Tags { get; set; }
         public DateTime RequestCreateDateTime { get; set; }
         public DateTime RequestDateTime { get; set; }

@@ -1,4 +1,5 @@
-﻿using Ekip.Application.Contracts.Events;
+﻿using Ekip.Application.Constants;
+using Ekip.Application.Contracts.Events;
 using Ekip.Application.Interfaces;
 using MassTransit;
 using MediatR;
@@ -9,10 +10,12 @@ namespace Ekip.Application.Features.Profile.Commands.SetUserAvatar
     {
         private readonly IProfileWriteRepository _profileWrite;
         private readonly IPublishEndpoint _publishEndpoint;
-        public SetUserAvatarCommandHandler(IProfileWriteRepository profileWrite , IPublishEndpoint publishEndpoint)
+        private readonly IRedisCacheService _redisCache;
+        public SetUserAvatarCommandHandler(IProfileWriteRepository profileWrite , IPublishEndpoint publishEndpoint,IRedisCacheService redisCache)
         {
             _profileWrite = profileWrite;
             _publishEndpoint = publishEndpoint;
+            _redisCache = redisCache;
         }
 
         public async Task<string> Handle(SetUserAvatarCommand command, CancellationToken cancellationToken)
@@ -34,6 +37,8 @@ namespace Ekip.Application.Features.Profile.Commands.SetUserAvatar
                 ProfileRef = profile.Id,
                 AvatarUrl = command.AvatarUrl
             });
+
+            await _redisCache.RemoveAsync(CacheKeySchema.ProfileKey(profile.Id), cancellationToken);
 
             return command.AvatarUrl;
         }

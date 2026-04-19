@@ -9,7 +9,7 @@ namespace Ekip.Application.Contracts.Events
         public Guid CreatorRef { get; init; }
         public string Title { get; init; }
         public int RequiredMembers { get; init; }
-        public int? MaximumRequiredAssignmnets { get; init; }
+        public int? MaximumRequiredAssignments { get; init; }
         public DateTime RequestCreateDateTime { get; init; }
         public DateTime RequestDateTime { get; init; }
         public DateTime RequestForbidDateTime { get; init; }

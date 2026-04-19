@@ -27,7 +27,7 @@ namespace Ekip.Application.Features.Request.Consumer
                 IsAutoAccept = message.IsAutoAccept,
                 IsDeleted = false,
                 IsRepeatable = message.IsRepeatable,
-                MaximumRequiredAssignmnets = message.MaximumRequiredAssignmnets,
+                MaximumRequiredAssignments = message.MaximumRequiredAssignments,
                 MemberType = message.MemberType,
                 RepeatType = message.RepeatType,
                 RequestDateTime = message.RequestDateTime,

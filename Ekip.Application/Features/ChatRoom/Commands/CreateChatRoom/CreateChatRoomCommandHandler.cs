@@ -5,6 +5,7 @@ using ChatRoomEntity = Ekip.Domain.Entities.Chat.Entites.ChatRoom;
 using MassTransit;
 using Ekip.Application.Contracts.Events;
 using Polly;
+using Ekip.Application.Constants;
 
 namespace Ekip.Application.Features.ChatRoom.Commands.CreateChatRoom
 {
@@ -12,17 +13,17 @@ namespace Ekip.Application.Features.ChatRoom.Commands.CreateChatRoom
     {
         private readonly IChatRoomWriteRepository _chatRoomWrite;
         private readonly IPublishEndpoint _publishEndpoint;
+        private readonly IRedisCacheService _redisCache;
 
-        public CreateChatRoomCommandHandler(IChatRoomWriteRepository chatRoomWrite , IPublishEndpoint publishEndpoint)
+        public CreateChatRoomCommandHandler(IChatRoomWriteRepository chatRoomWrite , IPublishEndpoint publishEndpoint, IRedisCacheService redisCache)
         {
             _chatRoomWrite = chatRoomWrite;
             _publishEndpoint = publishEndpoint;
+            _redisCache = redisCache;
         }
         public async Task<ChatRoomDetailsDto> Handle(CreateChatRoomCommand request, CancellationToken cancellationToken)
         {
-
             var policy = Policy.Handle<ConcurrencyException>().RetryAsync(3);
-
 
             ChatRoomEntity newChatRoom = null!;
             ChatRoomEntity savedChatRoom = null!;
@@ -45,6 +46,9 @@ namespace Ekip.Application.Features.ChatRoom.Commands.CreateChatRoom
                         RequestRef = savedChatRoom.RequestRef,
                         ChatRoomParticipants = savedChatRoom.Participants.ToList()
                     });
+
+                    await _redisCache.RemoveAsync(CacheKeySchema.ChatRoomKey(savedChatRoom.Id), cancellationToken);
+
                 });
             }
             catch(ConcurrencyException)

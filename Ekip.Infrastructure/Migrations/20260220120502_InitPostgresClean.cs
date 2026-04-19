@@ -105,7 +105,7 @@ namespace Ekip.Infrastructure.Migrations
                     CreatorRef = table.Column<Guid>(type: "uuid", nullable: false),
                     Title = table.Column<string>(type: "text", nullable: false),
                     RequiredMembers = table.Column<int>(type: "integer", nullable: false),
-                    MaximumRequiredAssignmnets = table.Column<int>(type: "integer", nullable: true),
+                    MaximumRequiredAssignments = table.Column<int>(type: "integer", nullable: true),
                     RequestDateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     RequestForbidDateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     Description = table.Column<string>(type: "text", nullable: false),

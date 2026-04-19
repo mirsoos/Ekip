@@ -66,7 +66,7 @@ namespace Ekip.Infrastructure.Repositories.Implementations
                         r.CreatorRef,
                         r.IsAutoAccept,
                         r.IsRepeatable,
-                        r.MaximumRequiredAssignmnets,
+                        r.MaximumRequiredAssignments,
                         r.MemberType,
                         r.RepeatType,
                         r.CreateDate,
@@ -120,7 +120,7 @@ namespace Ekip.Infrastructure.Repositories.Implementations
                     Creator = r.CreatorRef,
                     IsAutoAccept = r.IsAutoAccept,
                     IsRepeatable = r.IsRepeatable,
-                    MaximumRequiredAssignmnets = r.MaximumRequiredAssignmnets,
+                    MaximumRequiredAssignments = r.MaximumRequiredAssignments,
                     MemberType = r.MemberType,
                     RepeatType = r.RepeatType,
                     RequestCreateDateTime = r.CreateDate,
@@ -170,9 +170,6 @@ namespace Ekip.Infrastructure.Repositories.Implementations
         public async Task UpdateFaceVerificationStatusAsync(Guid profileRef, VerificationLevel verificationLevel, CancellationToken cancellationToken)
         {
             var validStates = new[] { VerificationLevel.None, VerificationLevel.rejected };
-
-            var a = _postgreDb.ProfileReads
-                .Where(x => x.Id == profileRef && x.VerificationLevel == VerificationLevel.None).FirstOrDefault();
 
             await _postgreDb.ProfileReads
                 .Where(x => x.Id == profileRef && validStates.Contains(x.VerificationLevel))

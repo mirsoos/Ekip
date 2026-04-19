@@ -26,7 +26,8 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://package-mirror.liara.ir/repository/nuget/index.json": {}
         },
         "frameworks": {
           "net8.0": {
@@ -56,7 +57,7 @@
           "dependencies": {
             "MassTransit.Abstractions": {
               "target": "Package",
-              "version": "[9.0.0, )"
+              "version": "[9.1.0, )"
             },
             "MediatR": {
               "target": "Package",
@@ -64,7 +65,7 @@
             },
             "Polly": {
               "target": "Package",
-              "version": "[8.6.5, )"
+              "version": "[8.6.6, )"
             }
           },
           "imports": [
@@ -109,7 +110,8 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://package-mirror.liara.ir/repository/nuget/index.json": {}
         },
         "frameworks": {
           "net8.0": {

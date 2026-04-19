@@ -26,7 +26,8 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://package-mirror.liara.ir/repository/nuget/index.json": {}
         },
         "frameworks": {
           "net8.0": {
@@ -56,7 +57,7 @@
           "dependencies": {
             "MassTransit.Abstractions": {
               "target": "Package",
-              "version": "[9.0.0, )"
+              "version": "[9.1.0, )"
             },
             "MediatR": {
               "target": "Package",
@@ -64,7 +65,7 @@
             },
             "Polly": {
               "target": "Package",
-              "version": "[8.6.5, )"
+              "version": "[8.6.6, )"
             }
           },
           "imports": [
@@ -109,7 +110,8 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://package-mirror.liara.ir/repository/nuget/index.json": {}
         },
         "frameworks": {
           "net8.0": {
@@ -174,7 +176,8 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://package-mirror.liara.ir/repository/nuget/index.json": {}
         },
         "frameworks": {
           "net8.0": {
@@ -207,11 +210,15 @@
           "dependencies": {
             "BCrypt.Net-Next": {
               "target": "Package",
-              "version": "[4.0.3, )"
+              "version": "[4.1.0, )"
+            },
+            "MassTransit.Abstractions": {
+              "target": "Package",
+              "version": "[9.1.0, )"
             },
             "MassTransit.RabbitMQ": {
               "target": "Package",
-              "version": "[9.0.0, )"
+              "version": "[9.1.0, )"
             },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
@@ -249,11 +256,11 @@
             },
             "Microsoft.ML.OnnxRuntime.Managed": {
               "target": "Package",
-              "version": "[1.24.1, )"
+              "version": "[1.24.3, )"
             },
             "MongoDB.Driver": {
               "target": "Package",
-              "version": "[3.5.1, )"
+              "version": "[3.7.1, )"
             },
             "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",
@@ -266,6 +273,10 @@
             "OpenCvSharp4.runtime.win": {
               "target": "Package",
               "version": "[4.13.0.20260214, )"
+            },
+            "Polly": {
+              "target": "Package",
+              "version": "[8.6.6, )"
             },
             "StackExchange.Redis": {
               "target": "Package",

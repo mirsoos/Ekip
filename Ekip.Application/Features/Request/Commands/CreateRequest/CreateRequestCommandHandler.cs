@@ -1,11 +1,11 @@
 ﻿using Ekip.Application.DTOs.Request;
-using Ekip.Application.DTOs.User;
 using Ekip.Application.Interfaces;
 using Ekip.Domain.ValueObjects;
 using RequestEntity = Ekip.Domain.Entities.Requests.Entities.Request;
 using MediatR;
 using MassTransit;
 using Ekip.Application.Contracts.Events;
+using Ekip.Application.Constants;
 
 namespace Ekip.Application.Features.Request.Commands.CreateRequest
 {
@@ -14,11 +14,13 @@ namespace Ekip.Application.Features.Request.Commands.CreateRequest
         private readonly IRequestWriteRepository _createRequest;
         private readonly IProfileWriteRepository _profileWrite;
         private readonly IPublishEndpoint _publishEndpoint;
-        public CreateRequestCommandHandler(IRequestWriteRepository createRequest,IProfileWriteRepository profileWrite,IPublishEndpoint publishEndpoint)
+        private readonly IRedisCacheService _redisCache;
+        public CreateRequestCommandHandler(IRequestWriteRepository createRequest,IProfileWriteRepository profileWrite,IPublishEndpoint publishEndpoint , IRedisCacheService redisCache)
         {
             _createRequest = createRequest;
             _profileWrite = profileWrite;
             _publishEndpoint = publishEndpoint;
+            _redisCache = redisCache;
         }
         public async Task<NewRequestDto> Handle(CreateRequestCommand request, CancellationToken cancellationToken)
         {
@@ -62,7 +64,7 @@ namespace Ekip.Application.Features.Request.Commands.CreateRequest
                 IsAutoAccept = savedRequest.IsAutoAccept,
                 IsRepeatable = savedRequest.IsRepeatable,
                 RepeatType = savedRequest.RepeatType,
-                MaximumRequiredAssignmnets = savedRequest.MaximumRequiredMembers,
+                MaximumRequiredAssignments = savedRequest.MaximumRequiredMembers,
                 Tags = savedRequest.Tags,
                 RequestFilters = savedRequest.RequestFilters?.Select(rf=> new RequestFilterDto {
                 Value = rf.Value,Type = rf.Type,Kind=rf.Kind
@@ -82,7 +84,7 @@ namespace Ekip.Application.Features.Request.Commands.CreateRequest
                 Description = savedRequest.Description,
                 Creator = savedRequest.Creator,
                 RequiredMembers = savedRequest.RequiredMembers,
-                MaximumRequiredAssignmnets = savedRequest.MaximumRequiredMembers,
+                MaximumRequiredAssignments = savedRequest.MaximumRequiredMembers,
                 Tags = savedRequest.Tags,
                 RequestCreateDateTime = savedRequest.CreateDate,
                 RequestDateTime = savedRequest.RequestDateTime,
@@ -99,6 +101,10 @@ namespace Ekip.Application.Features.Request.Commands.CreateRequest
                     Kind = rf.Kind
                 }).ToArray(),
             };
+
+            await _redisCache.RemoveAsync(CacheKeySchema.RequestKey(savedRequest.Id) , cancellationToken);
+            await _redisCache.RemoveAsync(CacheKeySchema.UserRequestsKey(savedRequest.Creator) , cancellationToken);
+
             return requestResultDto;
         }
     }

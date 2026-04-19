@@ -1,4 +1,5 @@
-﻿using Ekip.Application.Contracts.Events;
+﻿using Ekip.Application.Constants;
+using Ekip.Application.Contracts.Events;
 using Ekip.Application.DTOs.User;
 using Ekip.Application.Interfaces;
 using MassTransit;
@@ -12,12 +13,13 @@ namespace Ekip.Application.Features.Profile.Commands.SetUserProfile
         private readonly IProfileWriteRepository _profileWrite;
         private readonly IUserWriteRepository _userWrite;
         private readonly IPublishEndpoint _publishEndpoint;
-
-        public SetUserProfileCommandHandler(IProfileWriteRepository profileWrite,IUserWriteRepository userWrite, IPublishEndpoint publishEndpoint)
+        private readonly IRedisCacheService _redisCache;
+        public SetUserProfileCommandHandler(IProfileWriteRepository profileWrite,IUserWriteRepository userWrite, IPublishEndpoint publishEndpoint,IRedisCacheService redisCache)
         {
             _profileWrite = profileWrite;
             _publishEndpoint = publishEndpoint;
             _userWrite = userWrite;
+            _redisCache = redisCache;
         }
 
         public async Task<CreatedProfileDto> Handle(SetUserProfileCommand request, CancellationToken cancellationToken)
@@ -44,6 +46,8 @@ namespace Ekip.Application.Features.Profile.Commands.SetUserProfile
                 UserRef = savedProfile.UserRef
                 
             });
+
+            await _redisCache.RemoveAsync(CacheKeySchema.ProfileKey(savedProfile.Id), cancellationToken);
 
             var resultDto = new CreatedProfileDto {
                 ProfileRef = savedProfile.Id,

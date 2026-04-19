@@ -10,12 +10,14 @@ namespace Ekip.Application.Features.Authentication.Queries.Login
         private readonly IUserReadRepository _userReadRepository;
         private readonly IPasswordHasher _passwordHasher;
         private readonly IJwtTokenGenerator _jwtTokenGenerator;
+        private readonly IRedisCacheService _redisCache;
 
-        public LoginQueryHandler(IUserReadRepository userReadRepository, IPasswordHasher passwordHasher, IJwtTokenGenerator jwtTokenGenerator)
+        public LoginQueryHandler(IUserReadRepository userReadRepository, IPasswordHasher passwordHasher, IJwtTokenGenerator jwtTokenGenerator, IRedisCacheService redisCache)
         {
             _userReadRepository = userReadRepository;
             _passwordHasher = passwordHasher;
             _jwtTokenGenerator = jwtTokenGenerator;
+            _redisCache = redisCache;
         }
 
         public async Task<AuthenticationResult> Handle(LoginQuery request, CancellationToken cancellationToken)

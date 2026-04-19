@@ -1,15 +1,16 @@
 ﻿using Ekip.Application.Features.Authentication.Consumers;
 using Ekip.Application.Interfaces;
-using Ekip.Infrastructure.ExternalServices.FaceAI;
 using Ekip.Infrastructure.Persistence.MongoDb.Configurations;
 using Ekip.Infrastructure.Persistence.MongoDb.Contexts;
 using Ekip.Infrastructure.Persistence.PostgreSql.Contexts;
 using Ekip.Infrastructure.Repositories.Implementations;
 using Ekip.Infrastructure.Repositories.Interfaces;
 using Ekip.Infrastructure.Security;
+using Ekip.Infrastructure.Services.FaceAI;
 using Ekip.Infrastructure.Services.Implementations;
 using Ekip.Infrastructure.Services.Interfaces;
-using Ekip.Infrastructure.Services.Redis;
+using Ekip.Infrastructure.Services.Redis.Implementations;
+using Ekip.Infrastructure.Services.Redis.Interfaces;
 using MassTransit;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -105,6 +106,8 @@ namespace Ekip.Infrastructure.Configurations
                 return new MongoClient(mongoConnection);
             });
 
+            services.AddSingleton<IConnectionMultiplexer>(sp =>
+                ConnectionMultiplexer.Connect(configuration.GetConnectionString("Redis")));
 
             services.AddScoped<MongoDbContext>();
 
@@ -121,6 +124,7 @@ namespace Ekip.Infrastructure.Configurations
             services.AddScoped<IUserWriteRepository, UserWriteRepository>();
             services.AddScoped<IFileService, FileService>();
             services.AddScoped<IChatService, ChatService>();
+            services.AddScoped<IRedisCacheService, RedisCacheService>();
 
             services.AddScoped<IRedisService, RedisService>();
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));

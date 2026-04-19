@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     "net8.0": {
-      "MassTransit.Abstractions/9.0.0": {
+      "MassTransit.Abstractions/9.1.0": {
         "type": "package",
         "compile": {
           "lib/net8.0/MassTransit.Abstractions.dll": {
@@ -144,10 +144,10 @@
           }
         }
       },
-      "Polly/8.6.5": {
+      "Polly/8.6.6": {
         "type": "package",
         "dependencies": {
-          "Polly.Core": "8.6.5"
+          "Polly.Core": "8.6.6"
         },
         "compile": {
           "lib/net6.0/Polly.dll": {
@@ -160,7 +160,7 @@
           }
         }
       },
-      "Polly.Core/8.6.5": {
+      "Polly.Core/8.6.6": {
         "type": "package",
         "compile": {
           "lib/net8.0/Polly.Core.dll": {
@@ -186,10 +186,10 @@
     }
   },
   "libraries": {
-    "MassTransit.Abstractions/9.0.0": {
-      "sha512": "IjPJMWNC3J12Oax7kSmYZvrJ8OAFma646JLfE3z3dxKtBqHAcpUlHoWlWRxs17z+yN4RgfOKXtLDCK8PfOh0KA==",
+    "MassTransit.Abstractions/9.1.0": {
+      "sha512": "yesigAI5/J+YhCvnxxvMjRpH3qcH776h1Zq2xPhAJJwwVT+FilcE66yox9gPk8gsck+cjmfWUlOwEMg363cmOQ==",
       "type": "package",
-      "path": "masstransit.abstractions/9.0.0",
+      "path": "masstransit.abstractions/9.1.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -204,7 +204,7 @@
         "lib/net9.0/MassTransit.Abstractions.xml",
         "lib/netstandard2.0/MassTransit.Abstractions.dll",
         "lib/netstandard2.0/MassTransit.Abstractions.xml",
-        "masstransit.abstractions.9.0.0.nupkg.sha512",
+        "masstransit.abstractions.9.1.0.nupkg.sha512",
         "masstransit.abstractions.nuspec",
         "mt-logo-small.png"
       ]
@@ -446,10 +446,10 @@
         "microsoft.identitymodel.tokens.nuspec"
       ]
     },
-    "Polly/8.6.5": {
-      "sha512": "VqtW2ZE/ALvQMAH1cQY3qZ2cF2OXa3oe/HKMdOv6Q02HCoEW0rsFNfcBONXlHBe1TnjWW1vdRxBEkPeq0/2FHA==",
+    "Polly/8.6.6": {
+      "sha512": "czKHYJ6uGowPijuZt4kgF4njfGvWxVZ8mKBcrZ9iEtwDe9HKdF0ug6p6TwUG8EHuuufgbDU//rSBFebt5/0Fyw==",
       "type": "package",
-      "path": "polly/8.6.5",
+      "path": "polly/8.6.6",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -468,14 +468,14 @@
         "lib/netstandard2.0/Polly.xml",
         "package-icon.png",
         "package-readme.md",
-        "polly.8.6.5.nupkg.sha512",
+        "polly.8.6.6.nupkg.sha512",
         "polly.nuspec"
       ]
     },
-    "Polly.Core/8.6.5": {
-      "sha512": "t+sUVrIwvo7UmsgHGgOG9F0GDZSRIm47u2ylH17Gvcv1q5hNEwgD5GoBlFyc0kh/pebmPyrAgvGsR/65ZBaXlg==",
+    "Polly.Core/8.6.6": {
+      "sha512": "lCBL9mmhF9TZxHG3beVRkyjlLohkIC464xIAq7J7Y59C+z42hmsdUaeCKl2SIAYertOUU5TeBXyQDLDQGIKePQ==",
       "type": "package",
-      "path": "polly.core/8.6.5",
+      "path": "polly.core/8.6.6",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -497,7 +497,7 @@
         "lib/netstandard2.0/Polly.Core.xml",
         "package-icon.png",
         "package-readme.md",
-        "polly.core.8.6.5.nupkg.sha512",
+        "polly.core.8.6.6.nupkg.sha512",
         "polly.core.nuspec"
       ]
     },
@@ -510,9 +510,9 @@
   "projectFileDependencyGroups": {
     "net8.0": [
       "Ekip.Domain >= 1.0.0",
-      "MassTransit.Abstractions >= 9.0.0",
+      "MassTransit.Abstractions >= 9.1.0",
       "MediatR >= 13.1.0",
-      "Polly >= 8.6.5"
+      "Polly >= 8.6.6"
     ]
   },
   "packageFolders": {
@@ -541,7 +541,8 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {},
+        "https://package-mirror.liara.ir/repository/nuget/index.json": {}
       },
       "frameworks": {
         "net8.0": {
@@ -571,7 +572,7 @@
         "dependencies": {
           "MassTransit.Abstractions": {
             "target": "Package",
-            "version": "[9.0.0, )"
+            "version": "[9.1.0, )"
           },
           "MediatR": {
             "target": "Package",
@@ -579,7 +580,7 @@
           },
           "Polly": {
             "target": "Package",
-            "version": "[8.6.5, )"
+            "version": "[8.6.6, )"
           }
         },
         "imports": [

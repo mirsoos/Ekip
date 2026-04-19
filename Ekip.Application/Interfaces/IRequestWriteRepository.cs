@@ -1,4 +1,5 @@
-﻿using Ekip.Domain.Entities.Requests.Entities;
+﻿using Ekip.Application.DTOs.User;
+using Ekip.Domain.Entities.Requests.Entities;
 
 namespace Ekip.Application.Interfaces
 {

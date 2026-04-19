@@ -81,7 +81,7 @@ namespace Ekip.Domain.Entities.Requests.Entities
             return newAssignment;
         }
 
-        public void AcceptMember(Guid ownerId, Guid assignmentId)
+        public Guid AcceptMember(Guid ownerId, Guid assignmentId)
         {
             if (ownerId != Creator)
                 throw new Exception("Only the owner can accept members.");
@@ -105,9 +105,11 @@ namespace Ekip.Domain.Entities.Requests.Entities
                 Status = RequestStatus.InProgress;
 
             CheckForCompletion();
+
+            return assignment.SenderRef;
         }
 
-        public void RejectMember(Guid ownerId, Guid assignmentId)
+        public Guid RejectMember(Guid ownerId, Guid assignmentId)
         {
             if (ownerId != Creator)
                 throw new Exception("Only the owner can reject members.");
@@ -118,6 +120,8 @@ namespace Ekip.Domain.Entities.Requests.Entities
                 throw new Exception("Assignment not found in this request.");
 
             assignment.Decline();
+
+            return assignment.SenderRef;
         }
 
         public bool IsRequestOpenToNewMember()
@@ -151,7 +155,6 @@ namespace Ekip.Domain.Entities.Requests.Entities
         private Request() {
             _assignments = new List<RequestAssignment>();
             _requestFilters = new List<RequestFilter>();
-
         }
     }
 }
