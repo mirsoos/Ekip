@@ -1,4 +1,5 @@
 ﻿using Ekip.Domain.Entities.Base.Entities;
+using Ekip.Domain.Enums.Identity.Enums;
 using Ekip.Domain.ValueObjects;
 
 namespace Ekip.Domain.Entities.Identity.Entities
@@ -10,7 +11,7 @@ namespace Ekip.Domain.Entities.Identity.Entities
         public string UserName { get; private set; }
         public string PasswordHash { get; private set; }
         public string Email { get; private set; }
-        public bool Gender { get; private set; }
+        public GenderType Gender { get; private set; }
         public bool IsPremium { get; private set; }
         public bool IsActive { get; private set; }
         public bool IsLocked { get; private set; }
@@ -21,7 +22,7 @@ namespace Ekip.Domain.Entities.Identity.Entities
         public IReadOnlyCollection<UserCredential> UserCredentials => _userCredentials.AsReadOnly();
 
 
-        public User(string firstName , string lastName , string userName , string email , bool gender,int age,string phoneNumber)
+        public User(string firstName , string lastName , string userName , string email , GenderType gender,int age,string phoneNumber)
         {
 
             if (string.IsNullOrWhiteSpace(firstName))

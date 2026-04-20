@@ -1,4 +1,5 @@
-﻿using Ekip.Domain.Enums.Requests.Enums;
+﻿using Ekip.Domain.Enums.Identity.Enums;
+using Ekip.Domain.Enums.Requests.Enums;
 
 namespace Ekip.Domain.ValueObjects
 {
@@ -10,7 +11,7 @@ namespace Ekip.Domain.ValueObjects
 
         private readonly int? _parsedInt;
         private readonly double? _parsedDouble;
-        private readonly bool? _parsedBool;
+        private readonly GenderType? _parsedGender;
 
         public RequestFilter(string value, RequestFilterType type, RequestFilterKind kind)
         {
@@ -39,9 +40,9 @@ namespace Ekip.Domain.ValueObjects
                     if (kind != RequestFilterKind.Equal)
                         throw new ArgumentException($"RequestFilter {type} property support [Equal] only");
 
-                    if (!bool.TryParse(value, out var bVal))
+                    if (!Enum.TryParse<GenderType>(value,true ,out var gVal))
                         throw new ArgumentException($"RequestFilter {type} property is not Valid.");
-                    _parsedBool = bVal;
+                    _parsedGender = gVal;
                     break;
             }
         }
@@ -58,7 +59,7 @@ namespace Ekip.Domain.ValueObjects
                                            ? Evaluate(_parsedDouble!.Value, member.Score.Value)
                                            : false,
 
-                RequestFilterType.Gender => member.Gender == _parsedBool!.Value,
+                RequestFilterType.Gender => member.Gender == _parsedGender!.Value,
 
                 _ => true
             };

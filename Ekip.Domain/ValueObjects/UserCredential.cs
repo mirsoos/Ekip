@@ -1,8 +1,9 @@
-﻿using Ekip.Domain.Enums.Identity.Enums;
+﻿using Ekip.Domain.Base;
+using Ekip.Domain.Enums.Identity.Enums;
 
 namespace Ekip.Domain.ValueObjects
 {
-    public class UserCredential
+    public class UserCredential : ValueObject
     {
         public string Value { get; private set; }
         public AuthenticationType AuthenticationType { get; private set; }
@@ -11,7 +12,7 @@ namespace Ekip.Domain.ValueObjects
         public UserCredential(string value, AuthenticationType authenticationType, bool isVerified = false)
         {
             if (string.IsNullOrWhiteSpace(value))
-                throw new ArgumentException("value cannot be empty.");
+                throw new ArgumentException("Value cannot be empty.", nameof(value));
 
             Value = value;
             AuthenticationType = authenticationType;
@@ -20,15 +21,12 @@ namespace Ekip.Domain.ValueObjects
 
         public void Verify() => IsVerified = true;
 
-        public override bool Equals(object? obj)
+        protected override IEnumerable<object> GetEqualityComponents()
         {
-            if (obj is not UserCredential other) return false;
-            return Value == other.Value && AuthenticationType == other.AuthenticationType;
+            yield return Value;
+            yield return AuthenticationType;
         }
 
-        public override int GetHashCode() => HashCode.Combine(Value, AuthenticationType);
-
-        private UserCredential()
-        { }
+        private UserCredential() { }
     }
 }

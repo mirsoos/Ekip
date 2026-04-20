@@ -1,4 +1,6 @@
 ﻿
+using Ekip.Domain.Enums.Identity.Enums;
+
 namespace Ekip.Application.Contracts.Events
 {
     public record UserCreatedEvent
@@ -12,7 +14,7 @@ namespace Ekip.Application.Contracts.Events
         public string UserName { get; init; }
         public string Email { get; init; }
         public string Password { get; init; }
-        public bool Gender { get; init; }
+        public GenderType Gender { get; init; }
         public int Age { get; init; }
         public string PhoneNumber { get; init; }
         public Guid UserRef { get; set; }

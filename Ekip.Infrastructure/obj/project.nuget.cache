@@ -102,5 +102,15 @@
     "C:\\Users\\Mirsoos\\.nuget\\packages\\system.threading.ratelimiting\\8.0.0\\system.threading.ratelimiting.8.0.0.nupkg.sha512",
     "C:\\Users\\Mirsoos\\.nuget\\packages\\zstdsharp.port\\0.7.3\\zstdsharp.port.0.7.3.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1900",
+      "level": "Warning",
+      "message": "Error occurred while getting package vulnerability data: Unable to load the service index for source https://package-mirror.liara.ir/repository/nuget/index.json.",
+      "projectPath": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Infrastructure\\Ekip.Infrastructure.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Infrastructure\\Ekip.Infrastructure.csproj",
+      "targetGraphs": []
+    }
+  ]
 }

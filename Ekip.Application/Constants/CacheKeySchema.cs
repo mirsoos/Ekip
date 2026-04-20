@@ -8,7 +8,7 @@ namespace Ekip.Application.Constants
         public const string ChatRoomRef = "rom:";
         public const string UserRequests = "urq:";
         public const string UserAssignments = "asg:";
-        public const string UserEkips = "Ekp:";
+        public const string UserEkips = "ekp:";
         public const string UserPendingAssignment = "pnd:";
 
         public static string RequestKey(Guid requestRef) => $"{RequestRef}{requestRef}";

@@ -107,7 +107,7 @@ namespace Ekip.Infrastructure.Configurations
             });
 
             services.AddSingleton<IConnectionMultiplexer>(sp =>
-                ConnectionMultiplexer.Connect(configuration.GetConnectionString("Redis")));
+                ConnectionMultiplexer.Connect(infraSettings.RedisConnection));
 
             services.AddScoped<MongoDbContext>();
 

@@ -16,7 +16,7 @@ namespace Ekip.Application.Features.Profile.Queries.GetPendingAssignment
         }
         public async Task<List<PendingAssignmentsDto>> Handle(GetPendingAssignmentQuery request, CancellationToken cancellationToken)
         {
-            var key = CacheKeySchema.UserAssignmentsKey(request.ProfileRef);
+            var key = CacheKeySchema.UserPendingAssignmentKey(request.ProfileRef);
             var cachedPendingAssignment = await _redisCache.GetAsync<List<PendingAssignmentsDto>>(key,cancellationToken);
             if(cachedPendingAssignment?.Any() == true)
                 return cachedPendingAssignment;

@@ -1,20 +1,22 @@
-﻿
+﻿using Ekip.Domain.Base;
+using Ekip.Domain.Enums.Identity.Enums;
+
 namespace Ekip.Domain.ValueObjects
 {
-    public sealed class MemberEligibility
+    public sealed class MemberEligibility : ValueObject
     {
         public int Age { get; }
         public int Experience { get; }
         public double? Score { get; }
-        public bool Gender { get; }
+        public GenderType Gender { get; }
 
         public int Level => CalculateLevel(Experience);
 
-        public MemberEligibility(int age, int experience, double? score, bool gender)
+        public MemberEligibility(int age, int experience, double? score, GenderType gender)
         {
             Age = age;
             Experience = experience;
-            Score = score.HasValue ? score.Value : null;
+            Score = score;
             Gender = gender;
         }
 
@@ -23,5 +25,15 @@ namespace Ekip.Domain.ValueObjects
             if (xp <= 0) return 1;
             return (xp / 500) + 1;
         }
+
+        protected override IEnumerable<object> GetEqualityComponents()
+        {
+            yield return Age;
+            yield return Experience;
+            yield return Score ?? 0;
+            yield return Gender;
+        }
+
+        private MemberEligibility() { }
     }
 }

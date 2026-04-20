@@ -4,6 +4,7 @@ using Ekip.Application.Interfaces;
 using Ekip.Domain.Entities.ReadModels;
 using Ekip.Domain.Enums.Requests.Enums;
 using Ekip.Infrastructure.Persistence.PostgreSql.Contexts;
+using MassTransit.Initializers;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json;
 
@@ -137,6 +138,70 @@ namespace Ekip.Infrastructure.Repositories.Implementations
         public async Task UpdateAssignmentDecisionAsync(Guid assignmentRef, AssignmentStatus newStatus, CancellationToken cancellationToken)
         {
             await _postgreDb.RequestAssignmentReads.Where(x => x.Id == assignmentRef).ExecuteUpdateAsync(a => a.SetProperty(s => s.Status, newStatus).SetProperty(s => s.ActionDate, DateTime.UtcNow), cancellationToken);
+        }
+
+        public async Task<List<MyEkipDto>> GetEkipsByProfileId(Guid profileRef, CancellationToken cancellationToken)
+        {
+            return await _postgreDb.userEkipReads.Where(x => x.CreatorRef == profileRef || x.PendingAssignments.Any(x => x.ApplicantId == profileRef) || x.AcceptedMembers.Any(x=>x.ProfileRef == profileRef)).Select(s => new MyEkipDto
+            {
+                CreatorName = s.CreatorName,
+                CreatorRef = s.CreatorRef,
+                RequestRef = s.RequestRef,
+                CurrentMembersCount = s.CurrentMembersCount,
+                AcceptedMembers = s.AcceptedMembers,
+                Title = s.EkipTitle,
+                Status = s.Status,
+                RequiredMembers = s.RequiredMembers,
+                RequestDateTime = s.RequestDateTime,
+                MaximumAge = s.MaximumAge,
+                MinimumAge = s.MinimumAge,
+                TargetGender = s.TargetGender,
+                CreateDate = s.CreateDate,
+                IsRepeatable = s.IsRepeatable,
+                CreatorAvatar = s.CreatorAvatar,
+                MaximumRequiredMembers = s.MaximumRequiredMembers,
+                Description = s.Description,
+                MemberType = s.MemberType,
+                RepeatType = s.RepeatType,
+                Tags = s.Tags,
+                MinimumScore = s.MinimumScore,
+                IsAutoAccept = s.IsAutoAccept,
+                PendingAssignments = s.PendingAssignments,
+                RequestForbidDateTime = s.RequestForbidDateTime,
+                RequestType = s.RequestType,
+                RequiredLevel = s.RequiredLevel,
+                IsCreator = profileRef == s.CreatorRef,
+                IsDeleted = s.IsDeleted,
+                MyAssignmentStatus =
+                s.CreatorRef == profileRef ? AssignmentStatus.Accepted : (s.AcceptedMembers.Any(m => m.ProfileRef == profileRef) ? AssignmentStatus.Accepted
+                : (s.PendingAssignments.Any(p => p.ApplicantId == profileRef) ? AssignmentStatus.Pending : (AssignmentStatus?)null))
+            }).OrderByDescending(o => o.RequestDateTime).ToListAsync(cancellationToken);
+        }
+
+        public async Task<List<PendingAssignmentsDto>> GetPendingAssignmentByProfileId(Guid profileRef, CancellationToken cancellationToken)
+        {
+            return await _postgreDb.userEkipReads
+                .AsNoTracking()
+                .Where(x => !x.IsDeleted &&
+                            x.PendingAssignments.Any(p => p.ApplicantId == profileRef))
+                .Select(x => new
+                {
+                    Ekip = x,
+                    Pending = x.PendingAssignments.First(p => p.ApplicantId == profileRef)
+                })
+                .Select(x => new PendingAssignmentsDto
+                {
+                    AssignmentRef = x.Pending.AssignmentRef,
+                    RequestRef = x.Ekip.RequestRef,
+                    RequestTitle = x.Ekip.EkipTitle,
+                    CreatorName = x.Ekip.CreatorName,
+                    RequestDateTime = x.Ekip.RequestDateTime,
+                    Status = x.Pending.ApplicantStatus,
+                    AppliedDate = x.Pending.AppliedDate,
+                    Description = x.Pending.Description
+                })
+                .OrderByDescending(o => o.AppliedDate)
+                .ToListAsync(cancellationToken);
         }
     }
 }

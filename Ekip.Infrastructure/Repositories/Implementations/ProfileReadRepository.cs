@@ -1,13 +1,10 @@
-﻿using Ekip.Application.DTOs.Request;
-using Ekip.Application.DTOs.User;
+﻿using Ekip.Application.DTOs.User;
 using Ekip.Application.Interfaces;
 using Ekip.Domain.Entities.ReadModels;
 using Ekip.Domain.Enums.Identity.Enums;
-using Ekip.Domain.Enums.Requests.Enums;
 using Ekip.Infrastructure.Persistence.PostgreSql.Contexts;
 using MassTransit.Initializers;
 using Microsoft.EntityFrameworkCore;
-using System.Text.Json;
 
 namespace Ekip.Infrastructure.Repositories.Implementations
 {
@@ -36,11 +33,7 @@ namespace Ekip.Infrastructure.Repositories.Implementations
                 UserName = s.User.UserName,
                 Email = s.User.Email,
                 AvatarUrl = s.AvatarUrl,
-                JoinRequests = new List<JoinRequestDto>(),
-                MyEkips = new List<MyEkipDto>(),
-                Requests = new List<NewRequestDto>(),
                 Age = s.User.Age,
-
             }).FirstOrDefaultAsync(cancellationToken);
 
             return profile;
@@ -48,117 +41,24 @@ namespace Ekip.Infrastructure.Repositories.Implementations
 
         public async Task<ProfileDto?> GetProfileDetailsByIdAsync(Guid profileRef, CancellationToken cancellationToken)
         {
-            var rawData = await _postgreDb.ProfileReads
+            return await _postgreDb.ProfileReads
                 .AsNoTracking()
                 .Where(x => x.Id == profileRef)
-                .Select(s => new
+                .Select(s => new ProfileDto
                 {
-                    User = s.User,
-                    s.Experience,
-                    s.Score,
-                    s.AvatarUrl,
-
-                    MyCreatedRequests = s.Requests.Select(r => new
-                    {
-                        r.Id,
-                        r.Title,
-                        r.Description,
-                        r.CreatorRef,
-                        r.IsAutoAccept,
-                        r.IsRepeatable,
-                        r.MaximumRequiredAssignments,
-                        r.MemberType,
-                        r.RepeatType,
-                        r.CreateDate,
-                        r.RequestDateTime,
-                        r.RequiredMembers,
-                        r.RequestType,
-                        r.RequestForbidDateTime,
-                        TagsString = r.Tags,
-                        FiltersJson = r.RequestFilters
-                    }).ToList(),
-
-                    MyAssignments = s.RequestAssignments.Select(a => new
-                    {
-                        RequestRef = a.RequestRef,
-                        RequestTitle = a.Requests.Title,
-                        MyStatus = a.Status,
-                        RequestType = a.Requests.RequestType,
-                        CreatorName = a.Requests.Creator.User.FirstName + " " + a.Requests.Creator.User.LastName,
-                        StartDateTime = a.Requests.RequestDateTime,
-
-                        EkipMembers = a.Requests.Assignments.Select(Ekip => new
-                        {
-                            ProfileId = Ekip.SenderProfile.Id,
-                            FullName = Ekip.SenderProfile.User.FirstName + " " + Ekip.SenderProfile.User.LastName,
-                            AvatarUrl = Ekip.SenderProfile.AvatarUrl,
-                            Status = Ekip.Status
-                        }).ToList()
-
-                    }).ToList()
-
-                }).FirstOrDefaultAsync(cancellationToken);
-
-            if (rawData == null) return null;
-
-            return new ProfileDto
-            {
-                FirstName = rawData.User.FirstName,
-                LastName = rawData.User.LastName,
-                Gender = rawData.User.Gender,
-                Experience = rawData.Experience,
-                Score = rawData.Score,
-                UserName = rawData.User.UserName,
-                Email = rawData.User.Email,
-                AvatarUrl = rawData.AvatarUrl,
-
-                Requests = rawData.MyCreatedRequests.Select(r => new NewRequestDto
-                {
-                    RequestRef = r.Id,
-                    Title = r.Title,
-                    Description = r.Description,
-                    Creator = r.CreatorRef,
-                    IsAutoAccept = r.IsAutoAccept,
-                    IsRepeatable = r.IsRepeatable,
-                    MaximumRequiredAssignments = r.MaximumRequiredAssignments,
-                    MemberType = r.MemberType,
-                    RepeatType = r.RepeatType,
-                    RequestCreateDateTime = r.CreateDate,
-                    RequestDateTime = r.RequestDateTime,
-                    RequiredMembers = r.RequiredMembers,
-                    RequestType = r.RequestType,
-                    RequestForbidDateTime = r.RequestForbidDateTime,
-                    Tags = !string.IsNullOrEmpty(r.TagsString) ? r.TagsString.Split(',', StringSplitOptions.RemoveEmptyEntries) : new string[0],
-                    RequestFilters = !string.IsNullOrEmpty(r.FiltersJson) ? JsonSerializer.Deserialize<RequestFilterDto[]>(r.FiltersJson) : new RequestFilterDto[0],
-                }).ToList(),
-
-                JoinRequests = rawData.MyAssignments
-                    .Where(a => a.MyStatus == AssignmentStatus.Pending)
-                    .Select(a => new JoinRequestDto
-                    {
-                        RequestRef = a.RequestRef,
-                        
-                    }).ToList(),
-
-                MyEkips = rawData.MyAssignments
-                    .Where(a => a.MyStatus == AssignmentStatus.Accepted)
-                    .Select(a => new MyEkipDto
-                    {
-                        RequestRef = a.RequestRef,
-                        Title = a.RequestTitle,
-                        Status = a.MyStatus.ToString(),
-                        Creator = a.CreatorName,
-                        StartEventDateTime = a.StartDateTime,
-
-                        Members = a.EkipMembers.Select(tm => new AssignmentMemberDto
-                        {
-                            ProfileRef = tm.ProfileId,
-                            FullName = tm.FullName,
-                            AvatarUrl = tm.AvatarUrl,
-                            Status = tm.Status
-                        }).ToList()
-                    }).ToList()
-            };
+                    ProfileRef = s.Id,
+                    FirstName = s.User.FirstName,
+                    LastName = s.User.LastName,
+                    UserName = s.User.UserName,
+                    Email = s.User.Email,
+                    AvatarUrl = s.AvatarUrl,
+                    Bio = s.Bio,
+                    Age = s.User.Age,
+                    Gender = s.User.Gender,
+                    Experience = s.Experience,
+                    Score = s.Score
+                })
+                .FirstOrDefaultAsync(cancellationToken);
         }
 
         public async Task UpdateAvatarAsync(Guid profileRef, string avatarUrl, CancellationToken cancellationToken)

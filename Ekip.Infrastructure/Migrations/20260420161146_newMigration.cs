@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Ekip.Domain.ValueObjects;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
@@ -7,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Ekip.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class InitPostgresClean : Migration
+    public partial class newMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -52,6 +53,44 @@ namespace Ekip.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "UserEkipReads",
+                columns: table => new
+                {
+                    RequestRef = table.Column<Guid>(type: "uuid", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "boolean", nullable: false, defaultValue: false),
+                    Description = table.Column<string>(type: "character varying(1000)", maxLength: 1000, nullable: true),
+                    CreatorRef = table.Column<Guid>(type: "uuid", nullable: false),
+                    CreatorAvatar = table.Column<string>(type: "character varying(500)", maxLength: 500, nullable: true),
+                    EkipTitle = table.Column<string>(type: "character varying(200)", maxLength: 200, nullable: false),
+                    CreatorName = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
+                    Status = table.Column<int>(type: "integer", nullable: false),
+                    RequestType = table.Column<int>(type: "integer", nullable: false),
+                    CreateDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    RequestDateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    RequestForbidDateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    RequiredMembers = table.Column<int>(type: "integer", nullable: false),
+                    Tags = table.Column<string>(type: "character varying(500)", maxLength: 500, nullable: true),
+                    MemberType = table.Column<int>(type: "integer", nullable: false),
+                    IsAutoAccept = table.Column<bool>(type: "boolean", nullable: false),
+                    CurrentMembersCount = table.Column<int>(type: "integer", nullable: false, defaultValue: 0),
+                    MaximumRequiredMembers = table.Column<int>(type: "integer", nullable: true),
+                    PendingAssignments = table.Column<List<PendingAssignmentInfo>>(type: "jsonb", nullable: true),
+                    AcceptedMembers = table.Column<List<EkipMember>>(type: "jsonb", nullable: true),
+                    LastUpdated = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "NOW()"),
+                    RequiredLevel = table.Column<int>(type: "integer", nullable: true),
+                    MinimumScore = table.Column<double>(type: "double precision", nullable: true),
+                    TargetGender = table.Column<int>(type: "integer", nullable: false),
+                    MaximumAge = table.Column<int>(type: "integer", nullable: false),
+                    MinimumAge = table.Column<int>(type: "integer", nullable: false),
+                    IsRepeatable = table.Column<bool>(type: "boolean", nullable: false),
+                    RepeatType = table.Column<int>(type: "integer", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UserEkipReads", x => x.RequestRef);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "UserReads",
                 columns: table => new
                 {
@@ -64,7 +103,7 @@ namespace Ekip.Infrastructure.Migrations
                     UserName = table.Column<string>(type: "text", nullable: false),
                     Email = table.Column<string>(type: "text", nullable: false),
                     Password = table.Column<string>(type: "text", nullable: false),
-                    Gender = table.Column<bool>(type: "boolean", nullable: false),
+                    Gender = table.Column<int>(type: "integer", nullable: false),
                     Age = table.Column<int>(type: "integer", nullable: false),
                     PhoneNumber = table.Column<string>(type: "text", nullable: false)
                 },
@@ -82,7 +121,8 @@ namespace Ekip.Infrastructure.Migrations
                     AvatarUrl = table.Column<string>(type: "text", nullable: true),
                     Score = table.Column<double>(type: "double precision", nullable: true),
                     Experience = table.Column<int>(type: "integer", nullable: false),
-                    VerificationLevel = table.Column<int>(type: "integer", nullable: false)
+                    VerificationLevel = table.Column<int>(type: "integer", nullable: false),
+                    Bio = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -177,6 +217,31 @@ namespace Ekip.Infrastructure.Migrations
                 name: "IX_RequestReads_CreatorRef",
                 table: "RequestReads",
                 column: "CreatorRef");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserEkipReads_Creator_Status_Deleted",
+                table: "UserEkipReads",
+                columns: new[] { "CreatorRef", "Status", "IsDeleted" });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserEkipReads_CreatorRef",
+                table: "UserEkipReads",
+                column: "CreatorRef");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserEkipReads_IsDeleted",
+                table: "UserEkipReads",
+                column: "IsDeleted");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserEkipReads_RequestDateTime",
+                table: "UserEkipReads",
+                column: "RequestDateTime");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserEkipReads_Status",
+                table: "UserEkipReads",
+                column: "Status");
         }
 
         /// <inheritdoc />
@@ -190,6 +255,9 @@ namespace Ekip.Infrastructure.Migrations
 
             migrationBuilder.DropTable(
                 name: "RequestAssignmentReads");
+
+            migrationBuilder.DropTable(
+                name: "UserEkipReads");
 
             migrationBuilder.DropTable(
                 name: "RequestReads");
