@@ -34,6 +34,8 @@ namespace Ekip.Infrastructure.Repositories.Implementations
                 Email = s.User.Email,
                 AvatarUrl = s.AvatarUrl,
                 Age = s.User.Age,
+                ProfileRef = s.Id,
+                Bio = s.Bio
             }).FirstOrDefaultAsync(cancellationToken);
 
             return profile;

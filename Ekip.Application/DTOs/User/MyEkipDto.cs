@@ -31,7 +31,7 @@ namespace Ekip.Application.DTOs.User
         public string? Tags { get; set; }
         public int? MaximumAge { get; set; }
         public int? MinimumAge { get; set; }
-        public GenderType? TargetGender { get; set; }
+        public TargetGender? TargetGender { get; set; }
         public int? RequiredLevel { get; set; }
         public double? MinimumScore { get; set; }
 

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ekip.Application.Features.Request.Qeuries
+namespace Ekip.Application.Features.Request.Qeuries.GetRequest
 {
     public class GetRequestQuery : IRequest<RequestDetailsDto>
     {

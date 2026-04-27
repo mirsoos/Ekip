@@ -19,7 +19,7 @@ namespace Ekip.Domain.Entities.ReadModels
         public DateTime RequestDateTime { get; set; }
         public DateTime RequestForbidDateTime { get; set; }
         public int RequiredMembers { get; set; }
-        public string? Tags { get; set; }
+        public string[]? Tags { get; set; }
         public MemberType MemberType { get; set; }
         public bool IsAutoAccept { get; set; }
         public int CurrentMembersCount { get; set; }
@@ -29,9 +29,9 @@ namespace Ekip.Domain.Entities.ReadModels
         public DateTime LastUpdated { get; set; }
         public int? RequiredLevel { get; set; }
         public double? MinimumScore { get; set; }
-        public GenderType TargetGender { get; set; }
-        public int MaximumAge { get; set; }
-        public int MinimumAge { get; set; }
+        public TargetGender TargetGender { get; set; }
+        public int? MaximumAge { get; set; }
+        public int? MinimumAge { get; set; }
         public bool IsRepeatable { get; set; }
         public RequestRepeatType? RepeatType { get; set; }
     }

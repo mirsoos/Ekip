@@ -1,4 +1,5 @@
 ﻿using Ekip.Domain.Entities.Base.Entities;
+using Ekip.Domain.Enums.Identity.Enums;
 using Ekip.Domain.Enums.Requests.Enums;
 using Ekip.Domain.ValueObjects;
 
@@ -17,6 +18,9 @@ namespace Ekip.Domain.Entities.Requests.Entities
         public string[]? Tags { get; private set; }
         public bool IsAutoAccept { get; private set; }
         public bool IsRepeatable { get; private set; }
+        public TargetGender TargetGender { get; private set; }
+        public int? RequiredLevel { get; private set; }
+        public double? MinimumScore { get; set; }
         public RequestRepeatType RepeatType { get; private set; }
         public RequestType RequestType { get; private set; }
         public MemberType MemberType { get; private set; }
@@ -29,7 +33,7 @@ namespace Ekip.Domain.Entities.Requests.Entities
         private List<RequestFilter> _requestFilters;
         public IReadOnlyCollection<RequestFilter>? RequestFilters => _requestFilters.AsReadOnly();
 
-        public Request(Guid creator, string title, int requiredMember, DateTime requestDateTime, string? description, string[]? tags, RequestType requestType, MemberType memberType, bool isAutoAccept,bool isRepeatable ,RequestRepeatType? repeatType ,HashSet<RequestFilter>? requestFilters)
+        public Request(Guid creator, string title, int requiredMember, DateTime requestDateTime, string? description, string[]? tags, RequestType requestType, MemberType memberType, bool isAutoAccept,bool isRepeatable ,RequestRepeatType? repeatType ,HashSet<RequestFilter>? requestFilters , TargetGender targetGender , int? requiredLevel , double? minimumScore)
         {
             if (string.IsNullOrWhiteSpace(title))
                 throw new Exception("Request must have a Title");
@@ -47,6 +51,9 @@ namespace Ekip.Domain.Entities.Requests.Entities
             RepeatType = repeatType ?? RequestRepeatType.None;
             Description = description;
             Tags = tags;
+            TargetGender = targetGender;
+            RequiredLevel = requiredLevel;
+            MinimumScore = minimumScore;
             RequestType = requestType;
             MemberType = memberType;
             IsAutoAccept = isAutoAccept;

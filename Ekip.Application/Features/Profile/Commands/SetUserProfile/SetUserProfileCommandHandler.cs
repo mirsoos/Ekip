@@ -43,8 +43,8 @@ namespace Ekip.Application.Features.Profile.Commands.SetUserProfile
                 Experience = savedProfile.Experience,
                 Score = savedProfile.Score,
                 Id = savedProfile.Id,
-                UserRef = savedProfile.UserRef
-                
+                UserRef = savedProfile.UserRef,
+                Bio = savedProfile.Bio
             });
 
             await _redisCache.RemoveAsync(CacheKeySchema.ProfileKey(savedProfile.Id), cancellationToken);

@@ -140,7 +140,7 @@ namespace Ekip.Infrastructure.Repositories.Implementations
             await _postgreDb.RequestAssignmentReads.Where(x => x.Id == assignmentRef).ExecuteUpdateAsync(a => a.SetProperty(s => s.Status, newStatus).SetProperty(s => s.ActionDate, DateTime.UtcNow), cancellationToken);
         }
 
-        public async Task<List<MyEkipDto>> GetEkipsByProfileId(Guid profileRef, CancellationToken cancellationToken)
+        public async Task<List<MyEkipDto>> GetEkipsByProfileIdAsync(Guid profileRef, CancellationToken cancellationToken)
         {
             return await _postgreDb.userEkipReads.Where(x => x.CreatorRef == profileRef || x.PendingAssignments.Any(x => x.ApplicantId == profileRef) || x.AcceptedMembers.Any(x=>x.ProfileRef == profileRef)).Select(s => new MyEkipDto
             {
@@ -163,7 +163,7 @@ namespace Ekip.Infrastructure.Repositories.Implementations
                 Description = s.Description,
                 MemberType = s.MemberType,
                 RepeatType = s.RepeatType,
-                Tags = s.Tags,
+                Tags = s.Tags != null ? string.Join(",",s.Tags) : null,
                 MinimumScore = s.MinimumScore,
                 IsAutoAccept = s.IsAutoAccept,
                 PendingAssignments = s.PendingAssignments,
@@ -178,7 +178,7 @@ namespace Ekip.Infrastructure.Repositories.Implementations
             }).OrderByDescending(o => o.RequestDateTime).ToListAsync(cancellationToken);
         }
 
-        public async Task<List<PendingAssignmentsDto>> GetPendingAssignmentByProfileId(Guid profileRef, CancellationToken cancellationToken)
+        public async Task<List<PendingAssignmentsDto>> GetPendingAssignmentByProfileIdAsync(Guid profileRef, CancellationToken cancellationToken)
         {
             return await _postgreDb.userEkipReads
                 .AsNoTracking()

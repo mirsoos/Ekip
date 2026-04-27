@@ -1,5 +1,6 @@
 ﻿using Ekip.Application.DTOs.Request;
 using Ekip.Application.DTOs.User;
+using Ekip.Domain.Enums.Identity.Enums;
 using Ekip.Domain.Enums.Requests.Enums;
 using Ekip.Domain.ValueObjects;
 using MediatR;
@@ -21,5 +22,8 @@ namespace Ekip.Application.Features.Request.Commands.CreateRequest
         public bool IsAutoAccept { get; set; }
         public bool IsRepeatable { get; set; }
         public RequestRepeatType? RepeatType { get; set; }
+        public TargetGender TargetGender { get; set; }
+        public int? RequiredLevel { get; set; }
+        public double? MinimumScore { get; set; }
     }
 }

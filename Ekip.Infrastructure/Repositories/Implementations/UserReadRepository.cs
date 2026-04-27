@@ -69,7 +69,6 @@ namespace Ekip.Infrastructure.Repositories.Implementations
                 UserName = result.User.UserName,
                 PhoneNumber = result.User.PhoneNumber,
                 AvatarUrl = result.Profile.AvatarUrl,
-                Password = result.User.Password
             };
         }
     }

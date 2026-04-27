@@ -1,4 +1,5 @@
 ﻿using Ekip.Application.DTOs.Request;
+using Ekip.Domain.Enums.Identity.Enums;
 using Ekip.Domain.Enums.Requests.Enums;
 
 namespace Ekip.Application.Contracts.Events
@@ -14,6 +15,9 @@ namespace Ekip.Application.Contracts.Events
         public DateTime RequestDateTime { get; init; }
         public DateTime RequestForbidDateTime { get; init; }
         public string? Description { get; init; }
+        public TargetGender TargetGender { get; init; }
+        public int? RequiredLevel { get; init; }
+        public double? MinimumScore { get; init; }
         public string[]? Tags { get; init; }
         public RequestStatus Status { get; init; }
         public RequestType RequestType { get; init; }

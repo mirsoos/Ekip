@@ -36,7 +36,9 @@ namespace Ekip.Application.Features.Request.Consumer
                 RequiredMembers = message.RequiredMembers,
                 Tags = message.Tags != null ? string.Join(",",message.Tags) : null,
                 RequestFilters = message.RequestFilters != null ? JsonSerializer.Serialize(message.RequestFilters) : null ,
-                Status = message.Status
+                Status = message.Status,
+                TargetGender = message.TargetGender,
+                RequiredLevel = message.RequiredLevel
             };
 
            await _requestRead.AddRequestAsync(mongoToPostgres, context.CancellationToken);

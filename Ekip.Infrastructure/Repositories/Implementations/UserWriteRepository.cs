@@ -36,5 +36,14 @@ namespace Ekip.Infrastructure.Repositories.Implementations
         {
             return await _mongoDb.Users.Find(x => userName.Equals(x.UserName)).FirstOrDefaultAsync(cancellationToken);
         }
+
+        public async Task<User> GetUserByUserNameOrEmailAsync(string userName, string email, CancellationToken cancellationToken)
+        {
+            var filter = Builders<User>.Filter.Or(
+                Builders<User>.Filter.Eq(x=>x.UserName ,userName),
+                Builders<User>.Filter.Eq(x=>x.Email ,email));
+            return await _mongoDb.Users.Find(filter).FirstOrDefaultAsync(cancellationToken);
+
+        }
     }
 }

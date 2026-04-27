@@ -50,6 +50,7 @@ namespace Ekip.Application.Features.Request.Commands.AcceptOrRejectAssignment
                     NewStatus = AssignmentStatus.Declined,
                 });
             }
+
             await _requestWrite.UpdateAsync(ekip, cancellationToken);
 
             await _redisCache.RemoveAsync(CacheKeySchema.UserAssignmentsKey(senderRef), cancellationToken);

@@ -210,6 +210,9 @@ namespace Ekip.Infrastructure.Migrations
                     b.Property<int>("RequestType")
                         .HasColumnType("integer");
 
+                    b.Property<int?>("RequiredLevel")
+                        .HasColumnType("integer");
+
                     b.Property<int>("RequiredMembers")
                         .HasColumnType("integer");
 
@@ -218,6 +221,9 @@ namespace Ekip.Infrastructure.Migrations
 
                     b.Property<string>("Tags")
                         .HasColumnType("text");
+
+                    b.Property<int>("TargetGender")
+                        .HasColumnType("integer");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -284,7 +290,7 @@ namespace Ekip.Infrastructure.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasDefaultValueSql("NOW()");
 
-                    b.Property<int>("MaximumAge")
+                    b.Property<int?>("MaximumAge")
                         .HasColumnType("integer");
 
                     b.Property<int?>("MaximumRequiredMembers")
@@ -293,7 +299,7 @@ namespace Ekip.Infrastructure.Migrations
                     b.Property<int>("MemberType")
                         .HasColumnType("integer");
 
-                    b.Property<int>("MinimumAge")
+                    b.Property<int?>("MinimumAge")
                         .HasColumnType("integer");
 
                     b.Property<double?>("MinimumScore")
@@ -323,9 +329,9 @@ namespace Ekip.Infrastructure.Migrations
                     b.Property<int>("Status")
                         .HasColumnType("integer");
 
-                    b.Property<string>("Tags")
+                    b.PrimitiveCollection<string[]>("Tags")
                         .HasMaxLength(500)
-                        .HasColumnType("character varying(500)");
+                        .HasColumnType("text[]");
 
                     b.Property<int>("TargetGender")
                         .HasColumnType("integer");
@@ -377,10 +383,6 @@ namespace Ekip.Infrastructure.Migrations
                         .HasColumnType("boolean");
 
                     b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("text");
 

@@ -20,6 +20,7 @@ using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Serializers;
 using MongoDB.Driver;
+using Npgsql;
 using StackExchange.Redis;
 
 namespace Ekip.Infrastructure.Configurations
@@ -62,8 +63,11 @@ namespace Ekip.Infrastructure.Configurations
                 configuration.GetSection("InfrastructureSettings")
             );
 
-            services.AddDbContext<PostgresDbContext>(options =>
-                    options.UseNpgsql(configuration.GetSection("InfrastructureSettings:PostgresConnection").Value));
+            var dataSourceBuilder = new NpgsqlDataSourceBuilder(
+                configuration.GetSection("InfrastructureSettings:PostgresConnection").Value);
+            dataSourceBuilder.EnableDynamicJson();
+            var dataSource = dataSourceBuilder.Build();
+            services.AddDbContext<PostgresDbContext>(options => options.UseNpgsql(dataSource));
 
             services.AddAuthentication(options =>
             {
@@ -125,6 +129,8 @@ namespace Ekip.Infrastructure.Configurations
             services.AddScoped<IFileService, FileService>();
             services.AddScoped<IChatService, ChatService>();
             services.AddScoped<IRedisCacheService, RedisCacheService>();
+            services.AddScoped<IUserEkipReadRepository, UserEkipReadRepository>();
+            services.AddScoped<IUserEkipUpdaterService, UserEkipUpdaterService>();
 
             services.AddScoped<IRedisService, RedisService>();
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));

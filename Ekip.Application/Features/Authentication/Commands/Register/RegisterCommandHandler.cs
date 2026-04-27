@@ -55,8 +55,8 @@ namespace Ekip.Application.Features.Authentication.Commands.Register
                     user = new User(request.FirstName, request.LastName, request.UserName, request.Email, request.Gender, request.Age, request.PhoneNumber);
                     user.SetPasswordHash(hashPassword);
                     profile = new ProfileEntity(user.Id);
-
                     user.SetProfileId(profile.Id);
+                    profile.SetBio(request.Bio);
 
                     await _userWriteRepository.AddAsync(user, cancellationToken);
 
@@ -73,12 +73,12 @@ namespace Ekip.Application.Features.Authentication.Commands.Register
                         PhoneNumber = user.PhoneNumber,
                         UserName = user.UserName,
                         ProfileRef = user.ProfileRef,
-                        Password = user.PasswordHash,
                         CreateDate = user.CreateDate,
                         IsDeleted = user.IsDeleted,
                         Experience = profile.Experience,
                         UserRef = profile.UserRef,
-                        Score = profile.Score
+                        Score = profile.Score,
+                        Bio = profile.Bio
                     }, cancellationToken);
 
                 });
@@ -93,9 +93,6 @@ namespace Ekip.Application.Features.Authentication.Commands.Register
             return new AuthenticationResult
             {
                 ProfileRef = user.ProfileRef,
-                UserName = user.UserName,
-                Email = user.Email,
-                PhoneNumber = user.PhoneNumber,
                 Token = userToken
             };
         }

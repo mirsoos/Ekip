@@ -54,7 +54,7 @@ namespace Ekip.Domain.Entities.Identity.Entities
             PasswordHash = passwordHash;
         }
 
-        public void addCredential(UserCredential credential)
+        public void AddCredential(UserCredential credential)
         {
             if (UserCredentials.Any(x => x.Equals(credential)))
             {

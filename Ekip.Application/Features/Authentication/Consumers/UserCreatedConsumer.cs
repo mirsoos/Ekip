@@ -31,9 +31,7 @@ namespace Ekip.Application.Features.Authentication.Consumers
                 Email = user.Email,
                 Gender = user.Gender,
                 PhoneNumber = user.PhoneNumber,
-                IsDeleted = user.IsDeleted,
-                Password = user.Password,
-                
+                IsDeleted = user.IsDeleted,                
             };
 
             var profileMongoToPostgre = new ProfileReadModel
@@ -42,7 +40,8 @@ namespace Ekip.Application.Features.Authentication.Consumers
                 UserRef = user.UserRef,
                 Experience = user.Experience,
                 Score = user.Score,
-                VerificationLevel = VerificationLevel.None
+                VerificationLevel = VerificationLevel.None,
+                Bio = user.Bio
             };
 
             await _userRead.AddUserAsync(userMongoToPostgres, context.CancellationToken);

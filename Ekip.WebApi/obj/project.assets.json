@@ -1305,7 +1305,7 @@
           }
         }
       },
-      "MongoDB.Bson/3.7.1": {
+      "MongoDB.Bson/3.8.0": {
         "type": "package",
         "dependencies": {
           "System.Memory": "4.5.5",
@@ -1322,12 +1322,12 @@
           }
         }
       },
-      "MongoDB.Driver/3.7.1": {
+      "MongoDB.Driver/3.8.0": {
         "type": "package",
         "dependencies": {
           "DnsClient": "1.6.1",
           "Microsoft.Extensions.Logging.Abstractions": "2.0.0",
-          "MongoDB.Bson": "3.7.1",
+          "MongoDB.Bson": "3.8.0",
           "SharpCompress": "0.30.1",
           "Snappier": "1.0.0",
           "System.Buffers": "4.5.1",
@@ -2046,7 +2046,7 @@
           "Microsoft.Extensions.Options.ConfigurationExtensions": "9.0.11",
           "Microsoft.ML.OnnxRuntime": "1.24.1",
           "Microsoft.ML.OnnxRuntime.Managed": "1.24.3",
-          "MongoDB.Driver": "3.7.1",
+          "MongoDB.Driver": "3.8.0",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "9.0.4",
           "OpenCvSharp4": "4.13.0.20260214",
           "OpenCvSharp4.runtime.win": "4.13.0.20260214",
@@ -4565,10 +4565,10 @@
         "version.txt"
       ]
     },
-    "MongoDB.Bson/3.7.1": {
-      "sha512": "ZhCFCN64iZNaV6TDVNpjQ6p8M8tQvLda6ABbfrqd6XEZ3qn0pwwDJi6+DZ3xySadUwGzKR0CV3IzmHEWe/wI4Q==",
+    "MongoDB.Bson/3.8.0": {
+      "sha512": "HeiOJUylam5nIB7b1EfzlnJbf6A9te79WO6CtsKfp8M/2EeL4SoSQFjmUpJ6/vvuaNKGENXMaX9oUJp9KpHlqw==",
       "type": "package",
-      "path": "mongodb.bson/3.7.1",
+      "path": "mongodb.bson/3.8.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -4579,15 +4579,15 @@
         "lib/net6.0/MongoDB.Bson.xml",
         "lib/netstandard2.1/MongoDB.Bson.dll",
         "lib/netstandard2.1/MongoDB.Bson.xml",
-        "mongodb.bson.3.7.1.nupkg.sha512",
+        "mongodb.bson.3.8.0.nupkg.sha512",
         "mongodb.bson.nuspec",
         "packageIcon.png"
       ]
     },
-    "MongoDB.Driver/3.7.1": {
-      "sha512": "p1Od3F5/lQUiYKF+o7+ommuVwK/71gbw5tu28toO1mID91cMPmdCL6EhX0K0+HwpytmMSfciI8j4688K//QcQA==",
+    "MongoDB.Driver/3.8.0": {
+      "sha512": "BQ6bTaZCuSThmxS4vXu71a1jFGNMht2/+rjx2Uaw3AweIqRKFbPuyFoVsDnoLN935tvdC5OxwwAqrMY9eWBUng==",
       "type": "package",
-      "path": "mongodb.driver/3.7.1",
+      "path": "mongodb.driver/3.8.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -4598,7 +4598,7 @@
         "lib/net6.0/MongoDB.Driver.xml",
         "lib/netstandard2.1/MongoDB.Driver.dll",
         "lib/netstandard2.1/MongoDB.Driver.xml",
-        "mongodb.driver.3.7.1.nupkg.sha512",
+        "mongodb.driver.3.8.0.nupkg.sha512",
         "mongodb.driver.nuspec",
         "packageIcon.png"
       ]
@@ -5707,7 +5707,7 @@
       "Microsoft.EntityFrameworkCore.Tools >= 9.0.11",
       "Microsoft.ML.OnnxRuntime >= 1.24.1",
       "Microsoft.ML.OnnxRuntime.Managed >= 1.24.3",
-      "MongoDB.Driver >= 3.7.1",
+      "MongoDB.Driver >= 3.8.0",
       "Polly >= 8.6.6",
       "Swashbuckle.AspNetCore >= 6.6.2"
     ]
@@ -5804,7 +5804,7 @@
           },
           "MongoDB.Driver": {
             "target": "Package",
-            "version": "[3.7.1, )"
+            "version": "[3.8.0, )"
           },
           "Polly": {
             "target": "Package",
@@ -5837,13 +5837,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.311/PortableRuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1900",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Error occurred while getting package vulnerability data: Unable to load the service index for source https://package-mirror.liara.ir/repository/nuget/index.json."
-    }
-  ]
+  }
 }

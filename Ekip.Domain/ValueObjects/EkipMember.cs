@@ -7,9 +7,9 @@ namespace Ekip.Domain.ValueObjects
         public Guid ProfileRef { get; init; }
         public string FirstName { get; init; }
         public string LastName { get; init; }
-        public string AvatarUrl { get; init; }
+        public string? AvatarUrl { get; init; }
 
-        public EkipMember(Guid profileRef, string firstName, string lastName, string avatarUrl)
+        public EkipMember(Guid profileRef, string firstName, string lastName, string? avatarUrl)
         {
             ProfileRef = profileRef;
             FirstName = firstName;

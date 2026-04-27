@@ -13,6 +13,8 @@ namespace Ekip.Domain.Entities.ReadModels
         public int Experience { get; set; }
         public VerificationLevel VerificationLevel { get; set; }
         public string? Bio { get; set; }
+        public double TotalScoreSum { get; set; }
+        public int TotalScoreCount { get; set; }
 
         [ForeignKey("UserRef")]
         public virtual UserReadModel User { get; set; }

@@ -15,6 +15,7 @@ namespace Ekip.Domain.Entities.Requests.Entities
             SenderRef = senderRef;
             Status = status;
             Description = description;
+            ActionDate = DateTime.UtcNow;
         }
 
         public void Accept()

@@ -1,6 +1,7 @@
 ﻿using Ekip.Application.Interfaces;
 using Ekip.Domain.Entities.Identity.Entities;
 using Ekip.Infrastructure.Persistence.MongoDb.Contexts;
+using MongoDB.Bson;
 using MongoDB.Driver;
 
 namespace Ekip.Infrastructure.Repositories.Implementations
@@ -47,5 +48,46 @@ namespace Ekip.Infrastructure.Repositories.Implementations
 
             await _mongoDb.Profiles.ReplaceOneAsync(filter, profile, cancellationToken: ct);
         }
+
+        public async Task UpdateScoreAsync(Guid userRef, int scoreGiven, CancellationToken cancellationToken)
+        {
+            var collectionName = _mongoDb.Profiles.CollectionNamespace.CollectionName;
+            var database = _mongoDb.Profiles.Database;
+
+            var query = new BsonDocument();
+            query.Add(new BsonElement("UserRef", BsonValue.Create(userRef)));
+
+            var stage1 = new BsonDocument();
+            stage1.Add(new BsonElement("$set",
+                new BsonDocument
+                {
+                    { "TotalScoreSum", new BsonDocument("$add", new BsonArray { "$TotalScoreSum", scoreGiven }) },
+                    { "TotalScoreCount", new BsonDocument("$add", new BsonArray { "$TotalScoreCount", 1 }) }
+                }));
+
+            var stage2 = new BsonDocument();
+            stage2.Add(new BsonElement("$set",
+                new BsonDocument
+                {
+                    { "Score", new BsonDocument("$divide", new BsonArray { "$TotalScoreSum", "$TotalScoreCount" }) },
+                    { "RowVersion", BsonValue.Create(Guid.NewGuid()) }
+                }));
+
+            var updateStages = new BsonArray { stage1, stage2 };
+
+            var update = new BsonDocument();
+            update.Add(new BsonElement("q", query));
+            update.Add(new BsonElement("u", updateStages));
+            update.Add(new BsonElement("multi", false));
+
+            var updatesArray = new BsonArray { update };
+
+            var command = new BsonDocument();
+            command.Add(new BsonElement("update", collectionName));
+            command.Add(new BsonElement("updates", updatesArray));
+
+            await database.RunCommandAsync<BsonDocument>(command, cancellationToken:cancellationToken);
+        }
+
     }
 }

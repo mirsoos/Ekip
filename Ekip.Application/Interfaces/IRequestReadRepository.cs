@@ -12,8 +12,8 @@ namespace Ekip.Application.Interfaces
         Task AddAssignmentAsync(RequestAssignmentReadModel requestAssignmentReadModel, CancellationToken cancellationToken);
         Task UpdateAssignmentDecisionAsync(Guid assignmentRef , AssignmentStatus newStatus , CancellationToken cancellationToken);
         Task UpdateAsync(Guid requestRef,RequestStatus status,CancellationToken cancellationToken);
-        Task<List<MyEkipDto>> GetEkipsByProfileId(Guid profileRef, CancellationToken cancellationToken);
-        Task<List<PendingAssignmentsDto>> GetPendingAssignmentByProfileId(Guid profileRef, CancellationToken cancellationToken);
+        Task<List<MyEkipDto>> GetEkipsByProfileIdAsync(Guid profileRef, CancellationToken cancellationToken);
+        Task<List<PendingAssignmentsDto>> GetPendingAssignmentByProfileIdAsync(Guid profileRef, CancellationToken cancellationToken);
 
     }
 }

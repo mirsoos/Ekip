@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Ekip.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class newMigration : Migration
+    public partial class newDb : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -69,7 +69,7 @@ namespace Ekip.Infrastructure.Migrations
                     RequestDateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     RequestForbidDateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     RequiredMembers = table.Column<int>(type: "integer", nullable: false),
-                    Tags = table.Column<string>(type: "character varying(500)", maxLength: 500, nullable: true),
+                    Tags = table.Column<string[]>(type: "text[]", maxLength: 500, nullable: true),
                     MemberType = table.Column<int>(type: "integer", nullable: false),
                     IsAutoAccept = table.Column<bool>(type: "boolean", nullable: false),
                     CurrentMembersCount = table.Column<int>(type: "integer", nullable: false, defaultValue: 0),
@@ -80,8 +80,8 @@ namespace Ekip.Infrastructure.Migrations
                     RequiredLevel = table.Column<int>(type: "integer", nullable: true),
                     MinimumScore = table.Column<double>(type: "double precision", nullable: true),
                     TargetGender = table.Column<int>(type: "integer", nullable: false),
-                    MaximumAge = table.Column<int>(type: "integer", nullable: false),
-                    MinimumAge = table.Column<int>(type: "integer", nullable: false),
+                    MaximumAge = table.Column<int>(type: "integer", nullable: true),
+                    MinimumAge = table.Column<int>(type: "integer", nullable: true),
                     IsRepeatable = table.Column<bool>(type: "boolean", nullable: false),
                     RepeatType = table.Column<int>(type: "integer", nullable: true)
                 },
@@ -102,7 +102,6 @@ namespace Ekip.Infrastructure.Migrations
                     LastName = table.Column<string>(type: "text", nullable: false),
                     UserName = table.Column<string>(type: "text", nullable: false),
                     Email = table.Column<string>(type: "text", nullable: false),
-                    Password = table.Column<string>(type: "text", nullable: false),
                     Gender = table.Column<int>(type: "integer", nullable: false),
                     Age = table.Column<int>(type: "integer", nullable: false),
                     PhoneNumber = table.Column<string>(type: "text", nullable: false)
@@ -149,6 +148,8 @@ namespace Ekip.Infrastructure.Migrations
                     RequestDateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     RequestForbidDateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     Description = table.Column<string>(type: "text", nullable: false),
+                    TargetGender = table.Column<int>(type: "integer", nullable: false),
+                    RequiredLevel = table.Column<int>(type: "integer", nullable: true),
                     Tags = table.Column<string>(type: "text", nullable: true),
                     Status = table.Column<int>(type: "integer", nullable: false),
                     RequestType = table.Column<int>(type: "integer", nullable: false),

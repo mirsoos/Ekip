@@ -10,6 +10,7 @@
     <Folder Include="Behaviors\" />
     <Folder Include="Common\" />
     <Folder Include="DTOs\Verification\" />
+    <Folder Include="Features\Gamification\Queries\" />
   </ItemGroup>
 
   <ItemGroup>

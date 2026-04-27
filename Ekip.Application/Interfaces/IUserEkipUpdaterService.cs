@@ -1,11 +1,12 @@
-﻿using Ekip.Domain.Enums.Requests.Enums;
+﻿using Ekip.Domain.Entities.ReadModels;
+using Ekip.Domain.Enums.Requests.Enums;
 using Ekip.Domain.ValueObjects;
 
 namespace Ekip.Application.Interfaces
 {
-    public interface IUserEkipUpdater
+    public interface IUserEkipUpdaterService
     {
-        Task AddOrUpdateEkipAsync(Guid requestRef , Guid creatorRef , string ekipTitle , RequestStatus status , RequestType requestType , DateTime createDate , DateTime eventDateTime , int requiredMembers , CancellationToken cancellationToken);
+        Task AddEkipAsync(UserEkipReadModel ekip, CancellationToken cancellationToken);
 
         Task UpdateCurrentMembersCountAsync(Guid requestRef , int currentCount , CancellationToken cancellationToken);
 

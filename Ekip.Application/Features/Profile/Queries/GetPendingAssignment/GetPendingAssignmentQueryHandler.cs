@@ -21,7 +21,7 @@ namespace Ekip.Application.Features.Profile.Queries.GetPendingAssignment
             if(cachedPendingAssignment?.Any() == true)
                 return cachedPendingAssignment;
 
-            var pendingAssignment = await _requestRead.GetPendingAssignmentByProfileId(request.ProfileRef , cancellationToken);
+            var pendingAssignment = await _requestRead.GetPendingAssignmentByProfileIdAsync(request.ProfileRef , cancellationToken);
             if(pendingAssignment?.Any() == true)
                 await _redisCache.SetAsync(key, pendingAssignment, TimeSpan.FromMinutes(5), cancellationToken);
 

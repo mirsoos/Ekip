@@ -1,6 +1,7 @@
 ﻿using Ekip.Domain.Entities.Chat.Entites;
 using Ekip.Domain.Entities.Identity.Entities;
 using Ekip.Domain.Entities.Requests.Entities;
+using Ekip.Domain.Entities.UserBehavior.Entities;
 using Ekip.Infrastructure.Configurations;
 using Ekip.Infrastructure.Persistence.MongoDb.Configurations;
 using Microsoft.Extensions.Options;
@@ -41,6 +42,7 @@ namespace Ekip.Infrastructure.Persistence.MongoDb.Contexts
         public IMongoCollection<Request> Requests => _database.GetCollection<Request>("Requests");
         public IMongoCollection<ChatRoom> ChatRooms => _database.GetCollection<ChatRoom>("ChatRooms");
         public IMongoCollection<Message> Messages => _database.GetCollection<Message>("Messages");
+        public IMongoCollection<ScoreLedger> ScoreLedgers => _database.GetCollection<ScoreLedger>("ScoreLedgers");
         
     }
 }

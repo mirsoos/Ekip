@@ -3,7 +3,7 @@ using Ekip.Application.DTOs.Request;
 using Ekip.Application.Interfaces;
 using MediatR;
 
-namespace Ekip.Application.Features.Request.Qeuries
+namespace Ekip.Application.Features.Request.Qeuries.GetRequest
 {
     public class GetRequestQueryHandler : IRequestHandler<GetRequestQuery, RequestDetailsDto>
     {

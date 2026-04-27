@@ -12,5 +12,6 @@ namespace Ekip.Application.Contracts.Events
         public Guid UserRef { get; init; }
         public double? Score { get; init; }
         public int Experience { get; init; }
+        public string? Bio { get; set; }
     }
 }

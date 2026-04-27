@@ -260,7 +260,7 @@
             },
             "MongoDB.Driver": {
               "target": "Package",
-              "version": "[3.7.1, )"
+              "version": "[3.8.0, )"
             },
             "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",
@@ -398,7 +398,7 @@
             },
             "MongoDB.Driver": {
               "target": "Package",
-              "version": "[3.7.1, )"
+              "version": "[3.8.0, )"
             },
             "Polly": {
               "target": "Package",

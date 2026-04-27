@@ -14,5 +14,6 @@ namespace Ekip.Application.Features.Authentication.Commands.Register
         public GenderType Gender { get; set; }
         public int Age { get; set; }
         public string PhoneNumber { get; set; }
+        public string? Bio { get; set; }
     }
 }
