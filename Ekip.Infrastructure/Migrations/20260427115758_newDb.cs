@@ -121,7 +121,9 @@ namespace Ekip.Infrastructure.Migrations
                     Score = table.Column<double>(type: "double precision", nullable: true),
                     Experience = table.Column<int>(type: "integer", nullable: false),
                     VerificationLevel = table.Column<int>(type: "integer", nullable: false),
-                    Bio = table.Column<string>(type: "text", nullable: true)
+                    Bio = table.Column<string>(type: "text", nullable: true),
+                    TotalScoreSum = table.Column<double>(type: "double precision", nullable: false),
+                    TotalScoreCount = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {

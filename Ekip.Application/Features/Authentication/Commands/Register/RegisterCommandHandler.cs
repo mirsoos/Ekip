@@ -2,10 +2,10 @@
 using Ekip.Application.DTOs.User;
 using Ekip.Application.Interfaces;
 using Ekip.Domain.Entities.Identity.Entities;
+using Ekip.Domain.ValueObjects;
 using MassTransit;
 using MediatR;
 using Polly;
-using System.Text.RegularExpressions;
 using ProfileEntity = Ekip.Domain.Entities.Identity.Entities.Profile;
 
 namespace Ekip.Application.Features.Authentication.Commands.Register
@@ -29,66 +29,42 @@ namespace Ekip.Application.Features.Authentication.Commands.Register
 
         public async Task<AuthenticationResult> Handle(RegisterCommand request, CancellationToken cancellationToken)
         {
+            var email = Email.Create(request.Email);
 
-            if (string.IsNullOrWhiteSpace(request.UserName) || string.IsNullOrWhiteSpace(request.Email))
-                throw new Exception("User must have Email and UserName");
+                var hashPassword = _passwordHasher.Hash(request.Password);
 
-            var emailPattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
-            if (!Regex.IsMatch(request.Email, emailPattern))
-                throw new Exception("Invalid email format");
+                var user = new User(request.FirstName, request.LastName, request.UserName, email, request.Gender, request.Age, request.PhoneNumber);
+                user.SetPasswordHash(hashPassword);
+                var profile = new ProfileEntity(user.Id);
 
-            if (request.PhoneNumber.Length != 11 )
-                throw new Exception("PhoneNumber is Not Valid");
+                user.SetProfileId(profile.Id);
+                profile.SetBio(request.Bio);
 
-            var policy = Policy.Handle<ConcurrencyException>().RetryAsync(3);
+                await _userWriteRepository.AddAsync(user, cancellationToken);
+                    
+                await _profileWriteRepository.AddAsync(profile, cancellationToken);
 
-            User user = null!;
-            ProfileEntity profile = null!;
-
-
-            try
-            {
-                await policy.ExecuteAsync(async () =>
+                await _publishEndpoint.Publish(new UserCreatedEvent
                 {
-                    var hashPassword = _passwordHasher.Hash(request.Password);
+                    Id = user.Id,
+                    Age = user.Age,
+                    Email = email.Value,
+                    FirstName = user.FirstName,
+                    Gender = user.Gender,
+                    LastName = user.LastName,
+                    PhoneNumber = user.PhoneNumber,
+                    UserName = user.UserName,
+                    ProfileRef = user.ProfileRef,
+                    CreateDate = user.CreateDate,
+                    IsDeleted = user.IsDeleted,
+                    Experience = profile.Experience,
+                    UserRef = profile.UserRef,
+                    Score = profile.Score,
+                    Bio = profile.Bio
+                }, cancellationToken);
 
-                    user = new User(request.FirstName, request.LastName, request.UserName, request.Email, request.Gender, request.Age, request.PhoneNumber);
-                    user.SetPasswordHash(hashPassword);
-                    profile = new ProfileEntity(user.Id);
-                    user.SetProfileId(profile.Id);
-                    profile.SetBio(request.Bio);
 
-                    await _userWriteRepository.AddAsync(user, cancellationToken);
-
-                    await _profileWriteRepository.AddAsync(profile, cancellationToken);
-
-                    await _publishEndpoint.Publish(new UserCreatedEvent
-                    {
-                        Id = user.Id,
-                        Age = user.Age,
-                        Email = user.Email,
-                        FirstName = user.FirstName,
-                        Gender = user.Gender,
-                        LastName = user.LastName,
-                        PhoneNumber = user.PhoneNumber,
-                        UserName = user.UserName,
-                        ProfileRef = user.ProfileRef,
-                        CreateDate = user.CreateDate,
-                        IsDeleted = user.IsDeleted,
-                        Experience = profile.Experience,
-                        UserRef = profile.UserRef,
-                        Score = profile.Score,
-                        Bio = profile.Bio
-                    }, cancellationToken);
-
-                });
-            }
-            catch (ConcurrencyException)
-            {
-                throw new Exception("Username or Email already exists.");
-            }
-
-            var userToken = _jwtTokenGenerator.GenerateToken(user.ProfileRef,user.Email,user.UserName);
+            var userToken = _jwtTokenGenerator.GenerateToken(user.ProfileRef,email.Value,user.UserName);
 
             return new AuthenticationResult
             {

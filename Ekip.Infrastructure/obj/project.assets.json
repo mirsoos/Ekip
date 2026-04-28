@@ -78,6 +78,23 @@
           }
         }
       },
+      "MassTransit.MongoDb/9.1.0": {
+        "type": "package",
+        "dependencies": {
+          "MassTransit": "9.1.0",
+          "MongoDB.Driver": "3.5.2"
+        },
+        "compile": {
+          "lib/net8.0/MassTransit.MongoDbIntegration.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/MassTransit.MongoDbIntegration.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "MassTransit.RabbitMQ/9.1.0": {
         "type": "package",
         "dependencies": {
@@ -2046,6 +2063,29 @@
         "lib/netstandard2.0/MassTransit.Abstractions.xml",
         "masstransit.abstractions.9.1.0.nupkg.sha512",
         "masstransit.abstractions.nuspec",
+        "mt-logo-small.png"
+      ]
+    },
+    "MassTransit.MongoDb/9.1.0": {
+      "sha512": "8N8q7ZYvvYHkj8a/cJwWPicbCraUyWcLLHHFZX9/wg9643Mg9sEM39COTz51npgLEdBqDCp1tdnDKcsHy3Ta1g==",
+      "type": "package",
+      "path": "masstransit.mongodb/9.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "NuGet.README.md",
+        "lib/net10.0/MassTransit.MongoDbIntegration.dll",
+        "lib/net10.0/MassTransit.MongoDbIntegration.xml",
+        "lib/net472/MassTransit.MongoDbIntegration.dll",
+        "lib/net472/MassTransit.MongoDbIntegration.xml",
+        "lib/net8.0/MassTransit.MongoDbIntegration.dll",
+        "lib/net8.0/MassTransit.MongoDbIntegration.xml",
+        "lib/net9.0/MassTransit.MongoDbIntegration.dll",
+        "lib/net9.0/MassTransit.MongoDbIntegration.xml",
+        "lib/netstandard2.1/MassTransit.MongoDbIntegration.dll",
+        "lib/netstandard2.1/MassTransit.MongoDbIntegration.xml",
+        "masstransit.mongodb.9.1.0.nupkg.sha512",
+        "masstransit.mongodb.nuspec",
         "mt-logo-small.png"
       ]
     },
@@ -5199,6 +5239,7 @@
       "Ekip.Application >= 1.0.0",
       "Ekip.Domain >= 1.0.0",
       "MassTransit.Abstractions >= 9.1.0",
+      "MassTransit.MongoDb >= 9.1.0",
       "MassTransit.RabbitMQ >= 9.1.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 8.0.24",
       "Microsoft.AspNetCore.Hosting.Abstractions >= 2.3.0",
@@ -5281,6 +5322,10 @@
             "version": "[4.1.0, )"
           },
           "MassTransit.Abstractions": {
+            "target": "Package",
+            "version": "[9.1.0, )"
+          },
+          "MassTransit.MongoDb": {
             "target": "Package",
             "version": "[9.1.0, )"
           },

@@ -1,10 +1,4 @@
-﻿using Ekip.Domain.Entities.Base.Entities;
-using Ekip.Domain.Enums.Identity.Enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Ekip.Domain.Enums.Identity.Enums;
 
 namespace Ekip.Domain.Entities.ReadModels
 {

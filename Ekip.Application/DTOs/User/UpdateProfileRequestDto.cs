@@ -1,15 +1,14 @@
-﻿using MediatR;
-
-namespace Ekip.Application.Features.Profile.Commands.UpdateProfile
+﻿
+namespace Ekip.Application.DTOs.User
 {
-    public class UpdateProfileCommand : IRequest<bool>
+    public class UpdateProfileRequestDto
     {
-        public Guid ProfileRef { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string UserName { get; set; }
         public string? Bio { get; set; }
         public int Age { get; set; }
         public string Email { get; set; }
+
     }
 }

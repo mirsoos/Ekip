@@ -1,5 +1,7 @@
-﻿using Ekip.Application.Features.Authentication.Commands.UserVerification;
+﻿using Ekip.Application.DTOs.User;
+using Ekip.Application.Features.Authentication.Commands.UserVerification;
 using Ekip.Application.Features.Profile.Commands.SetUserAvatar;
+using Ekip.Application.Features.Profile.Commands.UpdateProfile;
 using Ekip.Infrastructure.Services.Interfaces;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -46,6 +48,27 @@ namespace Ekip.WebApi.Controllers
                 ProfileRef = profileId
             };
 
+            var result = await _mediator.Send(command);
+            return Ok(result);
+        }
+
+        [HttpPost("UpdateProfile")]
+        public async Task<ActionResult<bool>> UpdateProfile(UpdateProfileRequestDto request)
+        {
+            var userIdClaim = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(userIdClaim))
+                return Unauthorized();
+
+            var command = new UpdateProfileCommand
+            {
+                ProfileRef = Guid.Parse(userIdClaim),
+                FirstName = request.FirstName,
+                LastName = request.LastName,
+                UserName = request.UserName,
+                Email = request.Email,
+                Bio = request.Bio,
+                Age = request.Age
+            };
             var result = await _mediator.Send(command);
             return Ok(result);
         }

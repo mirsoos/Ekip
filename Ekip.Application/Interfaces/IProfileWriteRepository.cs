@@ -9,6 +9,7 @@ namespace Ekip.Application.Interfaces
         Task<Profile> GetByIdAsync(Guid profileRef, CancellationToken cancellationToken);
         Task<bool> DoesProfileExistForUserAsync(Guid userRef, CancellationToken cancellationToken);
         Task UpdateScoreAsync(Guid userRef , int scoreGiven , CancellationToken cancellationToken);
+        Task<Profile?> GetByUserNameAsync(string userName , CancellationToken cancellationToken);
         Task UpdateFaceVerificationStatusAsync(Guid profileRef,Guid ReferenceId ,string permanentUrl,string provider,CancellationToken cancellationToken);
     }
 }

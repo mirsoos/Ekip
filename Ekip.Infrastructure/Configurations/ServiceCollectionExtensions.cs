@@ -34,11 +34,20 @@ namespace Ekip.Infrastructure.Configurations
 
             services.AddMassTransit(busConfigurator =>
             {
-
                 busConfigurator.SetKebabCaseEndpointNameFormatter();
 
                 var appAssembly = typeof(UserCreatedConsumer).Assembly;
                 busConfigurator.AddConsumers(appAssembly);
+
+                busConfigurator.AddMongoDbOutbox(o =>
+                {
+                    o.ClientFactory(provider => provider.GetRequiredService<IMongoClient>());
+                    o.DatabaseFactory(provider =>
+                        provider.GetRequiredService<IMongoClient>()
+                        .GetDatabase(infraSettings.MongoDatabaseName));
+
+                    o.UseBusOutbox();
+                });
 
                 busConfigurator.UsingRabbitMq((context, cfg) =>
                 {
@@ -56,6 +65,8 @@ namespace Ekip.Infrastructure.Configurations
                     cfg.ConfigureEndpoints(context);
                 });
             });
+
+
 
             MongoDbConventionRegistry.Configure();
 
@@ -102,7 +113,7 @@ namespace Ekip.Infrastructure.Configurations
               });
             services.AddSignalR().AddStackExchangeRedis(infraSettings.RedisConnection);
 
-            BsonSerializer.RegisterSerializer(new GuidSerializer(GuidRepresentation.Standard));
+            //BsonSerializer.RegisterSerializer(new GuidSerializer(GuidRepresentation.Standard));
 
             services.AddSingleton<IMongoClient>(sp =>
             {
@@ -131,6 +142,7 @@ namespace Ekip.Infrastructure.Configurations
             services.AddScoped<IRedisCacheService, RedisCacheService>();
             services.AddScoped<IUserEkipReadRepository, UserEkipReadRepository>();
             services.AddScoped<IUserEkipUpdaterService, UserEkipUpdaterService>();
+            services.AddScoped<IScoreLedgerWriteRepository, ScoreLedgerWriteRepository>();
 
             services.AddScoped<IRedisService, RedisService>();
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));

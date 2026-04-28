@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "b6T8LSBZ0ZY=",
+  "dgSpecHash": "gxlCfSkJiSI=",
   "success": true,
   "projectFilePath": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.WebApi\\Ekip.WebApi.csproj",
   "expectedPackageFiles": [
@@ -10,6 +10,7 @@
     "C:\\Users\\Mirsoos\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\Mirsoos\\.nuget\\packages\\masstransit\\9.1.0\\masstransit.9.1.0.nupkg.sha512",
     "C:\\Users\\Mirsoos\\.nuget\\packages\\masstransit.abstractions\\9.1.0\\masstransit.abstractions.9.1.0.nupkg.sha512",
+    "C:\\Users\\Mirsoos\\.nuget\\packages\\masstransit.mongodb\\9.1.0\\masstransit.mongodb.9.1.0.nupkg.sha512",
     "C:\\Users\\Mirsoos\\.nuget\\packages\\masstransit.rabbitmq\\9.1.0\\masstransit.rabbitmq.9.1.0.nupkg.sha512",
     "C:\\Users\\Mirsoos\\.nuget\\packages\\mediatr\\13.1.0\\mediatr.13.1.0.nupkg.sha512",
     "C:\\Users\\Mirsoos\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512",

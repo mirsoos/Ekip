@@ -10,7 +10,7 @@ namespace Ekip.Domain.Entities.Identity.Entities
         public string LastName { get; private set; }
         public string UserName { get; private set; }
         public string PasswordHash { get; private set; }
-        public string Email { get; private set; }
+        public Email Email { get; private set; }
         public GenderType Gender { get; private set; }
         public bool IsPremium { get; private set; }
         public bool IsActive { get; private set; }
@@ -22,25 +22,15 @@ namespace Ekip.Domain.Entities.Identity.Entities
         public IReadOnlyCollection<UserCredential> UserCredentials => _userCredentials.AsReadOnly();
 
 
-        public User(string firstName , string lastName , string userName , string email , GenderType gender,int age,string phoneNumber)
+        public User(string firstName , string lastName , string userName , Email email , GenderType gender,int age,string phoneNumber)
         {
-
-            if (string.IsNullOrWhiteSpace(firstName))
-                throw new Exception("firstName cannot Be Empty");
-            if (string.IsNullOrWhiteSpace(lastName))
-                throw new Exception("lastName cannot Be Empty");
-            if (string.IsNullOrWhiteSpace(userName))
-                throw new Exception("userName cannot Be Empty");
-            if (string.IsNullOrWhiteSpace(phoneNumber))
-                throw new Exception("PhoneNumber cannot Be Empty");
-
-            FirstName = firstName;
-            LastName = lastName;
-            UserName = userName;
-            Email = email;
+            SetFirstName(firstName);
+            SetLastName(lastName);
+            SetUserName(userName);
+            SetEmail(email);
+            SetAge(age);
+            SetPhoneNumber(phoneNumber);
             Gender = gender;
-            Age = age;
-            PhoneNumber = phoneNumber;
             IsPremium = false;
             IsActive = true;
             IsLocked = false;
@@ -72,6 +62,44 @@ namespace Ekip.Domain.Entities.Identity.Entities
                 throw new ArgumentException("ProfileId cannot be empty");
 
             ProfileRef = profileId;
+        }
+
+        public void SetFirstName(string firstName)
+        {
+            if (string.IsNullOrWhiteSpace(firstName))
+                throw new Exception("FirstName connot be Empty.");
+
+            FirstName = firstName;
+        }
+        public void SetLastName(string lastName)
+        {
+            if(string.IsNullOrWhiteSpace(lastName))
+                throw new Exception("LastName connot be Empty.");
+
+            LastName = lastName;
+        }
+        public void SetUserName(string userName)
+        {
+            if(string.IsNullOrWhiteSpace(userName))
+                throw new Exception("UserName connot be Empty.");
+
+            UserName = userName;
+        }
+        public void SetEmail(Email email)
+        {
+            Email = email;
+        }
+        public void SetAge(int age)
+        {
+            if (age < 1 || age > 120)
+                throw new Exception("Invalid age");
+            Age = age;
+        }
+        public void SetPhoneNumber(string phoneNumber)
+        {
+            if (string.IsNullOrWhiteSpace(phoneNumber) || phoneNumber.Length != 11)
+                throw new Exception("Phone Number is not Valid.");
+            PhoneNumber = phoneNumber;
         }
         private User() { }
     }

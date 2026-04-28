@@ -216,6 +216,10 @@
               "target": "Package",
               "version": "[9.1.0, )"
             },
+            "MassTransit.MongoDb": {
+              "target": "Package",
+              "version": "[9.1.0, )"
+            },
             "MassTransit.RabbitMQ": {
               "target": "Package",
               "version": "[9.1.0, )"

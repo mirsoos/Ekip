@@ -14,7 +14,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Ekip.Infrastructure.Migrations
 {
     [DbContext(typeof(PostgresDbContext))]
-    [Migration("20260422155522_newDb")]
+    [Migration("20260427115758_newDb")]
     partial class newDb
     {
         /// <inheritdoc />
@@ -119,6 +119,12 @@ namespace Ekip.Infrastructure.Migrations
                         .HasColumnType("integer");
 
                     b.Property<double?>("Score")
+                        .HasColumnType("double precision");
+
+                    b.Property<int>("TotalScoreCount")
+                        .HasColumnType("integer");
+
+                    b.Property<double>("TotalScoreSum")
                         .HasColumnType("double precision");
 
                     b.Property<Guid>("UserRef")

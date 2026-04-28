@@ -15,6 +15,7 @@ namespace Ekip.Infrastructure.Persistence.MongoDb.Configurations.EntityConfigura
                 {
                     cm.AutoMap();
                     cm.MapMember(be => be.Id).SetSerializer(new GuidSerializer(GuidRepresentation.Standard));
+                    cm.MapMember(be => be.RowVersion).SetSerializer(new GuidSerializer(GuidRepresentation.Standard));
                     cm.MapMember(be => be.CreateDate).SetSerializer(new DateTimeSerializer(DateTimeKind.Utc));
                     cm.SetIgnoreExtraElements(true);
                     cm.SetIsRootClass(true);

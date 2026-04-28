@@ -4,6 +4,7 @@ using Ekip.Domain.ValueObjects;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Serializers;
+using MongoDB.Driver;
 
 namespace Ekip.Infrastructure.Persistence.MongoDb.Configurations.EntityConfigurations
 {
@@ -22,6 +23,7 @@ namespace Ekip.Infrastructure.Persistence.MongoDb.Configurations.EntityConfigura
                     cm.AutoMap();
                     cm.MapField("_userCredentials").SetElementName("UserCredentials");
                     cm.MapMember(r => r.ProfileRef).SetSerializer(new GuidSerializer(GuidRepresentation.Standard));
+                    cm.MapMember(r => r.Gender).SetSerializer(new EnumSerializer<GenderType>(BsonType.String));
                     cm.SetIgnoreExtraElements(true);
 
                 });

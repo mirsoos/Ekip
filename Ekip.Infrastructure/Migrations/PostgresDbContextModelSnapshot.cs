@@ -118,6 +118,12 @@ namespace Ekip.Infrastructure.Migrations
                     b.Property<double?>("Score")
                         .HasColumnType("double precision");
 
+                    b.Property<int>("TotalScoreCount")
+                        .HasColumnType("integer");
+
+                    b.Property<double>("TotalScoreSum")
+                        .HasColumnType("double precision");
+
                     b.Property<Guid>("UserRef")
                         .HasColumnType("uuid");
 

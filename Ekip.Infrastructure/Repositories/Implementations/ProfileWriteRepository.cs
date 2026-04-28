@@ -30,6 +30,11 @@ namespace Ekip.Infrastructure.Repositories.Implementations
              return await _mongoDb.Profiles.Find(x=>x.Id == profileRef).FirstOrDefaultAsync(cancellationToken);
         }
 
+        public Task<Profile?> GetByUserNameAsync(string userName, CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<Profile> UpdateAsync(Profile profile, CancellationToken cancellationToken)
         {
             var profileUpdated = await _mongoDb.Profiles.ReplaceOneAsync(x=> x.Id == profile.Id,profile,cancellationToken:cancellationToken);
