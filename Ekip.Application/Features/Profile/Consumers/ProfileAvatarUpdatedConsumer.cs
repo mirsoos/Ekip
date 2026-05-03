@@ -15,7 +15,7 @@ namespace Ekip.Application.Features.Profile.Consumers
         {
             var newAvatarUrl = context.Message;
 
-            await _profileRead.UpdateAvatarAsync(newAvatarUrl.ProfileRef , newAvatarUrl.AvatarUrl,context.CancellationToken);
+            await _profileRead.UpdateAvatarAsync(newAvatarUrl.UserRef , newAvatarUrl.AvatarUrl,context.CancellationToken);
         }
     }
 }

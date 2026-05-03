@@ -4,7 +4,6 @@ using MediatR;
 using ChatRoomEntity = Ekip.Domain.Entities.Chat.Entites.ChatRoom;
 using MassTransit;
 using Ekip.Application.Contracts.Events;
-using Polly;
 using Ekip.Application.Constants;
 
 namespace Ekip.Application.Features.ChatRoom.Commands.CreateChatRoom
@@ -12,30 +11,28 @@ namespace Ekip.Application.Features.ChatRoom.Commands.CreateChatRoom
     public class CreateChatRoomCommandHandler : IRequestHandler<CreateChatRoomCommand, ChatRoomDetailsDto>
     {
         private readonly IChatRoomWriteRepository _chatRoomWrite;
-        private readonly IPublishEndpoint _publishEndpoint;
+        private readonly IEventPublisher _eventPublisher;
         private readonly IRedisCacheService _redisCache;
 
-        public CreateChatRoomCommandHandler(IChatRoomWriteRepository chatRoomWrite , IPublishEndpoint publishEndpoint, IRedisCacheService redisCache)
+        public CreateChatRoomCommandHandler(IChatRoomWriteRepository chatRoomWrite , IEventPublisher eventPublisher, IRedisCacheService redisCache)
         {
             _chatRoomWrite = chatRoomWrite;
-            _publishEndpoint = publishEndpoint;
+            _eventPublisher = eventPublisher;
             _redisCache = redisCache;
         }
         public async Task<ChatRoomDetailsDto> Handle(CreateChatRoomCommand request, CancellationToken cancellationToken)
         {
-            var policy = Policy.Handle<ConcurrencyException>().RetryAsync(3);
 
-            ChatRoomEntity newChatRoom = null!;
             ChatRoomEntity savedChatRoom = null!;
 
             try
             {
-                await policy.ExecuteAsync(async () => {
-                    newChatRoom = new ChatRoomEntity(request.Name, request.CreatorRef, request.ChatRoomType, request.RequestRef);
+
+                    var newChatRoom = new ChatRoomEntity(request.Name, request.CreatorRef, request.ChatRoomType, request.RequestRef);
 
                     savedChatRoom = await _chatRoomWrite.AddChatRoomAsync(newChatRoom, cancellationToken);
 
-                    await _publishEndpoint.Publish(new ChatRoomCreatedEvent
+                    await _eventPublisher.Publish(new ChatRoomCreatedEvent
                     {
                         AvatarUrl = savedChatRoom.AvatarUrl,
                         ChatRoomRef = savedChatRoom.Id,
@@ -45,11 +42,10 @@ namespace Ekip.Application.Features.ChatRoom.Commands.CreateChatRoom
                         Name = savedChatRoom.Name,
                         RequestRef = savedChatRoom.RequestRef,
                         ChatRoomParticipants = savedChatRoom.Participants.ToList()
-                    });
+                    },cancellationToken);
 
                     await _redisCache.RemoveAsync(CacheKeySchema.ChatRoomKey(savedChatRoom.Id), cancellationToken);
 
-                });
             }
             catch(ConcurrencyException)
             {

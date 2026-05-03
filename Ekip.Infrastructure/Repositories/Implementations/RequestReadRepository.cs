@@ -52,16 +52,16 @@ namespace Ekip.Infrastructure.Repositories.Implementations
 
                     Creator = new RequestCreatorDto
                     {
-                        ProfileId = s.CreatorRef,
-                        FirstName = s.Creator.User.FirstName,
-                        LastName = s.Creator.User.LastName,
-                        UserName = s.Creator.User.UserName,
-                        AvatarUrl = s.Creator.AvatarUrl
+                        UserRef = s.CreatorRef,
+                        FirstName = s.Creator.FirstName,
+                        LastName = s.Creator.LastName,
+                        UserName = s.Creator.UserName,
+                        
                     },
 
                     Members = s.Assignments.Select(m => new AssignmentMemberDto
                     {
-                        ProfileRef = m.SenderProfile.Id,
+                        UserRef = m.SenderProfile.UserRef,
                         UserName = m.SenderProfile.User.UserName,
                         AvatarUrl = m.SenderProfile.AvatarUrl,
                         Status = m.Status,
@@ -140,9 +140,9 @@ namespace Ekip.Infrastructure.Repositories.Implementations
             await _postgreDb.RequestAssignmentReads.Where(x => x.Id == assignmentRef).ExecuteUpdateAsync(a => a.SetProperty(s => s.Status, newStatus).SetProperty(s => s.ActionDate, DateTime.UtcNow), cancellationToken);
         }
 
-        public async Task<List<MyEkipDto>> GetEkipsByProfileIdAsync(Guid profileRef, CancellationToken cancellationToken)
+        public async Task<List<MyEkipDto>> GetEkipsByUserIdAsync(Guid userRef, CancellationToken cancellationToken)
         {
-            return await _postgreDb.userEkipReads.Where(x => x.CreatorRef == profileRef || x.PendingAssignments.Any(x => x.ApplicantId == profileRef) || x.AcceptedMembers.Any(x=>x.ProfileRef == profileRef)).Select(s => new MyEkipDto
+            return await _postgreDb.userEkipReads.Where(x => x.CreatorRef == userRef || x.PendingAssignments.Any(x => x.ApplicantId == userRef) || x.AcceptedMembers.Any(x=>x.UserRef == userRef)).Select(s => new MyEkipDto
             {
                 CreatorName = s.CreatorName,
                 CreatorRef = s.CreatorRef,
@@ -170,24 +170,24 @@ namespace Ekip.Infrastructure.Repositories.Implementations
                 RequestForbidDateTime = s.RequestForbidDateTime,
                 RequestType = s.RequestType,
                 RequiredLevel = s.RequiredLevel,
-                IsCreator = profileRef == s.CreatorRef,
+                IsCreator = userRef == s.CreatorRef,
                 IsDeleted = s.IsDeleted,
                 MyAssignmentStatus =
-                s.CreatorRef == profileRef ? AssignmentStatus.Accepted : (s.AcceptedMembers.Any(m => m.ProfileRef == profileRef) ? AssignmentStatus.Accepted
-                : (s.PendingAssignments.Any(p => p.ApplicantId == profileRef) ? AssignmentStatus.Pending : (AssignmentStatus?)null))
+                s.CreatorRef == userRef ? AssignmentStatus.Accepted : (s.AcceptedMembers.Any(m => m.UserRef == userRef) ? AssignmentStatus.Accepted
+                : (s.PendingAssignments.Any(p => p.ApplicantId == userRef) ? AssignmentStatus.Pending : (AssignmentStatus?)null))
             }).OrderByDescending(o => o.RequestDateTime).ToListAsync(cancellationToken);
         }
 
-        public async Task<List<PendingAssignmentsDto>> GetPendingAssignmentByProfileIdAsync(Guid profileRef, CancellationToken cancellationToken)
+        public async Task<List<PendingAssignmentsDto>> GetPendingAssignmentByUserIdAsync(Guid userRef, CancellationToken cancellationToken)
         {
             return await _postgreDb.userEkipReads
                 .AsNoTracking()
                 .Where(x => !x.IsDeleted &&
-                            x.PendingAssignments.Any(p => p.ApplicantId == profileRef))
+                            x.PendingAssignments.Any(p => p.ApplicantId == userRef))
                 .Select(x => new
                 {
                     Ekip = x,
-                    Pending = x.PendingAssignments.First(p => p.ApplicantId == profileRef)
+                    Pending = x.PendingAssignments.First(p => p.ApplicantId == userRef)
                 })
                 .Select(x => new PendingAssignmentsDto
                 {

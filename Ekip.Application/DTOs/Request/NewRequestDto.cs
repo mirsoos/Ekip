@@ -9,7 +9,7 @@ namespace Ekip.Application.DTOs.Request
         public Guid RequestRef { get; set; }
         public string Title { get; set; }
         public string? Description { get; set; }
-        public Guid Creator { get; set; }
+        public Guid CreatorRef { get; set; }
         public int RequiredMembers { get; set; }
         public int? MaximumRequiredAssignments { get; set; }
         public string[]? Tags { get; set; }

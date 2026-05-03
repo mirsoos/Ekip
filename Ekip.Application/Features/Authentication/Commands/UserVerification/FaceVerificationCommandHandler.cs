@@ -7,28 +7,28 @@ namespace Ekip.Application.Features.Authentication.Commands.UserVerification
 {
     public class FaceVerificationCommandHandler : IRequestHandler<FaceVerificationCommand, string>
     {
-        private readonly IProfileWriteRepository _profileWrite;
-        private readonly IPublishEndpoint _publishEndpoint;
+        private readonly IUserWriteRepository _userWrite;
+        private readonly IEventPublisher _eventPublisher;
 
-        public FaceVerificationCommandHandler(IProfileWriteRepository profileWrite , IPublishEndpoint publishEndpoint)
+        public FaceVerificationCommandHandler(IUserWriteRepository userWrite , IEventPublisher eventPublisher)
         {
-            _profileWrite = profileWrite;
-            _publishEndpoint = publishEndpoint;
+            _userWrite = userWrite;
+            _eventPublisher = eventPublisher;
         }
 
         public async Task<string> Handle(FaceVerificationCommand request, CancellationToken cancellationToken)
         {
-            var profile = await _profileWrite.GetByIdAsync(request.ProfileRef, cancellationToken);
+            var user = await _userWrite.GetByUserIdAsync(request.UserRef, cancellationToken);
 
-            if (profile == null) throw new Exception("Profile Not Found.");
-            if (string.IsNullOrEmpty(profile.AvatarUrl)) throw new Exception("Profile has no Avatar to compare.");
+            if (user == null) throw new Exception("User Not Found.");
+            if (string.IsNullOrEmpty(user.Profile.AvatarUrl)) throw new Exception("User has no Avatar to compare.");
 
-            await _publishEndpoint.Publish(new FaceVerificationEvent
+            await _eventPublisher.Publish(new FaceVerificationEvent
             {
                 CapturedPhotoUrl = request.CapturedPhotoUrl,
-                ProfileRef = request.ProfileRef,
-                AvatarUrl = profile.AvatarUrl
-            });
+                UserRef = request.UserRef,
+                AvatarUrl = user.Profile.AvatarUrl
+            },cancellationToken);
 
             return "در صف بررسی...";
         }

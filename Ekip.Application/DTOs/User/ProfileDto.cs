@@ -5,7 +5,7 @@ namespace Ekip.Application.DTOs.User
 {
     public class ProfileDto
     {
-        public Guid ProfileRef { get; set; }
+        public Guid UserRef { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string UserName { get; set; }

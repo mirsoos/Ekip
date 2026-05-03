@@ -18,9 +18,9 @@ namespace Ekip.Infrastructure.Repositories.Implementations
             await _mongoDb.ScoreLedgers.InsertOneAsync(scoreLedger, cancellationToken: cancellationToken);
         }
 
-        public async Task<IReadOnlyCollection<ScoreLedger>> GetByProfileRefAsync(Guid profileRef, CancellationToken cancellationToken)
+        public async Task<IReadOnlyCollection<ScoreLedger>> GetByUserRefAsync(Guid userRef, CancellationToken cancellationToken)
         {
-            var filter = Builders<ScoreLedger>.Filter.Eq(x=>x.TargetUserProfileRef , profileRef);
+            var filter = Builders<ScoreLedger>.Filter.Eq(x=>x.TargetUserRef , userRef);
             var result = await _mongoDb.ScoreLedgers.Find(filter).ToListAsync(cancellationToken);
             return result.AsReadOnly();
         }

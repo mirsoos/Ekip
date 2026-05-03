@@ -9,11 +9,11 @@ namespace Ekip.Application.Features.ChatRoom.Consumers
     public class CreateChatroomForRequestConsumer : IConsumer<RequestCreatedEvent>
     {
         private readonly IChatRoomWriteRepository _chatRoomWrite;
-        private readonly IPublishEndpoint _publishEndpoint;
-        public CreateChatroomForRequestConsumer(IChatRoomWriteRepository chatRoomWrite, IPublishEndpoint publishEndpoint)
+        private readonly IEventPublisher _eventPublisher;
+        public CreateChatroomForRequestConsumer(IChatRoomWriteRepository chatRoomWrite, IEventPublisher eventPublisher)
         {
             _chatRoomWrite = chatRoomWrite;
-            _publishEndpoint = publishEndpoint;
+            _eventPublisher = eventPublisher;
         }
 
         public async Task Consume(ConsumeContext<RequestCreatedEvent> context)
@@ -24,7 +24,7 @@ namespace Ekip.Application.Features.ChatRoom.Consumers
 
             await _chatRoomWrite.AddChatRoomAsync(chatRoom,context.CancellationToken);
 
-            await _publishEndpoint.Publish(new ChatRoomCreatedEvent
+            await _eventPublisher.Publish(new ChatRoomCreatedEvent
             {
                 RequestRef = chatRoom.RequestRef,
                 Name = message.Title ,
@@ -35,7 +35,7 @@ namespace Ekip.Application.Features.ChatRoom.Consumers
                 ChatRoomParticipants = chatRoom.Participants.ToList(),
                 AvatarUrl = chatRoom.AvatarUrl
 
-            });
+            },context.CancellationToken);
         }
     }
 }

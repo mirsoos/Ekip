@@ -16,12 +16,12 @@ namespace Ekip.Application.Features.Profile.Queries.GetPendingAssignment
         }
         public async Task<List<PendingAssignmentsDto>> Handle(GetPendingAssignmentQuery request, CancellationToken cancellationToken)
         {
-            var key = CacheKeySchema.UserPendingAssignmentKey(request.ProfileRef);
+            var key = CacheKeySchema.UserPendingAssignmentKey(request.UserRef);
             var cachedPendingAssignment = await _redisCache.GetAsync<List<PendingAssignmentsDto>>(key,cancellationToken);
             if(cachedPendingAssignment?.Any() == true)
                 return cachedPendingAssignment;
 
-            var pendingAssignment = await _requestRead.GetPendingAssignmentByProfileIdAsync(request.ProfileRef , cancellationToken);
+            var pendingAssignment = await _requestRead.GetPendingAssignmentByUserIdAsync(request.UserRef , cancellationToken);
             if(pendingAssignment?.Any() == true)
                 await _redisCache.SetAsync(key, pendingAssignment, TimeSpan.FromMinutes(5), cancellationToken);
 

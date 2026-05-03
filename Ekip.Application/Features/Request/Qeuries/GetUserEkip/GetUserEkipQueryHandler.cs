@@ -17,12 +17,12 @@ namespace Ekip.Application.Features.Request.Qeuries.GetUserEkip
         }
         public async Task<List<MyEkipDto>> Handle(GetUserEkipQuery request, CancellationToken cancellationToken)
         {
-            var key = CacheKeySchema.UserEkipsKey(request.ProfileRef);
+            var key = CacheKeySchema.UserEkipsKey(request.UserRef);
             var cachedEkips = await _redisCache.GetAsync<List<MyEkipDto>>(key , cancellationToken);
             if (cachedEkips?.Any() == true)
                 return cachedEkips;
 
-            var ekips = await _userEkipRead.GetEkipByProfileIdAsync(request.ProfileRef, cancellationToken);
+            var ekips = await _userEkipRead.GetEkipByUserIdAsync(request.UserRef, cancellationToken);
 
             if(ekips.Any())
             await _redisCache.SetAsync(key,ekips,TimeSpan.FromHours(12),cancellationToken);

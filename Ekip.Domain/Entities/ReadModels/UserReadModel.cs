@@ -5,8 +5,7 @@ namespace Ekip.Domain.Entities.ReadModels
     public class UserReadModel
     {
         public Guid Id { get; set; }
-        public Guid ProfileRef { get; set; }
-        public bool IsDeleted { get; set; }
+        public bool IsDeleted { get; set; } = false;
         public DateTime CreateDate { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

@@ -18,15 +18,15 @@ namespace Ekip.Application.Features.Profile.Queries.GetUserProfile
 
         public async Task<ProfileDto> Handle(GetUserProfileQuery request, CancellationToken cancellationToken)
         {
-            var key = CacheKeySchema.ProfileKey(request.ProfileRef);
+            var key = CacheKeySchema.ProfileKey(request.UserRef);
             var cachedProfile = await _redisCache.GetAsync<ProfileDto>(key , cancellationToken);
             if (cachedProfile != null)
                 return cachedProfile;
             
-            var profileDto = await _profileRead.GetProfileDetailsByIdAsync(request.ProfileRef,cancellationToken);
+            var profileDto = await _profileRead.GetUserDetailsByIdAsync(request.UserRef,cancellationToken);
 
             if (profileDto == null)
-                throw new Exception($"Profile with Id'{request.ProfileRef}'Not Found");
+                throw new Exception($"user with Id'{request.UserRef}'Not Found");
 
             await _redisCache.SetAsync(key,profileDto,TimeSpan.FromDays(1),cancellationToken);
 

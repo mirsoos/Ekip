@@ -11,13 +11,13 @@ namespace Ekip.Application.Features.Request.Commands.AcceptOrRejectAssignment
     public class AcceptOrRejectAssignmentCommandHandler : IRequestHandler<AcceptOrRejectAssignmentCommand, AssignmentDecisionDto>
     {
         private readonly IRequestWriteRepository _requestWrite;
-        private readonly IPublishEndpoint _publishEndpoint;
+        private readonly IEventPublisher _eventPublisher;
         private readonly IRedisCacheService _redisCache;
 
-        public AcceptOrRejectAssignmentCommandHandler(IRequestWriteRepository requestWrite , IPublishEndpoint publishEndpoint,IRedisCacheService redisCache)
+        public AcceptOrRejectAssignmentCommandHandler(IRequestWriteRepository requestWrite , IEventPublisher eventPublisher,IRedisCacheService redisCache)
         {
             _requestWrite = requestWrite;
-            _publishEndpoint = publishEndpoint;
+            _eventPublisher = eventPublisher;
             _redisCache = redisCache;
         }
 
@@ -34,21 +34,21 @@ namespace Ekip.Application.Features.Request.Commands.AcceptOrRejectAssignment
             {
                 senderRef = ekip.AcceptMember(request.OwnerId, request.AssignmentRef);
 
-                await _publishEndpoint.Publish(new AssignmentDecisionMadeEvent
+                await _eventPublisher.Publish(new AssignmentDecisionMadeEvent
                 {
                     AssignmentRef = request.AssignmentRef,
                     NewStatus = AssignmentStatus.Accepted,
-                });
+                },cancellationToken);
             }
             else if (request.Decision == AssignmentDecision.Rejected)
             {
                 senderRef = ekip.RejectMember(request.OwnerId, request.AssignmentRef);
 
-                await _publishEndpoint.Publish(new AssignmentDecisionMadeEvent
+                await _eventPublisher.Publish(new AssignmentDecisionMadeEvent
                 {
                     AssignmentRef = request.AssignmentRef,
                     NewStatus = AssignmentStatus.Declined,
-                });
+                },cancellationToken);
             }
 
             await _requestWrite.UpdateAsync(ekip, cancellationToken);

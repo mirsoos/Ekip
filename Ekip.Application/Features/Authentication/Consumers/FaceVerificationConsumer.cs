@@ -8,13 +8,13 @@ namespace Ekip.Application.Features.Authentication.Consumers
     public class FaceVerificationConsumer : IConsumer<FaceVerificationEvent>
     {
         private readonly IFaceVerificationService _faceService;
-        private readonly IProfileWriteRepository _profileWrite;
-        private readonly IPublishEndpoint _publishEndpoint;
-        public FaceVerificationConsumer(IFaceVerificationService faceService , IProfileWriteRepository profileWrite, IPublishEndpoint publishEndpoint)
+        private readonly IUserWriteRepository _userWrite;
+        private readonly IEventPublisher _eventPublisher;
+        public FaceVerificationConsumer(IFaceVerificationService faceService , IUserWriteRepository userWrite, IEventPublisher eventPublisher)
         {
             _faceService = faceService;
-            _profileWrite = profileWrite;
-            _publishEndpoint = publishEndpoint;
+            _userWrite = userWrite;
+            _eventPublisher = eventPublisher;
         }
         public async Task Consume(ConsumeContext<FaceVerificationEvent> context)
         {
@@ -24,28 +24,32 @@ namespace Ekip.Application.Features.Authentication.Consumers
 
             if (result.IsMatch)
             {
-                var archivedPhotoUrl = await _faceService.ArchiveFile(message.CapturedPhotoUrl, context.CancellationToken);
+                var archivedPhotoUrl = await _faceService.ArchiveFileAsync(message.CapturedPhotoUrl, context.CancellationToken);
 
-                await _profileWrite.UpdateFaceVerificationStatusAsync(
-                    message.ProfileRef,
+                await _userWrite.UpdateFaceVerificationStatusAsync(
+                    message.UserRef,
                     result.ReferenceId,
                     archivedPhotoUrl,
                     result.provider,
                     context.CancellationToken);
-                await _publishEndpoint.Publish(new FaceVerificationCompletedEvent
+
+                await _eventPublisher.Publish(new FaceVerificationCompletedEvent
                 {
-                    ProfileRef = message.ProfileRef,
-                    VerificationLevel = VerificationLevel.PhotoVerified
-                });
+                    UserRef = message.UserRef,
+                    VerificationLevel = VerificationLevel.PhotoVerified,
+                    ReferenceId = result.ReferenceId,
+                    archivedPhotoUrl = archivedPhotoUrl,
+                    Provider = result.provider
+                },context.CancellationToken);
             }
             else
             {
-                await _faceService.DeleteFile(message.CapturedPhotoUrl, context.CancellationToken);
-                await _publishEndpoint.Publish(new FaceVerificationCompletedEvent
+                await _faceService.DeleteFileAsync(message.CapturedPhotoUrl, context.CancellationToken);
+                await _eventPublisher.Publish(new FaceVerificationCompletedEvent
                 {
-                    ProfileRef = message.ProfileRef,
+                    UserRef = message.UserRef,
                     VerificationLevel = VerificationLevel.rejected
-                });
+                },context.CancellationToken);
             }
         }
     }

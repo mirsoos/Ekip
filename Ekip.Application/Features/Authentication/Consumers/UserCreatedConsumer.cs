@@ -21,8 +21,7 @@ namespace Ekip.Application.Features.Authentication.Consumers
 
             var userMongoToPostgres = new UserReadModel
             {
-                Id = user.Id,
-                ProfileRef = user.ProfileRef,
+                Id = user.UserRef,
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 UserName = user.UserName,
@@ -31,12 +30,10 @@ namespace Ekip.Application.Features.Authentication.Consumers
                 Email = user.Email,
                 Gender = user.Gender,
                 PhoneNumber = user.PhoneNumber,
-                IsDeleted = user.IsDeleted,                
             };
 
             var profileMongoToPostgre = new ProfileReadModel
             {
-                Id = user.ProfileRef,
                 UserRef = user.UserRef,
                 Experience = user.Experience,
                 Score = user.Score,

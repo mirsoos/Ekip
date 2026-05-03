@@ -1,8 +1,13 @@
 using Ekip.Application;
 using Ekip.Infrastructure.Configurations;
 using Microsoft.OpenApi.Models;
+using System.Diagnostics;
 
 var builder = WebApplication.CreateBuilder(args);
+
+
+builder.Logging.AddDebug();
+builder.Logging.SetMinimumLevel(LogLevel.Debug);
 
 // ==== سرویس‌های اصلی اپلیکیشن ====
 builder.Services.AddApplicationServices();
@@ -82,4 +87,7 @@ app.UseStaticFiles(); // فایل‌های wwwroot سرو می‌شن
 app.MapControllers();
 app.MapHub<Ekip.Infrastructure.Services.SignalR.ChatHub>("/chathub");
 
+
+Debug.WriteLine("=== Application Started ===");
+Debug.WriteLine("Logging is configured. Check output above for MassTransit logs.");
 app.Run();

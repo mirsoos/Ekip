@@ -7,26 +7,26 @@ namespace Ekip.Application.Features.Gamification.Commands.SubmitScore
 {
     public class SubmitScoreCommandHandler : IRequestHandler<SubmitScoreCommand, Unit>
     {
-        private readonly IPublishEndpoint _publishEndpoint;
-        private readonly IProfileWriteRepository _profileWrite;
-        public SubmitScoreCommandHandler(IPublishEndpoint publishEndpoint , IProfileWriteRepository profileWrite)
+        private readonly IEventPublisher _eventPublisher;
+        private readonly IUserWriteRepository _userWrite;
+        public SubmitScoreCommandHandler(IEventPublisher eventPublisher , IUserWriteRepository userWrite)
         {
-            _publishEndpoint = publishEndpoint;
-            _profileWrite = profileWrite;
+            _eventPublisher = eventPublisher;
+            _userWrite = userWrite;
         }
 
         public async Task<Unit> Handle(SubmitScoreCommand request, CancellationToken cancellationToken)
         {
-            await _profileWrite.UpdateScoreAsync(request.TargetUserProfileRef,request.ScoreGiven,cancellationToken);
+            await _userWrite.UpdateScoreAsync(request.TargetUserRef,request.ScoreGiven,cancellationToken);
 
-            await _publishEndpoint.Publish(new ScoreSubmittedEvent
+            await _eventPublisher.Publish(new ScoreSubmittedEvent
             {
                 RequestRef = request.RequestRef,
-                SourceUserProfileRef = request.SourceUserProfileRef,
-                TargetUserProfileRef = request.TargetUserProfileRef,
+                SourceUserRef = request.SourceUserRef,
+                TargetUserRef = request.TargetUserRef,
                 ScoreGiven = request.ScoreGiven,
                 Comment = request.Comment
-            });
+            },cancellationToken);
 
             return Unit.Value;
         }

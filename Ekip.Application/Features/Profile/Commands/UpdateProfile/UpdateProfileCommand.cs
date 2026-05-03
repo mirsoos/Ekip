@@ -4,7 +4,7 @@ namespace Ekip.Application.Features.Profile.Commands.UpdateProfile
 {
     public class UpdateProfileCommand : IRequest<bool>
     {
-        public Guid ProfileRef { get; set; }
+        public Guid UserRef { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string UserName { get; set; }

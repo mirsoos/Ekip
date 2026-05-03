@@ -13,11 +13,11 @@ namespace Ekip.Infrastructure.Repositories.Implementations
         {
             _postgresDb = postgresDb;
         }
-        public async Task<List<MyEkipDto>> GetEkipByProfileIdAsync(Guid profileRef, CancellationToken cancellationToken)
+        public async Task<List<MyEkipDto>> GetEkipByUserIdAsync(Guid userRef, CancellationToken cancellationToken)
         {
-            return await _postgresDb.userEkipReads.Where(x => x.CreatorRef == profileRef
-            || x.AcceptedMembers.Any(a => a.ProfileRef == profileRef)
-            || x.PendingAssignments.Any(p => p.ApplicantId == profileRef)
+            return await _postgresDb.userEkipReads.Where(x => x.CreatorRef == userRef
+            || x.AcceptedMembers.Any(a => a.UserRef == userRef)
+            || x.PendingAssignments.Any(p => p.ApplicantId == userRef)
             ).Select(s => new MyEkipDto
             {
                 PendingAssignments = s.PendingAssignments,
@@ -29,7 +29,7 @@ namespace Ekip.Infrastructure.Repositories.Implementations
                 CurrentMembersCount = s.CurrentMembersCount,
                 Description = s.Description,
                 IsAutoAccept = s.IsAutoAccept,
-                IsCreator = s.CreatorRef == profileRef,
+                IsCreator = s.CreatorRef == userRef,
                 IsDeleted = s.IsDeleted,
                 IsRepeatable = s.IsRepeatable,
                 MaximumAge = s.MaximumAge,
@@ -37,9 +37,9 @@ namespace Ekip.Infrastructure.Repositories.Implementations
                 MemberType = s.MemberType,
                 MinimumAge = s.MinimumAge,
                 MinimumScore = s.MinimumScore,
-                MyAssignmentStatus = s.CreatorRef == profileRef ? AssignmentStatus.Accepted :
-                s.AcceptedMembers.Any(a=>a.ProfileRef == profileRef) ? AssignmentStatus.Accepted : 
-                s.PendingAssignments.Any(p=>p.ApplicantId == profileRef) ? AssignmentStatus.Pending : null,
+                MyAssignmentStatus = s.CreatorRef == userRef ? AssignmentStatus.Accepted :
+                s.AcceptedMembers.Any(a=>a.UserRef == userRef) ? AssignmentStatus.Accepted : 
+                s.PendingAssignments.Any(p=>p.ApplicantId == userRef) ? AssignmentStatus.Pending : null,
                 Status = s.Status,
                 RepeatType = s.RepeatType,
                 RequestDateTime = s.RequestDateTime,

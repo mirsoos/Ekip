@@ -4,6 +4,6 @@ namespace Ekip.Application.Interfaces
 {
     public interface IUserEkipReadRepository
     {
-        Task<List<MyEkipDto>> GetEkipByProfileIdAsync(Guid profileRef,CancellationToken cancellationToken);
+        Task<List<MyEkipDto>> GetEkipByUserIdAsync(Guid userRef,CancellationToken cancellationToken);
     }
 }

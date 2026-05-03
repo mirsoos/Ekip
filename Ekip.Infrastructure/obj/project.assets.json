@@ -15,6 +15,18 @@
           }
         }
       },
+      "DistributedLock.Mongo/3.1.0": {
+        "type": "package",
+        "dependencies": {
+          "MongoDB.Driver": "3.0.0"
+        },
+        "compile": {
+          "lib/net6.0/DistributedLock.Mongo.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/DistributedLock.Mongo.dll": {}
+        }
+      },
       "DnsClient/1.6.1": {
         "type": "package",
         "dependencies": {
@@ -1925,9 +1937,8 @@
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Ekip.Domain": "1.0.0",
-          "MassTransit.Abstractions": "9.1.0",
-          "MediatR": "13.1.0",
-          "Polly": "8.6.6"
+          "MassTransit": "9.1.0",
+          "MediatR": "13.1.0"
         },
         "compile": {
           "bin/placeholder/Ekip.Application.dll": {}
@@ -1976,6 +1987,21 @@
         "lib/netstandard2.1/BCrypt.Net-Next.dll",
         "lib/netstandard2.1/BCrypt.Net-Next.xml",
         "readme.md"
+      ]
+    },
+    "DistributedLock.Mongo/3.1.0": {
+      "sha512": "dQLCc+e+6pJ/K7VAdKclQ+b7SQcaYNpK8ACLZuVPktnDvi1j/E9f6ZrWqHDb/YfMGqxjMAlLGj6SrVhcePX9vg==",
+      "type": "package",
+      "path": "distributedlock.mongo/3.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "distributedlock.mongo.3.1.0.nupkg.sha512",
+        "distributedlock.mongo.nuspec",
+        "lib/net472/DistributedLock.Mongo.dll",
+        "lib/net6.0/DistributedLock.Mongo.dll",
+        "lib/netstandard2.1/DistributedLock.Mongo.dll"
       ]
     },
     "DnsClient/1.6.1": {
@@ -5236,6 +5262,7 @@
   "projectFileDependencyGroups": {
     "net8.0": [
       "BCrypt.Net-Next >= 4.1.0",
+      "DistributedLock.Mongo >= 3.1.0",
       "Ekip.Application >= 1.0.0",
       "Ekip.Domain >= 1.0.0",
       "MassTransit.Abstractions >= 9.1.0",
@@ -5320,6 +5347,10 @@
           "BCrypt.Net-Next": {
             "target": "Package",
             "version": "[4.1.0, )"
+          },
+          "DistributedLock.Mongo": {
+            "target": "Package",
+            "version": "[3.1.0, )"
           },
           "MassTransit.Abstractions": {
             "target": "Package",

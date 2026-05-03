@@ -12,7 +12,7 @@ namespace Ekip.Infrastructure.Services.Implementations
         {
             _hubContext = hubContext;
         }
-        public async Task SendMessageToGroup(Guid chatRoomId, object messageData)
+        public async Task SendMessageToGroupAsync(Guid chatRoomId, object messageData)
         {
             await _hubContext.Clients
                 .Group(chatRoomId.ToString())

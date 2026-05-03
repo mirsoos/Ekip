@@ -1,5 +1,6 @@
 ﻿using Ekip.Domain.Entities.Chat.Entites;
 using Ekip.Domain.Entities.Identity.Entities;
+using Ekip.Domain.Entities.Outbox;
 using Ekip.Domain.Entities.Requests.Entities;
 using Ekip.Domain.Entities.UserBehavior.Entities;
 using Ekip.Infrastructure.Configurations;
@@ -9,9 +10,12 @@ using MongoDB.Driver;
 
 namespace Ekip.Infrastructure.Persistence.MongoDb.Contexts
 {
-    public class MongoDbContext
+    public class MongoDbContext 
     {
         private readonly IMongoDatabase _database;
+        private IClientSessionHandle? _session;
+
+        public IClientSessionHandle? Session => _session;
 
         static MongoDbContext()
         {
@@ -20,9 +24,7 @@ namespace Ekip.Infrastructure.Persistence.MongoDb.Contexts
 
         public MongoDbContext(IMongoClient client, IOptions<InfrastructureSettings> options)
         {
-            var dbName = options.Value.MongoDatabaseName;
-            _database = client.GetDatabase(dbName);
-
+            _database = client.GetDatabase(options.Value.MongoDatabaseName);
             EnsureIndexes();
         }
 
@@ -33,11 +35,6 @@ namespace Ekip.Infrastructure.Persistence.MongoDb.Contexts
             try { usersCollection.Indexes.CreateOne(new CreateIndexModel<User>(Builders<User>.IndexKeys.Ascending(u => u.UserName), new CreateIndexOptions { Unique = true })); } catch { }
             try { usersCollection.Indexes.CreateOne(new CreateIndexModel<User>(Builders<User>.IndexKeys.Ascending(u => u.Email), new CreateIndexOptions { Unique = true })); } catch { }
             try { usersCollection.Indexes.CreateOne(new CreateIndexModel<User>(Builders<User>.IndexKeys.Ascending(u => u.PhoneNumber), new CreateIndexOptions { Unique = true })); } catch { }
-            try { usersCollection.Indexes.CreateOne(new CreateIndexModel<User>(Builders<User>.IndexKeys.Ascending(u => u.ProfileRef))); } catch { }
-
-            // ==================== Profile Indexes ====================
-            var profilesCollection = _database.GetCollection<Profile>("Profiles");
-            try { profilesCollection.Indexes.CreateOne(new CreateIndexModel<Profile>(Builders<Profile>.IndexKeys.Ascending(p => p.UserRef), new CreateIndexOptions { Unique = true })); } catch { }
 
             // ==================== Request Indexes ====================
             var requestsCollection = _database.GetCollection<Request>("Requests");
@@ -74,13 +71,13 @@ namespace Ekip.Infrastructure.Persistence.MongoDb.Contexts
 
             // ==================== ScoreLedger Indexes ====================
             var scoreLedgersCollection = _database.GetCollection<ScoreLedger>("ScoreLedgers");
-            try { scoreLedgersCollection.Indexes.CreateOne(new CreateIndexModel<ScoreLedger>(Builders<ScoreLedger>.IndexKeys.Ascending(s => s.TargetUserProfileRef))); } catch { }
-            try { scoreLedgersCollection.Indexes.CreateOne(new CreateIndexModel<ScoreLedger>(Builders<ScoreLedger>.IndexKeys.Ascending(s => s.SourceUserProfileRef))); } catch { }
+            try { scoreLedgersCollection.Indexes.CreateOne(new CreateIndexModel<ScoreLedger>(Builders<ScoreLedger>.IndexKeys.Ascending(s => s.TargetUserRef))); } catch { }
+            try { scoreLedgersCollection.Indexes.CreateOne(new CreateIndexModel<ScoreLedger>(Builders<ScoreLedger>.IndexKeys.Ascending(s => s.SourceUserRef))); } catch { }
             try { scoreLedgersCollection.Indexes.CreateOne(new CreateIndexModel<ScoreLedger>(Builders<ScoreLedger>.IndexKeys.Ascending(s => s.RequestRef))); } catch { }
             try
             {
                 scoreLedgersCollection.Indexes.CreateOne(new CreateIndexModel<ScoreLedger>(Builders<ScoreLedger>.IndexKeys.Combine(
-                Builders<ScoreLedger>.IndexKeys.Ascending(s => s.SourceUserProfileRef),
+                Builders<ScoreLedger>.IndexKeys.Ascending(s => s.SourceUserRef),
                 Builders<ScoreLedger>.IndexKeys.Ascending(s => s.RequestRef)
             ), new CreateIndexOptions { Unique = true }));
             }
@@ -93,6 +90,7 @@ namespace Ekip.Infrastructure.Persistence.MongoDb.Contexts
         public IMongoCollection<ChatRoom> ChatRooms => _database.GetCollection<ChatRoom>("ChatRooms");
         public IMongoCollection<Message> Messages => _database.GetCollection<Message>("Messages");
         public IMongoCollection<ScoreLedger> ScoreLedgers => _database.GetCollection<ScoreLedger>("ScoreLedgers");
+        public IMongoCollection<OutboxMessage> OutboxMessages => _database.GetCollection<OutboxMessage>("OutboxMessages");
         
     }
 }

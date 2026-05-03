@@ -12,13 +12,13 @@ namespace Ekip.Application.Features.Request.Commands.AssignToRequest
     {
         private readonly IRequestWriteRepository _requestWrite;
         private readonly IProfileReadRepository _profileRead;
-        private readonly IPublishEndpoint _publishEndpoint;
+        private readonly IEventPublisher _eventPublisher;
         private readonly IRedisCacheService _redisCache;
-        public AssignToRequestCommandHandler(IRequestWriteRepository requestWrite, IProfileReadRepository profileRead, IPublishEndpoint publishEndpoint , IRedisCacheService redisCache)
+        public AssignToRequestCommandHandler(IRequestWriteRepository requestWrite, IProfileReadRepository profileRead, IEventPublisher eventPublisher , IRedisCacheService redisCache)
         {
             _requestWrite = requestWrite;
             _profileRead = profileRead;
-            _publishEndpoint = publishEndpoint;
+            _eventPublisher = eventPublisher;
             _redisCache = redisCache;
         }
 
@@ -29,7 +29,7 @@ namespace Ekip.Application.Features.Request.Commands.AssignToRequest
             if (currentRequest == null)
                 throw new Exception("Request Not Found");
 
-            var SenderProfile = await _profileRead.GetProfileByIdAsync(request.SenderRef,cancellationToken);
+            var SenderProfile = await _profileRead.GetUserByIdAsync(request.SenderRef,cancellationToken);
 
             if (SenderProfile == null)
                 throw new Exception("User Profile Not Found");
@@ -40,7 +40,7 @@ namespace Ekip.Application.Features.Request.Commands.AssignToRequest
 
             await _requestWrite.UpdateAsync(currentRequest,cancellationToken);
 
-            await _publishEndpoint.Publish(new AssignmentProcessedEvent
+            await _eventPublisher.Publish(new AssignmentProcessedEvent
             {
                 Id = newAssignment.Id,
                 ActionDate = newAssignment.ActionDate,
@@ -50,7 +50,7 @@ namespace Ekip.Application.Features.Request.Commands.AssignToRequest
                 AssignmentStatus = newAssignment.Status,
                 RequestRef = currentRequest.Id,
                 RequestStatus = currentRequest.Status
-            });
+            }, cancellationToken);
 
             await _redisCache.RemoveAsync(CacheKeySchema.UserAssignmentsKey(newAssignment.SenderRef), cancellationToken);
             await _redisCache.RemoveAsync(CacheKeySchema.RequestKey(currentRequest.Id), cancellationToken);

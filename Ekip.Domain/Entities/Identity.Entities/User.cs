@@ -17,12 +17,12 @@ namespace Ekip.Domain.Entities.Identity.Entities
         public bool IsLocked { get; private set; }
         public int Age { get; private set; }
         public string PhoneNumber { get; private set; }
-        public Guid ProfileRef { get; private set; }
+        public Profile Profile { get; private set; }
         private readonly List<UserCredential> _userCredentials = new();
         public IReadOnlyCollection<UserCredential> UserCredentials => _userCredentials.AsReadOnly();
 
 
-        public User(string firstName , string lastName , string userName , Email email , GenderType gender,int age,string phoneNumber)
+        public User(string firstName , string lastName , string userName , Email email , GenderType gender,int age,string phoneNumber , string bio)
         {
             SetFirstName(firstName);
             SetLastName(lastName);
@@ -34,7 +34,9 @@ namespace Ekip.Domain.Entities.Identity.Entities
             IsPremium = false;
             IsActive = true;
             IsLocked = false;
+            Profile = new Profile(bio);
         }
+
 
         public void SetPasswordHash(string passwordHash)
         {
@@ -55,14 +57,6 @@ namespace Ekip.Domain.Entities.Identity.Entities
         }
 
         public void DeActivate() => IsActive = false;
-
-        public void SetProfileId(Guid profileId)
-        {
-            if (profileId == Guid.Empty)
-                throw new ArgumentException("ProfileId cannot be empty");
-
-            ProfileRef = profileId;
-        }
 
         public void SetFirstName(string firstName)
         {

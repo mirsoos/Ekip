@@ -8,6 +8,6 @@ namespace Ekip.Application.Interfaces
         Task<Request> AddRequestAsync(Request request,CancellationToken cancellationToken);
         Task<Request?> GetRequestByIdAsync(Guid requestRef,CancellationToken cancellationToken);
         Task UpdateAsync(Request request, CancellationToken cancellationToken);
-        Task<RequestAssignment> AssignRequest(Guid requestRef,RequestAssignment requestAssignment, CancellationToken cancellationToken);
+        Task<RequestAssignment> AssignRequestAsync(Guid requestRef,RequestAssignment requestAssignment, CancellationToken cancellationToken);
     }
 }

@@ -6,7 +6,6 @@ namespace Ekip.Domain.Entities.ReadModels
 {
     public class ProfileReadModel 
     {
-        public Guid Id { get; set; }
         public Guid UserRef { get; set; }
         public string? AvatarUrl { get; set; }
         public double? Score { get; set; }

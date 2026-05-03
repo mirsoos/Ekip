@@ -6,6 +6,11 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Persistence\MongoDb\Configurations\EntityConfigurations\ProfileConfiguration.cs" />
+    <Compile Remove="Repositories\Implementations\ProfileWriteRepository.cs" />
+  </ItemGroup>
+
 	<ItemGroup>
 		<FrameworkReference Include="Microsoft.AspNetCore.App" />
 	</ItemGroup>
@@ -17,6 +22,7 @@
 
   <ItemGroup>
     <PackageReference Include="BCrypt.Net-Next" Version="4.1.0" />
+    <PackageReference Include="DistributedLock.Mongo" Version="3.1.0" />
     <PackageReference Include="MassTransit.Abstractions" Version="9.1.0" />
     <PackageReference Include="MassTransit.MongoDb" Version="9.1.0" />
     <PackageReference Include="MassTransit.RabbitMQ" Version="9.1.0" />

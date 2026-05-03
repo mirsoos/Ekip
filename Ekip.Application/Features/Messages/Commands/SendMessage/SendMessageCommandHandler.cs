@@ -11,12 +11,12 @@ namespace Ekip.Application.Features.Messages.Commands.SendMessage
     {
         private readonly IMessageWriteRepository _messageWrite;
         private readonly IChatRoomWriteRepository _chatRoomWrite;
-        private readonly IPublishEndpoint _publishEndpoint;
-        public SendMessageCommandHandler(IMessageWriteRepository writeMessage,IChatRoomWriteRepository chatRoomWrite , IPublishEndpoint publishEndpoint) 
+        private readonly IEventPublisher _eventPublisher;
+        public SendMessageCommandHandler(IMessageWriteRepository writeMessage,IChatRoomWriteRepository chatRoomWrite , IEventPublisher eventPublisher) 
             {
                 _messageWrite = writeMessage;
                 _chatRoomWrite = chatRoomWrite;
-                _publishEndpoint = publishEndpoint;
+                _eventPublisher = eventPublisher;
         }
 
         public async Task<MessageDto> Handle(SendMessageCommand request ,CancellationToken cancellationToken)
@@ -31,17 +31,15 @@ namespace Ekip.Application.Features.Messages.Commands.SendMessage
 
             var savedMessage = await _messageWrite.AddAsync(message, cancellationToken);
 
-            await _publishEndpoint.Publish(new MessageCreatedEvent
+            await _eventPublisher.Publish(new MessageCreatedEvent
             {
                 Id = savedMessage.Id,
                 SenderRef = savedMessage.SenderRef,
                 ChatRoomRef = savedMessage.ChatRoomRef,
                 MessageContent = savedMessage.MessageContent,
                 SentAt = savedMessage.SentAt,
-                IsEdited = savedMessage.IsEdited,
                 Type= savedMessage.Type,
                 ReplyToMessageRef = savedMessage.ReplyToMessageRef,
-                IsDeleted = savedMessage.IsDeleted
             },cancellationToken);
 
             return new MessageDto

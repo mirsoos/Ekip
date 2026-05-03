@@ -8,7 +8,7 @@ namespace Ekip.Domain.Entities.ReadModels
     public class RequestReadModel
     {
         public Guid Id { get; set; }
-        public bool IsDeleted { get; set; }
+        public bool IsDeleted { get; set; } = false;
         public DateTime CreateDate { get; set; }
         public Guid CreatorRef { get; set; }
         public string Title { get; set; }
@@ -29,7 +29,7 @@ namespace Ekip.Domain.Entities.ReadModels
         public RequestRepeatType? RepeatType { get; set; }
 
         [ForeignKey("CreatorRef")]
-        public virtual ProfileReadModel Creator { get; set; }
+        public virtual UserReadModel Creator { get; set; }
 
         public virtual ICollection<RequestAssignmentReadModel> Assignments { get; set; }
     }

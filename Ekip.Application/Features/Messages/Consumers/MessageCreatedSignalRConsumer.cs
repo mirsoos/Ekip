@@ -17,7 +17,7 @@ namespace Ekip.Application.Features.Messages.Consumers
         {
             var message = context.Message;
 
-            await _chatService.SendMessageToGroup(message.ChatRoomRef, new
+            await _chatService.SendMessageToGroupAsync(message.ChatRoomRef, new
             {
                 Id = message.Id,
                 SenderRef = message.SenderRef,

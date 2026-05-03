@@ -44,16 +44,16 @@ namespace Ekip.Infrastructure.Repositories.Implementations
             return user;
         }
 
-        public async Task<ProfileReadModel> GetProfileByIdAsync(Guid profileRef, CancellationToken cancellationToken)
+        public async Task<UserReadModel> GetUserByIdAsync(Guid userRef, CancellationToken cancellationToken)
         {
-            var profile = await _postgresDb.ProfileReads.AsNoTracking().FirstOrDefaultAsync(x=>x.Id == profileRef,cancellationToken);
-            return profile;
+            var user = await _postgresDb.UserReads.AsNoTracking().FirstOrDefaultAsync(x=>x.Id == userRef,cancellationToken);
+            return user;
         }
 
-        public async Task<UserWithProfileDto?> GetUserWithProfileByEmailOrUserNameAsync(string? userName,string? email, CancellationToken cancellationToken)
+        public async Task<UserWithProfileDto?> GetUserByEmailOrUserNameAsync(string? userName,string? email, CancellationToken cancellationToken)
         {
             var result = await (from u in _postgresDb.UserReads
-                                join p in _postgresDb.ProfileReads on u.ProfileRef equals p.Id
+                                join p in _postgresDb.ProfileReads on u.Id equals p.UserRef
                                 where (userName != null && u.UserName == userName) || (email != null && u.Email == email)
                                 select new { User = u, Profile = p })
                                 .AsNoTracking()
@@ -63,12 +63,11 @@ namespace Ekip.Infrastructure.Repositories.Implementations
 
             return new UserWithProfileDto
             {
-                ProfileRef = result.Profile.Id,
                 UserRef = result.User.Id,
                 Email = result.User.Email,
                 UserName = result.User.UserName,
                 PhoneNumber = result.User.PhoneNumber,
-                AvatarUrl = result.Profile.AvatarUrl,
+                AvatarUrl = result.Profile.AvatarUrl
             };
         }
     }

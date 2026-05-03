@@ -51,8 +51,9 @@ namespace Ekip.Infrastructure.Persistence.MongoDb.Configurations
 
                 new RequestConfiguration().Configure();
                 new UserConfiguration().Configure();
-                new ProfileConfiguration().Configure();
+                //new ProfileConfiguration().Configure();
                 new ChatRoomConfiguration().Configure();
+                new OutBoxMessageConfiguration().Configure();
                 new MessageConfiguration().Configure();
 
                 _isConfigured = true;

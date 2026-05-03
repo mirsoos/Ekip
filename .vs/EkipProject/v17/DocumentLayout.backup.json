@@ -3,188 +3,208 @@
   "WorkspaceRootPath": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.application\\features\\authentication\\commands\\register\\registercommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\features\\authentication\\commands\\register\\registercommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.infrastructure\\services\\implementations\\outboxchangestreamservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|solutionrelative:ekip.infrastructure\\services\\implementations\\outboxchangestreamservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.infrastructure\\persistence\\mongodb\\configurations\\entityconfigurations\\baseentityconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|solutionrelative:ekip.infrastructure\\persistence\\mongodb\\configurations\\entityconfigurations\\baseentityconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.infrastructure\\persistence\\mongodb\\configurations\\entityconfigurations\\userconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|solutionrelative:ekip.infrastructure\\persistence\\mongodb\\configurations\\entityconfigurations\\userconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.infrastructure\\repositories\\implementations\\userwriterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|solutionrelative:ekip.infrastructure\\repositories\\implementations\\userwriterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6619533C-51D9-499B-834C-5EECEBBE2867}|Ekip.Domain\\Ekip.Domain.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.domain\\entities\\identity.entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6619533C-51D9-499B-834C-5EECEBBE2867}|Ekip.Domain\\Ekip.Domain.csproj|solutionrelative:ekip.domain\\entities\\identity.entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6619533C-51D9-499B-834C-5EECEBBE2867}|Ekip.Domain\\Ekip.Domain.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.domain\\entities\\outbox\\outboxmessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6619533C-51D9-499B-834C-5EECEBBE2867}|Ekip.Domain\\Ekip.Domain.csproj|solutionrelative:ekip.domain\\entities\\outbox\\outboxmessage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.infrastructure\\configurations\\servicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|solutionrelative:ekip.infrastructure\\configurations\\servicecollectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.application\\interfaces\\iuserwriterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\interfaces\\iuserwriterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{77819852-FFDD-407B-9192-0C911A80E147}|Ekip.WebApi\\Ekip.WebApi.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{77819852-FFDD-407B-9192-0C911A80E147}|Ekip.WebApi\\Ekip.WebApi.csproj|solutionrelative:ekip.webapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.infrastructure\\persistence\\mongodb\\configurations\\entityconfigurations\\outboxmessageconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|solutionrelative:ekip.infrastructure\\persistence\\mongodb\\configurations\\entityconfigurations\\outboxmessageconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.infrastructure\\repositories\\implementations\\outboxeventpublisher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|solutionrelative:ekip.infrastructure\\repositories\\implementations\\outboxeventpublisher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.infrastructure\\services\\implementations\\chatservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|solutionrelative:ekip.infrastructure\\services\\implementations\\chatservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6619533C-51D9-499B-834C-5EECEBBE2867}|Ekip.Domain\\Ekip.Domain.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.domain\\enums\\outbox\\status.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6619533C-51D9-499B-834C-5EECEBBE2867}|Ekip.Domain\\Ekip.Domain.csproj|solutionrelative:ekip.domain\\enums\\outbox\\status.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.application\\interfaces\\ieventpublisher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\interfaces\\ieventpublisher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.infrastructure\\persistence\\mongodb\\configurations\\mongodbconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|solutionrelative:ekip.infrastructure\\persistence\\mongodb\\configurations\\mongodbconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.infrastructure\\persistence\\mongodb\\contexts\\mongodbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|solutionrelative:ekip.infrastructure\\persistence\\mongodb\\contexts\\mongodbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6619533C-51D9-499B-834C-5EECEBBE2867}|Ekip.Domain\\Ekip.Domain.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.domain\\valueobjects\\email.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6619533C-51D9-499B-834C-5EECEBBE2867}|Ekip.Domain\\Ekip.Domain.csproj|solutionrelative:ekip.domain\\valueobjects\\email.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.infrastructure\\persistence\\mongodb\\contexts\\mongosessioncontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|solutionrelative:ekip.infrastructure\\persistence\\mongodb\\contexts\\mongosessioncontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6619533C-51D9-499B-834C-5EECEBBE2867}|Ekip.Domain\\Ekip.Domain.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.domain\\entities\\readmodels\\userreadmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6619533C-51D9-499B-834C-5EECEBBE2867}|Ekip.Domain\\Ekip.Domain.csproj|solutionrelative:ekip.domain\\entities\\readmodels\\userreadmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.application\\features\\authentication\\commands\\register\\registercommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\features\\authentication\\commands\\register\\registercommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6619533C-51D9-499B-834C-5EECEBBE2867}|Ekip.Domain\\Ekip.Domain.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.domain\\exceptions\\duplicatekeyexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6619533C-51D9-499B-834C-5EECEBBE2867}|Ekip.Domain\\Ekip.Domain.csproj|solutionrelative:ekip.domain\\exceptions\\duplicatekeyexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.infrastructure\\persistence\\mongodb\\configurations\\entityconfigurations\\userconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|solutionrelative:ekip.infrastructure\\persistence\\mongodb\\configurations\\entityconfigurations\\userconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.application\\features\\profile\\commands\\updateprofile\\updateprofilecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\features\\profile\\commands\\updateprofile\\updateprofilecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.infrastructure\\persistence\\mongodb\\configurations\\entityconfigurations\\messageconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|solutionrelative:ekip.infrastructure\\persistence\\mongodb\\configurations\\entityconfigurations\\messageconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.infrastructure\\repositories\\implementations\\messagewriterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|solutionrelative:ekip.infrastructure\\repositories\\implementations\\messagewriterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.application\\interfaces\\imessagewriterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\interfaces\\imessagewriterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.application\\interfaces\\iunitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\interfaces\\iunitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6619533C-51D9-499B-834C-5EECEBBE2867}|Ekip.Domain\\Ekip.Domain.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.domain\\entities\\requests.entities\\request.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6619533C-51D9-499B-834C-5EECEBBE2867}|Ekip.Domain\\Ekip.Domain.csproj|solutionrelative:ekip.domain\\entities\\requests.entities\\request.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{77819852-FFDD-407B-9192-0C911A80E147}|Ekip.WebApi\\Ekip.WebApi.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.webapi\\controllers\\testoutbox.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{77819852-FFDD-407B-9192-0C911A80E147}|Ekip.WebApi\\Ekip.WebApi.csproj|solutionrelative:ekip.webapi\\controllers\\testoutbox.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.infrastructure\\repositories\\implementations\\mongounitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|solutionrelative:ekip.infrastructure\\repositories\\implementations\\mongounitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{77819852-FFDD-407B-9192-0C911A80E147}|Ekip.WebApi\\Ekip.WebApi.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.webapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{77819852-FFDD-407B-9192-0C911A80E147}|Ekip.WebApi\\Ekip.WebApi.csproj|solutionrelative:ekip.webapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.infrastructure\\repositories\\implementations\\userreadrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|solutionrelative:ekip.infrastructure\\repositories\\implementations\\userreadrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.infrastructure\\repositories\\implementations\\userwriterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|solutionrelative:ekip.infrastructure\\repositories\\implementations\\userwriterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.application\\features\\authentication\\consumers\\usercreatedconsumer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\features\\authentication\\consumers\\usercreatedconsumer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.application\\contracts\\events\\usercreatedevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\contracts\\events\\usercreatedevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.application\\features\\request\\commands\\createrequest\\createrequestcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\features\\request\\commands\\createrequest\\createrequestcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.infrastructure\\repositories\\implementations\\profilewriterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|solutionrelative:ekip.infrastructure\\repositories\\implementations\\profilewriterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.application\\features\\profile\\commands\\updateprofile\\updateprofilecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\features\\profile\\commands\\updateprofile\\updateprofilecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.application\\contracts\\events\\profileupdatedevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\contracts\\events\\profileupdatedevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6619533C-51D9-499B-834C-5EECEBBE2867}|Ekip.Domain\\Ekip.Domain.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.domain\\entities\\base.entities\\baseentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6619533C-51D9-499B-834C-5EECEBBE2867}|Ekip.Domain\\Ekip.Domain.csproj|solutionrelative:ekip.domain\\entities\\base.entities\\baseentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.application\\interfaces\\iprofilewriterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\interfaces\\iprofilewriterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.application\\features\\profile\\commands\\updateprofile\\updateprofilecommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\features\\profile\\commands\\updateprofile\\updateprofilecommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{77819852-FFDD-407B-9192-0C911A80E147}|Ekip.WebApi\\Ekip.WebApi.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.webapi\\controllers\\profilecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{77819852-FFDD-407B-9192-0C911A80E147}|Ekip.WebApi\\Ekip.WebApi.csproj|solutionrelative:ekip.webapi\\controllers\\profilecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.application\\dtos\\user\\updateprofilerequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\dtos\\user\\updateprofilerequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6619533C-51D9-499B-834C-5EECEBBE2867}|Ekip.Domain\\Ekip.Domain.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.domain\\entities\\identity.entities\\profile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6619533C-51D9-499B-834C-5EECEBBE2867}|Ekip.Domain\\Ekip.Domain.csproj|solutionrelative:ekip.domain\\entities\\identity.entities\\profile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.application\\features\\request\\commands\\assigntorequest\\assigntorequestcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\features\\request\\commands\\assigntorequest\\assigntorequestcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.application\\features\\gamification\\commands\\submitscore\\submitscorecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\features\\gamification\\commands\\submitscore\\submitscorecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6619533C-51D9-499B-834C-5EECEBBE2867}|Ekip.Domain\\Ekip.Domain.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.domain\\entities\\userbehavior.entities\\scoreledger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6619533C-51D9-499B-834C-5EECEBBE2867}|Ekip.Domain\\Ekip.Domain.csproj|solutionrelative:ekip.domain\\entities\\userbehavior.entities\\scoreledger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.application\\features\\request\\commands\\acceptorrejectassignment\\acceptorrejectassignmentcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\features\\request\\commands\\acceptorrejectassignment\\acceptorrejectassignmentcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.application\\features\\profile\\commands\\setuseravatar\\setuseravatarcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\features\\profile\\commands\\setuseravatar\\setuseravatarcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.application\\features\\gamification\\commands\\submitscore\\submitscorecommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\features\\gamification\\commands\\submitscore\\submitscorecommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.application\\features\\chatroom\\consumers\\createchatroomforrequestconsumer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\features\\chatroom\\consumers\\createchatroomforrequestconsumer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.application\\features\\gamification\\consumers\\scoresubmittedconsumer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\features\\gamification\\consumers\\scoresubmittedconsumer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.application\\features\\authentication\\consumers\\faceverificationconsumer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\features\\authentication\\consumers\\faceverificationconsumer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.application\\contracts\\events\\scoresubmittedevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\contracts\\events\\scoresubmittedevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.application\\features\\chatroom\\commands\\createchatroom\\createchatroomcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\features\\chatroom\\commands\\createchatroom\\createchatroomcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.application\\features\\profile\\commands\\setuserprofile\\setuserprofilecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\features\\profile\\commands\\setuserprofile\\setuserprofilecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.application\\features\\authentication\\commands\\userverification\\faceverificationcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\features\\authentication\\commands\\userverification\\faceverificationcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.application\\interfaces\\iscoreledgerwriterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\interfaces\\iscoreledgerwriterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.application\\features\\authentication\\consumers\\faceverificationcompletedconsumer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\features\\authentication\\consumers\\faceverificationcompletedconsumer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.infrastructure\\repositories\\implementations\\scoreledgerwriterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|solutionrelative:ekip.infrastructure\\repositories\\implementations\\scoreledgerwriterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.application\\interfaces\\iuserwriterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\interfaces\\iuserwriterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.application\\dtos\\userbehavior\\submitscoredto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\dtos\\userbehavior\\submitscoredto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.infrastructure\\persistence\\mongodb\\configurations\\entityconfigurations\\profileconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|solutionrelative:ekip.infrastructure\\persistence\\mongodb\\configurations\\entityconfigurations\\profileconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.application\\features\\messages\\commands\\sendmessage\\sendmessagecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\features\\messages\\commands\\sendmessage\\sendmessagecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.infrastructure\\migrations\\20260429130846_newdb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|solutionrelative:ekip.infrastructure\\migrations\\20260429130846_newdb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.application\\contracts\\events\\assignmentdecisionmadeevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\contracts\\events\\assignmentdecisionmadeevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.infrastructure\\persistence\\postgresql\\contexts\\postgresdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|solutionrelative:ekip.infrastructure\\persistence\\postgresql\\contexts\\postgresdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6619533C-51D9-499B-834C-5EECEBBE2867}|Ekip.Domain\\Ekip.Domain.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.domain\\ekip.domain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{6619533C-51D9-499B-834C-5EECEBBE2867}|Ekip.Domain\\Ekip.Domain.csproj|solutionrelative:ekip.domain\\ekip.domain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.infrastructure\\services\\signalr\\chathub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|solutionrelative:ekip.infrastructure\\services\\signalr\\chathub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.application\\interfaces\\iuserekipupdaterservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\interfaces\\iuserekipupdaterservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.infrastructure\\services\\faceai\\insightfaceverificationservice .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|solutionrelative:ekip.infrastructure\\services\\faceai\\insightfaceverificationservice .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6619533C-51D9-499B-834C-5EECEBBE2867}|Ekip.Domain\\Ekip.Domain.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.domain\\entities\\readmodels\\profilereadmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6619533C-51D9-499B-834C-5EECEBBE2867}|Ekip.Domain\\Ekip.Domain.csproj|solutionrelative:ekip.domain\\entities\\readmodels\\profilereadmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.application\\features\\profile\\consumers\\profileavatarupdatedconsumer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\features\\profile\\consumers\\profileavatarupdatedconsumer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{77819852-FFDD-407B-9192-0C911A80E147}|Ekip.WebApi\\Ekip.WebApi.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.webapi\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{77819852-FFDD-407B-9192-0C911A80E147}|Ekip.WebApi\\Ekip.WebApi.csproj|solutionrelative:ekip.webapi\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.application\\interfaces\\iprofilereadrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\interfaces\\iprofilereadrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{77819852-FFDD-407B-9192-0C911A80E147}|Ekip.WebApi\\Ekip.WebApi.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.webapi\\controllers\\chatcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{77819852-FFDD-407B-9192-0C911A80E147}|Ekip.WebApi\\Ekip.WebApi.csproj|solutionrelative:ekip.webapi\\controllers\\chatcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.application\\interfaces\\iuserreadrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\interfaces\\iuserreadrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.application\\features\\authentication\\commands\\register\\registercommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\features\\authentication\\commands\\register\\registercommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.infrastructure\\repositories\\implementations\\profilewriterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|solutionrelative:ekip.infrastructure\\repositories\\implementations\\profilewriterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.application\\contracts\\events\\profilecreatedevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\contracts\\events\\profilecreatedevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.application\\interfaces\\iprofilewriterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\interfaces\\iprofilewriterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.application\\features\\request\\commands\\createrequest\\createrequestcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\features\\request\\commands\\createrequest\\createrequestcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.application\\features\\request\\qeuries\\getuserekip\\getuserekipqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\features\\request\\qeuries\\getuserekip\\getuserekipqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.application\\features\\request\\commands\\acceptorrejectassignment\\acceptorrejectassignmentcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\features\\request\\commands\\acceptorrejectassignment\\acceptorrejectassignmentcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.application\\features\\profile\\queries\\getuserprofile\\getuserprofilequeryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\features\\profile\\queries\\getuserprofile\\getuserprofilequeryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.application\\features\\request\\consumers\\userekipcreatedupdaterconsumer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\features\\request\\consumers\\userekipcreatedupdaterconsumer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.application\\features\\profile\\queries\\getpendingassignment\\getpendingassignmentqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\features\\profile\\queries\\getpendingassignment\\getpendingassignmentqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6619533C-51D9-499B-834C-5EECEBBE2867}|Ekip.Domain\\Ekip.Domain.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.domain\\entities\\requests.entities\\requestassignment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6619533C-51D9-499B-834C-5EECEBBE2867}|Ekip.Domain\\Ekip.Domain.csproj|solutionrelative:ekip.domain\\entities\\requests.entities\\requestassignment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.infrastructure\\repositories\\implementations\\profilereadrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{39F5D0CB-F2E2-43AF-A825-29B553A5BA9B}|Ekip.Infrastructure\\Ekip.Infrastructure.csproj|solutionrelative:ekip.infrastructure\\repositories\\implementations\\profilereadrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|c:\\users\\mirsoos\\source\\repos\\ekip\\ekip.application\\features\\messages\\consumers\\messagecreatedsignalrconsumer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9603A40-B719-468B-813C-0CC584012226}|Ekip.Application\\Ekip.Application.csproj|solutionrelative:ekip.application\\features\\messages\\consumers\\messagecreatedsignalrconsumer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -194,612 +214,685 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
-              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+              "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+              "Name": "ST:131:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "BaseEntityConfiguration.cs",
-              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Infrastructure\\Persistence\\MongoDb\\Configurations\\EntityConfigurations\\BaseEntityConfiguration.cs",
-              "RelativeDocumentMoniker": "Ekip.Infrastructure\\Persistence\\MongoDb\\Configurations\\EntityConfigurations\\BaseEntityConfiguration.cs",
-              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Infrastructure\\Persistence\\MongoDb\\Configurations\\EntityConfigurations\\BaseEntityConfiguration.cs",
-              "RelativeToolTip": "Ekip.Infrastructure\\Persistence\\MongoDb\\Configurations\\EntityConfigurations\\BaseEntityConfiguration.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAABHAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-28T12:19:44.372Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "User.cs",
-              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Domain\\Entities\\Identity.Entities\\User.cs",
-              "RelativeDocumentMoniker": "Ekip.Domain\\Entities\\Identity.Entities\\User.cs",
-              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Domain\\Entities\\Identity.Entities\\User.cs",
-              "RelativeToolTip": "Ekip.Domain\\Entities\\Identity.Entities\\User.cs",
-              "ViewState": "AgIAAEoAAAAAAAAAAAAgwFYAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-26T15:05:14.626Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "UserWriteRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Infrastructure\\Repositories\\Implementations\\UserWriteRepository.cs",
-              "RelativeDocumentMoniker": "Ekip.Infrastructure\\Repositories\\Implementations\\UserWriteRepository.cs",
-              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Infrastructure\\Repositories\\Implementations\\UserWriteRepository.cs",
-              "RelativeToolTip": "Ekip.Infrastructure\\Repositories\\Implementations\\UserWriteRepository.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAowC8AAABDAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-27T11:13:11.189Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "RegisterCommandHandler.cs",
-              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Features\\Authentication\\Commands\\Register\\RegisterCommandHandler.cs",
-              "RelativeDocumentMoniker": "Ekip.Application\\Features\\Authentication\\Commands\\Register\\RegisterCommandHandler.cs",
-              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Features\\Authentication\\Commands\\Register\\RegisterCommandHandler.cs",
-              "RelativeToolTip": "Ekip.Application\\Features\\Authentication\\Commands\\Register\\RegisterCommandHandler.cs",
-              "ViewState": "AgIAABkAAAAAAAAAAAAYwCsAAAAAAAAAAAAAAA==",
+              "Title": "OutboxChangeStreamService.cs",
+              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Infrastructure\\Services\\Implementations\\OutboxChangeStreamService.cs",
+              "RelativeDocumentMoniker": "Ekip.Infrastructure\\Services\\Implementations\\OutboxChangeStreamService.cs",
+              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Infrastructure\\Services\\Implementations\\OutboxChangeStreamService.cs",
+              "RelativeToolTip": "Ekip.Infrastructure\\Services\\Implementations\\OutboxChangeStreamService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-23T14:44:24.765Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "IUserWriteRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Interfaces\\IUserWriteRepository.cs",
-              "RelativeDocumentMoniker": "Ekip.Application\\Interfaces\\IUserWriteRepository.cs",
-              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Interfaces\\IUserWriteRepository.cs",
-              "RelativeToolTip": "Ekip.Application\\Interfaces\\IUserWriteRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-27T11:11:41.997Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "MongoDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Infrastructure\\Persistence\\MongoDb\\Contexts\\MongoDbContext.cs",
-              "RelativeDocumentMoniker": "Ekip.Infrastructure\\Persistence\\MongoDb\\Contexts\\MongoDbContext.cs",
-              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Infrastructure\\Persistence\\MongoDb\\Contexts\\MongoDbContext.cs",
-              "RelativeToolTip": "Ekip.Infrastructure\\Persistence\\MongoDb\\Contexts\\MongoDbContext.cs",
-              "ViewState": "AgIAAEMAAAAAAAAAAAAYwFcAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-27T12:32:01.962Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Email.cs",
-              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Domain\\ValueObjects\\Email.cs",
-              "RelativeDocumentMoniker": "Ekip.Domain\\ValueObjects\\Email.cs",
-              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Domain\\ValueObjects\\Email.cs",
-              "RelativeToolTip": "Ekip.Domain\\ValueObjects\\Email.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAowBMAAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-27T11:28:24.681Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "UserConfiguration.cs",
-              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Infrastructure\\Persistence\\MongoDb\\Configurations\\EntityConfigurations\\UserConfiguration.cs",
-              "RelativeDocumentMoniker": "Ekip.Infrastructure\\Persistence\\MongoDb\\Configurations\\EntityConfigurations\\UserConfiguration.cs",
-              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Infrastructure\\Persistence\\MongoDb\\Configurations\\EntityConfigurations\\UserConfiguration.cs",
-              "RelativeToolTip": "Ekip.Infrastructure\\Persistence\\MongoDb\\Configurations\\EntityConfigurations\\UserConfiguration.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAkwBkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-27T12:22:46.37Z",
+              "WhenOpened": "2026-05-03T14:47:37.427Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
+              "Title": "OutboxEventPublisher.cs",
+              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Infrastructure\\Repositories\\Implementations\\OutboxEventPublisher.cs",
+              "RelativeDocumentMoniker": "Ekip.Infrastructure\\Repositories\\Implementations\\OutboxEventPublisher.cs",
+              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Infrastructure\\Repositories\\Implementations\\OutboxEventPublisher.cs",
+              "RelativeToolTip": "Ekip.Infrastructure\\Repositories\\Implementations\\OutboxEventPublisher.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-03T13:03:10.178Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "ServiceCollectionExtensions.cs",
               "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Infrastructure\\Configurations\\ServiceCollectionExtensions.cs",
               "RelativeDocumentMoniker": "Ekip.Infrastructure\\Configurations\\ServiceCollectionExtensions.cs",
               "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Infrastructure\\Configurations\\ServiceCollectionExtensions.cs",
               "RelativeToolTip": "Ekip.Infrastructure\\Configurations\\ServiceCollectionExtensions.cs",
-              "ViewState": "AgIAAFkAAAAAAAAAAAAgwGQAAAATAAAAAAAAAA==",
+              "ViewState": "AgIAAIgAAAAAAAAAAAAAAKMAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-28T12:13:19.108Z",
+              "WhenOpened": "2026-04-29T13:06:11.058Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Status.cs",
+              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Domain\\Enums\\OutBox\\Status.cs",
+              "RelativeDocumentMoniker": "Ekip.Domain\\Enums\\OutBox\\Status.cs",
+              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Domain\\Enums\\OutBox\\Status.cs",
+              "RelativeToolTip": "Ekip.Domain\\Enums\\OutBox\\Status.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAYAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-03T11:47:33.819Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "OutboxMessage.cs",
+              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Domain\\Entities\\Outbox\\OutboxMessage.cs",
+              "RelativeDocumentMoniker": "Ekip.Domain\\Entities\\Outbox\\OutboxMessage.cs",
+              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Domain\\Entities\\Outbox\\OutboxMessage.cs",
+              "RelativeToolTip": "Ekip.Domain\\Entities\\Outbox\\OutboxMessage.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAzwBcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-03T12:49:25.968Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.WebApi\\Program.cs",
+              "RelativeDocumentMoniker": "Ekip.WebApi\\Program.cs",
+              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.WebApi\\Program.cs",
+              "RelativeToolTip": "Ekip.WebApi\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-03T10:48:06.544Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "OutBoxMessageConfiguration.cs",
+              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Infrastructure\\Persistence\\MongoDb\\Configurations\\EntityConfigurations\\OutBoxMessageConfiguration.cs",
+              "RelativeDocumentMoniker": "Ekip.Infrastructure\\Persistence\\MongoDb\\Configurations\\EntityConfigurations\\OutBoxMessageConfiguration.cs",
+              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Infrastructure\\Persistence\\MongoDb\\Configurations\\EntityConfigurations\\OutBoxMessageConfiguration.cs",
+              "RelativeToolTip": "Ekip.Infrastructure\\Persistence\\MongoDb\\Configurations\\EntityConfigurations\\OutBoxMessageConfiguration.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-03T12:22:32.158Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ChatService.cs",
+              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Infrastructure\\Services\\Implementations\\ChatService.cs",
+              "RelativeDocumentMoniker": "Ekip.Infrastructure\\Services\\Implementations\\ChatService.cs",
+              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Infrastructure\\Services\\Implementations\\ChatService.cs",
+              "RelativeToolTip": "Ekip.Infrastructure\\Services\\Implementations\\ChatService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-29T12:56:48.068Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "IEventPublisher.cs",
+              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Interfaces\\IEventPublisher.cs",
+              "RelativeDocumentMoniker": "Ekip.Application\\Interfaces\\IEventPublisher.cs",
+              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Interfaces\\IEventPublisher.cs",
+              "RelativeToolTip": "Ekip.Application\\Interfaces\\IEventPublisher.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAMAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-02T08:54:54.456Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 9,
-              "Title": "UserReadModel.cs",
-              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Domain\\Entities\\ReadModels\\UserReadModel.cs",
-              "RelativeDocumentMoniker": "Ekip.Domain\\Entities\\ReadModels\\UserReadModel.cs",
-              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Domain\\Entities\\ReadModels\\UserReadModel.cs",
-              "RelativeToolTip": "Ekip.Domain\\Entities\\ReadModels\\UserReadModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAsAAAAAAAAAA==",
+              "Title": "MongoDbConfiguration.cs",
+              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Infrastructure\\Persistence\\MongoDb\\Configurations\\MongoDbConfiguration.cs",
+              "RelativeDocumentMoniker": "Ekip.Infrastructure\\Persistence\\MongoDb\\Configurations\\MongoDbConfiguration.cs",
+              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Infrastructure\\Persistence\\MongoDb\\Configurations\\MongoDbConfiguration.cs",
+              "RelativeToolTip": "Ekip.Infrastructure\\Persistence\\MongoDb\\Configurations\\MongoDbConfiguration.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAYwCYAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-27T11:44:53.403Z",
+              "WhenOpened": "2026-04-29T13:14:42.322Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 10,
-              "Title": "DuplicateKeyException.cs",
-              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Domain\\Exceptions\\DuplicateKeyException.cs",
-              "RelativeDocumentMoniker": "Ekip.Domain\\Exceptions\\DuplicateKeyException.cs",
-              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Domain\\Exceptions\\DuplicateKeyException.cs",
-              "RelativeToolTip": "Ekip.Domain\\Exceptions\\DuplicateKeyException.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAzAAAAAAAAAA==",
+              "Title": "MongoDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Infrastructure\\Persistence\\MongoDb\\Contexts\\MongoDbContext.cs",
+              "RelativeDocumentMoniker": "Ekip.Infrastructure\\Persistence\\MongoDb\\Contexts\\MongoDbContext.cs",
+              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Infrastructure\\Persistence\\MongoDb\\Contexts\\MongoDbContext.cs",
+              "RelativeToolTip": "Ekip.Infrastructure\\Persistence\\MongoDb\\Contexts\\MongoDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAA5AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-28T11:27:11.797Z",
+              "WhenOpened": "2026-05-02T13:19:40.655Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 12,
-              "Title": "UserCreatedConsumer.cs",
-              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Features\\Authentication\\Consumers\\UserCreatedConsumer.cs",
-              "RelativeDocumentMoniker": "Ekip.Application\\Features\\Authentication\\Consumers\\UserCreatedConsumer.cs",
-              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Features\\Authentication\\Consumers\\UserCreatedConsumer.cs",
-              "RelativeToolTip": "Ekip.Application\\Features\\Authentication\\Consumers\\UserCreatedConsumer.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAwwB8AAAAlAAAAAAAAAA==",
+              "Title": "RegisterCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Features\\Authentication\\Commands\\Register\\RegisterCommandHandler.cs",
+              "RelativeDocumentMoniker": "Ekip.Application\\Features\\Authentication\\Commands\\Register\\RegisterCommandHandler.cs",
+              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Features\\Authentication\\Commands\\Register\\RegisterCommandHandler.cs",
+              "RelativeToolTip": "Ekip.Application\\Features\\Authentication\\Commands\\Register\\RegisterCommandHandler.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAAQwCYAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-23T14:55:31.208Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "UserCreatedEvent.cs",
-              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Contracts\\Events\\UserCreatedEvent.cs",
-              "RelativeDocumentMoniker": "Ekip.Application\\Contracts\\Events\\UserCreatedEvent.cs",
-              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Contracts\\Events\\UserCreatedEvent.cs",
-              "RelativeToolTip": "Ekip.Application\\Contracts\\Events\\UserCreatedEvent.cs",
-              "ViewState": "AgIAAAIAAAAAAAAAAAAIwBQAAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-23T14:56:13.565Z",
+              "WhenOpened": "2026-04-29T12:53:47.308Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 11,
-              "Title": "UpdateProfileCommandHandler.cs",
-              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Features\\Profile\\Commands\\UpdateProfile\\UpdateProfileCommandHandler.cs",
-              "RelativeDocumentMoniker": "Ekip.Application\\Features\\Profile\\Commands\\UpdateProfile\\UpdateProfileCommandHandler.cs",
-              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Features\\Profile\\Commands\\UpdateProfile\\UpdateProfileCommandHandler.cs",
-              "RelativeToolTip": "Ekip.Application\\Features\\Profile\\Commands\\UpdateProfile\\UpdateProfileCommandHandler.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAJAAAAAAAAAA==",
+              "Title": "MongoSessionContext.cs",
+              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Infrastructure\\Persistence\\MongoDb\\Contexts\\MongoSessionContext.cs",
+              "RelativeDocumentMoniker": "Ekip.Infrastructure\\Persistence\\MongoDb\\Contexts\\MongoSessionContext.cs",
+              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Infrastructure\\Persistence\\MongoDb\\Contexts\\MongoSessionContext.cs",
+              "RelativeToolTip": "Ekip.Infrastructure\\Persistence\\MongoDb\\Contexts\\MongoSessionContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAA6AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-27T10:37:13.292Z",
+              "WhenOpened": "2026-05-02T11:46:02.301Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "UserConfiguration.cs",
+              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Infrastructure\\Persistence\\MongoDb\\Configurations\\EntityConfigurations\\UserConfiguration.cs",
+              "RelativeDocumentMoniker": "Ekip.Infrastructure\\Persistence\\MongoDb\\Configurations\\EntityConfigurations\\UserConfiguration.cs",
+              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Infrastructure\\Persistence\\MongoDb\\Configurations\\EntityConfigurations\\UserConfiguration.cs",
+              "RelativeToolTip": "Ekip.Infrastructure\\Persistence\\MongoDb\\Configurations\\EntityConfigurations\\UserConfiguration.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA8AAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-29T13:10:34.975Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 14,
-              "Title": "ProfileWriteRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Infrastructure\\Repositories\\Implementations\\ProfileWriteRepository.cs",
-              "RelativeDocumentMoniker": "Ekip.Infrastructure\\Repositories\\Implementations\\ProfileWriteRepository.cs",
-              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Infrastructure\\Repositories\\Implementations\\ProfileWriteRepository.cs",
-              "RelativeToolTip": "Ekip.Infrastructure\\Repositories\\Implementations\\ProfileWriteRepository.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAYwCAAAABOAAAAAAAAAA==",
+              "Title": "MessageConfiguration.cs",
+              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Infrastructure\\Persistence\\MongoDb\\Configurations\\EntityConfigurations\\MessageConfiguration.cs",
+              "RelativeDocumentMoniker": "Ekip.Infrastructure\\Persistence\\MongoDb\\Configurations\\EntityConfigurations\\MessageConfiguration.cs",
+              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Infrastructure\\Persistence\\MongoDb\\Configurations\\EntityConfigurations\\MessageConfiguration.cs",
+              "RelativeToolTip": "Ekip.Infrastructure\\Persistence\\MongoDb\\Configurations\\EntityConfigurations\\MessageConfiguration.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAUwBcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-26T15:23:10.559Z",
+              "WhenOpened": "2026-05-03T12:33:56.653Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 15,
-              "Title": "ProfileUpdatedEvent.cs",
-              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Contracts\\Events\\ProfileUpdatedEvent.cs",
-              "RelativeDocumentMoniker": "Ekip.Application\\Contracts\\Events\\ProfileUpdatedEvent.cs",
-              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Contracts\\Events\\ProfileUpdatedEvent.cs",
-              "RelativeToolTip": "Ekip.Application\\Contracts\\Events\\ProfileUpdatedEvent.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAFAAAAAAAAAA==",
+              "Title": "MessageWriteRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Infrastructure\\Repositories\\Implementations\\MessageWriteRepository.cs",
+              "RelativeDocumentMoniker": "Ekip.Infrastructure\\Repositories\\Implementations\\MessageWriteRepository.cs",
+              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Infrastructure\\Repositories\\Implementations\\MessageWriteRepository.cs",
+              "RelativeToolTip": "Ekip.Infrastructure\\Repositories\\Implementations\\MessageWriteRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwA0AAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-27T11:07:35.648Z",
+              "WhenOpened": "2026-05-03T12:52:43.578Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 16,
-              "Title": "BaseEntity.cs",
-              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Domain\\Entities\\Base.Entities\\BaseEntity.cs",
-              "RelativeDocumentMoniker": "Ekip.Domain\\Entities\\Base.Entities\\BaseEntity.cs",
-              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Domain\\Entities\\Base.Entities\\BaseEntity.cs",
-              "RelativeToolTip": "Ekip.Domain\\Entities\\Base.Entities\\BaseEntity.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAgAAAAAAAAAA==",
+              "Title": "IMessageWriteRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Interfaces\\IMessageWriteRepository.cs",
+              "RelativeDocumentMoniker": "Ekip.Application\\Interfaces\\IMessageWriteRepository.cs",
+              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Interfaces\\IMessageWriteRepository.cs",
+              "RelativeToolTip": "Ekip.Application\\Interfaces\\IMessageWriteRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAcAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-26T15:32:36.558Z",
+              "WhenOpened": "2026-05-03T12:52:37.468Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 17,
-              "Title": "IProfileWriteRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Interfaces\\IProfileWriteRepository.cs",
-              "RelativeDocumentMoniker": "Ekip.Application\\Interfaces\\IProfileWriteRepository.cs",
-              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Interfaces\\IProfileWriteRepository.cs",
-              "RelativeToolTip": "Ekip.Application\\Interfaces\\IProfileWriteRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAcAAAAXAAAAAAAAAA==",
+              "Title": "IUnitOfWork.cs",
+              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Interfaces\\IUnitOfWork.cs",
+              "RelativeDocumentMoniker": "Ekip.Application\\Interfaces\\IUnitOfWork.cs",
+              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Interfaces\\IUnitOfWork.cs",
+              "RelativeToolTip": "Ekip.Application\\Interfaces\\IUnitOfWork.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAUAAABjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-26T18:28:15.678Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "UpdateProfileCommand.cs",
-              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Features\\Profile\\Commands\\UpdateProfile\\UpdateProfileCommand.cs",
-              "RelativeDocumentMoniker": "Ekip.Application\\Features\\Profile\\Commands\\UpdateProfile\\UpdateProfileCommand.cs",
-              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Features\\Profile\\Commands\\UpdateProfile\\UpdateProfileCommand.cs",
-              "RelativeToolTip": "Ekip.Application\\Features\\Profile\\Commands\\UpdateProfile\\UpdateProfileCommand.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-27T10:36:58.261Z",
+              "WhenOpened": "2026-05-02T10:59:52.663Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 19,
-              "Title": "ProfileController.cs",
-              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.WebApi\\Controllers\\ProfileController.cs",
-              "RelativeDocumentMoniker": "Ekip.WebApi\\Controllers\\ProfileController.cs",
-              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.WebApi\\Controllers\\ProfileController.cs",
-              "RelativeToolTip": "Ekip.WebApi\\Controllers\\ProfileController.cs",
-              "ViewState": "AgIAACwAAAAAAAAAAAAYwEEAAAAsAAAAAAAAAA==",
+              "Title": "TestOutbox.cs",
+              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.WebApi\\Controllers\\TestOutbox.cs",
+              "RelativeDocumentMoniker": "Ekip.WebApi\\Controllers\\TestOutbox.cs",
+              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.WebApi\\Controllers\\TestOutbox.cs",
+              "RelativeToolTip": "Ekip.WebApi\\Controllers\\TestOutbox.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-27T10:56:20.305Z",
+              "WhenOpened": "2026-05-03T10:39:07.93Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Request.cs",
+              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Domain\\Entities\\Requests.Entities\\Request.cs",
+              "RelativeDocumentMoniker": "Ekip.Domain\\Entities\\Requests.Entities\\Request.cs",
+              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Domain\\Entities\\Requests.Entities\\Request.cs",
+              "RelativeToolTip": "Ekip.Domain\\Entities\\Requests.Entities\\Request.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-03T10:33:46.055Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 20,
-              "Title": "UpdateProfileRequestDto.cs",
-              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\DTOs\\User\\UpdateProfileRequestDto.cs",
-              "RelativeDocumentMoniker": "Ekip.Application\\DTOs\\User\\UpdateProfileRequestDto.cs",
-              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\DTOs\\User\\UpdateProfileRequestDto.cs",
-              "RelativeToolTip": "Ekip.Application\\DTOs\\User\\UpdateProfileRequestDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
+              "Title": "MongoUnitOfWork.cs",
+              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Infrastructure\\Repositories\\Implementations\\MongoUnitOfWork.cs",
+              "RelativeDocumentMoniker": "Ekip.Infrastructure\\Repositories\\Implementations\\MongoUnitOfWork.cs",
+              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Infrastructure\\Repositories\\Implementations\\MongoUnitOfWork.cs",
+              "RelativeToolTip": "Ekip.Infrastructure\\Repositories\\Implementations\\MongoUnitOfWork.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-27T10:55:11.108Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "SubmitScoreCommandHandler.cs",
-              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Features\\Gamification\\Commands\\SubmitScore\\SubmitScoreCommandHandler.cs",
-              "RelativeDocumentMoniker": "Ekip.Application\\Features\\Gamification\\Commands\\SubmitScore\\SubmitScoreCommandHandler.cs",
-              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Features\\Gamification\\Commands\\SubmitScore\\SubmitScoreCommandHandler.cs",
-              "RelativeToolTip": "Ekip.Application\\Features\\Gamification\\Commands\\SubmitScore\\SubmitScoreCommandHandler.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAPAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-26T16:10:12.786Z",
+              "WhenOpened": "2026-05-02T11:00:36.922Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 21,
-              "Title": "Profile.cs",
-              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Domain\\Entities\\Identity.Entities\\Profile.cs",
-              "RelativeDocumentMoniker": "Ekip.Domain\\Entities\\Identity.Entities\\Profile.cs",
-              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Domain\\Entities\\Identity.Entities\\Profile.cs",
-              "RelativeToolTip": "Ekip.Domain\\Entities\\Identity.Entities\\Profile.cs",
-              "ViewState": "AgIAACcAAAAAAAAAAAAswDoAAAAJAAAAAAAAAA==",
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.WebApi\\appsettings.json",
+              "RelativeDocumentMoniker": "Ekip.WebApi\\appsettings.json",
+              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.WebApi\\appsettings.json",
+              "RelativeToolTip": "Ekip.WebApi\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-04-29T13:28:26.018Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "UserReadRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Infrastructure\\Repositories\\Implementations\\UserReadRepository.cs",
+              "RelativeDocumentMoniker": "Ekip.Infrastructure\\Repositories\\Implementations\\UserReadRepository.cs",
+              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Infrastructure\\Repositories\\Implementations\\UserReadRepository.cs",
+              "RelativeToolTip": "Ekip.Infrastructure\\Repositories\\Implementations\\UserReadRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-23T14:42:40.669Z",
+              "WhenOpened": "2026-04-29T12:59:14.507Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 23,
-              "Title": "ScoreLedger.cs",
-              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Domain\\Entities\\UserBehavior.Entities\\ScoreLedger.cs",
-              "RelativeDocumentMoniker": "Ekip.Domain\\Entities\\UserBehavior.Entities\\ScoreLedger.cs",
-              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Domain\\Entities\\UserBehavior.Entities\\ScoreLedger.cs",
-              "RelativeToolTip": "Ekip.Domain\\Entities\\UserBehavior.Entities\\ScoreLedger.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAxwBkAAAAkAAAAAAAAAA==",
+              "Title": "UserWriteRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Infrastructure\\Repositories\\Implementations\\UserWriteRepository.cs",
+              "RelativeDocumentMoniker": "Ekip.Infrastructure\\Repositories\\Implementations\\UserWriteRepository.cs",
+              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Infrastructure\\Repositories\\Implementations\\UserWriteRepository.cs",
+              "RelativeToolTip": "Ekip.Infrastructure\\Repositories\\Implementations\\UserWriteRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwA4AAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-26T16:13:14.639Z",
+              "WhenOpened": "2026-04-29T12:49:07.086Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 24,
-              "Title": "SetUserAvatarCommandHandler.cs",
-              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Features\\Profile\\Commands\\SetUserAvatar\\SetUserAvatarCommandHandler.cs",
-              "RelativeDocumentMoniker": "Ekip.Application\\Features\\Profile\\Commands\\SetUserAvatar\\SetUserAvatarCommandHandler.cs",
-              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Features\\Profile\\Commands\\SetUserAvatar\\SetUserAvatarCommandHandler.cs",
-              "RelativeToolTip": "Ekip.Application\\Features\\Profile\\Commands\\SetUserAvatar\\SetUserAvatarCommandHandler.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAswCAAAABHAAAAAAAAAA==",
+              "Title": "UserCreatedConsumer.cs",
+              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Features\\Authentication\\Consumers\\UserCreatedConsumer.cs",
+              "RelativeDocumentMoniker": "Ekip.Application\\Features\\Authentication\\Consumers\\UserCreatedConsumer.cs",
+              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Features\\Authentication\\Consumers\\UserCreatedConsumer.cs",
+              "RelativeToolTip": "Ekip.Application\\Features\\Authentication\\Consumers\\UserCreatedConsumer.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAYwBYAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-26T18:23:12.659Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "ScoreSubmittedConsumer.cs",
-              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Features\\Gamification\\Consumers\\ScoreSubmittedConsumer.cs",
-              "RelativeDocumentMoniker": "Ekip.Application\\Features\\Gamification\\Consumers\\ScoreSubmittedConsumer.cs",
-              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Features\\Gamification\\Consumers\\ScoreSubmittedConsumer.cs",
-              "RelativeToolTip": "Ekip.Application\\Features\\Gamification\\Consumers\\ScoreSubmittedConsumer.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwBQAAABVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-26T17:17:53.826Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 27,
-              "Title": "ScoreSubmittedEvent.cs",
-              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Contracts\\Events\\ScoreSubmittedEvent.cs",
-              "RelativeDocumentMoniker": "Ekip.Application\\Contracts\\Events\\ScoreSubmittedEvent.cs",
-              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Contracts\\Events\\ScoreSubmittedEvent.cs",
-              "RelativeToolTip": "Ekip.Application\\Contracts\\Events\\ScoreSubmittedEvent.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAgAAAAvAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-26T17:14:36.348Z",
+              "WhenOpened": "2026-04-29T12:54:18.966Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 25,
-              "Title": "SubmitScoreCommand.cs",
-              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Features\\Gamification\\Commands\\SubmitScore\\SubmitScoreCommand.cs",
-              "RelativeDocumentMoniker": "Ekip.Application\\Features\\Gamification\\Commands\\SubmitScore\\SubmitScoreCommand.cs",
-              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Features\\Gamification\\Commands\\SubmitScore\\SubmitScoreCommand.cs",
-              "RelativeToolTip": "Ekip.Application\\Features\\Gamification\\Commands\\SubmitScore\\SubmitScoreCommand.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAgAAAA2AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-26T16:09:53.384Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 28,
-              "Title": "SetUserProfileCommandHandler.cs",
-              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Features\\Profile\\Commands\\SetUserProfile\\SetUserProfileCommandHandler.cs",
-              "RelativeDocumentMoniker": "Ekip.Application\\Features\\Profile\\Commands\\SetUserProfile\\SetUserProfileCommandHandler.cs",
-              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Features\\Profile\\Commands\\SetUserProfile\\SetUserProfileCommandHandler.cs",
-              "RelativeToolTip": "Ekip.Application\\Features\\Profile\\Commands\\SetUserProfile\\SetUserProfileCommandHandler.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAQwBUAAAAlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-23T14:51:28.129Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 29,
-              "Title": "IScoreLedgerWriteRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Interfaces\\IScoreLedgerWriteRepository.cs",
-              "RelativeDocumentMoniker": "Ekip.Application\\Interfaces\\IScoreLedgerWriteRepository.cs",
-              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Interfaces\\IScoreLedgerWriteRepository.cs",
-              "RelativeToolTip": "Ekip.Application\\Interfaces\\IScoreLedgerWriteRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAcAAABZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-26T17:20:34.54Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 30,
-              "Title": "ScoreLedgerWriteRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Infrastructure\\Repositories\\Implementations\\ScoreLedgerWriteRepository.cs",
-              "RelativeDocumentMoniker": "Ekip.Infrastructure\\Repositories\\Implementations\\ScoreLedgerWriteRepository.cs",
-              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Infrastructure\\Repositories\\Implementations\\ScoreLedgerWriteRepository.cs",
-              "RelativeToolTip": "Ekip.Infrastructure\\Repositories\\Implementations\\ScoreLedgerWriteRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-26T17:22:36.314Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 31,
-              "Title": "SubmitScoreDto.cs",
-              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\DTOs\\UserBehavior\\SubmitScoreDto.cs",
-              "RelativeDocumentMoniker": "Ekip.Application\\DTOs\\UserBehavior\\SubmitScoreDto.cs",
-              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\DTOs\\UserBehavior\\SubmitScoreDto.cs",
-              "RelativeToolTip": "Ekip.Application\\DTOs\\UserBehavior\\SubmitScoreDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAuAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-26T17:05:28.403Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 32,
-              "Title": "SendMessageCommandHandler.cs",
-              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Features\\Messages\\Commands\\SendMessage\\SendMessageCommandHandler.cs",
-              "RelativeDocumentMoniker": "Ekip.Application\\Features\\Messages\\Commands\\SendMessage\\SendMessageCommandHandler.cs",
-              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Features\\Messages\\Commands\\SendMessage\\SendMessageCommandHandler.cs",
-              "RelativeToolTip": "Ekip.Application\\Features\\Messages\\Commands\\SendMessage\\SendMessageCommandHandler.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAzAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-26T14:55:49.601Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 33,
-              "Title": "AssignmentDecisionMadeEvent.cs",
-              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Contracts\\Events\\AssignmentDecisionMadeEvent.cs",
-              "RelativeDocumentMoniker": "Ekip.Application\\Contracts\\Events\\AssignmentDecisionMadeEvent.cs",
-              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Contracts\\Events\\AssignmentDecisionMadeEvent.cs",
-              "RelativeToolTip": "Ekip.Application\\Contracts\\Events\\AssignmentDecisionMadeEvent.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-26T17:14:47.646Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 34,
-              "Title": "Ekip.Domain.csproj",
-              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Domain\\Ekip.Domain.csproj",
-              "RelativeDocumentMoniker": "Ekip.Domain\\Ekip.Domain.csproj",
-              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Domain\\Ekip.Domain.csproj",
-              "RelativeToolTip": "Ekip.Domain\\Ekip.Domain.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-04-26T16:56:48.978Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 35,
-              "Title": "IUserEkipUpdaterService.cs",
-              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Interfaces\\IUserEkipUpdaterService.cs",
-              "RelativeDocumentMoniker": "Ekip.Application\\Interfaces\\IUserEkipUpdaterService.cs",
-              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Interfaces\\IUserEkipUpdaterService.cs",
-              "RelativeToolTip": "Ekip.Application\\Interfaces\\IUserEkipUpdaterService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-26T16:49:07.889Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 36,
-              "Title": "ProfileReadModel.cs",
-              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Domain\\Entities\\ReadModels\\ProfileReadModel.cs",
-              "RelativeDocumentMoniker": "Ekip.Domain\\Entities\\ReadModels\\ProfileReadModel.cs",
-              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Domain\\Entities\\ReadModels\\ProfileReadModel.cs",
-              "RelativeToolTip": "Ekip.Domain\\Entities\\ReadModels\\ProfileReadModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAArAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-26T16:03:53.131Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 38,
-              "Title": "ChatController.cs",
-              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.WebApi\\Controllers\\ChatController.cs",
-              "RelativeDocumentMoniker": "Ekip.WebApi\\Controllers\\ChatController.cs",
-              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.WebApi\\Controllers\\ChatController.cs",
-              "RelativeToolTip": "Ekip.WebApi\\Controllers\\ChatController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAxAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-23T15:06:46.806Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 37,
-              "Title": "AccountController.cs",
-              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.WebApi\\Controllers\\AccountController.cs",
-              "RelativeDocumentMoniker": "Ekip.WebApi\\Controllers\\AccountController.cs",
-              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.WebApi\\Controllers\\AccountController.cs",
-              "RelativeToolTip": "Ekip.WebApi\\Controllers\\AccountController.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAIBJwBkAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-26T14:56:23.066Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 40,
-              "Title": "ProfileCreatedEvent.cs",
-              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Contracts\\Events\\ProfileCreatedEvent.cs",
-              "RelativeDocumentMoniker": "Ekip.Application\\Contracts\\Events\\ProfileCreatedEvent.cs",
-              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Contracts\\Events\\ProfileCreatedEvent.cs",
-              "RelativeToolTip": "Ekip.Application\\Contracts\\Events\\ProfileCreatedEvent.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAoAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-23T14:51:04.113Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 39,
-              "Title": "RegisterCommand.cs",
-              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Features\\Authentication\\Commands\\Register\\RegisterCommand.cs",
-              "RelativeDocumentMoniker": "Ekip.Application\\Features\\Authentication\\Commands\\Register\\RegisterCommand.cs",
-              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Features\\Authentication\\Commands\\Register\\RegisterCommand.cs",
-              "RelativeToolTip": "Ekip.Application\\Features\\Authentication\\Commands\\Register\\RegisterCommand.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAYAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-23T14:41:21.505Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 42,
-              "Title": "AcceptOrRejectAssignmentCommandHandler.cs",
-              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Features\\Request\\Commands\\AcceptOrRejectAssignment\\AcceptOrRejectAssignmentCommandHandler.cs",
-              "RelativeDocumentMoniker": "Ekip.Application\\Features\\Request\\Commands\\AcceptOrRejectAssignment\\AcceptOrRejectAssignmentCommandHandler.cs",
-              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Features\\Request\\Commands\\AcceptOrRejectAssignment\\AcceptOrRejectAssignmentCommandHandler.cs",
-              "RelativeToolTip": "Ekip.Application\\Features\\Request\\Commands\\AcceptOrRejectAssignment\\AcceptOrRejectAssignmentCommandHandler.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAiwB0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-22T17:27:30.543Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 43,
-              "Title": "UserEkipCreatedUpdaterConsumer.cs",
-              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Features\\Request\\Consumers\\UserEkipCreatedUpdaterConsumer.cs",
-              "RelativeDocumentMoniker": "Ekip.Application\\Features\\Request\\Consumers\\UserEkipCreatedUpdaterConsumer.cs",
-              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Features\\Request\\Consumers\\UserEkipCreatedUpdaterConsumer.cs",
-              "RelativeToolTip": "Ekip.Application\\Features\\Request\\Consumers\\UserEkipCreatedUpdaterConsumer.cs",
-              "ViewState": "AgIAAAIAAAAAAAAAAADgvxEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-22T16:57:55.306Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 44,
-              "Title": "RequestAssignment.cs",
-              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Domain\\Entities\\Requests.Entities\\RequestAssignment.cs",
-              "RelativeDocumentMoniker": "Ekip.Domain\\Entities\\Requests.Entities\\RequestAssignment.cs",
-              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Domain\\Entities\\Requests.Entities\\RequestAssignment.cs",
-              "RelativeToolTip": "Ekip.Domain\\Entities\\Requests.Entities\\RequestAssignment.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAxwBAAAAAmAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-22T16:51:42.375Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 45,
-              "Title": "ProfileReadRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Infrastructure\\Repositories\\Implementations\\ProfileReadRepository.cs",
-              "RelativeDocumentMoniker": "Ekip.Infrastructure\\Repositories\\Implementations\\ProfileReadRepository.cs",
-              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Infrastructure\\Repositories\\Implementations\\ProfileReadRepository.cs",
-              "RelativeToolTip": "Ekip.Infrastructure\\Repositories\\Implementations\\ProfileReadRepository.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAtwCkAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-22T16:49:06.518Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 41,
               "Title": "CreateRequestCommandHandler.cs",
               "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Features\\Request\\Commands\\CreateRequest\\CreateRequestCommandHandler.cs",
               "RelativeDocumentMoniker": "Ekip.Application\\Features\\Request\\Commands\\CreateRequest\\CreateRequestCommandHandler.cs",
               "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Features\\Request\\Commands\\CreateRequest\\CreateRequestCommandHandler.cs",
               "RelativeToolTip": "Ekip.Application\\Features\\Request\\Commands\\CreateRequest\\CreateRequestCommandHandler.cs",
-              "ViewState": "AgIAABUAAAAAAAAAAAASwCsAAAAoAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHoAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-22T16:42:45.661Z",
+              "WhenOpened": "2026-04-29T12:58:22.526Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "UpdateProfileCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Features\\Profile\\Commands\\UpdateProfile\\UpdateProfileCommandHandler.cs",
+              "RelativeDocumentMoniker": "Ekip.Application\\Features\\Profile\\Commands\\UpdateProfile\\UpdateProfileCommandHandler.cs",
+              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Features\\Profile\\Commands\\UpdateProfile\\UpdateProfileCommandHandler.cs",
+              "RelativeToolTip": "Ekip.Application\\Features\\Profile\\Commands\\UpdateProfile\\UpdateProfileCommandHandler.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAawCUAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-29T12:57:18.759Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "AssignToRequestCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Features\\Request\\Commands\\AssignToRequest\\AssignToRequestCommandHandler.cs",
+              "RelativeDocumentMoniker": "Ekip.Application\\Features\\Request\\Commands\\AssignToRequest\\AssignToRequestCommandHandler.cs",
+              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Features\\Request\\Commands\\AssignToRequest\\AssignToRequestCommandHandler.cs",
+              "RelativeToolTip": "Ekip.Application\\Features\\Request\\Commands\\AssignToRequest\\AssignToRequestCommandHandler.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAawDQAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-29T12:57:53.42Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "SubmitScoreCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Features\\Gamification\\Commands\\SubmitScore\\SubmitScoreCommandHandler.cs",
+              "RelativeDocumentMoniker": "Ekip.Application\\Features\\Gamification\\Commands\\SubmitScore\\SubmitScoreCommandHandler.cs",
+              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Features\\Gamification\\Commands\\SubmitScore\\SubmitScoreCommandHandler.cs",
+              "RelativeToolTip": "Ekip.Application\\Features\\Gamification\\Commands\\SubmitScore\\SubmitScoreCommandHandler.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAawBwAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-29T12:47:09.962Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "AcceptOrRejectAssignmentCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Features\\Request\\Commands\\AcceptOrRejectAssignment\\AcceptOrRejectAssignmentCommandHandler.cs",
+              "RelativeDocumentMoniker": "Ekip.Application\\Features\\Request\\Commands\\AcceptOrRejectAssignment\\AcceptOrRejectAssignmentCommandHandler.cs",
+              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Features\\Request\\Commands\\AcceptOrRejectAssignment\\AcceptOrRejectAssignmentCommandHandler.cs",
+              "RelativeToolTip": "Ekip.Application\\Features\\Request\\Commands\\AcceptOrRejectAssignment\\AcceptOrRejectAssignmentCommandHandler.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAIBJwBkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-02T09:10:25.229Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "CreateChatroomForRequestConsumer.cs",
+              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Features\\ChatRoom\\Consumers\\CreateChatroomForRequestConsumer.cs",
+              "RelativeDocumentMoniker": "Ekip.Application\\Features\\ChatRoom\\Consumers\\CreateChatroomForRequestConsumer.cs",
+              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Features\\ChatRoom\\Consumers\\CreateChatroomForRequestConsumer.cs",
+              "RelativeToolTip": "Ekip.Application\\Features\\ChatRoom\\Consumers\\CreateChatroomForRequestConsumer.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAmwCUAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-02T09:10:05.909Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "FaceVerificationConsumer.cs",
+              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Features\\Authentication\\Consumers\\FaceVerificationConsumer.cs",
+              "RelativeDocumentMoniker": "Ekip.Application\\Features\\Authentication\\Consumers\\FaceVerificationConsumer.cs",
+              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Features\\Authentication\\Consumers\\FaceVerificationConsumer.cs",
+              "RelativeToolTip": "Ekip.Application\\Features\\Authentication\\Consumers\\FaceVerificationConsumer.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAiwCwAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-02T09:09:48.744Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "CreateChatRoomCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Features\\ChatRoom\\Commands\\CreateChatRoom\\CreateChatRoomCommandHandler.cs",
+              "RelativeDocumentMoniker": "Ekip.Application\\Features\\ChatRoom\\Commands\\CreateChatRoom\\CreateChatRoomCommandHandler.cs",
+              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Features\\ChatRoom\\Commands\\CreateChatRoom\\CreateChatRoomCommandHandler.cs",
+              "RelativeToolTip": "Ekip.Application\\Features\\ChatRoom\\Commands\\CreateChatRoom\\CreateChatRoomCommandHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADkAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-02T09:08:22.882Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "FaceVerificationCompletedConsumer.cs",
+              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Features\\Authentication\\Consumers\\FaceVerificationCompletedConsumer.cs",
+              "RelativeDocumentMoniker": "Ekip.Application\\Features\\Authentication\\Consumers\\FaceVerificationCompletedConsumer.cs",
+              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Features\\Authentication\\Consumers\\FaceVerificationCompletedConsumer.cs",
+              "RelativeToolTip": "Ekip.Application\\Features\\Authentication\\Consumers\\FaceVerificationCompletedConsumer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-02T09:05:40.076Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "SetUserAvatarCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Features\\Profile\\Commands\\SetUserAvatar\\SetUserAvatarCommandHandler.cs",
+              "RelativeDocumentMoniker": "Ekip.Application\\Features\\Profile\\Commands\\SetUserAvatar\\SetUserAvatarCommandHandler.cs",
+              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Features\\Profile\\Commands\\SetUserAvatar\\SetUserAvatarCommandHandler.cs",
+              "RelativeToolTip": "Ekip.Application\\Features\\Profile\\Commands\\SetUserAvatar\\SetUserAvatarCommandHandler.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAawCYAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-29T12:52:54.587Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "FaceVerificationCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Features\\Authentication\\Commands\\UserVerification\\FaceVerificationCommandHandler.cs",
+              "RelativeDocumentMoniker": "Ekip.Application\\Features\\Authentication\\Commands\\UserVerification\\FaceVerificationCommandHandler.cs",
+              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Features\\Authentication\\Commands\\UserVerification\\FaceVerificationCommandHandler.cs",
+              "RelativeToolTip": "Ekip.Application\\Features\\Authentication\\Commands\\UserVerification\\FaceVerificationCommandHandler.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAmwB4AAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-29T12:52:45.461Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "IUserWriteRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Interfaces\\IUserWriteRepository.cs",
+              "RelativeDocumentMoniker": "Ekip.Application\\Interfaces\\IUserWriteRepository.cs",
+              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Interfaces\\IUserWriteRepository.cs",
+              "RelativeToolTip": "Ekip.Application\\Interfaces\\IUserWriteRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAcAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-29T12:48:35.048Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "20260429130846_newDb.cs",
+              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Infrastructure\\Migrations\\20260429130846_newDb.cs",
+              "RelativeDocumentMoniker": "Ekip.Infrastructure\\Migrations\\20260429130846_newDb.cs",
+              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Infrastructure\\Migrations\\20260429130846_newDb.cs",
+              "RelativeToolTip": "Ekip.Infrastructure\\Migrations\\20260429130846_newDb.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAABFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-29T13:08:46.778Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "ProfileConfiguration.cs",
+              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Infrastructure\\Persistence\\MongoDb\\Configurations\\EntityConfigurations\\ProfileConfiguration.cs",
+              "RelativeDocumentMoniker": "Ekip.Infrastructure\\Persistence\\MongoDb\\Configurations\\EntityConfigurations\\ProfileConfiguration.cs",
+              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Infrastructure\\Persistence\\MongoDb\\Configurations\\EntityConfigurations\\ProfileConfiguration.cs",
+              "RelativeToolTip": "Ekip.Infrastructure\\Persistence\\MongoDb\\Configurations\\EntityConfigurations\\ProfileConfiguration.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-29T13:12:04.971Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "PostgresDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Infrastructure\\Persistence\\PostgreSql\\Contexts\\PostgresDbContext.cs",
+              "RelativeDocumentMoniker": "Ekip.Infrastructure\\Persistence\\PostgreSql\\Contexts\\PostgresDbContext.cs",
+              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Infrastructure\\Persistence\\PostgreSql\\Contexts\\PostgresDbContext.cs",
+              "RelativeToolTip": "Ekip.Infrastructure\\Persistence\\PostgreSql\\Contexts\\PostgresDbContext.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAA0wCAAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-29T13:07:57.166Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "ChatHub.cs",
+              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Infrastructure\\Services\\SignalR\\ChatHub.cs",
+              "RelativeDocumentMoniker": "Ekip.Infrastructure\\Services\\SignalR\\ChatHub.cs",
+              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Infrastructure\\Services\\SignalR\\ChatHub.cs",
+              "RelativeToolTip": "Ekip.Infrastructure\\Services\\SignalR\\ChatHub.cs",
+              "ViewState": "AgIAACMAAAAAAAAAAAAcwCwAAABMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-29T13:03:51.993Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "InsightFaceVerificationService .cs",
+              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Infrastructure\\Services\\FaceAI\\InsightFaceVerificationService .cs",
+              "RelativeDocumentMoniker": "Ekip.Infrastructure\\Services\\FaceAI\\InsightFaceVerificationService .cs",
+              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Infrastructure\\Services\\FaceAI\\InsightFaceVerificationService .cs",
+              "RelativeToolTip": "Ekip.Infrastructure\\Services\\FaceAI\\InsightFaceVerificationService .cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAYwDMAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-29T13:03:24.707Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 43,
+              "Title": "IProfileReadRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Interfaces\\IProfileReadRepository.cs",
+              "RelativeDocumentMoniker": "Ekip.Application\\Interfaces\\IProfileReadRepository.cs",
+              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Interfaces\\IProfileReadRepository.cs",
+              "RelativeToolTip": "Ekip.Application\\Interfaces\\IProfileReadRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-29T13:02:15.271Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 44,
+              "Title": "IUserReadRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Interfaces\\IUserReadRepository.cs",
+              "RelativeDocumentMoniker": "Ekip.Application\\Interfaces\\IUserReadRepository.cs",
+              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Interfaces\\IUserReadRepository.cs",
+              "RelativeToolTip": "Ekip.Application\\Interfaces\\IUserReadRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-29T13:00:50.092Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "ProfileAvatarUpdatedConsumer.cs",
+              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Features\\Profile\\Consumers\\ProfileAvatarUpdatedConsumer.cs",
+              "RelativeDocumentMoniker": "Ekip.Application\\Features\\Profile\\Consumers\\ProfileAvatarUpdatedConsumer.cs",
+              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Features\\Profile\\Consumers\\ProfileAvatarUpdatedConsumer.cs",
+              "RelativeToolTip": "Ekip.Application\\Features\\Profile\\Consumers\\ProfileAvatarUpdatedConsumer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-29T13:00:58.172Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 47,
+              "Title": "GetUserEkipQueryHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Features\\Request\\Qeuries\\GetUserEkip\\GetUserEkipQueryHandler.cs",
+              "RelativeDocumentMoniker": "Ekip.Application\\Features\\Request\\Qeuries\\GetUserEkip\\GetUserEkipQueryHandler.cs",
+              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Features\\Request\\Qeuries\\GetUserEkip\\GetUserEkipQueryHandler.cs",
+              "RelativeToolTip": "Ekip.Application\\Features\\Request\\Qeuries\\GetUserEkip\\GetUserEkipQueryHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAABdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-29T12:58:47.203Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 48,
+              "Title": "GetUserProfileQueryHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Features\\Profile\\Queries\\GetUserProfile\\GetUserProfileQueryHandler.cs",
+              "RelativeDocumentMoniker": "Ekip.Application\\Features\\Profile\\Queries\\GetUserProfile\\GetUserProfileQueryHandler.cs",
+              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Features\\Profile\\Queries\\GetUserProfile\\GetUserProfileQueryHandler.cs",
+              "RelativeToolTip": "Ekip.Application\\Features\\Profile\\Queries\\GetUserProfile\\GetUserProfileQueryHandler.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAApwBcAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-29T12:57:44.688Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 49,
+              "Title": "GetPendingAssignmentQueryHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Features\\Profile\\Queries\\GetPendingAssignment\\GetPendingAssignmentQueryHandler.cs",
+              "RelativeDocumentMoniker": "Ekip.Application\\Features\\Profile\\Queries\\GetPendingAssignment\\GetPendingAssignmentQueryHandler.cs",
+              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Features\\Profile\\Queries\\GetPendingAssignment\\GetPendingAssignmentQueryHandler.cs",
+              "RelativeToolTip": "Ekip.Application\\Features\\Profile\\Queries\\GetPendingAssignment\\GetPendingAssignmentQueryHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAABYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-29T12:57:31.435Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 50,
+              "Title": "MessageCreatedSignalRConsumer.cs",
+              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Features\\Messages\\Consumers\\MessageCreatedSignalRConsumer.cs",
+              "RelativeDocumentMoniker": "Ekip.Application\\Features\\Messages\\Consumers\\MessageCreatedSignalRConsumer.cs",
+              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Features\\Messages\\Consumers\\MessageCreatedSignalRConsumer.cs",
+              "RelativeToolTip": "Ekip.Application\\Features\\Messages\\Consumers\\MessageCreatedSignalRConsumer.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAIwBsAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-29T12:56:10.681Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 45,
+              "Title": "ProfileWriteRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Infrastructure\\Repositories\\Implementations\\ProfileWriteRepository.cs",
+              "RelativeDocumentMoniker": "Ekip.Infrastructure\\Repositories\\Implementations\\ProfileWriteRepository.cs",
+              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Infrastructure\\Repositories\\Implementations\\ProfileWriteRepository.cs",
+              "RelativeToolTip": "Ekip.Infrastructure\\Repositories\\Implementations\\ProfileWriteRepository.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAIBJwB0AAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-29T12:48:46.748Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 46,
+              "Title": "IProfileWriteRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Interfaces\\IProfileWriteRepository.cs",
+              "RelativeDocumentMoniker": "Ekip.Application\\Interfaces\\IProfileWriteRepository.cs",
+              "ToolTip": "C:\\Users\\Mirsoos\\source\\repos\\Ekip\\Ekip.Application\\Interfaces\\IProfileWriteRepository.cs",
+              "RelativeToolTip": "Ekip.Application\\Interfaces\\IProfileWriteRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-29T12:48:25.606Z",
               "EditorCaption": ""
             }
           ]

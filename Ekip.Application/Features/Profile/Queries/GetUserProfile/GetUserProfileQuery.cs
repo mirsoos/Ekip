@@ -5,6 +5,6 @@ namespace Ekip.Application.Features.Profile.Queries.GetUserProfile
 {
     public class GetUserProfileQuery : IRequest<ProfileDto>
     {
-        public Guid ProfileRef { get; set; }
+        public Guid UserRef { get; set; }
     }
 }

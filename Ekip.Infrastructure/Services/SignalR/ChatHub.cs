@@ -30,7 +30,7 @@ namespace Ekip.Infrastructure.Services.SignalR
 
             if (!userRoomIds.Any())
             {
-                userRoomIds = await _chatRoomRead.GetUserRoomIds(userId, Context.ConnectionAborted);
+                userRoomIds = await _chatRoomRead.GetUserRoomIdsAsync(userId, Context.ConnectionAborted);
                 await _redisService.CacheUserRoomsAsync(userId, userRoomIds);
             }
 

@@ -102,8 +102,7 @@ namespace Ekip.Infrastructure.Migrations
 
             modelBuilder.Entity("Ekip.Domain.Entities.ReadModels.ProfileReadModel", b =>
                 {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
+                    b.Property<Guid>("UserRef")
                         .HasColumnType("uuid");
 
                     b.Property<string>("AvatarUrl")
@@ -124,15 +123,10 @@ namespace Ekip.Infrastructure.Migrations
                     b.Property<double>("TotalScoreSum")
                         .HasColumnType("double precision");
 
-                    b.Property<Guid>("UserRef")
-                        .HasColumnType("uuid");
-
                     b.Property<int>("VerificationLevel")
                         .HasColumnType("integer");
 
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserRef");
+                    b.HasKey("UserRef");
 
                     b.ToTable("ProfileReads");
                 });
@@ -201,6 +195,9 @@ namespace Ekip.Infrastructure.Migrations
                     b.Property<int>("MemberType")
                         .HasColumnType("integer");
 
+                    b.Property<Guid?>("ProfileReadModelUserRef")
+                        .HasColumnType("uuid");
+
                     b.Property<int?>("RepeatType")
                         .HasColumnType("integer");
 
@@ -238,6 +235,8 @@ namespace Ekip.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CreatorRef");
+
+                    b.HasIndex("ProfileReadModelUserRef");
 
                     b.ToTable("RequestReads");
                 });
@@ -396,9 +395,6 @@ namespace Ekip.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<Guid>("ProfileRef")
-                        .HasColumnType("uuid");
-
                     b.Property<string>("UserName")
                         .IsRequired()
                         .HasColumnType("text");
@@ -440,11 +436,15 @@ namespace Ekip.Infrastructure.Migrations
 
             modelBuilder.Entity("Ekip.Domain.Entities.ReadModels.RequestReadModel", b =>
                 {
-                    b.HasOne("Ekip.Domain.Entities.ReadModels.ProfileReadModel", "Creator")
-                        .WithMany("Requests")
+                    b.HasOne("Ekip.Domain.Entities.ReadModels.UserReadModel", "Creator")
+                        .WithMany()
                         .HasForeignKey("CreatorRef")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("Ekip.Domain.Entities.ReadModels.ProfileReadModel", null)
+                        .WithMany("Requests")
+                        .HasForeignKey("ProfileReadModelUserRef");
 
                     b.Navigation("Creator");
                 });

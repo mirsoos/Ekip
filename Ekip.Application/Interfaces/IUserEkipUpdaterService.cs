@@ -14,7 +14,7 @@ namespace Ekip.Application.Interfaces
 
         Task AddAcceptedMemberAsync(Guid requestRef , EkipMember member , CancellationToken cancellationToken);
 
-        Task RemoveAcceptedMemberAsync(Guid requestRef , Guid profileRef , CancellationToken cancellationToken);
+        Task RemoveAcceptedMemberAsync(Guid requestRef , Guid userRef , CancellationToken cancellationToken);
 
         Task AddPendingAssignmentAsync(Guid requestRef , PendingAssignmentInfo pending , CancellationToken cancellationToken);
 

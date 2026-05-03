@@ -7,7 +7,7 @@ namespace Ekip.Domain.Entities.ReadModels
     public class UserEkipReadModel
     {
         public Guid RequestRef { get; set; }
-        public bool IsDeleted { get; set; }
+        public bool IsDeleted { get; set; } = false;
         public string? Description { get; set; }
         public Guid CreatorRef { get; set; }
         public string? CreatorAvatar { get; set; }

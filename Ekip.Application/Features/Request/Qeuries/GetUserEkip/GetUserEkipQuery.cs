@@ -5,6 +5,6 @@ namespace Ekip.Application.Features.Request.Qeuries.GetUserEkip
 {
     public class GetUserEkipQuery : IRequest<List<MyEkipDto>>
     {
-        public Guid ProfileRef { get; set; }
+        public Guid UserRef { get; set; }
     }
 }

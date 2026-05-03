@@ -14,23 +14,23 @@ namespace Ekip.Application.Features.Request.Commands.CreateRequest
     {
         private readonly IRequestWriteRepository _createRequest;
         private readonly IProfileReadRepository _profileRead;
-        private readonly IPublishEndpoint _publishEndpoint;
+        private readonly IEventPublisher _eventPublisher;
         private readonly IRedisCacheService _redisCache;
-        public CreateRequestCommandHandler(IRequestWriteRepository createRequest,IProfileReadRepository profileRead,IPublishEndpoint publishEndpoint , IRedisCacheService redisCache)
+        public CreateRequestCommandHandler(IRequestWriteRepository createRequest,IProfileReadRepository profileRead,IEventPublisher eventPublisher , IRedisCacheService redisCache)
         {
             _createRequest = createRequest;
             _profileRead = profileRead;
-            _publishEndpoint = publishEndpoint;
+            _eventPublisher = eventPublisher;
             _redisCache = redisCache;
         }
         public async Task<NewRequestDto> Handle(CreateRequestCommand request, CancellationToken cancellationToken)
         {
 
-            var creator = await _profileRead.GetProfileByIdAsync(request.ProfileRef, cancellationToken);
+            var creator = await _profileRead.GetUserByIdAsync(request.UserRef, cancellationToken);
             
             if(creator == null)
             {
-                throw new Exception($"Profile with ID {request.ProfileRef} Not Found"); 
+                throw new Exception($"Profile with ID {request.UserRef} Not Found"); 
             };
 
             var requestFilter = request.RequestFilters?.Select(rf =>
@@ -38,7 +38,7 @@ namespace Ekip.Application.Features.Request.Commands.CreateRequest
                 ).ToHashSet();
 
             var newRequest = new RequestEntity(
-                creator.ProfileRef,
+                creator.UserRef,
                 request.Title,
                 request.RequiredMembers ,
                 request.RequestDateTime,
@@ -57,7 +57,7 @@ namespace Ekip.Application.Features.Request.Commands.CreateRequest
 
            var savedRequest = await _createRequest.AddRequestAsync(newRequest,cancellationToken);
 
-            await _publishEndpoint.Publish(new RequestCreatedEvent
+            await _eventPublisher.Publish(new RequestCreatedEvent
             {
                 RequestRef = savedRequest.Id,
                 CreatorRef = savedRequest.Creator,
@@ -81,14 +81,14 @@ namespace Ekip.Application.Features.Request.Commands.CreateRequest
                 TargetGender = savedRequest.TargetGender,
                 RequiredLevel = savedRequest.RequiredLevel,
                 MinimumScore = savedRequest.MinimumScore
-            });
+            },cancellationToken);
 
             var requestResultDto = new NewRequestDto
             {
                 RequestRef = savedRequest.Id,
                 Title = savedRequest.Title,
                 Description = savedRequest.Description,
-                Creator = savedRequest.Creator,
+                CreatorRef = savedRequest.Creator,
                 RequiredMembers = savedRequest.RequiredMembers,
                 MaximumRequiredAssignments = savedRequest.MaximumRequiredMembers,
                 Tags = savedRequest.Tags,
@@ -108,7 +108,7 @@ namespace Ekip.Application.Features.Request.Commands.CreateRequest
                 }).ToArray(),
             };
 
-            await _publishEndpoint.Publish(new UserEkipCreatedUpdaterEvent
+            await _eventPublisher.Publish(new UserEkipCreatedUpdaterEvent
             {
                 RequestRef = savedRequest.Id,
                 CreateDate = savedRequest.CreateDate,
@@ -137,11 +137,11 @@ namespace Ekip.Application.Features.Request.Commands.CreateRequest
                 LastUpdated = savedRequest.CreateDate,
                 Tags = savedRequest.Tags,
                 AcceptedMembers = savedRequest.Assignments.Where(x => x.Status == AssignmentStatus.Accepted)
-                .Select(s => new EkipMember(creator.ProfileRef, creator.FirstName, creator.LastName, creator.AvatarUrl)).ToList(),
+                .Select(s => new EkipMember(creator.UserRef, creator.FirstName, creator.LastName, creator.AvatarUrl)).ToList(),
                 PendingAssignments = new List<PendingAssignmentInfo>()
-            });
+            },cancellationToken);
 
-            await _redisCache.RemoveAsync(CacheKeySchema.UserEkipsKey(creator.ProfileRef), cancellationToken);
+            await _redisCache.RemoveAsync(CacheKeySchema.UserEkipsKey(creator.UserRef), cancellationToken);
             await _redisCache.RemoveAsync(CacheKeySchema.RequestKey(savedRequest.Id) , cancellationToken);
             await _redisCache.RemoveAsync(CacheKeySchema.UserRequestsKey(savedRequest.Creator) , cancellationToken);
 

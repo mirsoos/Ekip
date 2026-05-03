@@ -4,14 +4,14 @@ namespace Ekip.Domain.ValueObjects
 {
     public sealed class EkipMember : ValueObject
     {
-        public Guid ProfileRef { get; init; }
+        public Guid UserRef { get; init; }
         public string FirstName { get; init; }
         public string LastName { get; init; }
         public string? AvatarUrl { get; init; }
 
-        public EkipMember(Guid profileRef, string firstName, string lastName, string? avatarUrl)
+        public EkipMember(Guid userRef, string firstName, string lastName, string? avatarUrl)
         {
-            ProfileRef = profileRef;
+            UserRef = userRef;
             FirstName = firstName;
             LastName = lastName;
             AvatarUrl = avatarUrl;
@@ -21,7 +21,7 @@ namespace Ekip.Domain.ValueObjects
 
         protected override IEnumerable<object> GetEqualityComponents()
         {
-            yield return ProfileRef;
+            yield return UserRef;
         }
 
         private EkipMember() { }

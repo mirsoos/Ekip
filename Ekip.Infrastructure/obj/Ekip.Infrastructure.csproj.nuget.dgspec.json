@@ -55,17 +55,13 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
-            "MassTransit.Abstractions": {
+            "MassTransit": {
               "target": "Package",
               "version": "[9.1.0, )"
             },
             "MediatR": {
               "target": "Package",
               "version": "[13.1.0, )"
-            },
-            "Polly": {
-              "target": "Package",
-              "version": "[8.6.6, )"
             }
           },
           "imports": [
@@ -211,6 +207,10 @@
             "BCrypt.Net-Next": {
               "target": "Package",
               "version": "[4.1.0, )"
+            },
+            "DistributedLock.Mongo": {
+              "target": "Package",
+              "version": "[3.1.0, )"
             },
             "MassTransit.Abstractions": {
               "target": "Package",

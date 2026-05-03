@@ -95,7 +95,6 @@ namespace Ekip.Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    ProfileRef = table.Column<Guid>(type: "uuid", nullable: false),
                     IsDeleted = table.Column<bool>(type: "boolean", nullable: false),
                     CreateDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     FirstName = table.Column<string>(type: "text", nullable: false),
@@ -115,7 +114,6 @@ namespace Ekip.Infrastructure.Migrations
                 name: "ProfileReads",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
                     UserRef = table.Column<Guid>(type: "uuid", nullable: false),
                     AvatarUrl = table.Column<string>(type: "text", nullable: true),
                     Score = table.Column<double>(type: "double precision", nullable: true),
@@ -127,7 +125,7 @@ namespace Ekip.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ProfileReads", x => x.Id);
+                    table.PrimaryKey("PK_ProfileReads", x => x.UserRef);
                     table.ForeignKey(
                         name: "FK_ProfileReads_UserReads_UserRef",
                         column: x => x.UserRef,
@@ -159,15 +157,21 @@ namespace Ekip.Infrastructure.Migrations
                     IsAutoAccept = table.Column<bool>(type: "boolean", nullable: false),
                     RequestFilters = table.Column<string>(type: "jsonb", nullable: true),
                     IsRepeatable = table.Column<bool>(type: "boolean", nullable: false),
-                    RepeatType = table.Column<int>(type: "integer", nullable: true)
+                    RepeatType = table.Column<int>(type: "integer", nullable: true),
+                    ProfileReadModelUserRef = table.Column<Guid>(type: "uuid", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_RequestReads", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_RequestReads_ProfileReads_CreatorRef",
-                        column: x => x.CreatorRef,
+                        name: "FK_RequestReads_ProfileReads_ProfileReadModelUserRef",
+                        column: x => x.ProfileReadModelUserRef,
                         principalTable: "ProfileReads",
+                        principalColumn: "UserRef");
+                    table.ForeignKey(
+                        name: "FK_RequestReads_UserReads_CreatorRef",
+                        column: x => x.CreatorRef,
+                        principalTable: "UserReads",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -191,7 +195,7 @@ namespace Ekip.Infrastructure.Migrations
                         name: "FK_RequestAssignmentReads_ProfileReads_SenderRef",
                         column: x => x.SenderRef,
                         principalTable: "ProfileReads",
-                        principalColumn: "Id",
+                        principalColumn: "UserRef",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_RequestAssignmentReads_RequestReads_RequestRef",
@@ -200,11 +204,6 @@ namespace Ekip.Infrastructure.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ProfileReads_UserRef",
-                table: "ProfileReads",
-                column: "UserRef");
 
             migrationBuilder.CreateIndex(
                 name: "IX_RequestAssignmentReads_RequestRef",
@@ -220,6 +219,11 @@ namespace Ekip.Infrastructure.Migrations
                 name: "IX_RequestReads_CreatorRef",
                 table: "RequestReads",
                 column: "CreatorRef");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_RequestReads_ProfileReadModelUserRef",
+                table: "RequestReads",
+                column: "ProfileReadModelUserRef");
 
             migrationBuilder.CreateIndex(
                 name: "IX_UserEkipReads_Creator_Status_Deleted",

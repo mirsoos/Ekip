@@ -9,12 +9,12 @@ namespace Ekip.Application.Features.Profile.Commands.UpdateProfile
     public class UpdateProfileCommandHandler : IRequestHandler<UpdateProfileCommand, bool>
     {
         private readonly IUserWriteRepository _userWrite;
-        private readonly IPublishEndpoint _publishEndpoint;
+        private readonly IEventPublisher _eventPublisher;
         private readonly IRedisCacheService _redisCache;
 
-        public UpdateProfileCommandHandler(IPublishEndpoint publishEndpoint , IRedisCacheService redisCache , IUserWriteRepository userWrite)
+        public UpdateProfileCommandHandler(IEventPublisher eventPublisher , IRedisCacheService redisCache , IUserWriteRepository userWrite)
         {
-            _publishEndpoint = publishEndpoint;
+            _eventPublisher = eventPublisher;
             _redisCache = redisCache;
             _userWrite = userWrite;
         }
@@ -22,22 +22,22 @@ namespace Ekip.Application.Features.Profile.Commands.UpdateProfile
         public async Task<bool> Handle(UpdateProfileCommand request, CancellationToken cancellationToken)
         {
 
-            var user = await _userWrite.GetByProfileIdAsync(request.ProfileRef , cancellationToken);
+            var user = await _userWrite.GetByUserIdAsync(request.UserRef , cancellationToken);
             if (user == null)
                 return false;
 
             var userUpdated = await _userWrite.UpdateAsync(user,cancellationToken);
 
-            await _publishEndpoint.Publish(new ProfileUpdatedEvent
+            await _eventPublisher.Publish(new ProfileUpdatedEvent
             {
                 FirstName = userUpdated.FirstName,
                 LastName = userUpdated.LastName,
                 Age = userUpdated.Age,
                 UserName = userUpdated.UserName,
                 Email = userUpdated.Email.Value
-            });
+            },cancellationToken);
 
-            await _redisCache.RemoveAsync(CacheKeySchema.ProfileKey(user.ProfileRef),cancellationToken);
+            await _redisCache.RemoveAsync(CacheKeySchema.ProfileKey(user.Id),cancellationToken);
 
             return true;
         }

@@ -8,7 +8,6 @@ namespace Ekip.Application.Contracts.Events
 {
     public record ProfileCreatedEvent
     {
-        public Guid Id { get; init; }
         public Guid UserRef { get; init; }
         public double? Score { get; init; }
         public int Experience { get; init; }

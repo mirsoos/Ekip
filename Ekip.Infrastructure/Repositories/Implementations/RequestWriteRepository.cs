@@ -20,7 +20,7 @@ namespace Ekip.Infrastructure.Repositories.Implementations
             return request;
         }
 
-        public async Task<RequestAssignment> AssignRequest(Guid requestRef, RequestAssignment requestAssignment, CancellationToken cancellationToken)
+        public async Task<RequestAssignment> AssignRequestAsync(Guid requestRef, RequestAssignment requestAssignment, CancellationToken cancellationToken)
         {
             var update = Builders<Request>.Update.Push("_assignments", requestAssignment);
             await _mongoDb.Requests.UpdateOneAsync(

@@ -30,6 +30,9 @@ namespace Ekip.Infrastructure.Persistence.PostgreSql.Contexts
             .Property(r => r.RequestFilters)
             .HasColumnType("jsonb");
 
+            modelBuilder.Entity<ProfileReadModel>()
+                .HasKey(x => x.UserRef);
+
             modelBuilder.Entity<UserEkipReadModel>(entity =>
             {
                 entity.ToTable("UserEkipReads");

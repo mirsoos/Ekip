@@ -21,9 +21,9 @@ namespace Ekip.Infrastructure.Repositories.Implementations
             await _postgreDb.SaveChangesAsync(cancellationToken);
         }
 
-        public async Task<ProfileDto> GetProfileByIdAsync(Guid profileRef, CancellationToken cancellationToken)
+        public async Task<ProfileDto> GetUserByIdAsync(Guid userRef, CancellationToken cancellationToken)
         {
-            var profile = await _postgreDb.ProfileReads.AsNoTracking().Where(x=>x.Id == profileRef).Select(s=> new ProfileDto
+            var profile = await _postgreDb.ProfileReads.AsNoTracking().Where(x=>x.UserRef == userRef).Select(s=> new ProfileDto
             {
                 FirstName = s.User.FirstName,
                 LastName = s.User.LastName,
@@ -34,21 +34,21 @@ namespace Ekip.Infrastructure.Repositories.Implementations
                 Email = s.User.Email,
                 AvatarUrl = s.AvatarUrl,
                 Age = s.User.Age,
-                ProfileRef = s.Id,
+                UserRef = s.UserRef,
                 Bio = s.Bio
             }).FirstOrDefaultAsync(cancellationToken);
 
             return profile;
         }
 
-        public async Task<ProfileDto?> GetProfileDetailsByIdAsync(Guid profileRef, CancellationToken cancellationToken)
+        public async Task<ProfileDto?> GetUserDetailsByIdAsync(Guid userRef, CancellationToken cancellationToken)
         {
             return await _postgreDb.ProfileReads
                 .AsNoTracking()
-                .Where(x => x.Id == profileRef)
+                .Where(x => x.UserRef == userRef)
                 .Select(s => new ProfileDto
                 {
-                    ProfileRef = s.Id,
+                    UserRef = s.UserRef,
                     FirstName = s.User.FirstName,
                     LastName = s.User.LastName,
                     UserName = s.User.UserName,
@@ -63,18 +63,18 @@ namespace Ekip.Infrastructure.Repositories.Implementations
                 .FirstOrDefaultAsync(cancellationToken);
         }
 
-        public async Task UpdateAvatarAsync(Guid profileRef, string avatarUrl, CancellationToken cancellationToken)
+        public async Task UpdateAvatarAsync(Guid userRef, string avatarUrl, CancellationToken cancellationToken)
         {
-            var profile = await _postgreDb.ProfileReads.Where(x => x.Id == profileRef).ExecuteUpdateAsync(setters => 
+            var profile = await _postgreDb.ProfileReads.Where(x => x.UserRef == userRef).ExecuteUpdateAsync(setters => 
             setters.SetProperty(p=>p.AvatarUrl, avatarUrl),cancellationToken);
         }
 
-        public async Task UpdateFaceVerificationStatusAsync(Guid profileRef, VerificationLevel verificationLevel, CancellationToken cancellationToken)
+        public async Task UpdateFaceVerificationStatusAsync(Guid userRef, VerificationLevel verificationLevel, CancellationToken cancellationToken)
         {
             var validStates = new[] { VerificationLevel.None, VerificationLevel.rejected };
 
             await _postgreDb.ProfileReads
-                .Where(x => x.Id == profileRef && validStates.Contains(x.VerificationLevel))
+                .Where(x => x.UserRef == userRef && validStates.Contains(x.VerificationLevel))
                 .ExecuteUpdateAsync(setters => setters.SetProperty(p => p.VerificationLevel, verificationLevel),cancellationToken);
         }
     }

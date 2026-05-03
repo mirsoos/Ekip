@@ -16,12 +16,10 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using MongoDB.Bson;
-using MongoDB.Bson.Serialization;
-using MongoDB.Bson.Serialization.Serializers;
 using MongoDB.Driver;
 using Npgsql;
 using StackExchange.Redis;
+using System.Diagnostics;
 
 namespace Ekip.Infrastructure.Configurations
 {
@@ -32,43 +30,7 @@ namespace Ekip.Infrastructure.Configurations
 
             var infraSettings = configuration.GetSection("InfrastructureSettings").Get<InfrastructureSettings>();
 
-            services.AddMassTransit(busConfigurator =>
-            {
-                busConfigurator.SetKebabCaseEndpointNameFormatter();
-
-                var appAssembly = typeof(UserCreatedConsumer).Assembly;
-                busConfigurator.AddConsumers(appAssembly);
-
-                busConfigurator.AddMongoDbOutbox(o =>
-                {
-                    o.ClientFactory(provider => provider.GetRequiredService<IMongoClient>());
-                    o.DatabaseFactory(provider =>
-                        provider.GetRequiredService<IMongoClient>()
-                        .GetDatabase(infraSettings.MongoDatabaseName));
-
-                    o.UseBusOutbox();
-                });
-
-                busConfigurator.UsingRabbitMq((context, cfg) =>
-                {
-                    cfg.Host(infraSettings.RabbitMqHost, "/", h =>
-                    {
-                        h.Username(infraSettings.RabbitMqUser);
-                        h.Password(infraSettings.RabbitMqPassword);
-                    });
-
-                    cfg.UseMessageRetry(r =>
-                    {
-                        r.Interval(3, TimeSpan.FromSeconds(5));
-                    });
-
-                    cfg.ConfigureEndpoints(context);
-                });
-            });
-
-
-
-            MongoDbConventionRegistry.Configure();
+            MongoDbConfiguration.Configure();
 
             services.Configure<InfrastructureSettings>(
                 configuration.GetSection("InfrastructureSettings")
@@ -121,12 +83,59 @@ namespace Ekip.Infrastructure.Configurations
                 return new MongoClient(mongoConnection);
             });
 
+            services.AddSingleton<IMongoDatabase>(sp =>
+            {
+                var client = sp.GetRequiredService<IMongoClient>();
+                var dbName = configuration["InfrastructureSettings:MongoDatabaseName"];
+                return client.GetDatabase(dbName);
+            });
+
             services.AddSingleton<IConnectionMultiplexer>(sp =>
                 ConnectionMultiplexer.Connect(infraSettings.RedisConnection));
 
             services.AddScoped<MongoDbContext>();
 
+            services.AddMassTransit(eventPublisherConfigurator =>
+            {
+                eventPublisherConfigurator.SetKebabCaseEndpointNameFormatter();
+
+                var appAssembly = typeof(UserCreatedConsumer).Assembly;
+                eventPublisherConfigurator.AddConsumers(appAssembly);
+
+                eventPublisherConfigurator.AddMongoDbOutbox(o =>
+                {
+                    o.DisableInboxCleanupService();
+
+                    o.ClientFactory(provider => provider.GetRequiredService<IMongoClient>());
+                    o.DatabaseFactory(provider =>
+                        provider.GetRequiredService<IMongoDatabase>());
+                    o.QueryDelay = TimeSpan.FromSeconds(1);
+                    o.DuplicateDetectionWindow = TimeSpan.FromMinutes(30);
+                    o.UseBusOutbox();
+                });
+
+                eventPublisherConfigurator.UsingRabbitMq((context, cfg) =>
+                {
+                    cfg.Host(infraSettings.RabbitMqHost, "/", h =>
+                    {
+                        h.Username(infraSettings.RabbitMqUser);
+                        h.Password(infraSettings.RabbitMqPassword);
+                    });
+
+                    cfg.UseMessageRetry(r =>
+                    {
+                        r.Interval(3, TimeSpan.FromSeconds(5));
+                    });
+
+                    cfg.ConfigureEndpoints(context);
+                });
+            });
+
+            services.AddScoped<MongoSessionContext>();
             services.AddScoped<IMongoRepository, MongoRepository>();
+            services.AddScoped<IUnitOfWork, MongoUnitOfWork>();
+
+            services.AddScoped<IEventPublisher, OutboxEventPublisher>();
             services.AddScoped<IRequestReadRepository, RequestReadRepository>();
             services.AddScoped<IRequestWriteRepository, RequestWriteRepository>();
             services.AddScoped<IChatRoomReadRepository, ChatRoomReadRepository>();
@@ -134,7 +143,7 @@ namespace Ekip.Infrastructure.Configurations
             services.AddScoped<IMessageReadRepository, MessageReadRepository>();
             services.AddScoped<IMessageWriteRepository, MessageWriteRepository>();
             services.AddScoped<IProfileReadRepository, ProfileReadRepository>();
-            services.AddScoped<IProfileWriteRepository, ProfileWriteRepository>();
+            //services.AddScoped<IProfileWriteRepository, ProfileWriteRepository>();
             services.AddScoped<IUserReadRepository, UserReadRepository>();
             services.AddScoped<IUserWriteRepository, UserWriteRepository>();
             services.AddScoped<IFileService, FileService>();
@@ -143,7 +152,6 @@ namespace Ekip.Infrastructure.Configurations
             services.AddScoped<IUserEkipReadRepository, UserEkipReadRepository>();
             services.AddScoped<IUserEkipUpdaterService, UserEkipUpdaterService>();
             services.AddScoped<IScoreLedgerWriteRepository, ScoreLedgerWriteRepository>();
-
             services.AddScoped<IRedisService, RedisService>();
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
@@ -153,7 +161,7 @@ namespace Ekip.Infrastructure.Configurations
             services.AddSingleton<InsightFaceEngine>();
             services.AddScoped<IFaceVerificationService, InsightFaceVerificationService>();
 
-
+            services.AddHostedService<OutboxChangeStreamService>();
             //services.AddScoped<IEmailService, EmailService>();
             //services.AddScoped<IMessageQueueService, RabbitMqService>();
 

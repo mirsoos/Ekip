@@ -1,50 +1,45 @@
 version: '3.8'
-
 services:
-  # 1. PostgreSQL (نسخه 16 ثابت)
   postgres:
-    image: postgres:16              # <--- تغییر مهم: استفاده از نسخه پایدار
+    image: postgres:16
     container_name: ekip_postgres
     environment:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: password123
       POSTGRES_DB: EkipReadDb
     ports:
-      - "18800:5432"                 # پورت بیرونی 5433
+      - '18800:5432'
     volumes:
-      - postgres_data_final:/var/lib/postgresql/data # <--- والیوم جدید
-
-  # 2. MongoDB
+      - postgres_data_final:/var/lib/postgresql/data
   mongo:
     image: mongo:latest
     container_name: ekip_mongo
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: password123
+    command: mongod --replSet rs0 --bind_ip_all --port 27017
     ports:
-      - "27017:27017"
+      - '27017:27017'
     volumes:
       - mongo_data:/data/db
-
-  # 3. RabbitMQ
+    healthcheck:
+      test: ["CMD-SHELL", "mongosh --port 27017 --eval 'try { rs.status() } catch(e) { rs.initiate({ _id: \"rs0\", members: [{ _id: 0, host: \"localhost:27017\" }] }) }'"]
+      interval: 10s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
   rabbitmq:
     image: rabbitmq:3-management
     container_name: ekip_rabbitmq
     ports:
-      - "5672:5672"
-      - "15672:15672"
+      - '5672:5672'
+      - '15672:15672'
     environment:
       RABBITMQ_DEFAULT_USER: guest
       RABBITMQ_DEFAULT_PASS: guest
-
-  # 4. Redis
   redis:
     image: redis:alpine
     container_name: ekip_redis
     ports:
-      - "16379:6379" # پورت بیرونی 16379
-    command: redis-server --appendonly yes # برای اطمینان از ذخیره سازی
-
+      - '16379:6379'
+    command: redis-server --appendonly yes
 volumes:
-  postgres_data_final: # <--- والیوم جدید
+  postgres_data_final:
   mongo_data:

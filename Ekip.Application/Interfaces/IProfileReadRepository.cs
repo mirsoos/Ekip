@@ -6,10 +6,11 @@ namespace Ekip.Application.Interfaces
 {
     public interface IProfileReadRepository
     {
-        Task<ProfileDto> GetProfileDetailsByIdAsync(Guid profileRef, CancellationToken cancellationToken);
-        Task<ProfileDto> GetProfileByIdAsync(Guid profileRef, CancellationToken cancellationToken);
-        Task AddProfileAsync(ProfileReadModel profile, CancellationToken cancellationToken);
-        Task UpdateAvatarAsync(Guid profileRef , string avatarUrl , CancellationToken cancellationToken);
-        Task UpdateFaceVerificationStatusAsync(Guid profileRef , VerificationLevel verificationLevel , CancellationToken cancellationToken);
+        Task<ProfileDto> GetUserDetailsByIdAsync(Guid userRef, CancellationToken cancellationToken);
+        Task<ProfileDto> GetUserByIdAsync(Guid userRef, CancellationToken cancellationToken);
+        Task AddProfileAsync(ProfileReadModel user, CancellationToken cancellationToken);
+        Task UpdateAvatarAsync(Guid userRef , string avatarUrl , CancellationToken cancellationToken);
+        Task UpdateFaceVerificationStatusAsync(Guid userRef , VerificationLevel verificationLevel , CancellationToken cancellationToken);
+
     }
 }

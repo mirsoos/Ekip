@@ -16,7 +16,7 @@ namespace Ekip.Application.Features.Gamification.Consumers
         {
             var message = context.Message;
 
-            var toMongo = new ScoreLedger(message.RequestRef, message.TargetUserProfileRef, message.SourceUserProfileRef, message.ScoreGiven, message.Comment);
+            var toMongo = new ScoreLedger(message.RequestRef, message.TargetUserRef, message.SourceUserRef, message.ScoreGiven, message.Comment);
 
             await _scoreLedgerWrite.AddScoreAsync(toMongo,context.CancellationToken);
         }

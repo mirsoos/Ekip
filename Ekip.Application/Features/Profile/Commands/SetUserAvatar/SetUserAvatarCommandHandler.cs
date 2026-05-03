@@ -8,13 +8,13 @@ namespace Ekip.Application.Features.Profile.Commands.SetUserAvatar
 {
     public class SetUserAvatarCommandHandler : IRequestHandler<SetUserAvatarCommand, string>
     {
-        private readonly IProfileWriteRepository _profileWrite;
-        private readonly IPublishEndpoint _publishEndpoint;
+        private readonly IUserWriteRepository _userWrite;
+        private readonly IEventPublisher _eventPublisher;
         private readonly IRedisCacheService _redisCache;
-        public SetUserAvatarCommandHandler(IProfileWriteRepository profileWrite , IPublishEndpoint publishEndpoint,IRedisCacheService redisCache)
+        public SetUserAvatarCommandHandler(IUserWriteRepository userWrite , IEventPublisher eventPublisher,IRedisCacheService redisCache)
         {
-            _profileWrite = profileWrite;
-            _publishEndpoint = publishEndpoint;
+            _userWrite = userWrite;
+            _eventPublisher = eventPublisher;
             _redisCache = redisCache;
         }
 
@@ -23,22 +23,22 @@ namespace Ekip.Application.Features.Profile.Commands.SetUserAvatar
             if (command.AvatarUrl == null)
                 throw new Exception("File Not Found.");
 
-            var profile = await _profileWrite.GetByIdAsync(command.ProfileRef,cancellationToken);
+            var user = await _userWrite.GetByUserIdAsync(command.UserRef,cancellationToken);
 
-            if (profile == null)
-                throw new Exception("Profile Not Found.");
+            if (user == null)
+                throw new Exception("User Not Found.");
 
-            profile.SetAvatar(command.AvatarUrl);
+            user.Profile.SetAvatar(command.AvatarUrl);
 
-            await _profileWrite.UpdateAsync(profile,cancellationToken);
+            await _userWrite.UpdateAsync(user,cancellationToken);
 
-            await _publishEndpoint.Publish(new ProfileAvatarUpdatedEvent
+            await _eventPublisher.Publish(new ProfileAvatarUpdatedEvent
             {
-                ProfileRef = profile.Id,
+                UserRef = user.Id,
                 AvatarUrl = command.AvatarUrl
-            });
+            },cancellationToken);
 
-            await _redisCache.RemoveAsync(CacheKeySchema.ProfileKey(profile.Id), cancellationToken);
+            await _redisCache.RemoveAsync(CacheKeySchema.ProfileKey(user.Id), cancellationToken);
 
             return command.AvatarUrl;
         }

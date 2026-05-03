@@ -73,7 +73,7 @@ namespace Ekip.Infrastructure.Repositories.Implementations
                 .AnyAsync(c => c.Id == chatRoomRef && c.Participants.Contains(userRef),cancellationToken);
         }
 
-        public async Task<List<Guid>> GetUserRoomIds(Guid userRef, CancellationToken cancellationToken)
+        public async Task<List<Guid>> GetUserRoomIdsAsync(Guid userRef, CancellationToken cancellationToken)
         {
             return await _postgreDb.ChatRoomReads.AsNoTracking().Where(x => x.Participants.Contains(userRef)).Select(s=>s.Id).ToListAsync(cancellationToken);
         }

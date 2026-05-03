@@ -3,6 +3,6 @@ namespace Ekip.Application.Interfaces
 {
     public interface IUnitOfWork
     {
-        Task ExecuteAsync(Func<Task> operation, CancellationToken cancellationToken = default);
+        Task ExecuteAsync(Func<CancellationToken, Task> operation, CancellationToken ct = default);
     }
 }

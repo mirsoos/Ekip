@@ -34,7 +34,7 @@ namespace Ekip.Infrastructure.Repositories.Implementations
             throw new NotImplementedException();
         }
 
-        public Task RemoveAcceptedMemberAsync(Guid requestRef, Guid profileRef, CancellationToken cancellationToken)
+        public Task RemoveAcceptedMemberAsync(Guid requestRef, Guid userRef, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }

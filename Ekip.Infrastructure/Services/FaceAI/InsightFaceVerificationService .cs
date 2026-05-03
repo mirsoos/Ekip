@@ -49,7 +49,7 @@ namespace Ekip.Infrastructure.Services.FaceAI
             return dot / (Math.Sqrt(normA) * Math.Sqrt(normB));
         }
 
-        public async Task<string> ArchiveFile(string capturedPhotoUrl, CancellationToken cancellationToken)
+        public async Task<string> ArchiveFileAsync(string capturedPhotoUrl, CancellationToken cancellationToken)
         {
             var root = _environment.WebRootPath ?? Path.Combine(Directory.GetCurrentDirectory(), "wwwroot");
             var sourcePath = Path.Combine(root, capturedPhotoUrl.TrimStart('/'));
@@ -72,7 +72,7 @@ namespace Ekip.Infrastructure.Services.FaceAI
             return $"/{relativeUrl}";
         }
 
-        public async Task DeleteFile(string fileUrl, CancellationToken cancellationToken)
+        public async Task DeleteFileAsync(string fileUrl, CancellationToken cancellationToken)
         {
             await _fileService.DeleteFile(fileUrl,cancellationToken);
         }

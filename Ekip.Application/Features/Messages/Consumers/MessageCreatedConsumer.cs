@@ -29,8 +29,6 @@ namespace Ekip.Application.Features.Messages.Consumers
                 Type = message.Type,
                 SentAt = message.SentAt,
                 ReplyToMessageRef = message.ReplyToMessageRef,
-                IsDeleted = message.IsDeleted,
-                IsEdited = message.IsEdited,
                 
             };
 

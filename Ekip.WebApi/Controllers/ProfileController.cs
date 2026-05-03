@@ -34,7 +34,7 @@ namespace Ekip.WebApi.Controllers
             if (string.IsNullOrEmpty(userIdClaim))
                 return Unauthorized();
 
-            var profileId = Guid.Parse(userIdClaim);
+            var userId = Guid.Parse(userIdClaim);
 
             string avatarUrl;
             using (var stream = file.OpenReadStream())
@@ -45,7 +45,7 @@ namespace Ekip.WebApi.Controllers
             var command = new FaceVerificationCommand
             {
                 CapturedPhotoUrl = avatarUrl,
-                ProfileRef = profileId
+                UserRef = userId
             };
 
             var result = await _mediator.Send(command);
@@ -59,9 +59,11 @@ namespace Ekip.WebApi.Controllers
             if (string.IsNullOrEmpty(userIdClaim))
                 return Unauthorized();
 
+            var userId = Guid.Parse(userIdClaim);
+
             var command = new UpdateProfileCommand
             {
-                ProfileRef = Guid.Parse(userIdClaim),
+                UserRef = userId,
                 FirstName = request.FirstName,
                 LastName = request.LastName,
                 UserName = request.UserName,
@@ -83,7 +85,7 @@ namespace Ekip.WebApi.Controllers
             if (string.IsNullOrEmpty(userIdClaim))
                 return Unauthorized();
 
-            var profileId = Guid.Parse(userIdClaim);
+            var userId = Guid.Parse(userIdClaim);
 
             string avatarUrl;
             using (var stream = file.OpenReadStream())
@@ -94,7 +96,7 @@ namespace Ekip.WebApi.Controllers
             var command = new SetUserAvatarCommand
             {
                 AvatarUrl = avatarUrl,
-                ProfileRef = profileId
+                UserRef = userId
             };
 
             try
