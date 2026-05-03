@@ -13,12 +13,13 @@ namespace Ekip.Application.Features.Request.Commands.AcceptOrRejectAssignment
         private readonly IRequestWriteRepository _requestWrite;
         private readonly IEventPublisher _eventPublisher;
         private readonly IRedisCacheService _redisCache;
-
-        public AcceptOrRejectAssignmentCommandHandler(IRequestWriteRepository requestWrite , IEventPublisher eventPublisher,IRedisCacheService redisCache)
+        private readonly IUnitOfWork _unitOfWork;
+        public AcceptOrRejectAssignmentCommandHandler(IRequestWriteRepository requestWrite , IEventPublisher eventPublisher,IRedisCacheService redisCache , IUnitOfWork unitOfWork)
         {
             _requestWrite = requestWrite;
             _eventPublisher = eventPublisher;
             _redisCache = redisCache;
+            _unitOfWork = unitOfWork;
         }
 
         public async Task<AssignmentDecisionDto> Handle(AcceptOrRejectAssignmentCommand request, CancellationToken cancellationToken)
@@ -29,32 +30,35 @@ namespace Ekip.Application.Features.Request.Commands.AcceptOrRejectAssignment
                 throw new Exception("Ekip Not Found.");
 
             Guid senderRef = Guid.Empty;
-
-            if (request.Decision == AssignmentDecision.Accepted)
+            await _unitOfWork.ExecuteAsync(async (innerCt) =>
             {
-                senderRef = ekip.AcceptMember(request.OwnerId, request.AssignmentRef);
-
-                await _eventPublisher.Publish(new AssignmentDecisionMadeEvent
+                if (request.Decision == AssignmentDecision.Accepted)
                 {
-                    AssignmentRef = request.AssignmentRef,
-                    NewStatus = AssignmentStatus.Accepted,
-                },cancellationToken);
-            }
-            else if (request.Decision == AssignmentDecision.Rejected)
-            {
-                senderRef = ekip.RejectMember(request.OwnerId, request.AssignmentRef);
+                    senderRef = ekip.AcceptMember(request.OwnerId, request.AssignmentRef);
 
-                await _eventPublisher.Publish(new AssignmentDecisionMadeEvent
+                    await _eventPublisher.Publish(new AssignmentDecisionMadeEvent
+                    {
+                        AssignmentRef = request.AssignmentRef,
+                        NewStatus = AssignmentStatus.Accepted,
+                    }, innerCt);
+                }
+                else if (request.Decision == AssignmentDecision.Rejected)
                 {
-                    AssignmentRef = request.AssignmentRef,
-                    NewStatus = AssignmentStatus.Declined,
-                },cancellationToken);
-            }
+                    senderRef = ekip.RejectMember(request.OwnerId, request.AssignmentRef);
 
-            await _requestWrite.UpdateAsync(ekip, cancellationToken);
+                    await _eventPublisher.Publish(new AssignmentDecisionMadeEvent
+                    {
+                        AssignmentRef = request.AssignmentRef,
+                        NewStatus = AssignmentStatus.Declined,
+                    }, innerCt);
+                }
 
-            await _redisCache.RemoveAsync(CacheKeySchema.UserAssignmentsKey(senderRef), cancellationToken);
-            await _redisCache.RemoveAsync(CacheKeySchema.RequestKey(ekip.Id), cancellationToken);
+                await _requestWrite.UpdateAsync(ekip, innerCt);
+
+                await _redisCache.RemoveAsync(CacheKeySchema.UserAssignmentsKey(senderRef), innerCt);
+                await _redisCache.RemoveAsync(CacheKeySchema.RequestKey(ekip.Id), innerCt);
+            },cancellationToken);
+            
 
             return new AssignmentDecisionDto()
             {

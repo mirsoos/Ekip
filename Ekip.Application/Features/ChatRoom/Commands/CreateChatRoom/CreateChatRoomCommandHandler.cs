@@ -2,7 +2,6 @@
 using Ekip.Application.Interfaces;
 using MediatR;
 using ChatRoomEntity = Ekip.Domain.Entities.Chat.Entites.ChatRoom;
-using MassTransit;
 using Ekip.Application.Contracts.Events;
 using Ekip.Application.Constants;
 
@@ -13,44 +12,39 @@ namespace Ekip.Application.Features.ChatRoom.Commands.CreateChatRoom
         private readonly IChatRoomWriteRepository _chatRoomWrite;
         private readonly IEventPublisher _eventPublisher;
         private readonly IRedisCacheService _redisCache;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public CreateChatRoomCommandHandler(IChatRoomWriteRepository chatRoomWrite , IEventPublisher eventPublisher, IRedisCacheService redisCache)
+        public CreateChatRoomCommandHandler(IChatRoomWriteRepository chatRoomWrite , IEventPublisher eventPublisher, IRedisCacheService redisCache, IUnitOfWork unitOfWork)
         {
             _chatRoomWrite = chatRoomWrite;
             _eventPublisher = eventPublisher;
             _redisCache = redisCache;
+            _unitOfWork = unitOfWork;
         }
         public async Task<ChatRoomDetailsDto> Handle(CreateChatRoomCommand request, CancellationToken cancellationToken)
         {
 
+            var newChatRoom = new ChatRoomEntity(request.Name, request.CreatorRef, request.ChatRoomType, request.RequestRef);
             ChatRoomEntity savedChatRoom = null!;
-
-            try
+            await _unitOfWork.ExecuteAsync(async(innerCt) =>
             {
+                savedChatRoom = await _chatRoomWrite.AddChatRoomAsync(newChatRoom, innerCt);
 
-                    var newChatRoom = new ChatRoomEntity(request.Name, request.CreatorRef, request.ChatRoomType, request.RequestRef);
+                await _eventPublisher.Publish(new ChatRoomCreatedEvent
+                {
+                    AvatarUrl = savedChatRoom.AvatarUrl,
+                    ChatRoomRef = savedChatRoom.Id,
+                    ChatRoomType = savedChatRoom.ChatRoomType,
+                    CreateDate = savedChatRoom.CreateDate,
+                    CreatorRef = savedChatRoom.Creator,
+                    Name = savedChatRoom.Name,
+                    RequestRef = savedChatRoom.RequestRef,
+                    ChatRoomParticipants = savedChatRoom.Participants.ToList()
+                }, innerCt);
 
-                    savedChatRoom = await _chatRoomWrite.AddChatRoomAsync(newChatRoom, cancellationToken);
+                await _redisCache.RemoveAsync(CacheKeySchema.ChatRoomKey(savedChatRoom.Id), cancellationToken);
 
-                    await _eventPublisher.Publish(new ChatRoomCreatedEvent
-                    {
-                        AvatarUrl = savedChatRoom.AvatarUrl,
-                        ChatRoomRef = savedChatRoom.Id,
-                        ChatRoomType = savedChatRoom.ChatRoomType,
-                        CreateDate = savedChatRoom.CreateDate,
-                        CreatorRef = savedChatRoom.Creator,
-                        Name = savedChatRoom.Name,
-                        RequestRef = savedChatRoom.RequestRef,
-                        ChatRoomParticipants = savedChatRoom.Participants.ToList()
-                    },cancellationToken);
-
-                    await _redisCache.RemoveAsync(CacheKeySchema.ChatRoomKey(savedChatRoom.Id), cancellationToken);
-
-            }
-            catch(ConcurrencyException)
-            {
-                throw new Exception("Request already exists.");
-            }
+            },cancellationToken);
 
             var resultDto = new ChatRoomDetailsDto
             {

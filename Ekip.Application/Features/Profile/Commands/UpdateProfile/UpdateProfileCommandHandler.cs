@@ -1,7 +1,6 @@
 ﻿using Ekip.Application.Constants;
 using Ekip.Application.Contracts.Events;
 using Ekip.Application.Interfaces;
-using MassTransit;
 using MediatR;
 
 namespace Ekip.Application.Features.Profile.Commands.UpdateProfile
@@ -11,12 +10,14 @@ namespace Ekip.Application.Features.Profile.Commands.UpdateProfile
         private readonly IUserWriteRepository _userWrite;
         private readonly IEventPublisher _eventPublisher;
         private readonly IRedisCacheService _redisCache;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public UpdateProfileCommandHandler(IEventPublisher eventPublisher , IRedisCacheService redisCache , IUserWriteRepository userWrite)
+        public UpdateProfileCommandHandler(IEventPublisher eventPublisher , IRedisCacheService redisCache , IUserWriteRepository userWrite , IUnitOfWork unitOfWork)
         {
             _eventPublisher = eventPublisher;
             _redisCache = redisCache;
             _userWrite = userWrite;
+            _unitOfWork = unitOfWork;
         }
 
         public async Task<bool> Handle(UpdateProfileCommand request, CancellationToken cancellationToken)
@@ -26,18 +27,22 @@ namespace Ekip.Application.Features.Profile.Commands.UpdateProfile
             if (user == null)
                 return false;
 
-            var userUpdated = await _userWrite.UpdateAsync(user,cancellationToken);
-
-            await _eventPublisher.Publish(new ProfileUpdatedEvent
+            await _unitOfWork.ExecuteAsync(async (innerCt) =>
             {
-                FirstName = userUpdated.FirstName,
-                LastName = userUpdated.LastName,
-                Age = userUpdated.Age,
-                UserName = userUpdated.UserName,
-                Email = userUpdated.Email.Value
-            },cancellationToken);
+                var userUpdated = await _userWrite.UpdateAsync(user, innerCt);
 
-            await _redisCache.RemoveAsync(CacheKeySchema.ProfileKey(user.Id),cancellationToken);
+                await _eventPublisher.Publish(new ProfileUpdatedEvent
+                {
+                    FirstName = userUpdated.FirstName,
+                    LastName = userUpdated.LastName,
+                    Age = userUpdated.Age,
+                    UserName = userUpdated.UserName,
+                    Email = userUpdated.Email.Value
+                }, innerCt);
+
+                await _redisCache.RemoveAsync(CacheKeySchema.ProfileKey(user.Id), innerCt);
+
+            },cancellationToken);
 
             return true;
         }

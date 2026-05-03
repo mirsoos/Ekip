@@ -1,7 +1,6 @@
 ﻿using Ekip.Application.Constants;
 using Ekip.Application.Contracts.Events;
 using Ekip.Application.Interfaces;
-using MassTransit;
 using MediatR;
 
 namespace Ekip.Application.Features.Profile.Commands.SetUserAvatar
@@ -11,11 +10,13 @@ namespace Ekip.Application.Features.Profile.Commands.SetUserAvatar
         private readonly IUserWriteRepository _userWrite;
         private readonly IEventPublisher _eventPublisher;
         private readonly IRedisCacheService _redisCache;
-        public SetUserAvatarCommandHandler(IUserWriteRepository userWrite , IEventPublisher eventPublisher,IRedisCacheService redisCache)
+        private readonly IUnitOfWork _unitOfWork;
+        public SetUserAvatarCommandHandler(IUserWriteRepository userWrite , IEventPublisher eventPublisher,IRedisCacheService redisCache ,IUnitOfWork unitOfWork)
         {
             _userWrite = userWrite;
             _eventPublisher = eventPublisher;
             _redisCache = redisCache;
+            _unitOfWork = unitOfWork;
         }
 
         public async Task<string> Handle(SetUserAvatarCommand command, CancellationToken cancellationToken)
@@ -26,19 +27,23 @@ namespace Ekip.Application.Features.Profile.Commands.SetUserAvatar
             var user = await _userWrite.GetByUserIdAsync(command.UserRef,cancellationToken);
 
             if (user == null)
-                throw new Exception("User Not Found.");
+                throw new ArgumentNullException("User Not Found.");
 
             user.Profile.SetAvatar(command.AvatarUrl);
 
-            await _userWrite.UpdateAsync(user,cancellationToken);
-
-            await _eventPublisher.Publish(new ProfileAvatarUpdatedEvent
+            await _unitOfWork.ExecuteAsync(async (innerCt) =>
             {
-                UserRef = user.Id,
-                AvatarUrl = command.AvatarUrl
-            },cancellationToken);
+                await _userWrite.UpdateAsync(user,innerCt);
 
-            await _redisCache.RemoveAsync(CacheKeySchema.ProfileKey(user.Id), cancellationToken);
+                await _eventPublisher.Publish(new ProfileAvatarUpdatedEvent
+                {
+                    UserRef = user.Id,
+                    AvatarUrl = command.AvatarUrl
+                }, innerCt);
+
+                await _redisCache.RemoveAsync(CacheKeySchema.ProfileKey(user.Id), innerCt);
+
+            },cancellationToken);
 
             return command.AvatarUrl;
         }
