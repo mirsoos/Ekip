@@ -1,0 +1,8 @@
+<Solution>
+  <Project Path="Ekip.AppHost/Ekip.AppHost.csproj" />
+  <Project Path="Ekip.Application/Ekip.Application.csproj" />
+  <Project Path="Ekip.Domain/Ekip.Domain.csproj" />
+  <Project Path="Ekip.Infrastructure/Ekip.Infrastructure.csproj" />
+  <Project Path="Ekip.ServiceDefaults/Ekip.ServiceDefaults.csproj" />
+  <Project Path="Ekip/Ekip.csproj" />
+</Solution>

@@ -1,0 +1,6 @@
+@Ekip_HostAddress = http://localhost:5012
+
+GET {{Ekip_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,0 +1,311 @@
+syntax = "proto3";
+
+package ekip.v1;
+
+option csharp_namespace = "Ekip.Grpc.V1";
+option go_package = "ekip/v1;ekipv1";
+
+// =========================================================================
+// 1. COMMON SCHEMAS
+// =========================================================================
+
+message GeoCoordinates {
+  double latitude = 1;
+  double longitude = 2;
+}
+
+message UserSummary {
+  string id = 1;
+  string username = 2;
+  string first_name = 3;
+  string last_name = 4;
+  string avatar_url = 5;
+  string gender = 6;
+  int32 age = 7;
+  int32 level = 8;
+  float public_score = 9;
+  bool is_face_verified = 10;
+}
+
+message ResponseStatus {
+  bool success = 1;
+  string message = 2;
+  string error_code = 3;
+}
+
+// =========================================================================
+// 2. EKIP SERVICE (Core Engine, Discovery, Applications & Attendance)
+// =========================================================================
+
+service EkipService {
+  // ساخت اکیپ جدید با پشتیبانی از Idempotency
+  rpc CreateEkip (CreateEkipRequest) returns (CreateEkipResponse);
+
+  // لغو اکیپ توسط میزبان با ثبت دلیل و اعمال جریمه
+  rpc CancelEkip (CancelEkipRequest) returns (CancelEkipResponse);
+
+  // فید اصلی اکیپ‌یابی با صفحه‌بندی بر مبنای Cursor
+  rpc GetEkipFeed (GetEkipFeedRequest) returns (GetEkipFeedResponse);
+
+  // سرچ مکانی اکیپ‌ها روی نقشه (Bounding Box Query)
+  rpc GetEkipsOnMap (GetEkipsOnMapRequest) returns (GetEkipsOnMapResponse);
+
+  // ثبت درخواست عضویت (تکی، کاپلی، یا گروهی) با هدایت به صف انتظار در صورت تکمیل
+  rpc ApplyToEkip (ApplyToEkipRequest) returns (ApplyToEkipResponse);
+
+  // پروتکل تایید همراهان: پارتنر یا اعضای گروه دعوت را تایید یا رد می‌کنند
+  rpc RespondCompanionInvite (CompanionInviteResponseRequest) returns (CompanionInviteResponseReply);
+
+  // تصمیم‌گیری میزبان روی درخواست‌های منتظر
+  rpc DecideApplication (DecideApplicationRequest) returns (DecideApplicationResponse);
+
+  // رای‌گیری جهت ادامه دادن یا لغو اکیپ زیر حد نصاب در زمان ددلاین
+  rpc VoteQuorumDecision (VoteQuorumDecisionRequest) returns (VoteQuorumDecisionResponse);
+
+  // ثبت حضور فیزیکی در محل اکیپ بر اساس موقعیت GPS
+  rpc CheckInAttendance (CheckInAttendanceRequest) returns (CheckInAttendanceResponse);
+
+  // گزارش غیبت هم‌اکیپی (No-Show) توسط سایر اعضا
+  rpc ReportNoShow (ReportNoShowRequest) returns (ReportNoShowResponse);
+
+  // ذخیره یا حذف از نشان‌شده‌ها (Bookmark)
+  rpc ToggleBookmark (ToggleBookmarkRequest) returns (ToggleBookmarkResponse);
+}
+
+// ----------------- Ekip Service Messages -----------------
+
+message CreateEkipRequest {
+  string idempotency_key = 1; // [MANDATORY] UUIDv4 یکتا جهت جلوگیری از ایجاد تکراری
+  string title = 2;
+  string description = 3;
+  string category = 4; // ENTERTAINMENT, BUSINESS
+  string sub_category = 5;
+  repeated string tags = 6;
+  string city_id = 7;
+  string sponsored_place_id = 8;
+  GeoCoordinates exact_coordinates = 9;
+  string location_name = 10;
+  string address_detail = 11;
+  bool is_details_private = 12;
+  repeated string media_asset_ids = 13;
+  string host_composition = 14; // SOLO, COUPLE, GROUP
+  repeated string host_companion_user_ids = 15;
+  int32 min_members = 16;
+  int32 max_members = 17;
+  int64 event_timestamp = 18; // UTC Epoch Seconds
+  int64 join_deadline_timestamp = 19; // UTC Epoch Seconds
+  int64 estimated_cost = 20;
+
+  // شروط ورود
+  string target_gender = 21; // ANY, MALE_ONLY, FEMALE_ONLY
+  repeated string allowed_join_types = 22;
+  int32 min_age = 23;
+  int32 max_age = 24;
+  int32 min_level = 25;
+  float min_public_score = 26;
+  float min_honor = 27;
+  bool premium_only = 28;
+  bool is_auto_accept = 29;
+  bool auto_accept_strict_honor = 30;
+
+  // تکرار
+  bool is_recurring = 31;
+  string rrule_string = 32;
+}
+
+message CreateEkipResponse {
+  ResponseStatus status = 1;
+  string ekip_id = 2;
+  string lifecycle_status = 3;
+}
+
+message CancelEkipRequest {
+  string idempotency_key = 1;
+  string ekip_id = 2;
+  string cancellation_reason = 3;
+}
+
+message CancelEkipResponse {
+  ResponseStatus status = 1;
+}
+
+message GetEkipFeedRequest {
+  string city_id = 1;
+  string category = 2;
+  string search_query = 3;
+  string cursor = 4;
+  int32 limit = 5;
+}
+
+message EkipCardItem {
+  string id = 1;
+  string title = 2;
+  string category = 3;
+  string sub_category = 4;
+  repeated string tags = 5;
+  GeoCoordinates public_map_coordinates = 6;
+  string location_name = 7;
+  bool is_details_private = 8;
+  repeated string media_urls = 9;
+  UserSummary host = 10;
+  int32 approved_members_count = 11;
+  int32 max_members = 12;
+  int64 event_timestamp = 13;
+  int64 join_deadline = 14;
+  int64 estimated_cost = 15;
+  bool is_bookmarked = 16;
+  string lifecycle_status = 17;
+  string quorum_status = 18;
+}
+
+message GetEkipFeedResponse {
+  repeated EkipCardItem items = 1;
+  string next_cursor = 2;
+  bool has_more = 3;
+}
+
+message GetEkipsOnMapRequest {
+  GeoCoordinates south_west = 1;
+  GeoCoordinates north_east = 2;
+  string category = 3;
+}
+
+message GetEkipsOnMapResponse {
+  repeated EkipCardItem pins = 1;
+}
+
+message ApplyToEkipRequest {
+  string idempotency_key = 1;
+  string ekip_id = 2;
+  string join_type = 3; // SOLO, COUPLE, GROUP
+  repeated string companion_user_ids = 4;
+  string intro_note = 5;
+}
+
+message ApplyToEkipResponse {
+  ResponseStatus status = 1;
+  string application_id = 2;
+  string application_status = 3; // WAITING_COMPANIONS, PENDING_HOST, WAITLISTED, APPROVED
+}
+
+message CompanionInviteResponseRequest {
+  string idempotency_key = 1;
+  string application_companion_id = 2;
+  bool accept = 3;
+  bool report_as_unwanted = 4;
+}
+
+message CompanionInviteResponseReply {
+  ResponseStatus status = 1;
+  string new_application_status = 2;
+}
+
+message DecideApplicationRequest {
+  string idempotency_key = 1;
+  string application_id = 2;
+  bool approve = 3;
+}
+
+message DecideApplicationResponse {
+  ResponseStatus status = 1;
+}
+
+message VoteQuorumDecisionRequest {
+  string idempotency_key = 1;
+  string ekip_id = 2;
+  bool proceed = 3; // true: موافق برگزاری با نفرات فعلی, false: لغو
+}
+
+message VoteQuorumDecisionResponse {
+  ResponseStatus status = 1;
+}
+
+message CheckInAttendanceRequest {
+  string idempotency_key = 1;
+  string ekip_id = 2;
+  GeoCoordinates user_coordinates = 3;
+}
+
+message CheckInAttendanceResponse {
+  ResponseStatus status = 1;
+  bool is_checked_in = 2;
+}
+
+message ReportNoShowRequest {
+  string idempotency_key = 1;
+  string ekip_id = 2;
+  string target_user_id = 3;
+}
+
+message ReportNoShowResponse {
+  ResponseStatus status = 1;
+}
+
+message ToggleBookmarkRequest {
+  string ekip_id = 1;
+}
+
+message ToggleBookmarkResponse {
+  bool is_bookmarked = 1;
+}
+
+// =========================================================================
+// 3. REALTIME SERVICE (Chat, AI Stream & Notifications)
+// =========================================================================
+
+service RealtimeService {
+  // چت زنده دوطرفه با پشتیبانی از Client Message ID
+  rpc ChatStream (stream StreamChatMessage) returns (stream StreamChatMessage);
+
+  // استریم کردن کلمه‌به‌کلمه پاسخ‌های هوش مصنوعی همراه با کارت‌های اکیپ
+  rpc StreamAIChat (AIChatRequest) returns (stream AIChatChunkResponse);
+
+  // دریافت زنده نوتیفیکیشن‌ها هنگام باز بودن اپلیکیشن
+  rpc SubscribeNotifications (SubscribeNotificationRequest) returns (stream NotificationItem);
+
+  // ارسال Heartbeat جهت تمدید وضعیت آنلاین در Redis
+  rpc SendHeartbeat (HeartbeatRequest) returns (HeartbeatResponse);
+}
+
+// ----------------- Realtime Service Messages -----------------
+
+message StreamChatMessage {
+  string client_message_id = 1; // [MANDATORY Idempotency Key]
+  string conversation_id = 2;
+  string sender_id = 3;
+  string message_type = 4; // TEXT, IMAGE, VIDEO, VOICE, LOCATION, SYSTEM_EVENT
+  string content_text = 5;
+  string media_url = 6;
+  string reply_to_message_id = 7;
+  int64 timestamp = 8;
+  string server_message_id = 9; // بازگردانده شده توسط سرور پس از درج در دیتابیس
+}
+
+message AIChatRequest {
+  string ai_conversation_id = 1;
+  string prompt = 2;
+  string context_mode = 3;
+}
+
+message AIChatChunkResponse {
+  string text_chunk = 1;
+  bool is_finished = 2;
+  repeated string suggested_ekip_ids = 3;
+}
+
+message SubscribeNotificationRequest {}
+
+message NotificationItem {
+  string id = 1;
+  string type = 2;
+  string title = 3;
+  string body = 4;
+  string deep_link_payload = 5;
+  int64 timestamp = 6;
+}
+
+message HeartbeatRequest {}
+
+message HeartbeatResponse {
+  bool acknowledged = 1;
+}

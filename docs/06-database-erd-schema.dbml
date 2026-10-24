@@ -1,0 +1,497 @@
+// =========================================================================
+// EKIP ENTERPRISE DATA ARCHITECTURE - FINAL COMPLETE ERD (DBML)
+// Engine: PostgreSQL 16+ with PostGIS Extension
+// Outbox & Async Messaging: Managed natively by MassTransit + RabbitMQ
+// =========================================================================
+
+// -------------------------------------------------------------------------
+// PHASE 1: IDENTITY, SUBSCRIPTIONS, REPUTATION LEDGER & CONTENT SAFETY
+// -------------------------------------------------------------------------
+
+Table UserAccount {
+  id uuid [pk]
+  username varchar [unique, not null]
+  phone_number varchar [unique, not null]
+  email varchar [unique]
+  password_hash varchar [not null]
+  oauth_providers jsonb
+  two_factor_enabled boolean [not null, default: false]
+  is_face_verified boolean [not null, default: false]
+  is_national_id_verified boolean [not null, default: false]
+  national_id_hash varchar [unique]
+  referral_code varchar [unique, not null]
+  referred_by_id uuid [ref: > UserAccount.id]
+  terms_accepted_at timestamp [not null]
+  has_completed_tour boolean [not null, default: false]
+  account_status varchar [not null, default: 'ACTIVE'] // ACTIVE, SUSPENDED, SHADOW_BANNED, BANNED
+  created_at timestamp [not null]
+}
+
+Table UserProfile {
+  user_id uuid [pk, ref: - UserAccount.id]
+  first_name varchar [not null]
+  last_name varchar [not null]
+  gender varchar [not null] // MALE, FEMALE
+  birth_date date [not null]
+  city_id uuid [ref: > City.id]
+  avatar_asset_id uuid [ref: > MediaAsset.id]
+  banner_asset_id uuid [ref: > MediaAsset.id]
+  intro_video_asset_id uuid [ref: > MediaAsset.id]
+  bio text
+  job_title varchar
+  personality_type varchar
+  interests varchar[]
+  social_links jsonb
+  mood_widget jsonb
+  theme_id varchar
+  is_searchable boolean [not null, default: true]
+  show_contacts boolean [not null, default: true]
+  show_last_seen boolean [not null, default: true]
+  last_seen_at timestamp
+  text_moderation_status varchar [not null, default: 'APPROVED']
+}
+
+Table SubscriptionPlan {
+  id uuid [pk]
+  code varchar [unique, not null]
+  title varchar [not null]
+  price decimal [not null]
+  duration_days int [not null]
+  entitlements jsonb [not null]
+  is_active boolean [not null, default: true]
+}
+
+Table UserSubscription {
+  id uuid [pk]
+  idempotency_key varchar [unique, not null]
+  user_id uuid [not null, ref: > UserAccount.id]
+  plan_id uuid [not null, ref: > SubscriptionPlan.id]
+  status varchar [not null] // ACTIVE, EXPIRED, CANCELED, UPGRADED
+  starts_at timestamp [not null]
+  expires_at timestamp [not null]
+  quota_usage jsonb
+}
+
+Table ReputationLedger {
+  id uuid [pk]
+  user_id uuid [not null, ref: > UserAccount.id]
+  event_type varchar [not null]
+  xp_delta int [not null, default: 0]
+  honor_delta float [not null, default: 0.0]
+  reference_entity_type varchar
+  reference_entity_id uuid
+  created_at timestamp [not null]
+}
+
+Table UserGamificationSummary {
+  user_id uuid [pk, ref: - UserAccount.id]
+  total_xp int [not null, default: 0]
+  current_level int [not null, default: 1]
+  public_score float [not null, default: 0.0]
+  ratings_count int [not null, default: 0]
+  hidden_honor float [not null, default: 100.0]
+  aggregated_counters jsonb
+  updated_at timestamp [not null]
+}
+
+Table Badge {
+  id uuid [pk]
+  title varchar [not null]
+  icon_url varchar [not null]
+  description text
+}
+
+Table UserBadge {
+  id uuid [pk]
+  user_id uuid [not null, ref: > UserAccount.id]
+  badge_id uuid [not null, ref: > Badge.id]
+  earned_at timestamp [not null]
+}
+
+Table Mission {
+  id uuid [pk]
+  title varchar [not null]
+  xp_reward int [not null]
+  action_type varchar [not null]
+  target_count int [not null]
+}
+
+Table UserMission {
+  id uuid [pk]
+  user_id uuid [not null, ref: > UserAccount.id]
+  mission_id uuid [not null, ref: > Mission.id]
+  current_progress int [not null, default: 0]
+  is_completed boolean [not null, default: false]
+}
+
+Table MediaAsset {
+  id uuid [pk]
+  uploader_id uuid [not null, ref: > UserAccount.id]
+  usage_context varchar [not null] // USER_AVATAR, USER_BANNER, USER_INTRO_VIDEO, EKIP_COVER, SPONSORED_COVER
+  storage_key varchar [not null]
+  nsfw_probability float
+  moderation_status varchar [not null, default: 'PENDING_SCAN'] // PENDING_SCAN, APPROVED, REJECTED_NSFW, ESCALATED_TO_ADMIN
+  scanned_at timestamp
+  created_at timestamp [not null]
+}
+
+Table ProfileReview {
+  id uuid [pk]
+  idempotency_key varchar [unique, not null]
+  target_user_id uuid [not null, ref: > UserAccount.id]
+  author_user_id uuid [not null, ref: > UserAccount.id]
+  ekip_id uuid [ref: > Ekip.id]
+  score int [not null]
+  comment_text text
+  toxicity_score float
+  moderation_status varchar [not null, default: 'PENDING_AI'] // PENDING_AI, PUBLISHED, REJECTED_PROFANITY, DISPUTED
+  created_at timestamp [not null]
+}
+
+Table UserRelation {
+  id uuid [pk]
+  requester_id uuid [not null, ref: > UserAccount.id]
+  receiver_id uuid [not null, ref: > UserAccount.id]
+  status varchar [not null] // PENDING, ACCEPTED, BLOCKED
+  created_at timestamp [not null]
+}
+
+// -------------------------------------------------------------------------
+// PHASE 2: EKIP ENGINE, POSTGIS MAP, RECURRENCE & ATTENDANCE
+// -------------------------------------------------------------------------
+
+Table Ekip {
+  id uuid [pk]
+  idempotency_key varchar [unique, not null]
+  creator_id uuid [not null, ref: > UserAccount.id]
+  recurring_ekip_id uuid [ref: > RecurringEkip.id]
+  title varchar [not null]
+  description text [not null]
+  category varchar [not null] // ENTERTAINMENT, BUSINESS
+  sub_category varchar
+  tags varchar[]
+  city_id uuid [not null, ref: > City.id]
+  sponsored_place_id uuid [ref: > SponsoredPlace.id]
+  exact_location_point geography_point
+  public_map_point geography_point // GIST Spatial Indexed
+  location_name varchar
+  address_detail text
+  is_details_private boolean [not null, default: false]
+  media_asset_ids uuid[]
+  host_composition varchar [not null] // SOLO, COUPLE, GROUP
+  min_members int [not null]
+  max_members int
+  approved_members_count int [not null, default: 1]
+  estimated_cost int
+  event_datetime timestamp [not null]
+  join_deadline timestamp [not null]
+  views_count int [not null, default: 0]
+  moderation_status varchar [not null, default: 'PENDING_SCAN']
+  lifecycle_status varchar [not null, default: 'DRAFT'] // DRAFT, WAITING_HOST_COMPANIONS, PUBLISHED, FULL, COMPLETED, CANCELED
+  canceled_at timestamp
+  cancellation_reason text
+  canceled_by_user_id uuid [ref: > UserAccount.id]
+  quorum_status varchar [not null, default: 'NONE'] // NONE, PENDING_POLL, CONFIRMED_TO_PROCEED, ABORTED_BY_VOTE
+  quorum_decision_deadline timestamp
+  
+  // شروط ورود
+  target_gender varchar [not null, default: 'ANY']
+  allowed_join_types varchar[]
+  min_age int
+  max_age int
+  min_level int
+  min_public_score float
+  min_honor float
+  premium_only boolean [not null, default: false]
+  is_auto_accept boolean [not null, default: false]
+  auto_accept_strict_honor boolean [not null, default: false]
+  created_at timestamp [not null]
+}
+
+Table RecurringEkip {
+  id uuid [pk]
+  creator_id uuid [not null, ref: > UserAccount.id]
+  rrule_string varchar [not null]
+  template_payload jsonb [not null]
+  generated_until_date timestamp
+  is_active boolean [not null, default: true]
+  created_at timestamp [not null]
+}
+
+Table EkipHostCompanion {
+  id uuid [pk]
+  ekip_id uuid [not null, ref: > Ekip.id]
+  companion_user_id uuid [not null, ref: > UserAccount.id]
+  status varchar [not null, default: 'PENDING'] // PENDING, ACCEPTED, DECLINED
+  responded_at timestamp
+}
+
+Table EkipApplication {
+  id uuid [pk]
+  idempotency_key varchar [unique, not null]
+  ekip_id uuid [not null, ref: > Ekip.id]
+  leader_user_id uuid [not null, ref: > UserAccount.id]
+  join_type varchar [not null] // SOLO, COUPLE, GROUP
+  party_size int [not null, default: 1]
+  intro_note text
+  status varchar [not null] // WAITING_COMPANIONS, PENDING_HOST, WAITLISTED, APPROVED, REJECTED, CANCELED, INVALIDATED_BY_COMPANION
+  created_at timestamp [not null]
+}
+
+Table ApplicationCompanion {
+  id uuid [pk]
+  application_id uuid [not null, ref: > EkipApplication.id]
+  companion_user_id uuid [not null, ref: > UserAccount.id]
+  status varchar [not null, default: 'INVITED'] // INVITED, ACCEPTED, DECLINED
+  flagged_as_unwanted boolean [not null, default: false]
+  responded_at timestamp
+}
+
+Table EkipMember {
+  id uuid [pk]
+  ekip_id uuid [not null, ref: > Ekip.id]
+  user_id uuid [not null, ref: > UserAccount.id]
+  role varchar [not null] // HOST, HOST_COMPANION, MEMBER
+  application_id uuid [ref: > EkipApplication.id]
+  membership_status varchar [not null, default: 'ACTIVE'] // ACTIVE, LEFT, KICKED
+  attendance_status varchar [not null, default: 'REGISTERED'] // REGISTERED, CHECKED_IN, NO_SHOW
+  check_in_at timestamp
+  check_in_location geography_point
+  no_show_reported_count int [not null, default: 0]
+  joined_at timestamp [not null]
+}
+
+Table SponsoredPlace {
+  id uuid [pk]
+  city_id uuid [not null, ref: > City.id]
+  target_categories varchar[]
+  title varchar [not null]
+  description text
+  location_point geography_point [not null]
+  address_text varchar
+  cover_asset_id uuid [ref: > MediaAsset.id]
+  priority_weight int [not null, default: 1]
+  expires_at timestamp [not null]
+  is_active boolean [not null, default: true]
+}
+
+// -------------------------------------------------------------------------
+// PHASE 3: MESSAGING, AI COMPANION, NOTIFICATIONS & SUPPORT
+// -------------------------------------------------------------------------
+
+Table Conversation {
+  id uuid [pk]
+  type varchar [not null] // DIRECT, EKIP_GROUP
+  ekip_id uuid [unique, ref: - Ekip.id]
+  last_message_id uuid
+  last_message_preview varchar
+  last_message_at timestamp
+  created_at timestamp [not null]
+}
+
+Table ConversationParticipant {
+  id uuid [pk]
+  conversation_id uuid [not null, ref: > Conversation.id]
+  user_id uuid [not null, ref: > UserAccount.id]
+  last_read_message_id uuid
+  unread_count int [not null, default: 0]
+  is_muted boolean [not null, default: false]
+  joined_at timestamp [not null]
+}
+
+Table ChatMessage {
+  id uuid [pk]
+  client_message_id varchar [unique, not null] // Idempotency
+  conversation_id uuid [not null, ref: > Conversation.id]
+  sender_id uuid [not null, ref: > UserAccount.id]
+  reply_to_message_id uuid [ref: > ChatMessage.id]
+  message_type varchar [not null] // TEXT, IMAGE, VIDEO, VOICE, LOCATION, SYSTEM_EVENT
+  content_text text
+  media_url varchar
+  media_metadata jsonb
+  is_edited boolean [not null, default: false]
+  deleted_at timestamp
+  created_at timestamp [not null]
+}
+
+Table AIConversation {
+  id uuid [pk]
+  user_id uuid [not null, ref: > UserAccount.id]
+  title varchar
+  context_mode varchar [not null] // GENERAL_COMPANION, EKIP_DISCOVERY, EKIP_CREATION_ASSIST
+  is_memory_extracted boolean [not null, default: false]
+  updated_at timestamp [not null]
+}
+
+Table AIMessage {
+  id uuid [pk]
+  ai_conversation_id uuid [not null, ref: > AIConversation.id]
+  role varchar [not null] // USER, ASSISTANT
+  content text [not null]
+  structured_payload jsonb
+  tokens_used int [not null, default: 0]
+  created_at timestamp [not null]
+}
+
+Table Notification {
+  id uuid [pk]
+  recipient_id uuid [not null, ref: > UserAccount.id]
+  actor_id uuid [ref: > UserAccount.id]
+  type varchar [not null]
+  title varchar [not null]
+  body text [not null]
+  action_payload jsonb
+  is_read boolean [not null, default: false]
+  created_at timestamp [not null]
+}
+
+Table AbuseReport {
+  id uuid [pk]
+  idempotency_key varchar [unique, not null]
+  reporter_id uuid [not null, ref: > UserAccount.id]
+  target_type varchar [not null] // USER_PROFILE, EKIP, PROFILE_REVIEW, NO_SHOW_ATTENDANCE
+  target_id uuid [not null]
+  reason_category varchar [not null]
+  description text
+  status varchar [not null, default: 'SUBMITTED'] // SUBMITTED, RESOLVED_PENALIZED, DISMISSED
+  admin_note text
+  created_at timestamp [not null]
+}
+
+Table SupportTicket {
+  id uuid [pk]
+  user_id uuid [not null, ref: > UserAccount.id]
+  subject varchar [not null]
+  status varchar [not null, default: 'OPEN'] // OPEN, ANSWERED, CLOSED
+  messages jsonb [not null]
+  created_at timestamp [not null]
+}
+
+Table PromoCode {
+  id uuid [pk]
+  code varchar [unique, not null]
+  discount_percent int [not null]
+  max_uses int [not null]
+  expires_at timestamp [not null]
+  target_user_id uuid [ref: > UserAccount.id]
+}
+
+// -------------------------------------------------------------------------
+// PHASE 4: BILLING, GEOGRAPHY & DEVICE SESSIONS
+// -------------------------------------------------------------------------
+
+Table City {
+  id uuid [pk]
+  name varchar [not null]
+  province_name varchar [not null]
+  slug varchar [unique, not null]
+  center_point geography_point [not null]
+  default_zoom_level float [not null, default: 12.0]
+  is_active boolean [not null, default: true]
+}
+
+Table PaymentTransaction {
+  id uuid [pk]
+  idempotency_key varchar [unique, not null]
+  user_id uuid [not null, ref: > UserAccount.id]
+  plan_id uuid [not null, ref: > SubscriptionPlan.id]
+  promo_code_id uuid [ref: > PromoCode.id]
+  base_amount bigint [not null]
+  discount_amount bigint [not null, default: 0]
+  final_payable_amount bigint [not null]
+  payment_gateway varchar [not null]
+  authority_or_token varchar
+  reference_id varchar [unique]
+  status varchar [not null, default: 'PENDING'] // PENDING, SUCCESS, FAILED, REFUNDED
+  paid_at timestamp
+  created_at timestamp [not null]
+}
+
+Table UserDeviceSession {
+  id uuid [pk]
+  user_id uuid [not null, ref: > UserAccount.id]
+  device_type varchar [not null]
+  device_name varchar
+  fcm_push_token varchar
+  refresh_token_hash varchar [unique, not null]
+  ip_address varchar
+  last_active_at timestamp [not null]
+  expires_at timestamp [not null]
+}
+
+// -------------------------------------------------------------------------
+// PHASE 5: ISOLATED ADMIN BACK-OFFICE, BOOKMARKS, TRENDS & SETTINGS
+// -------------------------------------------------------------------------
+
+Table AdminAccount {
+  id uuid [pk]
+  username varchar [unique, not null]
+  email varchar [unique, not null]
+  password_hash varchar [not null]
+  role varchar [not null] // SUPER_ADMIN, MODERATOR, SUPPORT_AGENT, COMMERCIAL_MANAGER
+  permissions varchar[]
+  totp_secret varchar [not null]
+  allowed_ips varchar[]
+  is_active boolean [not null, default: true]
+  created_at timestamp [not null]
+}
+
+Table AdminSession {
+  id uuid [pk]
+  admin_id uuid [not null, ref: > AdminAccount.id]
+  refresh_token_hash varchar [unique, not null]
+  ip_address varchar [not null]
+  user_agent varchar
+  expires_at timestamp [not null]
+  revoked_at timestamp
+}
+
+Table AdminAuditLog {
+  id uuid [pk]
+  admin_id uuid [not null, ref: > AdminAccount.id]
+  action_type varchar [not null]
+  target_entity varchar [not null]
+  target_id uuid [not null]
+  changes_diff jsonb
+  ip_address varchar [not null]
+  created_at timestamp [not null]
+}
+
+Table SavedEkip {
+  id uuid [pk]
+  user_id uuid [not null, ref: > UserAccount.id]
+  ekip_id uuid [not null, ref: > Ekip.id]
+  created_at timestamp [not null]
+
+  indexes {
+    (user_id, ekip_id) [unique]
+  }
+}
+
+Table SearchQueryLog {
+  id uuid [pk]
+  user_id uuid [ref: > UserAccount.id]
+  city_id uuid [not null, ref: > City.id]
+  normalized_query varchar [not null]
+  applied_filters jsonb
+  results_count int [not null]
+  created_at timestamp [not null]
+}
+
+Table CityTrendSnapshot {
+  id uuid [pk]
+  city_id uuid [not null, ref: > City.id]
+  trend_type varchar [not null]
+  keyword varchar [not null]
+  trend_score float [not null]
+  active_ekips_count int [not null]
+  calculated_at timestamp [not null]
+}
+
+Table SystemSetting {
+  key varchar [pk]
+  value jsonb [not null]
+  description varchar
+  updated_by_admin_id uuid [ref: > AdminAccount.id]
+  updated_at timestamp [not null]
+}
