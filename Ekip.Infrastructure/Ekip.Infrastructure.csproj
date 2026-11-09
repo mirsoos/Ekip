@@ -11,4 +11,16 @@
     <ProjectReference Include="..\Ekip.Domain\Ekip.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ExternalChecks\Images\" />
+    <Folder Include="ExternalChecks\Texts\" />
+    <Folder Include="FaceRecognization\" />
+    <Folder Include="Caching\" />
+    <Folder Include="Messaging\" />
+    <Folder Include="Storage\" />
+    <Folder Include="Notifications\" />
+    <Folder Include="Security\Jwt\" />
+    <Folder Include="Security\Password\" />
+  </ItemGroup>
+
 </Project>

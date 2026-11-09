@@ -1,8 +1,9 @@
 <Solution>
+  <Project Path="Ekip.Api/Ekip.Api.csproj" />
   <Project Path="Ekip.AppHost/Ekip.AppHost.csproj" />
   <Project Path="Ekip.Application/Ekip.Application.csproj" />
   <Project Path="Ekip.Domain/Ekip.Domain.csproj" />
   <Project Path="Ekip.Infrastructure/Ekip.Infrastructure.csproj" />
+  <Project Path="Ekip.Persistence/Ekip.Persistence.csproj" Id="29b3c4f9-cd1a-4db0-8dba-3ea7d77a9cc6" />
   <Project Path="Ekip.ServiceDefaults/Ekip.ServiceDefaults.csproj" />
-  <Project Path="Ekip/Ekip.csproj" />
 </Solution>

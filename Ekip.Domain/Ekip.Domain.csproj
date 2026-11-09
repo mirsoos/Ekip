@@ -7,9 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Entities\**" />
-    <EmbeddedResource Remove="Entities\**" />
-    <None Remove="Entities\**" />
+    <Folder Include="Entities\" />
+    <Folder Include="Enums\" />
+    <Folder Include="Helpers\" />
+    <Folder Include="Exceptions\" />
+    <Folder Include="Events\" />
+    <Folder Include="Base\" />
+    <Folder Include="ValueObjects\" />
   </ItemGroup>
 
 </Project>

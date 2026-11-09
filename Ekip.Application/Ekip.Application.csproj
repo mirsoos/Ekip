@@ -10,4 +10,18 @@
     <ProjectReference Include="..\Ekip.Domain\Ekip.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Constants\" />
+    <Folder Include="Consumers\" />
+    <Folder Include="Contracts\" />
+    <Folder Include="DTOs\" />
+    <Folder Include="Enums\" />
+    <Folder Include="Exceptions\" />
+    <Folder Include="Helpers\" />
+    <Folder Include="Interfaces\" />
+    <Folder Include="Mappings\" />
+    <Folder Include="Features\" />
+    <Folder Include="Behaviors\" />
+  </ItemGroup>
+
 </Project>
