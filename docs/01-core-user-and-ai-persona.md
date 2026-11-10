@@ -1,188 +1,257 @@
-# 🏛️ مستندات معماری داده (Enterprise Data Architecture) - اپلیکیشن Ekip
-## 🟢 فاز ۱: هویت، موتور اشتراک، گیمیفیکیشن مبتنی بر Ledger، امنیت محتوا و معماری Vector DB
+# 🏛️ مستندات معماری داده و دامنه (Enterprise Domain & Data Architecture) - اپلیکیشن Ekip
+## 🟢 فاز ۱: هویت، موتور اشتراک، گیمیفیکیشن مبتنی بر Ledger، امنیت محتوا و بردار هوش مصنوعی (`pgvector`)
+
+> **قراردادهای پایه معماری دامنه (Base Contracts):**
+> * **`Entity`:** کلاس پایه مدیریت رویدادهای دامنه (`DomainEvents`).
+> * **`BaseEntity`:** مشتق‌شده از `Entity` و دارای کلید اصلی `Guid Id` مبتنی بر **UUIDv7** (`Guid.CreateVersion7()`).
+> * **`ICreatedAuditable`:** دارای `DateTime CreatedAtUtc`.
+> * **`IAuditableEntity`:** مشتق‌شده از `ICreatedAuditable` و دارای `DateTime? UpdatedAtUtc`.
+> * **`ISoftDeletable`:** دارای `bool IsDeleted` و `DateTime? DeletedAtUtc` (حذف نرم برای حفظ یکپارچگی کلیدهای خارجی و تاریخچه).
 
 ---
 
-### بخش اول: هسته هویت و پروفایل (Relational DB - PostgreSQL)
+### بخش اول: هسته هویت و پروفایل (Identity & Profile)
 
 #### ۱. مدل حساب کاربری و امنیت (`UserAccount`)
-*نگهداری اطلاعات حساس، احراز هویت‌های رسمی و وضعیت پایه اکانت.*
+* **وراثت:** `BaseEntity`, `IAggregateRoot`, `IAuditableEntity`, `ISoftDeletable`
+* **مسیر:** `Ekip.Domain.Entities.User`
 
-| نام فیلد (Field) | نوع داده (Type) | اجباری؟ | توضیحات و قوانین معماری |
-| :--- | :--- | :---: | :--- |
-| `id` | UUID | بله | شناسه یکتای کاربر (Primary Key - UUIDv7). |
-| `username` | String (Unique) | بله | نام کاربری یکتا (B-Tree Indexed). |
-| `phone_number` | String (Unique) | بله | شماره موبایل (اجباری در ثبت‌نام؛ نمایش به دیگران مشروط به رابطه `ACCEPTED` در گراف دوستی). |
-| `email` | String (Unique) | خیر | ایمیل (اختیاری در ثبت‌نام). |
-| `password_hash` | String | بله | هش رمز عبور (Argon2id). |
-| `oauth_providers` | JSONB | خیر | اتصال به سرویس‌های OAuth (Google, Apple). |
-| `two_factor_enabled` | Boolean | بله | وضعیت فعال بودن تایید دو مرحله‌ای (2FA). |
-| `is_face_verified` | Boolean | بله | **تیک تایید چهره:** مقایسه تصویر زنده دوربین با آواتار تاییدشده فعلی. |
-| `is_national_id_verified`| Boolean | بله | **تیک تایید کد ملی:** استعلام رسمی هویت. |
-| `national_id_hash` | String (Unique) | خیر | هشِ کد ملی (HMAC-SHA256) جهت جلوگیری از ساخت اکانت‌های متعدد توسط یک شخص حقیقی. |
-| `referral_code` | String (Unique) | بله | کد دعوت اختصاصی کاربر. |
-| `referred_by_id` | UUID (FK) | خیر | شناسه معرف (جهت تریگر کردن رویداد اهدای XP در جدول Ledger). |
-| `terms_accepted_at` | Timestamp | بله | زمان پذیرش قوانین (UTC). |
-| `has_completed_tour` | Boolean | بله | وضعیت مشاهده تور اولیه اپلیکیشن. |
-| `account_status` | Enum | بله | `ACTIVE`, `SUSPENDED`, `SHADOW_BANNED`, `BANNED`. |
-| `created_at` | Timestamp | بله | زمان ایجاد حساب (UTC). |
+| نام پراپرتی (Property) | نوع داده در C# (Type) | توضیحات و قوانین معماری |
+| :--- | :--- | :--- |
+| `Id` | `Guid` (PK) | شناسه یکتای کاربر (UUIDv7 - تولید خودکار در `BaseEntity`). |
+| `Username` | `string` | نام کاربری یکتا (B-Tree Indexed). |
+| `PhoneNumber` | `string?` | شماره موبایل یکتا (نال‌پذیر جهت پشتیبانی از ثبت‌نام اولیه با ایمیل یا OAuth). |
+| `Email` | `string?` | ایمیل یکتا (اختیاری). |
+| `PasswordHash` | `string?` | هش رمز عبور (Argon2id - نال‌پذیر در صورت ورود صرف با OAuth). |
+| `AccountStatus` | `UserAccountStatus` | وضعیت حساب کاربری (پیش‌فرض: `Active`). |
+| `TwoFactorEnabled` | `bool` | وضعیت فعال بودن تایید دو مرحله‌ای (پیش‌فرض: `false`). |
+| `IsFaceVerified` | `bool` | تیک تایید چهره توسط هوش مصنوعی (پیش‌فرض: `false`). |
+| `IsNationalIdVerified` | `bool` | تیک تایید هویت رسمی / کد ملی (پیش‌فرض: `false`). |
+| `NationalIdHash` | `string?` | هش کد ملی (HMAC-SHA256) جهت جلوگیری از ساخت اکانت‌های متعدد. |
+| `ReferralCode` | `string` | کد دعوت اختصاصی و یکتای کاربر. |
+| `ReferredById` | `Guid?` (FK) | شناسه کاربر معرف (نال‌پذیر). |
+| `HasCompletedTour` | `bool` | وضعیت مشاهده تور اولیه اپلیکیشن (پیش‌فرض: `false`). |
+| `TermsAcceptedAt` | `DateTime` | زمان دقیق پذیرش قوانین و مقررات (UTC). |
+| `OAuthProviders` | `IReadOnlyCollection<OAuthProviderLogin>` | لیست سرویس‌های OAuth متصل‌شده (ذخیره به صورت `JSONB`). |
+| `CreatedAtUtc` | `DateTime` | زمان ایجاد حساب (UTC). |
+| `UpdatedAtUtc` | `DateTime?` | زمان آخرین ویرایش حساب (UTC). |
+| `IsDeleted` | `bool` | فلگ حذف نرم حساب کاربری. |
+| `DeletedAtUtc` | `DateTime?` | زمان حذف نرم حساب کاربری (UTC). |
 
 ---
 
 #### ۲. مدل پروفایل عمومی و حریم خصوصی (`UserProfile`)
-*اطلاعات نمایشی و تنظیمات حریم خصوصی. (درصد تکمیل پروفایل در دیتابیس ذخیره نمی‌شود و در لایه Application به صورت Computed Property محاسبه می‌گردد).*
+* **وراثت:** `Entity`, `IAuditableEntity` *(رابطه ۱ به ۱ با `UserAccount` بدون نیاز به `ISoftDeletable` مستقل)*
+* **مسیر:** `Ekip.Domain.Entities.User`
 
-| نام فیلد (Field) | نوع داده (Type) | اجباری در ثبت‌نام؟ | توضیحات و قوانین معماری |
-| :--- | :--- | :---: | :--- |
-| `user_id` | UUID (PK, FK) | بله | ارتباط ۱ به ۱ با `UserAccount`. |
-| `first_name` | String | **بله** | نام. |
-| `last_name` | String | **بله** | نام خانوادگی. |
-| `gender` | Enum | **بله** | `MALE`, `FEMALE` (غیرقابل تغییر توسط کاربر پس از ثبت‌نام/احراز هویت). |
-| `birth_date` | Date | **بله** | تاریخ تولد (مبنای محاسبه سن). |
-| `city_id` | UUID (FK) | **خیر** | شهر محل سکونت (**اختیاری در ثبت‌نام**، قابل تکمیل در پروفایل - متصل به `City`). |
-| `avatar_asset_id` | UUID (FK) | خیر | اشاره به رکورد تاییدشده در جدول `MediaAsset` (با تغییر عکس، `is_face_verified` ریست می‌شود). |
-| `banner_asset_id` | UUID (FK) | خیر | اشاره به بنر تاییدشده در جدول `MediaAsset`. |
-| `intro_video_asset_id`| UUID (FK) | خیر | اشاره به ویدیوی معرفی چند ثانیه‌ای در جدول `MediaAsset`. |
-| `bio` | Text | خیر | بیوگرافی کوتاه. |
-| `job_title` | String | خیر | عنوان شغلی. |
-| `personality_type` | String | خیر | تیپ شخصیتی (مثلاً حاصل از تست کوتاه اولیه یا ورود دستی). |
-| `interests` | Array[String] | خیر | تگ‌های علاقه‌مندی (GIN Indexed برای کوئری‌های سریع). |
-| `social_links` | JSONB | خیر | لینک شبکه‌های اجتماعی (اینستاگرام، فیسبوک و...). |
-| `mood_widget` | JSONB | خیر | ویجت مود کاربر (ایموجی، متن، استایل). |
-| `theme_id` | String | خیر | شناسه تم پروفایل (**قابل استفاده برای تمام کاربران** بدون محدودیت اشتراک). |
-| `is_searchable` | Boolean | بله | **حریم خصوصی سرچ:** اگر `False` باشد، نام کاربری و پروفایل در نتایج جستجو برگردانده نمی‌شود. |
-| `show_contacts` | Boolean | بله | **حریم خصوصی دوستان:** مجوز نمایش لیست دوستان (`Contacts`) به دیگران. |
-| `show_last_seen` | Boolean | بله | **حریم خصوصی آنلاین بودن:** مجوز نمایش وضعیت آنلاین و آخرین بازدید. |
-| `last_seen_at` | Timestamp | خیر | زمان آخرین فعالیت (UTC). وضعیت آنلاین لحظه‌ای در Redis نگهداری شده و هنگام قطع سوکت در این فیلد سینک می‌شود. |
-| `text_moderation_status`| Enum | بله | وضعیت سلامت متون پروفایل: `APPROVED`, `PENDING_AI`, `REJECTED_NSFW`. |
+| نام پراپرتی (Property) | نوع داده در C# (Type) | توضیحات و قوانین معماری |
+| :--- | :--- | :--- |
+| `UserId` | `Guid` (PK, FK) | کلید اصلی و خارجی متصل به `UserAccount.Id`. |
+| `FirstName` | `string` | نام. |
+| `LastName` | `string` | نام خانوادگی. |
+| `UserGender` | `Gender` | جنسیت کاربر (`Male`, `Female`). |
+| `BirthDate` | `DateOnly` | تاریخ تولد (مبنای محاسبه سن). |
+| `CityId` | `Guid?` (FK) | شهر محل سکونت (متصل به `City` - اختیاری در ثبت‌نام اولیه). |
+| `AvatarAssetId` | `Guid?` | شناسه یکتای فایل آواتار (جهت ساخت آدرس Zero-Join در CDN با الگوی `users/{UserId}/{AvatarAssetId}`). |
+| `BannerAssetId` | `Guid?` | شناسه یکتای فایل بنر پروفایل (با الگوی `users/{UserId}/{BannerAssetId}`). |
+| `Bio` | `string?` | بیوگرافی کوتاه کاربر. |
+| `JobTitle` | `string?` | عنوان شغلی. |
+| `MbtiTypes` | `PersonalMbtiTypes` | تیپ شخصیتی ۱۶گانه MBTI کاربر. |
+| `MoodWidget` | `MoodWidget?` | ویجت وضعیت روحی کاربر (ذخیره به صورت `JSONB`). |
+| `SocialLinks` | `IReadOnlyCollection<SocialLink>` | لیست شبکه‌های اجتماعی کاربر (ذخیره به صورت `JSONB`). |
+| `Interests` | `IReadOnlyCollection<string>` | آرایه تگ‌های علاقه‌مندی (`varchar[]` - دارای ایندکس GIN). |
+| `IsSearchable` | `bool` | مجوز نمایش پروفایل در نتایج جستجو (پیش‌فرض: `true`). |
+| `ShowContacts` | `bool` | مجوز نمایش لیست دوستان به دیگران (پیش‌فرض: `true`). |
+| `ShowLastSeen` | `bool` | مجوز نمایش وضعیت آنلاین و آخرین بازدید (پیش‌فرض: `true`). |
+| `LastSeenAtUtc` | `DateTime?` | زمان آخرین فعالیت (سینک‌شده از روی Redis هنگام قطع اتصال - UTC). |
+| `CreatedAtUtc` | `DateTime` | زمان ایجاد پروفایل (UTC). |
+| `UpdatedAtUtc` | `DateTime?` | زمان آخرین ویرایش پروفایل (UTC). |
 
 ---
 
-### بخش دوم: موتور اشتراک چندسطحی و مدیریت سهمیه (Multi-Tier Subscription & Entitlement Engine)
+### بخش دوم: موتور اشتراک چندسطحی و مدیریت سهمیه (Subscription & Quota Engine)
 
 #### ۳. مدل تعریف پلن‌های اشتراک (`SubscriptionPlan`)
-*جدول داینامیک برای تعریف انواع اشتراک‌ها بدون نیاز به تغییر کد.*
+* **وراثت:** `BaseEntity`, `IAggregateRoot`, `ICreatedAuditable`
+* **مسیر:** `Ekip.Domain.Entities.Subscription`
 
-| نام فیلد (Field) | نوع داده (Type) | توضیحات و قوانین معماری |
+| نام پراپرتی (Property) | نوع داده در C# (Type) | توضیحات و قوانین معماری |
 | :--- | :--- | :--- |
-| `id` | UUID (PK) | شناسه پلن. |
-| `code` | String (Unique) | کد سیستمی پلن (مثلاً: `FREE_TIER`, `PLUS_MONTHLY`, `PRO_VIP`, `BUSINESS_HOST`). |
-| `title` | String | نام نمایشی پلن. |
-| `price` | Decimal | قیمت پلن. |
-| `duration_days` | Integer | مدت اعتبار به روز (مثلاً ۳۰، ۹۰، ۳۶۵). |
-| `entitlements` | JSONB | قوانین و سهمیه‌های پلن (سقف اکیپ فعال، پیام AI، امکان ساخت اکیپ تکرارشونده و...). |
-| `is_active` | Boolean | وضعیت فعال بودن پلن جهت خرید. |
-
-#### ۴. مدل اشتراک‌های کاربر و مصرف سهمیه (`UserSubscription`)
-*نگهداری وضعیت اشتراک فعلی کاربر و ردیابی میزان مصرف سهمیه با رعایت Idempotency.*
-
-| نام فیلد (Field) | نوع داده (Type) | توضیحات و قوانین معماری |
-| :--- | :--- | :--- |
-| `id` | UUID (PK) | شناسه اشتراک کاربر. |
-| `idempotency_key` | String (Unique) | **کلید یکتا:** جلوگیری از فعال‌سازی مجدد یا تکراری اشتراک در صورت تکرار درخواست (Timeout/Network Retry). |
-| `user_id` | UUID (FK) | شناسه کاربر (متصل به `UserAccount`). |
-| `plan_id` | UUID (FK) | متصل به `SubscriptionPlan`. |
-| `status` | Enum | `ACTIVE`, `EXPIRED`, `CANCELED`, `UPGRADED`. |
-| `starts_at` | Timestamp | زمان شروع اشتراک (UTC). |
-| `expires_at` | Timestamp | زمان انقضای اشتراک (UTC). |
-| `quota_usage` | JSONB | میزان مصرف‌شده از سهمیه دوره فعلی. |
+| `Id` | `Guid` (PK) | شناسه یکتای پلن (UUIDv7). |
+| `Code` | `string` | کد سیستمی یکتای پلن (مانند `FREE_TIER`, `PLUS_MONTHLY`, `PRO_VIP`). |
+| `Title` | `string` | نام نمایشی پلن. |
+| `Price` | `SubscriptionPrice` | مبلغ و واحد پولی پلن (ValueObject). |
+| `Entitlements` | `PlanEntitlements` | قوانین، دسترسی‌ها و سهمیه‌های پلن (ذخیره به صورت `JSONB`). |
+| `DurationDays` | `int` | مدت اعتبار پلن به روز. |
+| `IsActive` | `bool` | وضعیت فعال بودن پلن جهت خرید. |
+| `CreatedAtUtc` | `DateTime` | زمان تعریف پلن (UTC). |
 
 ---
 
-### بخش سوم: موتور گیمیفیکیشن، Honor و دفتر کل رویدادها (Event-Sourced Reputation Engine)
+#### ۴. مدل وضعیت اشتراک فعال کاربر (`UserSubscription`)
+* **وراثت:** `Entity`, `IAuditableEntity` *(رابطه ۱ به ۱ با `UserAccount`؛ تاریخچه مالی خریدها در `PaymentTransaction` نگهداری می‌شود)*
+* **مسیر:** `Ekip.Domain.Entities.Subscription`
+
+| نام پراپرتی (Property) | نوع داده در C# (Type) | توضیحات و قوانین معماری |
+| :--- | :--- | :--- |
+| `UserId` | `Guid` (PK, FK) | کلید اصلی و خارجی متصل به `UserAccount.Id` (هر کاربر دقیقاً ۱ رکورد وضعیت دارد). |
+| `IdempotencyKey` | `Guid` | کلید یکتای آخرین تراکنش اعمال‌شده جهت جلوگیری از اعمال مضاعف. |
+| `SubscriptionPlanId` | `Guid` (FK) | پلن اشتراک فعلی کاربر (متصل به `SubscriptionPlan.Id`). |
+| `StartsAtUtc` | `DateTime` | زمان شروع دوره اشتراک فعلی (UTC). |
+| `ExpiresAtUtc` | `DateTime?` | زمان انقضای اشتراک (برای پلن رایگان `null` و برای پلن‌های پولی دارای تاریخ است - UTC). |
+| `IsCurrentlyActive` | `bool` (Computed) | پراپرتی محاسباتی لحظه‌ای: `ExpiresAtUtc is null \|\| ExpiresAtUtc > DateTime.UtcNow`. |
+| `QuotaUsage` | `QuotaUsage` | وضعیت مصرف سهمیه روزانه هوش مصنوعی به عنوان پشتیبان پایدار Redis (`JSONB`). |
+| `CreatedAtUtc` | `DateTime` | زمان ایجاد رکورد (UTC). |
+| `UpdatedAtUtc` | `DateTime?` | زمان آخرین تمدید یا بروزرسانی سهمیه (UTC). |
+
+---
+
+### بخش سوم: موتور گیمیفیکیشن، اعتماد سیستم (Honor) و دفتر کل (Reputation Engine)
 
 #### ۵. مدل دفتر کل رویدادهای اعتبار و تجربه (`ReputationLedger`)
-*جدول Append-Only جهت ثبت تاریخچه خام تمامی تراکنش‌های امتیازی و اعتباری با قابلیت باز‌محاسبه.*
+* **وراثت:** `BaseEntity`, `IAggregateRoot`, `ICreatedAuditable` *(جدول Append-Only و تغییرناپذیر)*
+* **مسیر:** `Ekip.Domain.Entities.Gamification`
 
-| نام فیلد (Field) | نوع داده (Type) | توضیحات و قوانین معماری |
+| نام پراپرتی (Property) | نوع داده در C# (Type) | توضیحات و قوانین معماری |
 | :--- | :--- | :--- |
-| `id` | UUID (PK) | شناسه تراکنش اعتباری (UUIDv7). |
-| `user_id` | UUID (FK) | کاربر هدف (متصل به `UserAccount`). |
-| `event_type` | Enum | نوع رویداد: `EKIP_COMPLETED`, `USER_RATED`, `LEFT_EKIP`, `KICKED_FROM_EKIP`, `HOST_CANCELED_LATE`, `NO_SHOW_PENALTY`, `BLOCKED_BY_USER`, `REPORT_CONFIRMED`, `NSFW_VIOLATION`, `UNWANTED_INVITE_SPAM`, `MISSION_COMPLETED`, `REFERRAL_BONUS`. |
-| `xp_delta` | Integer | میزان تغییر XP (مثبت یا صفر). |
-| `honor_delta` | Float | میزان تاثیر روی Honor مخفی (مثبت یا منفی). |
-| `reference_entity_type`| String | موجودیت مرتبط (`EKIP`, `EKIP_MEMBER`, `REVIEW`, `APPLICATION`, `MISSION`, `MEDIA`). |
-| `reference_entity_id` | UUID | شناسه رکورد مرجع. |
-| `created_at` | Timestamp | زمان وقوع رویداد (UTC). |
-
-#### ۶. مدل خلاصه وضعیت گیمیفیکیشن (`UserGamificationSummary`)
-*نمای محاسبه‌شده (Materialized State) از روی Ledger جهت کوئری‌های O(1).*
-
-| نام فیلد (Field) | نوع داده (Type) | توضیحات و قوانین معماری |
-| :--- | :--- | :--- |
-| `user_id` | UUID (PK, FK) | شناسه کاربر (متصل به `UserAccount`). |
-| `total_xp` | Integer | مجموع XP کسب‌شده. |
-| `current_level` | Integer | سطح فعلی کاربر (محاسبه‌شده از روی `total_xp`). |
-| `public_score` | Float | میانگین امتیازات ۱ تا ۵ دریافتی از اعضا در اکیپ‌ها. |
-| `ratings_count` | Integer | تعداد کل امتیازدهندگان. |
-| `hidden_honor` | Float | امتیاز مخفی رفتار کاربر (مبنای فیلتر ورود به اکیپ‌ها و شرط کاربران کاملاً پایه). |
-| `aggregated_counters` | JSONB | شمارنده‌های تجمیعی (`left_count`, `kicked_count`, `no_show_count`, `blocked_count`, `reported_count`). |
-| `updated_at` | Timestamp | زمان آخرین بروزرسانی (UTC). |
+| `Id` | `Guid` (PK) | شناسه تراکنش اعتباری (UUIDv7). |
+| `UserId` | `Guid` (FK) | کاربر هدف که امتیاز دریافت یا از دست داده است. |
+| `ActorId` | `Guid?` (FK) | کاربر یا ادمینِ عاملِ رخداد (جهت ردیابی و جلوگیری از XP Farming). |
+| `Description` | `string?` | توضیحات یا دلیل ثبت رویداد (به‌ویژه در تغییرات دستی ادمین). |
+| `IdempotencyKey` | `Guid` | کلید یکتا جهت جلوگیری از ثبت دوباره امتیاز در پیام‌های ناهمگام RabbitMQ. |
+| `EventType` | `ReputationEventType` | نوع رویداد امتیازی (از بین ۱۶ رویداد پایه سیستم). |
+| `XpDelta` | `int` | میزان تغییر XP در این رویداد. |
+| `XpBalanceAfter` | `int` | موجودی کل XP کاربر بلافاصله پس از اعمال این تراکنش. |
+| `HonorDelta` | `int` | میزان تغییر نمره اعتماد مخفی سیستم (Honor - مثبت یا منفی). |
+| `HonorBalanceAfter` | `int` | موجودی کل Honor کاربر بلافاصله پس از اعمال این تراکنش. |
+| `ReferenceEntityType` | `string?` | نام موجودیت مرجع (مانند `Ekip`, `Mission`, `SubscriptionPlan`, `ProfileReview`). |
+| `ReferenceEntityId` | `Guid?` | شناسه رکورد مرجع. |
+| `CreatedAtUtc` | `DateTime` | زمان دقیق وقوع رویداد (UTC). |
 
 ---
 
-### بخش چهارم: امنیت محتوا، ضد فحاشی و گراف ارتباطی (Trust, Safety & Social Graph)
+#### ۶. مدل خلاصه وضعیت گیمیفیکیشن کاربر (`UserGamificationSummary`)
+* **وراثت:** `Entity`, `IAggregateRoot` *(نمای Materialized State با رابطه ۱ به ۱ برای کوئری‌های O(1))*
+* **مسیر:** `Ekip.Domain.Entities.Gamification`
 
-#### ۷. مدل مدیریت رسانه و دروازه ضد محتوای جنسی (`MediaAsset`)
-*خط لوله پردازش تمام تصاویر و ویدیوها قبل از نمایش عمومی.*
-
-| نام فیلد (Field) | نوع داده (Type) | توضیحات و قوانین ضد محتوای جنسی (Anti-NSFW) |
+| نام پراپرتی (Property) | نوع داده در C# (Type) | توضیحات و قوانین معماری |
 | :--- | :--- | :--- |
-| `id` | UUID (PK) | شناسه یکتای فایل. |
-| `uploader_id` | UUID (FK) | آپلودکننده (متصل به `UserAccount`). |
-| `usage_context` | Enum | `USER_AVATAR`, `USER_BANNER`, `USER_INTRO_VIDEO`, `EKIP_COVER`, `SPONSORED_COVER`. |
-| `storage_key` | String | مسیر فایل در Object Storage (S3/MinIO). |
-| `nsfw_probability` | Float | نمره احتمال برهنگی/محتوای جنسی (`0.0` تا `1.0`). |
-| `moderation_status` | Enum | `PENDING_SCAN`, `APPROVED`, `REJECTED_NSFW`, `ESCALATED_TO_ADMIN`. |
-| `scanned_at` | Timestamp | زمان اتمام اسکن (UTC). |
-| `created_at` | Timestamp | زمان آپلود (UTC). |
-
-#### ۸. مدل کامنت‌های پروفایل و امتیازدهی (`ProfileReview`)
-*ثبت امتیاز فعالیت‌ها همراه با فیلتر ضد فحاشی و Idempotency.*
-
-| نام فیلد (Field) | نوع داده (Type) | توضیحات و قوانین ضد فحاشی و تکرار |
-| :--- | :--- | :--- |
-| `id` | UUID (PK) | شناسه نظر. |
-| `idempotency_key` | String (Unique) | **کلید یکتا:** جلوگیری از درج نظر تکراری حین قطعی شبکه یا دابل‌کلیک. |
-| `target_user_id` | UUID (FK) | صاحب پروفایل (متصل به `UserAccount`). |
-| `author_user_id` | UUID (FK) | نویسنده کامنت (متصل به `UserAccount`). **شرط:** حضور کاربر در اکیپ مربوطه باید `CHECKED_IN` باشد. |
-| `ekip_id` | UUID (FK) | اکیپ مرتبط (متصل به `Ekip`). |
-| `score` | Integer | امتیاز ۱ تا ۵. |
-| `comment_text` | Text | متن کامنت. |
-| `toxicity_score` | Float | نمره سمّی بودن/فحاشی متن (`0.0` تا `1.0`). |
-| `moderation_status` | Enum | `PENDING_AI`, `PUBLISHED`, `REJECTED_PROFANITY`, `DISPUTED`. |
-| `created_at` | Timestamp | زمان ثبت (UTC). |
-
-#### ۹. مدل گراف ارتباطی (`UserRelation`)
-| نام فیلد (Field) | نوع داده (Type) | توضیحات و قوانین معماری |
-| :--- | :--- | :--- |
-| `id` | UUID (PK) | شناسه رابطه. |
-| `requester_id` | UUID (FK) | درخواست‌دهنده (متصل به `UserAccount`). |
-| `receiver_id` | UUID (FK) | دریافت‌کننده (متصل به `UserAccount`). |
-| `status` | Enum | `PENDING`, `ACCEPTED` (اضافه شدن به Contacts و باز شدن دسترسی به شماره تماس), `BLOCKED` (ثبت رویداد منفی در Ledger برای فرد مسدودشده). |
-| `created_at` | Timestamp | زمان ایجاد رابطه (UTC). |
+| `UserId` | `Guid` (PK, FK) | شناسه کاربر (متصل به `UserAccount.Id`). |
+| `TotalXp` | `int` | مجموع کل XP کسب‌شده. |
+| `CurrentLevel` | `int` | سطح فعلی کاربر (پیش‌فرض: `1`). |
+| `NextLevelXp` | `int` | میزان XP مورد نیاز جهت رسیدن به سطح بعدی (برای رندر Progress Bar در کلاینت). |
+| `PublicScore` | `decimal` | میانگین دقیق امتیازات ۱ تا ۵ دریافتی از سایر اعضا (`RatingScoresSum / RatingsCount`). |
+| `RatingScoresSum` | `int` | مجموع کل ستاره‌های دریافتی (جهت محاسبه دقیق میانگین بدون خطای گرد شدن). |
+| `RatingsCount` | `int` | تعداد کل دفعات امتیازدهی به کاربر. |
+| `TotalHonor` | `int` | نمره اعتماد داخلی سیستم به کاربر (مخفی از دید کاربر؛ پیش‌فرض: `0` خنثی). |
+| `AggregatedCounters` | `IReadOnlyCollection<AggregatedCounters>` | لیست شمارنده‌های تجمیعی به تفکیک هر `ReputationEventType` (`JSONB`). |
 
 ---
 
-### بخش پنجم: معماری دیتابیس وکتوری مجزا (Vector DB Schema - Qdrant / Milvus)
+### بخش چهارم: امنیت محتوای عمومی، نظرات و گراف ارتباطی (Trust, Safety & Social Graph)
 
-#### ۱۰. کالکشن بردار هویت و علایق نیمه‌ایستا (`User_Identity_Vectors`)
-| بخش در Vector DB | نام فیلد | نوع داده | توضیحات معماری |
-| :--- | :--- | :--- | :--- |
-| **Point ID** | `user_id` | UUID | شناسه یکتای کاربر (منطبق با `UserAccount.id`). |
-| **Named Vectors** | `interest_bio_vector`| Dense Vector (1536d) | بردار معنایی حاصل از `interests`, `bio`, `personality_type`. |
-| **Metadata Payload** | `city_id` | UUID (Indexed) | شناسه شهر جهت فیلتر سریع (بدون نیاز به Re-embedding). |
-| **Metadata Payload** | `gender` | Keyword | جنسیت جهت Pre-filtering. |
-| **Metadata Payload** | `birth_year` | Integer | سال تولد جهت فیلتر بازه سنی. |
-| **Metadata Payload** | `current_level` | Integer | لول کاربر. |
-| **Metadata Payload** | `hidden_honor` | Float | امتیاز رفتار کاربر. |
+#### ۷. مدل مدیریت رسانه‌های عمومی و اسکن Anti-NSFW (`MediaAsset`)
+* **وراثت:** `BaseEntity`, `IAggregateRoot`, `IAuditableEntity`, `ISoftDeletable` *(مخصوص رسانه‌های عمومی مانند کاور اکیپ)*
+* **مسیر:** `Ekip.Domain.Entities.Media`
 
-#### ۱۱. کالکشن حافظه اپیزودیک هوش مصنوعی (`User_Episodic_Memory`)
-| بخش در Vector DB | نام فیلد | نوع داده | توضیحات معماری |
-| :--- | :--- | :--- | :--- |
-| **Point ID** | `memory_chunk_id` | UUID | شناسه یکتای تکه خاطره. |
-| **Vector** | `memory_embedding` | Dense Vector | بردار معنایی خلاصه تعامل یا مکالمه. |
-| **Metadata Payload** | `user_id` | UUID (Indexed) | شناسه کاربر مالک خاطره. |
-| **Metadata Payload** | `raw_summary_text` | Text | متن خلاصه خاطره تزریقی به System Prompt. |
-| **Metadata Payload** | `memory_type` | Keyword | `CHAT_INSIGHT`, `PAST_EKIP_FEEDBACK`. |
-| **Metadata Payload** | `created_at_ts` | Integer (Unix) | زمان ثبت جهت محاسبه ضریب فراموشی زمانی (Time-Decay). |
+| نام پراپرتی (Property) | نوع داده در C# (Type) | توضیحات و قوانین معماری |
+| :--- | :--- | :--- |
+| `Id` | `Guid` (PK) | شناسه یکتای رسانه (UUIDv7). |
+| `UploaderId` | `Guid` (FK) | کاربر آپلودکننده (متصل به `UserAccount.Id`). |
+| `UsageContext` | `MediaUsageContext` | محل استفاده رسانه (مانند `EkipCover`). |
+| `StorageKey` | `string` | کلید/مسیر فایل در Object Storage (S3/MinIO). |
+| `NsfwProbability` | `decimal?` | نمره احتمال محتوای نامناسب (`null` پیش از اسکن، `0.0` تا `1.0` پس از اسکن). |
+| `ModerationStatus` | `MediaModerationStatus` | وضعیت بررسی (`Pending`, `Approved`, `Rejected`, `EscalatedToAdmin`). |
+| `Error` | `string?` | علت رد شدن یا خطای سرویس اسکن هوش مصنوعی. |
+| `ScannedAtUtc` | `DateTime?` | زمان اتمام اسکن هوش مصنوعی (UTC). |
+| `CreatedAtUtc` | `DateTime` | زمان آپلود (UTC). |
+| `UpdatedAtUtc` | `DateTime?` | زمان آخرین تغییر وضعیت (UTC). |
+| `IsDeleted` | `bool` | فلگ حذف نرم رسانه. |
+| `DeletedAtUtc` | `DateTime?` | زمان حذف نرم رسانه (UTC). |
+
+---
+
+#### ۸. مدل نظرات پروفایل و امتیازدهی پس از اکیپ (`ProfileReview`)
+* **وراثت:** `BaseEntity`, `IAggregateRoot`, `IAuditableEntity`, `ISoftDeletable`
+* **مسیر:** `Ekip.Domain.Entities.Review`
+
+| نام پراپرتی (Property) | نوع داده در C# (Type) | توضیحات و قوانین معماری |
+| :--- | :--- | :--- |
+| `Id` | `Guid` (PK) | شناسه نظر (UUIDv7). |
+| `IdempotencyKey` | `Guid` | کلید یکتا جهت جلوگیری از ثبت نظر تکراری در قطعی شبکه. |
+| `TargetUserId` | `Guid` (FK) | صاحب پروفایل دریافت‌کننده امتیاز. |
+| `AuthorUserId` | `Guid` (FK) | نویسنده نظر (مشروط به وضعیت `CHECKED_IN` در اکیپ مربوطه). |
+| `EkipId` | `Guid` (FK) | اکیپ مشترکِ مبدا امتیازدهی. |
+| `Score` | `int` | امتیاز عددی بین `1` تا `5`. |
+| `CommentText` | `string?` | متن نظر (در صورت خالی بودن، بدون نیاز به اسکن AI مستقیم تایید می‌شود). |
+| `ToxicityScore` | `decimal?` | نمره سمّی بودن/فحاشی متن (`null` پیش از اسکن AI). |
+| `ModerationStatus` | `ProfileReviewModerationStatus` | وضعیت بررسی (`PendingByAI`, `Approved`, `Rejected`, `PendingByAdmin`). |
+| `CreatedAtUtc` | `DateTime` | زمان ثبت نظر (UTC). |
+| `UpdatedAtUtc` | `DateTime?` | زمان آخرین ویرایش (UTC). |
+| `IsDeleted` | `bool` | فلگ حذف نرم نظر. |
+| `DeletedAtUtc` | `DateTime?` | زمان حذف نرم نظر (UTC). |
+
+---
+
+#### ۹. مدل گراف ارتباطی کاربران (`UserRelation`)
+* **وراثت:** `BaseEntity`, `IAggregateRoot`, `IAuditableEntity`
+* **مسیر:** `Ekip.Domain.Entities.User`
+
+| نام پراپرتی (Property) | نوع داده در C# (Type) | توضیحات و قوانین معماری |
+| :--- | :--- | :--- |
+| `Id` | `Guid` (PK) | شناسه رابطه (UUIDv7). |
+| `RequesterId` | `Guid` (FK) | کاربر آغازگر درخواست (یا فرد بلاک‌کننده در وضعیت `Blocked`). |
+| `ReceiverId` | `Guid` (FK) | کاربر دریافت‌کننده درخواست (یا فرد بلاک‌شده). |
+| `Status` | `UserRelationStatus` | وضعیت رابطه (`Pending`, `Accepted`, `Rejected`, `UnFollowed`, `Blocked`). |
+| `CreatedAtUtc` | `DateTime` | زمان ایجاد رابطه (UTC). |
+| `UpdatedAtUtc` | `DateTime?` | زمان آخرین تغییر وضعیت رابطه (UTC). |
+
+---
+
+### بخش پنجم: معماری بردار هوش مصنوعی و پرسونای پویا (PostgreSQL `pgvector`)
+
+#### ۱۰. مدل بردار هویت و پرسونای هوش مصنوعی (`UserIdentityVector`)
+* **وراثت:** `Entity`, `IAggregateRoot`, `IAuditableEntity` *(رابطه ۱ به ۱ با `UserAccount`؛ جایگزین بهینه کالکشن‌های مجزا)*
+* **مسیر:** `Ekip.Domain.Entities.AI`
+
+| نام پراپرتی (Property) | نوع داده در C# (Type) | توضیحات و قوانین معماری |
+| :--- | :--- | :--- |
+| `UserId` | `Guid` (PK, FK) | شناسه یکتای کاربر (متصل به `UserAccount.Id`). |
+| `PersonalityVector` | `float[]` | بردار معنایی ۱۵۳۶ بعدی (`vector(1536)`) حاصل از ترکیب `Bio`, `Interests`, `MBTI` و `AiPersonaSummary`. |
+| `AiPersonaSummary` | `string?` | خلاصه پویا و تجمیعی شناخت چت‌بات هوش مصنوعی از سلیقه و محدودیت‌های کاربر. |
+| `CityId` | `Guid?` | شناسه شهر جهت Pre-filtering سریع بدون نیاز به Join در جستجوی برداری. |
+| `UserGender` | `Gender` | جنسیت جهت Pre-filtering. |
+| `BirthYear` | `int` | سال تولد جهت فیلتر بازه سنی در مچ‌میکینگ. |
+| `CurrentLevel` | `int` | سطح فعلی کاربر. |
+| `TotalHonor` | `int` | نمره اعتماد سیستم به کاربر. |
+| `CreatedAtUtc` | `DateTime` | زمان تولید اولیه بردار (UTC). |
+| `UpdatedAtUtc` | `DateTime?` | زمان آخرین بازتولید بردار یا بروزرسانی پرسونا (UTC). |
+
+---
+
+### بخش ششم: کاتالوگ کامل ValueObjectها (`sealed record`) و Enumهای فاز ۱
+
+#### الف) ValueObjectهای فاز ۱ (`Ekip.Domain.ValueObjects`)
+
+| نام رکورد (Record) | مسیر (Namespace) | ساختار فیلدها (Properties & Types) |
+| :--- | :--- | :--- |
+| **`OAuthProviderLogin`** | `ValueObjects.User` | `string Provider`, `string ProviderUserId`, `string? Email`, `DateTime LinkedAtUtc` |
+| **`MoodWidget`** | `ValueObjects.User` | `string? MoodEmoji`, `string? MoodDescription`, `string? MoodColor`, `DateTime CreatedAtUtc` |
+| **`SocialLink`** | `ValueObjects.User` | `string Platform`, `string Url`, `DateTime LinkedAtUtc` |
+| **`SubscriptionPrice`** | `ValueObjects.Subscription` | `decimal Amount`, `string Currency` |
+| **`PlanEntitlements`** | `ValueObjects.Subscription` | `int MaxActiveEkips`, `int DailyAiMessagesQuota`, `bool CanCreateRecurringEkips`, `bool CanCreateBusinessEkips`, `IReadOnlyDictionary<string, string>? CustomPerks = null` |
+| **`QuotaUsage`** | `ValueObjects.Subscription` | `int Used`, `int Limit`, `DateTime? ResetAtUtc` |
+| **`AggregatedCounters`** | `ValueObjects.Gamification` | `ReputationEventType EventType`, `int Count` |
+
+---
+
+#### ب) Enumهای فاز ۱ (`Ekip.Domain.Enums`)
+
+* **`UserAccountStatus` (`Enums.User`):** `Active`, `Suspended`, `ShadowBanned`, `Banned`
+* **`Gender` (`Enums.User`):** `Male`, `Female`
+* **`PersonalMbtiTypes` (`Enums.User`):** ۱۶ تیپ استاندارد MBTI (`INTJ`, `INTP`, `ENTJ`, `ENTP`, `INFJ`, `INFP`, `ENFJ`, `ENFP`, `ISTJ`, `ISFJ`, `ESTJ`, `ESFJ`, `ISTP`, `ISFP`, `ESTP`, `ESFP`)
+* **`UserRelationStatus` (`Enums.User`):** `Pending = 1`, `Accepted`, `Rejected`, `UnFollowed`, `Blocked`
+* **`ReputationEventType` (`Enums.Gamification`):** `EkipCreated`, `EkipCompleted`, `HostCanceledLate`, `LeftEkip`, `KickedFromEkip`, `NoShowPenalty`, `UserRated`, `UnwantedCompanionInvite`, `BlockedByUser`, `ReportConfirmed`, `NsfwViolation`, `FaceVerified`, `NationalIdVerified`, `ReferralBonus`, `MissionCompleted`, `SubscriptionPurchased`, `AdminManualAdjustment`
+* **`MediaUsageContext` (`Enums.Media`):** `EkipCover = 1` *(و سایر رسانه‌های عمومی)*
+* **`MediaModerationStatus` (`Enums.PublicMedia` / `Enums.Media`):** `Pending = 1`, `Approved`, `Rejected`, `EscalatedToAdmin`
+* **`ProfileReviewModerationStatus` (`Enums.Review`):** `PendingByAI = 1`, `Approved`, `Rejected`, `PendingByAdmin`

@@ -4,7 +4,7 @@ using Ekip.Domain.ValueObjects.User;
 
 namespace Ekip.Domain.Entities.User
 {
-    public class UserAccount : BaseEntity, IAggregateRoot, IAuditableEntity
+    public class UserAccount : BaseEntity, IAggregateRoot, IAuditableEntity , ISoftDeletable
     {
         public string UserName { get; private set; }
         public string? PhoneNumber { get; private set; }
@@ -21,6 +21,8 @@ namespace Ekip.Domain.Entities.User
         public DateTime TermsAcceptedAt { get; private set; }
         public DateTime? UpdatedAtUtc { get; private set; }
         public DateTime CreatedAtUtc { get; private set; }
+        public bool IsDeleted { get; private set; } = false;
+        public DateTime? DeletedAtUtc { get; private set; }
         private readonly List<OAuthProviderLogin> _oauthProviders = [];
         public IReadOnlyCollection<OAuthProviderLogin> OAuthProviders => _oauthProviders.AsReadOnly();
     }
