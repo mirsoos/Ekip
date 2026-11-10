@@ -5,6 +5,6 @@
         PendingByAI = 1,
         Approved,
         Rejected,
-        PendingByAdmin
+        EscalatedToAdmin
     }
 }
