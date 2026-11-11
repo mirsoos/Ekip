@@ -20,7 +20,7 @@ namespace Ekip.Domain.Entities.Ekip
         public string LocationName { get; private set; }
         public string AddressDetail { get; private set; }
         public bool IsDetailsPrivate { get; private set; } = false;
-        public HostComposition HostComposition { get; private set; }
+        public EkipComposition HostComposition { get; private set; }
         public int MinMembers { get; private set; }
         public int? MaxMembers { get; private set; }
         public int ApprovedMembersCount { get; private set; } = 1;

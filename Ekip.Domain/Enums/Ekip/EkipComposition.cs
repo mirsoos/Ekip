@@ -1,6 +1,6 @@
 ﻿namespace Ekip.Domain.Enums.Ekip
 {
-    public enum HostComposition
+    public enum EkipComposition
     {
         Solo = 1,
         Couple,
