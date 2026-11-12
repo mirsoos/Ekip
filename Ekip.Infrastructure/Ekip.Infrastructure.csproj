@@ -15,7 +15,6 @@
     <Folder Include="ExternalChecks\Images\" />
     <Folder Include="ExternalChecks\Texts\" />
     <Folder Include="FaceRecognization\" />
-    <Folder Include="Caching\" />
     <Folder Include="Messaging\" />
     <Folder Include="Storage\" />
     <Folder Include="Notifications\" />
