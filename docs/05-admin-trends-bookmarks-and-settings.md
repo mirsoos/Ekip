@@ -1,103 +1,140 @@
-# 🏛️ مستندات معماری داده (Enterprise Data Architecture) - اپلیکیشن Ekip
-## 🔴 فاز ۵: پنل ادمین ایزوله، موتور کشف ترندها، بوکمارک و تنظیمات پویا (۷ مدل)
+# 🏛️ مستندات معماری داده و دامنه (Enterprise Domain & Data Architecture) - اپلیکیشن Ekip
+## 🔴 فاز ۵: پنل ادمین ایزوله (Zero-Trust)، بوکمارک، موتور کشف ترندها و تنظیمات پویا
 
 ---
 
-### بخش اول: زیرساخت ایزوله پنل مدیریت (Isolated Back-Office & Admin Security)
-*طبق معماری Zero-Trust، حساب کاربری ادمین‌ها، نشست‌ها (Sessions)، کلید رمزنگاری توکن‌ها (`ADMIN_JWT_SECRET`) و مسیر APIهای ادمین کاملاً از کاربران عادی (`UserAccount`) جداست تا امکان ارتقای سطح دسترسی غیرمجاز (Privilege Escalation) ناممکن شود.*
+### بخش اول: زیرساخت ایزوله پنل مدیریت (`Ekip.Domain.Entities.Admin`)
 
 #### ۱. مدل حساب کاربری مدیران (`AdminAccount`)
-| نام فیلد (Field) | نوع داده (Type) | اجباری؟ | توضیحات و قوانین امنیتی |
-| :--- | :--- | :---: | :--- |
-| `id` | UUID (PK) | بله | شناسه یکتای ادمین (UUIDv7). |
-| `username` | String (Unique) | بله | نام کاربری جهت ورود به پنل مدیریت. |
-| `email` | String (Unique) | بله | ایمیل سازمانی ادمین. |
-| `password_hash` | String | بله | هش رمز عبور (Argon2id با پارامترهای سنگین سازمانی). |
-| `role` | Enum | **بله** | `SUPER_ADMIN`, `MODERATOR`, `SUPPORT_AGENT`, `COMMERCIAL_MANAGER`. |
-| `permissions` | Array[String] | خیر | دسترسی‌های ریزدانه (Granular Permissions). |
-| `totp_secret` | String | بله | کلید Google Authenticator (الزام 2FA برای تمام مدیران). |
-| `allowed_ips` | Array[String] | خیر | لیست سفید IPهای مجاز ورود (IP Whitelisting). |
-| `is_active` | Boolean | بله | وضعیت فعال بودن حساب ادمین. |
-| `created_at` | Timestamp | بله | زمان ایجاد حساب (UTC). |
+* **وراثت:** `BaseEntity`, `IAggregateRoot`, `IAuditableEntity`, `ISoftDeletable`
+* **مسیر:** `Ekip.Domain.Entities.Admin`
+
+| نام پراپرتی (Property) | نوع داده در C# (Type) | توضیحات و قوانین امنیتی |
+| :--- | :--- | :--- |
+| `Id` | `Guid` (PK) | شناسه یکتای ادمین (UUIDv7). |
+| `UserName` | `string` (Unique) | نام کاربری جهت ورود به پنل مدیریت. |
+| `Email` | `string` (Unique) | ایمیل سازمانی ادمین. |
+| `FirstName` | `string` | نام ادمین. |
+| `LastName` | `string` | نام خانوادگی ادمین. |
+| `PasswordHash` | `string` | هش رمز عبور (Argon2id با پارامترهای سنگین سازمانی). |
+| `Role` | `AdminRole` | نقش سازمانی (`SuperAdmin = 1`, `Moderator`, `SupportAgent`, `CommercialManager`). |
+| `TotpSecret` | `string?` | کلید Google Authenticator (در اولین ورود تنظیم و فعال می‌شود). |
+| `IsTwoFactorActivated` | `bool` | وضعیت فعال بودن تایید دو مرحله‌ای. |
+| `FailedLoginAttempts` | `int` | شمارنده تلاش‌های ناموفق ورود جهت قفل خودکار (پیش‌فرض: `0`). |
+| `LockedUntilUtc` | `DateTime?` | زمان پایان قفل موقت اکانت در صورت حمله Brute-Force (UTC). |
+| `IsLockedOut` | `bool` (Computed) | پراپرتی محاسباتی: `LockedUntilUtc.HasValue && LockedUntilUtc.Value > DateTime.UtcNow`. |
+| `IsActive` | `bool` | وضعیت فعال بودن حساب ادمین (پیش‌فرض: `true`). |
+| `LastLoginAtUtc` | `DateTime?` | زمان آخرین ورود موفق (UTC). |
+| `AllowedIps` | `IReadOnlyCollection<string>` | لیست سفید IPهای مجاز ورود (`_allowedIps`). |
+| `Permissions` | `IReadOnlyCollection<string>` | دسترسی‌های ریزدانه کپسوله‌شده (`_permissions`). |
+| `CreatedAtUtc` | `DateTime` | زمان ایجاد حساب (UTC). |
+| `UpdatedAtUtc` | `DateTime?` | زمان آخرین ویرایش (UTC). |
+| `IsDeleted` | `bool` | فلگ حذف نرم حساب ادمین. |
+| `DeletedAtUtc` | `DateTime?` | زمان حذف نرم (UTC). |
 
 ---
 
-#### ۲. مدل نشست‌ها و توکن‌های اختصاصی ادمین (`AdminSession`)
-| نام فیلد (Field) | نوع داده (Type) | توضیحات و قوانین امنیتی |
+#### ۲. مدل نشست‌های اختصاصی ادمین (`AdminSession`)
+* **وراثت:** `BaseEntity`, `IAggregateRoot`, `IAuditableEntity`
+* **مسیر:** `Ekip.Domain.Entities.Admin`
+
+| نام پراپرتی (Property) | نوع داده در C# (Type) | توضیحات و قوانین امنیتی |
 | :--- | :--- | :--- |
-| `id` | UUID (PK) | شناسه نشست ادمین. |
-| `admin_id` | UUID (FK) | متصل به `AdminAccount`. |
-| `refresh_token_hash` | String (Unique) | هش توکن نشست ادمین (دارای عمر کوتاه ۸ ساعته). |
-| `ip_address` | String | آی‌پی متصل‌شده جهت اعتبارسنجی مداوم. |
-| `user_agent` | String | مشخصات مرورگر و سیستم‌عامل ادمین. |
-| `expires_at` | Timestamp | زمان انقضای نشست (UTC). |
-| `revoked_at` | Timestamp | زمان ابطال دستی نشست (UTC). |
+| `Id` | `Guid` (PK) | شناسه نشست ادمین (UUIDv7). |
+| `AdminId` | `Guid` (FK) | متصل به `AdminAccount.Id`. |
+| `RefreshTokenHash` | `string` (Unique) | هش توکن نشست ادمین. |
+| `TokenVersion` | `int` | شمارنده چرخش توکن (RTR) جهت تشخیص سرقت توکن ادمین (پیش‌فرض: `1`). |
+| `IpAddress` | `string` | آدرس IP متصل‌شده جهت بررسی مداوم با نشست. |
+| `UserAgent` | `string?` | مشخصات مرورگر و سیستم‌عامل ادمین. |
+| `ExpiresAtUtc` | `DateTime` | زمان انقضای قطعی نشست (UTC). |
+| `IsRevoked` | `bool` | وضعیت ابطال نشست (پیش‌فرض: `false`). |
+| `RevokedAtUtc` | `DateTime?` | زمان ابطال نشست (UTC). |
+| `IsCurrentlyActive` | `bool` (Computed) | پراپرتی محاسباتی: `!IsRevoked && ExpiresAtUtc > DateTime.UtcNow`. |
+| `CreatedAtUtc` | `DateTime` | زمان ایجاد نشست (UTC). |
+| `UpdatedAtUtc` | `DateTime?` | زمان آخرین چرخش توکن (UTC). |
 
 ---
 
 #### ۳. مدل لاگ امنیتی اقدامات ادمین (`AdminAuditLog`)
-*جدول Append-Only جهت ثبت تاریخچه کلیه تغییرات ایجادشده توسط ادمین‌ها در سیستم.*
+* **وراثت:** `BaseEntity`, `IAggregateRoot`, `ICreatedAuditable` *(جدول Append-Only و تغییرناپذیر)*
+* **مسیر:** `Ekip.Domain.Entities.Admin`
 
-| نام فیلد (Field) | نوع داده (Type) | توضیحات و قوانین معماری |
+| نام پراپرتی (Property) | نوع داده در C# (Type) | توضیحات و قوانین معماری |
 | :--- | :--- | :--- |
-| `id` | UUID (PK) | شناسه لاگ (UUIDv7). |
-| `admin_id` | UUID (FK) | ادمین انجام‌دهنده عملیات (متصل به `AdminAccount`). |
-| `action_type` | String | نوع عملیات (`BAN_USER`, `APPROVE_MEDIA`, `RESOLVE_REPORT`, `UPDATE_SETTING`). |
-| `target_entity` | String | جدول هدف (`UserAccount`, `Ekip`, `MediaAsset`, `SystemSetting`). |
-| `target_id` | UUID | شناسه رکورد هدف. |
-| `changes_diff` | JSONB | مقادیر قدیم و جدید (`{"old": ..., "new": ...}`). |
-| `ip_address` | String | آی‌پی ادمین در لحظه انجام عملیات. |
-| `created_at` | Timestamp | زمان دقیق رخداد (UTC). |
+| `Id` | `Guid` (PK) | شناسه لاگ (UUIDv7). |
+| `AdminId` | `Guid` (FK) | ادمین انجام‌دهنده عملیات. |
+| `ActionType` | `AdminActionType` | نوع عملیات (`BanUser`, `UnbanUser`, `ApproveMedia`, `RejectMedia`, `ResolveReport`, `AdjustReputation`, `AdjustWallet`, `UpdateSetting`). |
+| `TargetEntity` | `string` | نام موجودیت هدف (`UserAccount`, `Ekip`, `MediaAsset`, `SystemSetting` و...). |
+| `TargetId` | `Guid` | شناسه یکتای رکورد هدف. |
+| `OldValueJson` | `string?` | مقادیر پیش از تغییر (JSON - نال‌پذیر در عملیات ایجاد اولیه). |
+| `NewValueJson` | `string` | مقادیر پس از تغییر (JSON - اجباری جهت ثبت وضعیت جدید). |
+| `Reason` | `string?` | دلیل ثبت‌شده توسط ادمین برای انجام این تغییر. |
+| `AdminIpAddress` | `string` | آدرس IP ادمین در لحظه انجام عملیات. |
+| `CreatedAtUtc` | `DateTime` | زمان دقیق رخداد (UTC). |
 
 ---
 
-### بخش دوم: تعاملات تکمیلی اکیپ و موتور کشف ترندها (Bookmarks & Trend Engine)
+### بخش دوم: بوکمارک و موتور کشف ترندها (`Ekip` & `Trend`)
 
 #### ۴. مدل اکیپ‌های نشان‌شده / بوکمارک (`SavedEkip`)
-| نام فیلد (Field) | نوع داده (Type) | توضیحات و قوانین بیزینس |
+* **وراثت:** `BaseEntity`, `IAggregateRoot`, `ICreatedAuditable`
+* **مسیر:** `Ekip.Domain.Entities.Ekip`
+
+| نام پراپرتی (Property) | نوع داده در C# (Type) | توضیحات و قوانین بیزینس |
 | :--- | :--- | :--- |
-| `id` | UUID (PK) | شناسه رکورد. |
-| `user_id` | UUID (FK) | کاربر ذخیره‌کننده (متصل به `UserAccount`). |
-| `ekip_id` | UUID (FK) | اکیپ ذخیره‌شده (متصل به `Ekip`). *(دارای Unique Composite Index روی `(user_id, ekip_id)` جهت جلوگیری از ثبت تکراری)*. |
-| `created_at` | Timestamp | زمان ذخیره اکیپ (UTC). |
+| `Id` | `Guid` (PK) | شناسه رکورد (UUIDv7). |
+| `UserId` | `Guid` (FK) | کاربر ذخیره‌کننده (دارای Unique Composite Index روی `(UserId, EkipId)`). |
+| `EkipId` | `Guid` (FK) | اکیپ ذخیره‌شده. |
+| `CreatedAtUtc` | `DateTime` | زمان ذخیره اکیپ (UTC). |
 
 ---
 
-#### ۵. مدل لاگ جستجوهای کاربران (`SearchQueryLog`)
-| نام فیلد (Field) | نوع داده (Type) | توضیحات و قوانین معماری |
+#### ۵. مدل ترندهای محاسبه‌شده هر شهر (`CityTrendSnapshot`)
+* **وراثت:** `BaseEntity`, `IAggregateRoot`, `ICreatedAuditable`
+* **مسیر:** `Ekip.Domain.Entities.Trend`
+
+| نام پراپرتی (Property) | نوع داده در C# (Type) | توضیحات و قوانین بیزینس |
 | :--- | :--- | :--- |
-| `id` | UUID (PK) | شناسه لاگ جستجو (UUIDv7). |
-| `user_id` | UUID (FK) | کاربر جستجوکننده (متصل به `UserAccount` - اختیاری). |
-| `city_id` | UUID (FK) | شهر محل جستجو (متصل به `City`). |
-| `normalized_query` | String (Indexed)| عبارت نرمالایزشده جستجو. |
-| `applied_filters` | JSONB | فیلترهای اعمال‌شده روی فید یا نقشه. |
-| `results_count` | Integer | تعداد نتایج بازگردانده‌شده. |
-| `created_at` | Timestamp | زمان انجام جستجو (UTC). |
+| `Id` | `Guid` (PK) | شناسه اسنپ‌شات ترند (UUIDv7). |
+| `CityId` | `Guid` (FK) | شهر هدف (متصل به `City.Id`). |
+| `Type` | `TrendType` | نوع ترند (`TagOrTopic = 1`, `LocationName`, `SubCategory`). |
+| `Keyword` | `string` | کلیدواژه یا مکان ترندشده. |
+| `TrendScore` | `decimal` | امتیاز محاسبه‌شده نرخ رشد در ۲۴ ساعت گذشته. |
+| `ActiveEkipsCount` | `int` | تعداد اکیپ‌های باز مرتبط با این ترند. |
+| `Rank` | `int` | رتبه ترند در شهر. |
+| `CreatedAtUtc` | `DateTime` | زمان محاسبه اسنپ‌شات (UTC). |
 
 ---
 
-#### ۶. مدل ترندهای محاسبه‌شده هر شهر (`CityTrendSnapshot`)
-| نام فیلد (Field) | نوع داده (Type) | توضیحات و قوانین بیزینس |
+#### ۶. مدل لاگ جستجوهای کاربران (`SearchQueryLog`)
+* **وراثت:** `BaseEntity`, `IAggregateRoot`, `ICreatedAuditable`
+* **مسیر:** `Ekip.Domain.Entities.Trend`
+
+| نام پراپرتی (Property) | نوع داده در C# (Type) | توضیحات و قوانین معماری |
 | :--- | :--- | :--- |
-| `id` | UUID (PK) | شناسه ترند. |
-| `city_id` | UUID (FK) | شهر هدف (متصل به `City`). |
-| `trend_type` | Enum | `TAG_OR_TOPIC`, `LOCATION_NAME`, `SUB_CATEGORY`. |
-| `keyword` | String | کلیدواژه یا مکان ترندشده. |
-| `trend_score` | Float | امتیاز محاسبه‌شده نرخ رشد در ۲۴ ساعت گذشته. |
-| `active_ekips_count` | Integer | تعداد اکیپ‌های باز فعال مرتبط با ترند. |
-| `calculated_at` | Timestamp | زمان محاسبه ترند (UTC). |
+| `Id` | `Guid` (PK) | شناسه لاگ جستجو (UUIDv7). |
+| `UserId` | `Guid?` (FK) | کاربر جستجوکننده (اختیاری). |
+| `CityId` | `Guid` (FK) | شهر محل جستجو. |
+| `NormalizedQuery` | `string` | عبارت نرمالایزشده جستجو. |
+| `ResultsCount` | `int` | تعداد نتایج بازگردانده‌شده. |
+| `CreatedAtUtc` | `DateTime` | زمان انجام جستجو (UTC). |
 
 ---
 
-### بخش سوم: تنظیمات پویا و فلگ‌های سیستم (`SystemSetting`)
+### بخش سوم: تنظیمات پویا و Feature Flagهای سیستم (`Ekip.Domain.Entities.Configuration`)
 
-#### ۷. مدل تنظیمات سراسری و پارامترهای سیستم (`SystemSetting`)
-*نگهداری پارامترهای عملیاتی، Feature Flagها و ضرایب Extensionهای محاسباتی Honor/XP.*
+#### ۷. مدل تنظیمات سراسری سیستم (`SystemSetting`)
+* **وراثت:** `BaseEntity`, `IAggregateRoot`, `IAuditableEntity` *(دارای کلید اصلی `Guid Id` هماهنگ با کل سیستم و ایندکس یکتا روی `Key`)*
+* **مسیر:** `Ekip.Domain.Entities.Configuration`
 
-| نام فیلد (Field) | نوع داده (Type) | توضیحات و قوانین معماری |
+| نام پراپرتی (Property) | نوع داده در C# (Type) | توضیحات و قوانین معماری |
 | :--- | :--- | :--- |
-| `key` | String (PK) | کلید یکتا (مانند `app.force_update_version`, `feature.face_verification_enabled`, `reputation.extension_params`). |
-| `value` | JSONB | مقادیر ساختاریافته تنظیمات. |
-| `description` | String | شرح عملکرد تنظیم در پنل مدیریت. |
-| `updated_by_admin_id` | UUID (FK) | متصل به `AdminAccount`. |
-| `updated_at` | Timestamp | زمان آخرین بروزرسانی (UTC). |
+| `Id` | `Guid` (PK) | شناسه یکتای تنظیم (UUIDv7). |
+| `Key` | `string` (Unique) | کلید یکتای متنی (مانند `app.force_update_version`). |
+| `ValueJson` | `string` | مقدار ساختاریافته تنظیمات (JSON). |
+| `Description` | `string` | شرح عملکرد تنظیم در پنل مدیریت. |
+| `IsPublic` | `bool` | مجوز ارسال این تنظیم به کلاینت‌های عمومی (موبایل/وب). |
+| `CreatedByAdminId` | `Guid` (FK) | ادمین ایجادکننده اولیه تنظیم. |
+| `UpdatedByAdminId` | `Guid?` (FK) | آخرین ادمین ویرایش‌کننده تنظیم. |
+| `CreatedAtUtc` | `DateTime` | زمان ایجاد تنظیم (UTC). |
+| `UpdatedAtUtc` | `DateTime?` | زمان آخرین بروزرسانی (UTC). |
