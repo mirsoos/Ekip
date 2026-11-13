@@ -9,7 +9,7 @@ public sealed class ApplicationCompanionConfiguration : IEntityTypeConfiguration
 {
     public void Configure(EntityTypeBuilder<ApplicationCompanion> builder)
     {
-        builder.ToTable("application_companions");
+        builder.ToTable(nameof(ApplicationCompanion));
 
         builder.HasKey(x => x.Id);
         builder.Property(x => x.Id).ValueGeneratedNever();

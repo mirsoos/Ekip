@@ -3,7 +3,7 @@ using Ekip.Domain.Enums.Billing;
 
 namespace Ekip.Domain.Entities.Billing;
 
-public class WalletLedger : BaseEntity, IAggregateRoot, ICreatedAuditable
+public class WalletLedger : BaseEntity, IAggregateRoot, ICreatedAuditable,IAppendOnlyEntity
 {
     public Guid IdempotencyKey { get; private set; }
     public Guid UserId { get; private set; }

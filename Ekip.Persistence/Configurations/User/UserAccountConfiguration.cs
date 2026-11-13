@@ -44,8 +44,9 @@ public sealed class UserAccountConfiguration : IEntityTypeConfiguration<UserAcco
         builder.OwnsMany(x => x.OAuthProviders, nav =>
         {
             nav.ToJson();
+            nav.ToJson("oauth_providers");
         });
-        builder.Navigation(x => x.OAuthProviders).HasField("_oAuthProviders").UsePropertyAccessMode(PropertyAccessMode.Field);
+        builder.Navigation(x => x.OAuthProviders).HasField("_oauthProviders").UsePropertyAccessMode(PropertyAccessMode.Field);
         // Self-Referencing Referral FK
         builder.HasOne<UserAccount>()
             .WithMany()
@@ -53,9 +54,18 @@ public sealed class UserAccountConfiguration : IEntityTypeConfiguration<UserAcco
             .OnDelete(DeleteBehavior.Restrict);
 
         // Indexes
-        builder.HasIndex(x => x.Username).IsUnique();
-        builder.HasIndex(x => x.PhoneNumber).IsUnique().HasFilter("phone_number IS NOT NULL");
-        builder.HasIndex(x => x.Email).IsUnique().HasFilter("email IS NOT NULL");
+        builder.HasIndex(x => x.Username)
+            .IsUnique()
+            .HasFilter("is_deleted = false");
+
+        builder.HasIndex(x => x.Email)
+            .IsUnique()
+            .HasFilter("email IS NOT NULL AND is_deleted = false");
+
+        builder.HasIndex(x => x.PhoneNumber)
+            .IsUnique()
+            .HasFilter("phone_number IS NOT NULL AND is_deleted = false");
+
         builder.HasIndex(x => x.NationalIdHash).IsUnique().HasFilter("national_id_hash IS NOT NULL");
         builder.HasIndex(x => x.ReferralCode).IsUnique();
 

@@ -3,7 +3,7 @@ using Ekip.Domain.Enums.Gamification;
 
 namespace Ekip.Domain.Entities.Gamification
 {
-    public class ReputationLedger : BaseEntity, IAggregateRoot, ICreatedAuditable
+    public class ReputationLedger : BaseEntity, IAggregateRoot, ICreatedAuditable,IAppendOnlyEntity
     {
         public Guid UserId { get; private set; }
         public Guid? ActorId { get; private set; }

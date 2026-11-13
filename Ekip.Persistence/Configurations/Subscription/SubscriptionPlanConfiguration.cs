@@ -1,4 +1,5 @@
 ﻿using Ekip.Domain.Entities.Subscription;
+using Ekip.Persistence.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -36,10 +37,9 @@ public sealed class SubscriptionPlanConfiguration : IEntityTypeConfiguration<Sub
         });
 
         // JSONB Mapping for Entitlements
-        builder.OwnsOne(x => x.Entitlements, nav =>
-        {
-            nav.ToJson();
-        });
+        builder.Property(x => x.Entitlements)
+            .HasJsonbConversion()
+            .IsRequired();
 
         builder.HasIndex(x => x.Code).IsUnique();
     }

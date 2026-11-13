@@ -1,5 +1,6 @@
 ﻿using Ekip.Domain.Entities.AI;
 using Ekip.Domain.Entities.Location;
+using Ekip.Persistence.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -16,9 +17,8 @@ public sealed class EkipSemanticVectorConfiguration : IEntityTypeConfiguration<E
 
         builder.Property<uint>("Version").IsRowVersion();
 
-        // PostgreSQL pgvector (1536 dimensions)
         builder.Property(x => x.ContentVector)
-            .HasColumnType("vector(1536)")
+            .HasPgVectorConversion(1536)
             .IsRequired();
 
         builder.HasOne<Domain.Entities.Ekip.Ekip>()

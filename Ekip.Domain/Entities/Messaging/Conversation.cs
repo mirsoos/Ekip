@@ -8,8 +8,8 @@ namespace Ekip.Domain.Entities.Messaging
     {
         public ConversationType ConversationType { get; private set; }
         public Guid? EkipId { get; private set; }
-        public Guid ParticipantOneId { get; private set; }
-        public Guid ParticipantTwoId { get; private set; }
+        public Guid? ParticipantOneId { get; private set; }
+        public Guid? ParticipantTwoId { get; private set; }
         public ChatTheme? Theme { get; private set; }
         public Guid? LastMessageId { get; private set; }
         public string? LastMessagePreview { get; private set; }

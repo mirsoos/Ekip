@@ -12,7 +12,7 @@ public sealed class GeoLocationValueConverter : ValueConverter<GeoLocation, Poin
     public GeoLocationValueConverter()
         : base(
             geo => GeometryFactory.CreatePoint(new Coordinate(geo.Longitude, geo.Latitude)),
-            point => new GeoLocation(point.Y, point.X))
+            point => GeoLocation.Rehydrate(point.Y, point.X))
     {
     }
 }

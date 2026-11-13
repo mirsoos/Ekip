@@ -3,7 +3,7 @@ using Ekip.Domain.Enums.Admin;
 
 namespace Ekip.Domain.Entities.Admin
 {
-    public class AdminAuditLog : BaseEntity , IAggregateRoot,ICreatedAuditable
+    public class AdminAuditLog : BaseEntity , IAggregateRoot,ICreatedAuditable,IAppendOnlyEntity
     {
         public Guid AdminId { get; private set; }
         public AdminActionType ActionType { get; private set; }

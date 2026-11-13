@@ -1,4 +1,5 @@
-﻿using Ekip.Domain.Exceptions;
+﻿using Ekip.Domain.Errors.Location;
+using Ekip.Domain.Results;
 
 namespace Ekip.Domain.ValueObjects.Ekip;
 
@@ -11,26 +12,45 @@ public sealed record GeoLocation
 
     private GeoLocation() { }
 
-    public GeoLocation(double latitude, double longitude)
+    private GeoLocation(double latitude, double longitude)
     {
-        if (double.IsNaN(latitude) || latitude < -90.0 || latitude > 90.0)
-            throw new DomainException("عرض جغرافیایی (Latitude) باید بین -90 و +90 درجه باشد.");
-
-        if (double.IsNaN(longitude) || longitude < -180.0 || longitude > 180.0)
-            throw new DomainException("طول جغرافیایی (Longitude) باید بین -180 و +180 درجه باشد.");
-
-        Latitude = Math.Round(latitude, 6);   // دقت ~11 سانتی‌متر (استاندارد GPS)
+        Latitude = Math.Round(latitude, 6);
         Longitude = Math.Round(longitude, 6);
     }
 
-    /// <summary>
-    /// تولید نقطه عمومی روی نقشه با انحراف تصادفی (Jitter) بین حداقل و حداکثر متر مشخص‌شده
-    /// جهت حفظ حریم خصوصی اکیپ‌های دارای مکان مخفی (IsDetailsPrivate = true)
-    /// </summary>
+    public static Result<GeoLocation> Create(double latitude, double longitude)
+    {
+        List<Error>? errors = null;
+
+        if (!double.IsFinite(latitude) || latitude is < -90.0 or > 90.0)
+        {
+            errors ??= [];
+            errors.Add(LocationErrors.InvalidLatitude);
+        }
+
+        if (!double.IsFinite(longitude) || longitude is < -180.0 or > 180.0)
+        {
+            errors ??= [];
+            errors.Add(LocationErrors.InvalidLongitude);
+        }
+
+        if (errors is not null)
+        {
+            return errors.Count == 1
+                ? errors[0]
+                : new ValidationError(errors);
+        }
+
+        return new GeoLocation(latitude, longitude);
+    }
+
+    internal static GeoLocation Rehydrate(double latitude, double longitude) =>
+        new(latitude, longitude);
+
     public GeoLocation CreateJitteredPoint(int minOffsetMeters = 300, int maxOffsetMeters = 500)
     {
-        if (minOffsetMeters < 0 || maxOffsetMeters <= minOffsetMeters)
-            throw new DomainException("بازه انحراف مکانی نامعتبر است.");
+        ArgumentOutOfRangeException.ThrowIfNegative(minOffsetMeters);
+        ArgumentOutOfRangeException.ThrowIfLessThanOrEqual(maxOffsetMeters, minOffsetMeters);
 
         var distanceMeters = Random.Shared.NextDouble() * (maxOffsetMeters - minOffsetMeters) + minOffsetMeters;
         var angleRadians = Random.Shared.NextDouble() * 2.0 * Math.PI;
@@ -47,9 +67,6 @@ public sealed record GeoLocation
         return new GeoLocation(newLat, newLon);
     }
 
-    /// <summary>
-    /// محاسبه فاصله مستقیم (Haversine) تا یک نقطه دیگر بر حسب متر (جهت بررسی شعاع حضور و غیاب Check-In)
-    /// </summary>
     public double DistanceInMetersTo(GeoLocation other)
     {
         ArgumentNullException.ThrowIfNull(other);
