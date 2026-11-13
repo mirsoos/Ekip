@@ -3,7 +3,7 @@ using Ekip.Domain.Enums.Ekip;
 
 namespace Ekip.Domain.Entities.Ekip
 {
-    public class EkipHostCompanion : BaseEntity , IAggregateRoot , ICreatedAuditable
+    public class EkipHostCompanion : BaseEntity , ICreatedAuditable
     {
         public Guid EkipId { get; private set; }
         public Guid CompanionUserId { get; private set; }

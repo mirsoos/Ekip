@@ -15,8 +15,6 @@ public sealed class AdminSessionConfiguration : IEntityTypeConfiguration<AdminSe
 
         builder.Property<uint>("Version").IsRowVersion();
 
-        builder.Ignore(x => x.IsCurrentlyActive);
-
         builder.Property(x => x.RefreshTokenHash)
             .IsRequired()
             .HasMaxLength(256);

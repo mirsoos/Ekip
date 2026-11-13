@@ -16,8 +16,6 @@ public sealed class PromoCodeConfiguration : IEntityTypeConfiguration<PromoCode>
 
         builder.Property<uint>("Version").IsRowVersion();
 
-        builder.Ignore(x => x.IsCurrentlyValid);
-
         builder.Property(x => x.Code)
             .IsRequired()
             .HasMaxLength(50);

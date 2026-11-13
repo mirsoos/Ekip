@@ -15,8 +15,6 @@ public sealed class UserDeviceSessionConfiguration : IEntityTypeConfiguration<Us
 
         builder.Property<uint>("Version").IsRowVersion();
 
-        builder.Ignore(x => x.IsCurrentlyActive);
-
         builder.Property(x => x.DeviceId)
             .IsRequired()
             .HasMaxLength(128);

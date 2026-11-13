@@ -8,10 +8,10 @@ namespace Ekip.Domain.Entities.Subscription
         public Guid SubscriptionPlanId { get; private set; }
         public DateTime StartsAtUtc { get; private set; }
         public DateTime? ExpiresAtUtc { get; private set; }
-        public bool IsCurrentlyActive => ExpiresAtUtc is null || ExpiresAtUtc > DateTime.UtcNow;
         public QuotaUsage QuotaUsage { get; private set; }
         public Guid IdempotencyKey { get; private set; }
         public DateTime? UpdatedAtUtc { get; private set; }
         public DateTime CreatedAtUtc { get; private set; }
+        public bool IsActiveAt(DateTime utcNow) => ExpiresAtUtc is null || ExpiresAtUtc > utcNow;
     }
 }

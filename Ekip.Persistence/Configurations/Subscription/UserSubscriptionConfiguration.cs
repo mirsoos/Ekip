@@ -16,8 +16,6 @@ public sealed class UserSubscriptionConfiguration : IEntityTypeConfiguration<Use
 
         builder.Property<uint>("Version").IsRowVersion();
 
-        builder.Ignore(x => x.IsCurrentlyActive);
-
         builder.OwnsOne(x => x.QuotaUsage, nav =>
         {
             nav.ToJson();

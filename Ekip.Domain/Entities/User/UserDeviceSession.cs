@@ -22,5 +22,5 @@ public class UserDeviceSession : BaseEntity, IAggregateRoot, IAuditableEntity
     public DateTime CreatedAtUtc { get; private set; }
     public DateTime? UpdatedAtUtc { get; private set; }
 
-    public bool IsCurrentlyActive => !IsRevoked && ExpiresAtUtc > DateTime.UtcNow;
+    public bool IsActiveAt(DateTime utcNow) => !IsRevoked && ExpiresAtUtc > utcNow;
 }

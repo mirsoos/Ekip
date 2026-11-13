@@ -39,6 +39,8 @@ namespace Ekip.Domain.Entities.Ekip
         public DateTime? UpdatedAtUtc { get; private set; }
         public bool IsDeleted { get; private set; } = false;
         public DateTime? DeletedAtUtc { get; private set; }
+        private readonly List<EkipHostCompanion> _hostCompanions = [];
+        public IReadOnlyCollection<EkipHostCompanion> HostCompanions => _hostCompanions.AsReadOnly();
         private readonly List<string> _tags = [];
         public IReadOnlyCollection<string> Tags => _tags.AsReadOnly();
         private readonly List<Guid> _mediaAssetIds = [];

@@ -21,11 +21,11 @@ namespace Ekip.Domain.Entities.Admin
         public DateTime? UpdatedAtUtc { get; private set; }
         public bool IsDeleted { get; private set; } = false;
         public DateTime? DeletedAtUtc { get; private set; }
-        public bool IsLockedOut => LockedUntilUtc.HasValue && LockedUntilUtc.Value > DateTime.UtcNow;
         private readonly List<string> _allowedIps = [];
         public IReadOnlyCollection<string> AllowedIps => _allowedIps.AsReadOnly();
         private readonly List<string> _permissions = [];
         public IReadOnlyCollection<string> Permissions => _permissions.AsReadOnly();
+        public bool IsLockedOutAt(DateTime utcNow) => LockedUntilUtc.HasValue && LockedUntilUtc.Value > utcNow;
 
     }
 }

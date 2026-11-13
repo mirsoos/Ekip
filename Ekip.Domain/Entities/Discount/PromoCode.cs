@@ -12,9 +12,9 @@ namespace Ekip.Domain.Entities.Discount
         public int UsedCount { get; private set; } = 0;
         public Guid? TargetUserId { get; private set; }
         public bool IsActive { get; private set; } = true;
-        public bool IsCurrentlyValid => IsActive && UsedCount < MaxUses && ExpiresAtUtc > DateTime.UtcNow;
         public DateTime ExpiresAtUtc { get; private set; }
         public DateTime CreatedAtUtc { get; private set; }
         public DateTime? UpdatedAtUtc { get; private set; }
+        public bool IsValidAt(DateTime utcNow) => IsActive && UsedCount < MaxUses && ExpiresAtUtc > utcNow;
     }
 }

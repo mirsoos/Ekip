@@ -15,8 +15,6 @@ public sealed class AdminAccountConfiguration : IEntityTypeConfiguration<AdminAc
 
         builder.Property<uint>("Version").IsRowVersion();
 
-        builder.Ignore(x => x.IsLockedOut);
-
         builder.Property(x => x.UserName)
             .IsRequired()
             .HasMaxLength(50);
