@@ -46,17 +46,8 @@ public sealed class ChatMessageConfiguration : IEntityTypeConfiguration<ChatMess
             .HasForeignKey(x => x.SenderId)
             .OnDelete(DeleteBehavior.Restrict);
 
-        // Self-referencing FK for Replies
-        builder.HasOne<ChatMessage>()
-            .WithMany()
-            .HasForeignKey(x => x.ReplyToMessageId)
-            .OnDelete(DeleteBehavior.SetNull);
-
-        // Client Idempotency Key
-        builder.HasIndex(x => x.IdempotencyKey).IsUnique();
-
-        // Fast pagination of messages inside a conversation (UUIDv7 / CreatedAtUtc)
-        builder.HasIndex(x => new { x.ConversationId, x.CreatedAtUtc });
+        // Fast keyset/cursor pagination of messages inside a conversation (UUIDv7 time-ordered)
+        builder.HasIndex(x => new { x.ConversationId, x.Id });
 
         // Fast lookup for Pinned messages in a conversation
         builder.HasIndex(x => new { x.ConversationId, x.IsPinned })

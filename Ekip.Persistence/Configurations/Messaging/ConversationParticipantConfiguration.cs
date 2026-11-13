@@ -26,11 +26,6 @@ public sealed class ConversationParticipantConfiguration : IEntityTypeConfigurat
             .HasForeignKey(x => x.UserId)
             .OnDelete(DeleteBehavior.Restrict);
 
-        builder.HasOne<ChatMessage>()
-            .WithMany()
-            .HasForeignKey(x => x.LastReadMessageId)
-            .OnDelete(DeleteBehavior.SetNull);
-
         builder.HasIndex(x => new { x.ConversationId, x.UserId }).IsUnique();
         builder.HasIndex(x => new { x.UserId, x.IsActive });
     }

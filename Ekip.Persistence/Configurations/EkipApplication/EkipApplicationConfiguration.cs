@@ -53,8 +53,14 @@ public sealed class EkipApplicationConfiguration : IEntityTypeConfiguration<Doma
         builder.HasIndex(x => x.IdempotencyKey).IsUnique();
         // FIFO Waitlist & Host pending list index
         builder.HasIndex(x => new { x.EkipId, x.ApplicationStatus, x.CreatedAtUtc });
-        builder.HasIndex(x => new { x.ApplicantId, x.EkipId });
 
         builder.HasQueryFilter(x => !x.IsDeleted);
+
+        builder.HasIndex(x => new { x.ApplicantId, x.EkipId })
+            .IsUnique()
+            .HasFilter("is_deleted = false AND application_status IN ('WaitingCompanionApproval', 'PendingHostApproval', 'Waitlisted', 'Approved')");
+
+        builder.HasIndex(x => new { x.ApplicantId, x.CreatedAtUtc });
+
     }
 }

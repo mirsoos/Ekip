@@ -41,6 +41,11 @@ public sealed class NotificationConfiguration : IEntityTypeConfiguration<Domain.
             .HasForeignKey(x => x.ActorId)
             .OnDelete(DeleteBehavior.SetNull);
 
-        builder.HasIndex(x => new { x.RecipientId, x.IsRead, x.CreatedAtUtc });
+        // Full notification feed with deterministic UUIDv7 cursor pagination
+        builder.HasIndex(x => new { x.RecipientId, x.Id }, "ix_notification_recipient_id_id");
+
+        // Tiny partial index for unread badge count & unread notifications tab
+        builder.HasIndex(x => new { x.RecipientId, x.Id }, "ix_notification_recipient_id_id_unread")
+            .HasFilter("is_read = false");
     }
 }

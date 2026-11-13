@@ -29,6 +29,6 @@ public sealed class SearchQueryLogConfiguration : IEntityTypeConfiguration<Searc
             .HasForeignKey(x => x.CityId)
             .OnDelete(DeleteBehavior.Cascade);
 
-        builder.HasIndex(x => new { x.CityId, x.NormalizedQuery, x.CreatedAtUtc });
+        builder.HasIndex(x => new { x.CityId, x.CreatedAtUtc, x.NormalizedQuery });
     }
 }

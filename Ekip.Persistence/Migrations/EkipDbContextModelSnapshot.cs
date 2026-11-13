@@ -1426,8 +1426,13 @@ namespace Ekip.Persistence.Migrations
                         .IsUnique()
                         .HasDatabaseName("ix_ekip_application_idempotency_key");
 
+                    b.HasIndex("ApplicantId", "CreatedAtUtc")
+                        .HasDatabaseName("ix_ekip_application_applicant_id_created_at_utc");
+
                     b.HasIndex("ApplicantId", "EkipId")
-                        .HasDatabaseName("ix_ekip_application_applicant_id_ekip_id");
+                        .IsUnique()
+                        .HasDatabaseName("ix_ekip_application_applicant_id_ekip_id")
+                        .HasFilter("is_deleted = false AND application_status IN ('WaitingCompanionApproval', 'PendingHostApproval', 'Waitlisted', 'Approved')");
 
                     b.HasIndex("EkipId", "ApplicationStatus", "CreatedAtUtc")
                         .HasDatabaseName("ix_ekip_application_ekip_id_application_status_created_at_utc");
@@ -1916,18 +1921,11 @@ namespace Ekip.Persistence.Migrations
                     b.HasKey("Id")
                         .HasName("pk_chat_message");
 
-                    b.HasIndex("IdempotencyKey")
-                        .IsUnique()
-                        .HasDatabaseName("ix_chat_message_idempotency_key");
-
-                    b.HasIndex("ReplyToMessageId")
-                        .HasDatabaseName("ix_chat_message_reply_to_message_id");
-
                     b.HasIndex("SenderId")
                         .HasDatabaseName("ix_chat_message_sender_id");
 
-                    b.HasIndex("ConversationId", "CreatedAtUtc")
-                        .HasDatabaseName("ix_chat_message_conversation_id_created_at_utc");
+                    b.HasIndex("ConversationId", "Id")
+                        .HasDatabaseName("ix_chat_message_conversation_id_id");
 
                     b.HasIndex("ConversationId", "IsPinned")
                         .HasDatabaseName("ix_chat_message_conversation_id_is_pinned")
@@ -2067,9 +2065,6 @@ namespace Ekip.Persistence.Migrations
 
                     b.HasKey("Id")
                         .HasName("pk_conversation_participant");
-
-                    b.HasIndex("LastReadMessageId")
-                        .HasDatabaseName("ix_conversation_participant_last_read_message_id");
 
                     b.HasIndex("ConversationId", "UserId")
                         .IsUnique()
@@ -2241,8 +2236,12 @@ namespace Ekip.Persistence.Migrations
                     b.HasIndex("ActorId")
                         .HasDatabaseName("ix_notification_actor_id");
 
-                    b.HasIndex("RecipientId", "IsRead", "CreatedAtUtc")
-                        .HasDatabaseName("ix_notification_recipient_id_is_read_created_at_utc");
+                    b.HasIndex(new[] { "RecipientId", "Id" }, "ix_notification_recipient_id_id")
+                        .HasDatabaseName("ix_notification_recipient_id_id");
+
+                    b.HasIndex(new[] { "RecipientId", "Id" }, "ix_notification_recipient_id_id_unread")
+                        .HasDatabaseName("ix_notification_recipient_id_id1")
+                        .HasFilter("is_read = false");
 
                     b.ToTable("Notification", (string)null);
                 });
@@ -2645,8 +2644,8 @@ namespace Ekip.Persistence.Migrations
                     b.HasIndex("UserId")
                         .HasDatabaseName("ix_search_query_log_user_id");
 
-                    b.HasIndex("CityId", "NormalizedQuery", "CreatedAtUtc")
-                        .HasDatabaseName("ix_search_query_log_city_id_normalized_query_created_at_utc");
+                    b.HasIndex("CityId", "CreatedAtUtc", "NormalizedQuery")
+                        .HasDatabaseName("ix_search_query_log_city_id_created_at_utc_normalized_query");
 
                     b.ToTable("SearchQueryLog", (string)null);
                 });
@@ -3448,7 +3447,7 @@ namespace Ekip.Persistence.Migrations
                         .HasConstraintName("fk_ekip_host_companion_user_accounts_companion_user_id");
 
                     b.HasOne("Ekip.Domain.Entities.Ekip.Ekip", null)
-                        .WithMany()
+                        .WithMany("HostCompanions")
                         .HasForeignKey("EkipId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
@@ -3638,12 +3637,6 @@ namespace Ekip.Persistence.Migrations
                         .IsRequired()
                         .HasConstraintName("fk_chat_message_conversations_conversation_id");
 
-                    b.HasOne("Ekip.Domain.Entities.Messaging.ChatMessage", null)
-                        .WithMany()
-                        .HasForeignKey("ReplyToMessageId")
-                        .OnDelete(DeleteBehavior.SetNull)
-                        .HasConstraintName("fk_chat_message_chat_message_reply_to_message_id");
-
                     b.HasOne("Ekip.Domain.Entities.User.UserAccount", null)
                         .WithMany()
                         .HasForeignKey("SenderId")
@@ -3739,12 +3732,6 @@ namespace Ekip.Persistence.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("fk_conversation_participant_conversation_conversation_id");
-
-                    b.HasOne("Ekip.Domain.Entities.Messaging.ChatMessage", null)
-                        .WithMany()
-                        .HasForeignKey("LastReadMessageId")
-                        .OnDelete(DeleteBehavior.SetNull)
-                        .HasConstraintName("fk_conversation_participant_chat_message_last_read_message_id");
 
                     b.HasOne("Ekip.Domain.Entities.User.UserAccount", null)
                         .WithMany()
@@ -4058,6 +4045,11 @@ namespace Ekip.Persistence.Migrations
                         .HasForeignKey("InboxMessageId", "InboxConsumerId")
                         .HasPrincipalKey("MessageId", "ConsumerId")
                         .HasConstraintName("fk_outbox_message_inbox_state_inbox_message_id_inbox_consumer_");
+                });
+
+            modelBuilder.Entity("Ekip.Domain.Entities.Ekip.Ekip", b =>
+                {
+                    b.Navigation("HostCompanions");
                 });
 
             modelBuilder.Entity("Ekip.Domain.Entities.EkipApplication.EkipApplication", b =>

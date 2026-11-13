@@ -1001,12 +1001,6 @@ namespace Ekip.Persistence.Migrations
                 {
                     table.PrimaryKey("pk_chat_message", x => x.id);
                     table.ForeignKey(
-                        name: "fk_chat_message_chat_message_reply_to_message_id",
-                        column: x => x.reply_to_message_id,
-                        principalTable: "ChatMessage",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.SetNull);
-                    table.ForeignKey(
                         name: "fk_chat_message_user_accounts_sender_id",
                         column: x => x.sender_id,
                         principalTable: "UserAccount",
@@ -1069,12 +1063,6 @@ namespace Ekip.Persistence.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("pk_conversation_participant", x => x.id);
-                    table.ForeignKey(
-                        name: "fk_conversation_participant_chat_message_last_read_message_id",
-                        column: x => x.last_read_message_id,
-                        principalTable: "ChatMessage",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.SetNull);
                     table.ForeignKey(
                         name: "fk_conversation_participant_conversation_conversation_id",
                         column: x => x.conversation_id,
@@ -1479,26 +1467,15 @@ namespace Ekip.Persistence.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "ix_chat_message_conversation_id_created_at_utc",
+                name: "ix_chat_message_conversation_id_id",
                 table: "ChatMessage",
-                columns: new[] { "conversation_id", "created_at_utc" });
+                columns: new[] { "conversation_id", "id" });
 
             migrationBuilder.CreateIndex(
                 name: "ix_chat_message_conversation_id_is_pinned",
                 table: "ChatMessage",
                 columns: new[] { "conversation_id", "is_pinned" },
                 filter: "is_pinned = true");
-
-            migrationBuilder.CreateIndex(
-                name: "ix_chat_message_idempotency_key",
-                table: "ChatMessage",
-                column: "idempotency_key",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "ix_chat_message_reply_to_message_id",
-                table: "ChatMessage",
-                column: "reply_to_message_id");
 
             migrationBuilder.CreateIndex(
                 name: "ix_chat_message_sender_id",
@@ -1563,11 +1540,6 @@ namespace Ekip.Persistence.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "ix_conversation_participant_last_read_message_id",
-                table: "ConversationParticipant",
-                column: "last_read_message_id");
-
-            migrationBuilder.CreateIndex(
                 name: "ix_conversation_participant_user_id_is_active",
                 table: "ConversationParticipant",
                 columns: new[] { "user_id", "is_active" });
@@ -1617,9 +1589,16 @@ namespace Ekip.Persistence.Migrations
                 .Annotation("Npgsql:IndexMethod", "gin");
 
             migrationBuilder.CreateIndex(
+                name: "ix_ekip_application_applicant_id_created_at_utc",
+                table: "EkipApplication",
+                columns: new[] { "applicant_id", "created_at_utc" });
+
+            migrationBuilder.CreateIndex(
                 name: "ix_ekip_application_applicant_id_ekip_id",
                 table: "EkipApplication",
-                columns: new[] { "applicant_id", "ekip_id" });
+                columns: new[] { "applicant_id", "ekip_id" },
+                unique: true,
+                filter: "is_deleted = false AND application_status IN ('WaitingCompanionApproval', 'PendingHostApproval', 'Waitlisted', 'Approved')");
 
             migrationBuilder.CreateIndex(
                 name: "ix_ekip_application_ekip_id_application_status_created_at_utc",
@@ -1695,9 +1674,15 @@ namespace Ekip.Persistence.Migrations
                 column: "actor_id");
 
             migrationBuilder.CreateIndex(
-                name: "ix_notification_recipient_id_is_read_created_at_utc",
+                name: "ix_notification_recipient_id_id",
                 table: "Notification",
-                columns: new[] { "recipient_id", "is_read", "created_at_utc" });
+                columns: new[] { "recipient_id", "id" });
+
+            migrationBuilder.CreateIndex(
+                name: "ix_notification_recipient_id_id1",
+                table: "Notification",
+                columns: new[] { "recipient_id", "id" },
+                filter: "is_read = false");
 
             migrationBuilder.CreateIndex(
                 name: "ix_outbox_message_inbox_message_id_inbox_consumer_id_sequence_",
@@ -1823,9 +1808,9 @@ namespace Ekip.Persistence.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "ix_search_query_log_city_id_normalized_query_created_at_utc",
+                name: "ix_search_query_log_city_id_created_at_utc_normalized_query",
                 table: "SearchQueryLog",
-                columns: new[] { "city_id", "normalized_query", "created_at_utc" });
+                columns: new[] { "city_id", "created_at_utc", "normalized_query" });
 
             migrationBuilder.CreateIndex(
                 name: "ix_search_query_log_user_id",
@@ -2078,6 +2063,9 @@ namespace Ekip.Persistence.Migrations
                 name: "ApplicationCompanion");
 
             migrationBuilder.DropTable(
+                name: "ChatMessage");
+
+            migrationBuilder.DropTable(
                 name: "CityTrendSnapshot");
 
             migrationBuilder.DropTable(
@@ -2150,7 +2138,7 @@ namespace Ekip.Persistence.Migrations
                 name: "AIConversation");
 
             migrationBuilder.DropTable(
-                name: "ChatMessage");
+                name: "Conversation");
 
             migrationBuilder.DropTable(
                 name: "EkipApplication");
@@ -2169,9 +2157,6 @@ namespace Ekip.Persistence.Migrations
 
             migrationBuilder.DropTable(
                 name: "SubscriptionPlan");
-
-            migrationBuilder.DropTable(
-                name: "Conversation");
 
             migrationBuilder.DropTable(
                 name: "AdminAccount");
