@@ -7,8 +7,8 @@ public sealed record GeoLocation
 {
     private const double EarthRadiusMeters = 6_371_000;
 
-    public double Latitude { get; init; }
-    public double Longitude { get; init; }
+    public double Latitude { get; private init; }
+    public double Longitude { get; private init; }
 
     private GeoLocation() { }
 
