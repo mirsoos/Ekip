@@ -7,6 +7,13 @@
 > * **`ICreatedAuditable`:** دارای `DateTime CreatedAtUtc`.
 > * **`IAuditableEntity`:** مشتق‌شده از `ICreatedAuditable` و دارای `DateTime? UpdatedAtUtc`.
 > * **`ISoftDeletable`:** دارای `bool IsDeleted` و `DateTime? DeletedAtUtc` (حذف نرم برای حفظ یکپارچگی کلیدهای خارجی و تاریخچه).
+> * **`IAppendOnlyEntity`:** مارکر اینترفیس برای موجودیت‌های تغییرناپذیر و فقط-افزودنی (`ReputationLedger`, `WalletLedger`, `AdminAuditLog`) جهت جلوگیری از ویرایش یا حذف در زمان اجرا.
+>
+> **قراردادهای مدیریت خطا و نتیجه (`Ekip.Domain.Results` & `Ekip.Domain.Errors`):**
+> * **الگوی `Result` خالص (`readonly struct`):** برای تمامی خطاهای قابل انتظار بیزینس و اعتبارسنجی ورودی کاربر از `Result` و `Result<TValue>` (پیاده‌سازی‌شده با `IResult` و `IResult<TSelf>` بدون Heap Allocation در مسیر موفقیت) استفاده می‌شود.
+> * **مرز `Result` در برابر Exception:** خطاهای ورودی کاربر و قوانین دامنه از طریق `Result` برمی‌گردند؛ متدهای داخلی سرور هنگام نقض قرارداد برنامه‌نویس از Guard Clause (`ArgumentException` / `ArgumentOutOfRangeException`) استفاده می‌کنند. برای بازسازی سریع ValueObjectها هنگام خواندن از دیتابیس بدون سربار اعتبارسنجی، از متد `internal Rehydrate(...)` به همراه `InternalsVisibleTo("Ekip.Persistence")` استفاده می‌شود.
+> * **ساختار `Error` و کد خطا:** هر خطا دارای `Code` ماشینی با فرمت **`MODULE.ERROR_CODE`** (`UPPER_SNAKE`)، `Message` انگلیسی مختصر (فقط جهت لاگ/Fallback و نه متن UI)، `ErrorType`، و `Metadata` اختیاری برای پارامترهای چندزبانه‌سازی (`i18n`) است. خطاهای چندتایی در `ValidationError` (دارای `ImmutableArray<Error>`) تجمیع و Flatten می‌شوند.
+> * **سازمان‌دهی کاتالوگ خطاها:** خطاها به تفکیک ماژول بیزینسی در `Ekip.Domain/Errors/` نگهداری می‌شوند (مانند `LocationErrors` با پیشوند `LOCATION.*`).
 
 ---
 

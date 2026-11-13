@@ -21,6 +21,7 @@
 | `Category` | `EkipCategory` | دسته اصلی (`Entertainment`, `Business`, `Education`). |
 | `SubCategory` | `string` | زیردسته دقیق فعالیت (اجباری جهت شفافیت موضوع دورهمی). |
 | `CityId` | `Guid` (FK) | شهر برگزاری اکیپ (متصل به `City.Id`). |
+| `SponsoredPlaceId` | `Guid?` | شناسه مکان اسپانسرشده (نال‌پذیر و بدون FK در MVP؛ رزروشده برای اتصال به فیچر V2). |
 | `ExactLocationPoint` | `GeoLocation` | مختصات دقیق جغرافیایی (در صورت `IsDetailsPrivate = true` فقط به اعضای تاییدشده نمایش داده می‌شود). |
 | `PublicMapPoint` | `GeoLocation` | مختصات نمایش عمومی روی نقشه (با Jitter تصادفی ۳۰۰ تا ۵۰۰ متر برای اکیپ‌های خصوصی). |
 | `LocationName` | `string` | نام مکان برگزاری (اجباری). |
