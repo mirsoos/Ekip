@@ -6,7 +6,7 @@ namespace Ekip.Domain.Entities.User
 {
     public class UserAccount : BaseEntity, IAggregateRoot, IAuditableEntity , ISoftDeletable
     {
-        public string UserName { get; private set; }
+        public string Username { get; private set; }
         public string? PhoneNumber { get; private set; }
         public string? Email { get; private set; }
         public string? PasswordHash { get; private set; }

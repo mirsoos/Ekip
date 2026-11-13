@@ -14,7 +14,7 @@ namespace Ekip.Domain.Entities.Support
         public DateTime? ClosedAtUtc { get; private set; }
         public DateTime CreatedAtUtc { get; private set; }
         public DateTime? UpdatedAtUtc { get; private set; }
-        private readonly List<TicketMessage> _ticketMessages = [];
-        public IReadOnlyCollection<TicketMessage> TicketMessages => _ticketMessages.AsReadOnly();
+        private readonly List<TicketMessage> _Messages = [];
+        public IReadOnlyCollection<TicketMessage> Messages => _Messages.AsReadOnly();
     }
 }
