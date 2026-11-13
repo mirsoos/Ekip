@@ -32,7 +32,7 @@ public sealed class AuditableAndSoftDeleteInterceptor(TimeProvider timeProvider)
 
         var utcNow = timeProvider.GetUtcNow().UtcDateTime;
 
-        foreach (var entry in context.ChangeTracker.Entries())
+        foreach (var entry in context.ChangeTracker.Entries().ToList())
         {
             if (entry.State is EntityState.Detached or EntityState.Unchanged)
                 continue;
@@ -57,15 +57,44 @@ public sealed class AuditableAndSoftDeleteInterceptor(TimeProvider timeProvider)
         entry.Property(nameof(ISoftDeletable.IsDeleted)).CurrentValue = true;
         entry.Property(nameof(ISoftDeletable.DeletedAtUtc)).CurrentValue = utcNow;
 
-        foreach (var reference in entry.References)
+        RestoreDeletedOwnedNavigations(entry);
+    }
+
+    private static void RestoreDeletedOwnedNavigations(EntityEntry ownerEntry)
+    {
+        foreach (var reference in ownerEntry.References)
         {
             if (reference.TargetEntry is { State: EntityState.Deleted } targetEntry &&
                 targetEntry.Metadata.IsOwned())
             {
                 targetEntry.State = EntityState.Unchanged;
+                RestoreDeletedOwnedNavigations(targetEntry);
+            }
+        }
+
+        foreach (var collection in ownerEntry.Collections)
+        {
+            if (!collection.Metadata.TargetEntityType.IsOwned() ||
+                collection.CurrentValue is not System.Collections.IEnumerable items)
+            {
+                continue;
+            }
+
+            foreach (var item in items)
+            {
+                if (item is null)
+                    continue;
+
+                var targetEntry = ownerEntry.Context.Entry(item);
+                if (targetEntry.State == EntityState.Deleted)
+                {
+                    targetEntry.State = EntityState.Unchanged;
+                    RestoreDeletedOwnedNavigations(targetEntry);
+                }
             }
         }
     }
+
 
     private static void HandleAuditing(EntityEntry entry, DateTime utcNow)
     {

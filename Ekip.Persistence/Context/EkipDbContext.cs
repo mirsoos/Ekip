@@ -109,29 +109,28 @@ public sealed class EkipDbContext(DbContextOptions<EkipDbContext> options)
     }
 
     /// <summary>
-    /// استخراج و پاک‌سازی DomainEventها از موجودیت‌های ردیابی‌شده برای انتشار اتمیک در UnitOfWork.
+    /// خواندن غیرمخرب DomainEventها از موجودیت‌های ردیابی‌شده برای ثبت در Outbox پیش از Commit نهایی.
     /// </summary>
-    public IReadOnlyList<IDomainEvent> PopDomainEvents()
+    public IReadOnlyList<IDomainEvent> GetDomainEvents()
     {
-        var entitiesWithEvents = ChangeTracker
+        return ChangeTracker
             .Entries<Entity>()
-            .Select(e => e.Entity)
-            .Where(e => e.DomainEvents.Count > 0)
+            .SelectMany(e => e.Entity.DomainEvents)
             .ToList();
+    }
 
-        if (entitiesWithEvents.Count == 0)
-            return [];
-
-        var domainEvents = entitiesWithEvents
-            .SelectMany(e => e.DomainEvents)
-            .ToList();
-
-        foreach (var entity in entitiesWithEvents)
+    /// <summary>
+    /// پاک‌سازی DomainEventها صرفاً پس از Commit موفق تراکنش جهت حفظ سلامت Retry در ExecutionStrategy.
+    /// </summary>
+    public void ClearDomainEvents()
+    {
+        foreach (var entry in ChangeTracker.Entries<Entity>())
         {
-            entity.ClearDomainEvents();
+            if (entry.Entity.DomainEvents.Count > 0)
+            {
+                entry.Entity.ClearDomainEvents();
+            }
         }
-
-        return domainEvents;
     }
 
     private static void ApplySoftDeleteQueryFilters(ModelBuilder modelBuilder)

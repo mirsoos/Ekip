@@ -112,6 +112,15 @@ public sealed class EkipConfiguration : IEntityTypeConfiguration<Domain.Entities
             .HasForeignKey(x => x.CityId)
             .OnDelete(DeleteBehavior.Restrict);
 
+        builder.HasMany(x => x.HostCompanions)
+            .WithOne()
+            .HasForeignKey(x => x.EkipId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        builder.Navigation(x => x.HostCompanions)
+            .HasField("_hostCompanions")
+            .UsePropertyAccessMode(PropertyAccessMode.Field);
+
         // Indexes
         builder.HasIndex(x => x.IdempotencyKey).IsUnique();
 

@@ -21,11 +21,6 @@ public sealed class EkipHostCompanionConfiguration : IEntityTypeConfiguration<Ek
             .HasMaxLength(30)
             .IsRequired();
 
-        builder.HasOne<Domain.Entities.Ekip.Ekip>()
-            .WithMany()
-            .HasForeignKey(x => x.EkipId)
-            .OnDelete(DeleteBehavior.Cascade);
-
         builder.HasOne<UserAccount>()
             .WithMany()
             .HasForeignKey(x => x.CompanionUserId)
