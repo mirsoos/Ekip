@@ -1,6 +1,7 @@
 using Ekip.ServiceDefaults;
 using Ekip.Persistence;
 using Ekip.Persistence.Context;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,6 +25,10 @@ app.MapDefaultEndpoints();
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
+
+    using var scope = app.Services.CreateScope();
+    var dbContext = scope.ServiceProvider.GetRequiredService<EkipDbContext>();
+    await dbContext.Database.MigrateAsync();
 }
 
 app.UseHttpsRedirection();
