@@ -2,6 +2,7 @@
 using Ekip.Domain.Enums.User;
 using Ekip.Domain.Errors.User;
 using Ekip.Domain.Events.User;
+using Ekip.Domain.Extensions;
 using Ekip.Domain.Results;
 using Ekip.Domain.ValueObjects.User;
 
@@ -69,8 +70,7 @@ public class UserAccount : BaseEntity, IAggregateRoot, IAuditableEntity, ISoftDe
         if (string.IsNullOrWhiteSpace(referralCode))
             return UserErrors.InvalidReferralCode;
 
-        var normalizedReferral = referralCode.Trim().ToUpperInvariant();
-        if (normalizedReferral.Length is < 4 or > 20)
+        if (!referralCode.TryNormalizeCode(4, 20, out var normalizedReferral))
             return UserErrors.InvalidReferralCode;
 
         var normalizedPasswordHash = string.IsNullOrWhiteSpace(passwordHash) ? null : passwordHash.Trim();

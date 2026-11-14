@@ -1,16 +1,13 @@
-﻿using System.Text.RegularExpressions;
-using Ekip.Domain.Base;
+﻿using Ekip.Domain.Base;
 using Ekip.Domain.Errors.Subscription;
+using Ekip.Domain.Extensions;
 using Ekip.Domain.Results;
 using Ekip.Domain.ValueObjects.Subscription;
 
 namespace Ekip.Domain.Entities.Subscription;
 
-public partial class SubscriptionPlan : BaseEntity, IAggregateRoot, ICreatedAuditable
+public class SubscriptionPlan : BaseEntity, IAggregateRoot, ICreatedAuditable
 {
-    [GeneratedRegex(@"^[A-Z0-9_]{2,50}$", RegexOptions.CultureInvariant)]
-    private static partial Regex CodeRegex();
-
     public string Code { get; private set; }
     public string Title { get; private set; }
     public SubscriptionPrice Price { get; private set; }
@@ -57,8 +54,7 @@ public partial class SubscriptionPlan : BaseEntity, IAggregateRoot, ICreatedAudi
         if (string.IsNullOrWhiteSpace(code))
             return SubscriptionErrors.InvalidPlanCode;
 
-        var normalizedCode = code.Trim().ToUpperInvariant();
-        if (!CodeRegex().IsMatch(normalizedCode))
+        if (!code.TryNormalizeCode(2, 50, out var normalizedCode))
             return SubscriptionErrors.InvalidPlanCode;
 
         if (string.IsNullOrWhiteSpace(title) || title.Trim().Length > 150)
