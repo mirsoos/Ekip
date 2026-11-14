@@ -1,6 +1,8 @@
 ﻿using Ekip.Application.Interfaces;
 using Ekip.Infrastructure.Caching;
 using Ekip.Infrastructure.Caching.Redis;
+using Ekip.Infrastructure.Security.Password;
+using Ekip.Infrastructure.Security.ReferralCode;
 using Ekip.Persistence.Context;
 using MassTransit;
 using Microsoft.Extensions.Configuration;
@@ -16,7 +18,8 @@ public static class DependencyInjection
     {
         services.AddSingleton<ICacheService, RedisCacheService>();
         services.AddSingleton<IIdempotencyService, RedisIdempotencyService>();
-
+        services.AddSingleton<IPasswordHasher, Argon2PasswordHasher>();
+        services.AddSingleton<IReferralCodeGenerator, ReferralCodeGenerator>();
         var rabbitConnectionString = configuration.GetConnectionString("rabbitmq")
             ?? throw new InvalidOperationException("Connection string 'rabbitmq' was not found.");
 
