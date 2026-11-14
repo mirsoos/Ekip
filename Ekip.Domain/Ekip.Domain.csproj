@@ -9,7 +9,6 @@
   <ItemGroup>
 	  <InternalsVisibleTo Include="Ekip.Persistence" />
 	  <Folder Include="Helpers\" />
-    <Folder Include="Events\" />
   </ItemGroup>
 
 </Project>

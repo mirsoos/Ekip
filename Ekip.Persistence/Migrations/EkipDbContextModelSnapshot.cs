@@ -2940,7 +2940,6 @@ namespace Ekip.Persistence.Migrations
                         .HasColumnName("last_seen_at_utc");
 
                     b.Property<string>("MbtiTypes")
-                        .IsRequired()
                         .HasMaxLength(10)
                         .HasColumnType("character varying(10)")
                         .HasColumnName("mbti_types");
@@ -3193,6 +3192,12 @@ namespace Ekip.Persistence.Migrations
                     b.HasKey("SequenceNumber")
                         .HasName("pk_outbox_message");
 
+                    b.HasIndex("EnqueueTime")
+                        .HasDatabaseName("ix_outbox_message_enqueue_time");
+
+                    b.HasIndex("ExpirationTime")
+                        .HasDatabaseName("ix_outbox_message_expiration_time");
+
                     b.HasIndex("OutboxId", "SequenceNumber")
                         .IsUnique()
                         .HasDatabaseName("ix_outbox_message_outbox_id_sequence_number");
@@ -3210,11 +3215,6 @@ namespace Ekip.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid")
                         .HasColumnName("outbox_id");
-
-                    b.Property<string>("BusName")
-                        .HasMaxLength(256)
-                        .HasColumnType("character varying(256)")
-                        .HasColumnName("bus_name");
 
                     b.Property<DateTime>("Created")
                         .HasColumnType("timestamp with time zone")
@@ -3241,8 +3241,8 @@ namespace Ekip.Persistence.Migrations
                     b.HasKey("OutboxId")
                         .HasName("pk_outbox_state");
 
-                    b.HasIndex("BusName", "Created")
-                        .HasDatabaseName("ix_outbox_state_bus_name_created");
+                    b.HasIndex("Created")
+                        .HasDatabaseName("ix_outbox_state_created");
 
                     b.ToTable("outbox_state", (string)null);
                 });

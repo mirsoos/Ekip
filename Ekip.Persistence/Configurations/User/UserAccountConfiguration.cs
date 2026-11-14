@@ -16,13 +16,16 @@ public sealed class UserAccountConfiguration : IEntityTypeConfiguration<UserAcco
         builder.Property<uint>("Version").IsRowVersion();
 
         builder.Property(x => x.Username)
-            .IsRequired()
-            .HasMaxLength(50);
+                    .HasConversion<UsernameValueConverter>()
+                    .IsRequired()
+                    .HasMaxLength(50);
 
         builder.Property(x => x.PhoneNumber)
+            .HasConversion<PhoneNumberValueConverter>()
             .HasMaxLength(20);
 
         builder.Property(x => x.Email)
+            .HasConversion<EmailValueConverter>()
             .HasMaxLength(256);
 
         builder.Property(x => x.PasswordHash)
