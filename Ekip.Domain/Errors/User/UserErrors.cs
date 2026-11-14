@@ -123,4 +123,8 @@ public static class UserErrors
     public static readonly Error UnauthorizedRelationAction = Error.Forbidden(
         "USER.UNAUTHORIZED_RELATION_ACTION",
         "Only the allowed participant can perform this relation action.");
+
+    public static readonly Error NationalIdAlreadyVerified = Error.Conflict(
+    "USER.NATIONAL_ID_ALREADY_VERIFIED",
+    "National ID has already been verified and cannot be changed.");
 }

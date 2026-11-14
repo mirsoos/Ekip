@@ -10,6 +10,34 @@ internal sealed class RedisCacheService(IConnectionMultiplexer connectionMultipl
 
     private IDatabase Database => connectionMultiplexer.GetDatabase();
 
+    private static readonly LuaScript IncrementWithExpiryScript = LuaScript.Prepare(
+        """
+        local current = redis.call('INCR', @key)
+        if current == 1 or redis.call('TTL', @key) == -1 then
+            redis.call('PEXPIRE', @key, @ttlMs)
+        end
+        return current
+        """);
+
+    public async Task<long> IncrementAsync(
+        string key,
+        TimeSpan? expirationIfNew = null,
+        CancellationToken cancellationToken = default)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(key);
+        cancellationToken.ThrowIfCancellationRequested();
+
+        if (!expirationIfNew.HasValue)
+            return await Database.StringIncrementAsync(key);
+
+        var ttlMs = Math.Max(1L, (long)expirationIfNew.Value.TotalMilliseconds);
+        var result = await Database.ScriptEvaluateAsync(
+            IncrementWithExpiryScript,
+            new { key = (RedisKey)key, ttlMs });
+
+        return (long)result;
+    }
+
     public async Task<T?> GetAsync<T>(string key, CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(key);
@@ -41,20 +69,5 @@ internal sealed class RedisCacheService(IConnectionMultiplexer connectionMultipl
         cancellationToken.ThrowIfCancellationRequested();
 
         await Database.KeyDeleteAsync(key);
-    }
-
-    public async Task<long> IncrementAsync(
-        string key,
-        TimeSpan? expirationIfNew = null,
-        CancellationToken cancellationToken = default)
-    {
-        ArgumentException.ThrowIfNullOrWhiteSpace(key);
-        cancellationToken.ThrowIfCancellationRequested();
-
-        var count = await Database.StringIncrementAsync(key);
-        if (count == 1 && expirationIfNew.HasValue)
-            await Database.KeyExpireAsync(key, expirationIfNew.Value);
-
-        return count;
     }
 }

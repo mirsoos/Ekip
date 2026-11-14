@@ -155,6 +155,10 @@ public class ProfileReview : BaseEntity, IAggregateRoot, IAuditableEntity, ISoft
 
     public Result UpdateContent(int newScore, string? newCommentText, DateTime utcNow)
     {
+
+        if (ModerationStatus == ProfileReviewModerationStatus.Rejected)
+            return ReviewErrors.InvalidModerationTransition;
+
         if (newScore is < 1 or > 5)
             return ReviewErrors.InvalidScore;
 

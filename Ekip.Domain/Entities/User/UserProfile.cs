@@ -83,6 +83,9 @@ public class UserProfile : Entity, IAggregateRoot, IAuditableEntity
         if (!Enum.IsDefined(gender))
             return UserErrors.InvalidGender;
 
+        if (cityId == Guid.Empty) 
+            throw new ArgumentException("CityId cannot be empty when provided.", nameof(cityId));
+
         var today = DateOnly.FromDateTime(utcNow);
         if (birthDate > today)
             return UserErrors.InvalidBirthDate;
@@ -121,6 +124,9 @@ public class UserProfile : Entity, IAggregateRoot, IAuditableEntity
         if (string.IsNullOrWhiteSpace(lastName) || lastName.Trim().Length > 100)
             return UserErrors.InvalidLastName;
 
+        if (cityId == Guid.Empty) 
+            throw new ArgumentException("CityId cannot be empty when provided.", nameof(cityId));
+
         var normalizedBio = string.IsNullOrWhiteSpace(bio) ? null : bio.Trim();
         if (normalizedBio?.Length > 1000)
             return UserErrors.InvalidBio;
@@ -150,6 +156,12 @@ public class UserProfile : Entity, IAggregateRoot, IAuditableEntity
 
     public void UpdateMedia(Guid? avatarAssetId, Guid? bannerAssetId)
     {
+
+        if (avatarAssetId == Guid.Empty)
+            throw new ArgumentException("AvatarAssetId cannot be empty when provided.", nameof(avatarAssetId));
+        if (bannerAssetId == Guid.Empty)
+            throw new ArgumentException("BannerAssetId cannot be empty when provided.", nameof(bannerAssetId));
+
         AvatarAssetId = avatarAssetId;
         BannerAssetId = bannerAssetId;
     }

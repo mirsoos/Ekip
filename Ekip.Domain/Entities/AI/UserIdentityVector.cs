@@ -61,6 +61,9 @@ public class UserIdentityVector : Entity, IAuditableEntity, IAggregateRoot
         if (personalityVector.Length != VectorDimensions)
             return AiErrors.InvalidVectorDimensions;
 
+        if (cityId == Guid.Empty)
+            throw new ArgumentException("CityId cannot be empty when provided.", nameof(cityId));
+
         if (!AllFinite(personalityVector))
             return AiErrors.InvalidVectorValues;
 
@@ -114,6 +117,9 @@ public class UserIdentityVector : Entity, IAuditableEntity, IAggregateRoot
 
         if (!IsValidBirthYear(birthYear, utcNow))
             return AiErrors.InvalidBirthYear;
+
+        if (cityId == Guid.Empty)
+            throw new ArgumentException("CityId cannot be empty when provided.", nameof(cityId));
 
         CityId = cityId;
         UserGender = gender;

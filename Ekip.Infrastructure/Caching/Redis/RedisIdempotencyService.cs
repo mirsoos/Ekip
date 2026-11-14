@@ -1,34 +1,50 @@
 ﻿using Ekip.Application.Interfaces;
 using StackExchange.Redis;
 
-namespace Ekip.Infrastructure.Caching;
+namespace Ekip.Infrastructure.Caching.Redis;
 
 internal sealed class RedisIdempotencyService(IConnectionMultiplexer connectionMultiplexer)
     : IIdempotencyService
 {
+    private static readonly LuaScript ReleaseLockScript = LuaScript.Prepare(
+        """
+        if redis.call('GET', @key) == @owner then
+            return redis.call('DEL', @key)
+        end
+        return 0
+        """);
+
     private IDatabase Database => connectionMultiplexer.GetDatabase();
 
     public async Task<bool> TryAcquireLockAsync(
         string lockKey,
+        string ownerToken,
         TimeSpan ttl,
         CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(lockKey);
+        ArgumentException.ThrowIfNullOrWhiteSpace(ownerToken);
         cancellationToken.ThrowIfCancellationRequested();
 
         return await Database.StringSetAsync(
             lockKey,
-            "locked",
+            ownerToken,
             ttl,
             When.NotExists);
     }
 
-    public async Task ReleaseLockAsync(string lockKey, CancellationToken cancellationToken = default)
+    public async Task ReleaseLockAsync(
+        string lockKey,
+        string ownerToken,
+        CancellationToken cancellationToken = default)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(lockKey);
+        ArgumentException.ThrowIfNullOrWhiteSpace(ownerToken);
         cancellationToken.ThrowIfCancellationRequested();
 
-        await Database.KeyDeleteAsync(lockKey);
+        await Database.ScriptEvaluateAsync(
+            ReleaseLockScript,
+            new { key = (RedisKey)lockKey, owner = (RedisValue)ownerToken });
     }
 
     public async Task<string?> GetCachedResultAsync(

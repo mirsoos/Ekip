@@ -73,6 +73,9 @@ public class UserAccount : BaseEntity, IAggregateRoot, IAuditableEntity, ISoftDe
         if (!referralCode.TryNormalizeCode(4, 20, out var normalizedReferral))
             return UserErrors.InvalidReferralCode;
 
+        if (referredById == Guid.Empty) 
+            throw new ArgumentException("ReferredById cannot be empty when provided.", nameof(referredById));
+
         var normalizedPasswordHash = string.IsNullOrWhiteSpace(passwordHash) ? null : passwordHash.Trim();
         if (normalizedPasswordHash is not null && normalizedPasswordHash.Length > 512)
             return UserErrors.InvalidPasswordHash;
@@ -210,6 +213,9 @@ public class UserAccount : BaseEntity, IAggregateRoot, IAuditableEntity, ISoftDe
     {
         if (AccountStatus == UserAccountStatus.Banned)
             return UserErrors.AlreadyBanned;
+
+        if (IsNationalIdVerified)
+            return UserErrors.NationalIdAlreadyVerified;
 
         if (string.IsNullOrWhiteSpace(nationalIdHash) || nationalIdHash.Length > 128)
             return UserErrors.InvalidNationalIdHash;
