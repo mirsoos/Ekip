@@ -63,9 +63,10 @@ public static class Extensions
             .WithTracing(tracing =>
             {
                 tracing.AddSource(builder.Environment.ApplicationName)
-                    .AddAspNetCoreInstrumentation(tracing =>
-                        // Exclude health check requests from tracing
-                        tracing.Filter = context =>
+                                    .AddSource("MassTransit")
+                                    .AddAspNetCoreInstrumentation(tracing =>
+                                        // Exclude health check requests from tracing
+                                        tracing.Filter = context =>
                             !context.Request.Path.StartsWithSegments(HealthEndpointPath)
                             && !context.Request.Path.StartsWithSegments(AlivenessEndpointPath)
                     )

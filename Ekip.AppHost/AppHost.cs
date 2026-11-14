@@ -7,8 +7,19 @@ var postgres = builder.AddPostgres("postgres")
 
 var ekipDb = postgres.AddDatabase("EkipDatabase");
 
+var redis = builder.AddRedis("redis")
+    .WithDataVolume("ekip-redis-data");
+
+var rabbitmq = builder.AddRabbitMQ("rabbitmq")
+    .WithDataVolume("ekip-rabbitmq-data")
+    .WithManagementPlugin();
+
 builder.AddProject<Projects.Ekip_Api>("ekip-api")
     .WithReference(ekipDb)
-    .WaitFor(ekipDb);
+    .WithReference(redis)
+    .WithReference(rabbitmq)
+    .WaitFor(ekipDb)
+    .WaitFor(redis)
+    .WaitFor(rabbitmq);
 
 builder.Build().Run();

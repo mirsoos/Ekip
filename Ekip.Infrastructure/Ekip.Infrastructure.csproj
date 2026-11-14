@@ -22,4 +22,9 @@
     <Folder Include="Security\Password\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="MassTransit.RabbitMQ" Version="8.5.12" />
+    <PackageReference Include="StackExchange.Redis" Version="3.4.35" />
+  </ItemGroup>
+
 </Project>

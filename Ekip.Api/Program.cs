@@ -5,6 +5,7 @@ using Ekip.Persistence;
 using Ekip.Persistence.Context;
 using Ekip.ServiceDefaults;
 using Microsoft.EntityFrameworkCore;
+using Ekip.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +19,9 @@ builder.EnrichNpgsqlDbContext<EkipDbContext>(settings =>
     settings.DisableHealthChecks = false;
     settings.DisableTracing = false;
 });
+
+builder.AddRedisClient("redis");
+builder.Services.AddInfrastructureServices(builder.Configuration);
 
 builder.Services.AddProblemDetails();
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
