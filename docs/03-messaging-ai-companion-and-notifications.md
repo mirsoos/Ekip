@@ -53,10 +53,10 @@
 | نام پراپرتی (Property) | نوع داده در C# (Type) | توضیحات و قوانین معماری |
 | :--- | :--- | :--- |
 | `Id` | `Guid` (PK) | شناسه سروری پیام (UUIDv7). |
-| `IdempotencyKey` | `Guid` (Unique) | شناسه یکتای کلاینت جهت جلوگیری از ثبت پیام تکراری در تلاش مجدد شبکه. |
+| `IdempotencyKey` | `Guid` | شناسه یکتای کلاینت جهت جلوگیری از ثبت پیام تکراری (کنترل‌شده در Redis با TTL جهت آمادگی کامل Partitioning جدول). |
 | `ConversationId` | `Guid` (FK) | متصل به `Conversation.Id`. |
 | `SenderId` | `Guid` (FK) | فرستنده پیام. |
-| `ReplyToMessageId` | `Guid?` (FK) | شناسه پیام ریپلای‌شده (اختیاری). |
+| `ReplyToMessageId` | `Guid?` | شناسه پیام ریپلای‌شده (ارجاع منطقی بدون FK دیتابیسی جهت امکان Detach/Archive پارتیشن‌های قدیمی). |
 | `Type` | `ChatMessageType` | نوع پیام (`Text`, `Image`, `Video`, `Voice`, `Audio`, `File`, `Location`, `Poll`, `SharedEkip`, `SystemEvent`). |
 | `ContentText` | `string?` | متن پیام یا کپشن رسانه. |
 | `Attachment` | `ChatAttachment?` | متادیتای فایل پیوست (Value Object ذخیره به صورت `JSONB`). |
@@ -193,7 +193,7 @@
 | `TargetUserId` | `Guid?` (FK) | کاربر هدف (در صورت اختصاصی بودن کد تخفیف). |
 | `IsActive` | `bool` | وضعیت فعال بودن کد (پیش‌فرض: `true`). |
 | `ExpiresAtUtc` | `DateTime` | زمان انقضای کد تخفیف (UTC). |
-| `IsCurrentlyValid` | `bool` (Computed) | اعتبارسنجی لحظه‌ای: `IsActive && UsedCount < MaxUses && ExpiresAtUtc > DateTime.UtcNow`. |
+| `IsValidAt(DateTime utcNow)` | `bool` (Method) | اعتبارسنجی لحظه‌ای با زمان مرجع `utcNow`: `IsActive && UsedCount < MaxUses && ExpiresAtUtc > utcNow` (مصرف `UsedCount` در SQL به‌صورت اتمیک کنترل می‌شود). |
 | `CreatedAtUtc` | `DateTime` | زمان ایجاد کد (UTC). |
 | `UpdatedAtUtc` | `DateTime?` | زمان آخرین تغییر (UTC). |
 

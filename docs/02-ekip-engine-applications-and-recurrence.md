@@ -35,13 +35,14 @@
 | `EventDateTimeUtc` | `DateTime` | تاریخ و ساعت دقیق برگزاری رویداد (UTC). |
 | `JoinDeadlineUtc` | `DateTime` | مهلت پایانی عضوگیری (UTC). |
 | `JoinCriteria` | `EkipJoinCriteria` | شروط ورود متقاضیان (کپسوله‌شده در Value Object). |
-| `ViewsCount` | `int` | شمارنده تعداد بازدیدهای اکیپ (پیش‌فرض: `0`). |
+| `ViewsCount` | `int` |شمارنده تعداد بازدیدهای اکیپ (پیش‌فرض: 0 — تجمیع در Redis و بروزرسانی Batch در SQL جهت جلوگیری از Hot-Row Contention). |
 | `ModerationStatus` | `EkipModerationStatus` | وضعیت بررسی محتوا (`PendingByAI`, `Approved`, `Rejected`, `EscalatedToAdmin`). |
 | `LifecycleStatus` | `EkipLifecycleStatus` | وضعیت چرخه حیات (`WaitingHostCompanions`, `Published`, `Full`, `Completed`, `Canceled`). |
 | `CanceledAtUtc` | `DateTime?` | زمان لغو شدن اکیپ (UTC). |
 | `CancellationReason` | `string?` | علت لغو اکیپ. |
 | `QuorumStatus` | `QuorumStatus` | وضعیت حد نصاب در ددلاین (`None`, `PendingPoll`, `ConfirmedToProceed`, `AbortedByVote`). |
 | `QuorumDecisionDeadlineUtc` | `DateTime?` | مهلت تصمیم‌گیری اعضا برای ادامه اکیپ زیر حد نصاب (UTC). |
+| `HostCompanions` | `IReadOnlyCollection<EkipHostCompanion>` | لیست کپسوله‌شده همراهان میزبان (`_hostCompanions`). |
 | `Tags` | `IReadOnlyCollection<string>` | لیست کپسوله‌شده تگ‌های اکیپ (`_tags`). |
 | `MediaAssetIds` | `IReadOnlyCollection<Guid>` | لیست کپسوله‌شده شناسه‌های تصاویر مکان در `MediaAsset` (`_mediaAssetIds`). |
 | `CreatedAtUtc` | `DateTime` | زمان ثبت اکیپ (UTC). |
@@ -76,7 +77,7 @@
 ---
 
 #### ۳. مدل همراهان میزبان (`EkipHostCompanion`)
-* **وراثت:** `BaseEntity`, `IAggregateRoot`, `ICreatedAuditable`
+* **وراثت:** `BaseEntity`, `ICreatedAuditable` *(Child Entity محدود زیرمجموعه `Ekip`؛ مدیریت چرخه وضعیت از طریق `Ekip`)*
 * **مسیر:** `Ekip.Domain.Entities.Ekip`
 
 | نام پراپرتی (Property) | نوع داده در C# (Type) | توضیحات و قوانین معماری |

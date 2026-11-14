@@ -22,7 +22,7 @@
 | `IsTwoFactorActivated` | `bool` | وضعیت فعال بودن تایید دو مرحله‌ای. |
 | `FailedLoginAttempts` | `int` | شمارنده تلاش‌های ناموفق ورود جهت قفل خودکار (پیش‌فرض: `0`). |
 | `LockedUntilUtc` | `DateTime?` | زمان پایان قفل موقت اکانت در صورت حمله Brute-Force (UTC). |
-| `IsLockedOut` | `bool` (Computed) | پراپرتی محاسباتی: `LockedUntilUtc.HasValue && LockedUntilUtc.Value > DateTime.UtcNow`. |
+| `IsLockedOutAt(DateTime utcNow)` | `bool` (Method) | بررسی قفل بودن حساب با زمان مرجع `utcNow`: `LockedUntilUtc.HasValue && LockedUntilUtc.Value > utcNow`. |
 | `IsActive` | `bool` | وضعیت فعال بودن حساب ادمین (پیش‌فرض: `true`). |
 | `LastLoginAtUtc` | `DateTime?` | زمان آخرین ورود موفق (UTC). |
 | `AllowedIps` | `IReadOnlyCollection<string>` | لیست سفید IPهای مجاز ورود (`_allowedIps`). |
@@ -49,14 +49,14 @@
 | `ExpiresAtUtc` | `DateTime` | زمان انقضای قطعی نشست (UTC). |
 | `IsRevoked` | `bool` | وضعیت ابطال نشست (پیش‌فرض: `false`). |
 | `RevokedAtUtc` | `DateTime?` | زمان ابطال نشست (UTC). |
-| `IsCurrentlyActive` | `bool` (Computed) | پراپرتی محاسباتی: `!IsRevoked && ExpiresAtUtc > DateTime.UtcNow`. |
+| `IsActiveAt(DateTime utcNow)` | `bool` (Method) | بررسی فعال بودن نشست با زمان مرجع `utcNow`: `!IsRevoked && ExpiresAtUtc > utcNow`. |
 | `CreatedAtUtc` | `DateTime` | زمان ایجاد نشست (UTC). |
 | `UpdatedAtUtc` | `DateTime?` | زمان آخرین چرخش توکن (UTC). |
 
 ---
 
 #### ۳. مدل لاگ امنیتی اقدامات ادمین (`AdminAuditLog`)
-* **وراثت:** `BaseEntity`, `IAggregateRoot`, `ICreatedAuditable` *(جدول Append-Only و تغییرناپذیر)*
+* **وراثت:** `BaseEntity`, `IAggregateRoot`, `ICreatedAuditable`, `IAppendOnlyEntity` *(جدول Append-Only و تغییرناپذیر)*
 * **مسیر:** `Ekip.Domain.Entities.Admin`
 
 | نام پراپرتی (Property) | نوع داده در C# (Type) | توضیحات و قوانین معماری |

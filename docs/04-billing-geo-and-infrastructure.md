@@ -83,7 +83,7 @@
 ---
 
 #### ۵. مدل دفتر کل گردش حساب کیف پول (`WalletLedger`)
-* **وراثت:** `BaseEntity`, `IAggregateRoot`, `ICreatedAuditable` *(جدول Append-Only و تغییرناپذیر)*
+* **وراثت:** `BaseEntity`, `IAggregateRoot`, `ICreatedAuditable`, `IAppendOnlyEntity` *(جدول Append-Only و تغییرناپذیر)*
 * **مسیر:** `Ekip.Domain.Entities.Billing`
 
 | نام پراپرتی (Property) | نوع داده در C# (Type) | توضیحات و قوانین مالی |
@@ -153,7 +153,7 @@
 | `IsRevoked` | `bool` | وضعیت ابطال نشست (پیش‌فرض: `false`). |
 | `RevokedAtUtc` | `DateTime?` | زمان ابطال نشست (UTC). |
 | `RevokedReason` | `string?` | علت ابطال (`UserLogout`, `TokenReuseDetected`, `AdminBan`). |
-| `IsCurrentlyActive` | `bool` (Computed) | پراپرتی محاسباتی: `!IsRevoked && ExpiresAtUtc > DateTime.UtcNow`. |
+| `IsActiveAt(DateTime utcNow)` | `bool` (Method) | بررسی فعال بودن نشست با زمان مرجع `utcNow`: `!IsRevoked && ExpiresAtUtc > utcNow`. |
 | `CreatedAtUtc` | `DateTime` | زمان اولین ورود با این دستگاه (UTC). |
 | `UpdatedAtUtc` | `DateTime?` | زمان آخرین بروزرسانی نشست (UTC). |
 

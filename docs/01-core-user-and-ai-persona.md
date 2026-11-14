@@ -106,7 +106,7 @@
 | `SubscriptionPlanId` | `Guid` (FK) | پلن اشتراک فعلی کاربر (متصل به `SubscriptionPlan.Id`). |
 | `StartsAtUtc` | `DateTime` | زمان شروع دوره اشتراک فعلی (UTC). |
 | `ExpiresAtUtc` | `DateTime?` | زمان انقضای اشتراک (برای پلن رایگان `null` و برای پلن‌های پولی دارای تاریخ است - UTC). |
-| `IsCurrentlyActive` | `bool` (Computed) | پراپرتی محاسباتی لحظه‌ای: `ExpiresAtUtc is null \|\| ExpiresAtUtc > DateTime.UtcNow`. |
+| `IsActiveAt(DateTime utcNow)` | `bool` (Method) | بررسی لحظه‌ای فعال بودن اشتراک با دریافت زمان مرجع `utcNow` (بدون وابستگی به `DateTime.UtcNow`): `ExpiresAtUtc is null \|\| ExpiresAtUtc > utcNow`. |
 | `QuotaUsage` | `QuotaUsage` | وضعیت مصرف سهمیه روزانه هوش مصنوعی به عنوان پشتیبان پایدار Redis (`JSONB`). |
 | `CreatedAtUtc` | `DateTime` | زمان ایجاد رکورد (UTC). |
 | `UpdatedAtUtc` | `DateTime?` | زمان آخرین تمدید یا بروزرسانی سهمیه (UTC). |
@@ -116,7 +116,7 @@
 ### بخش سوم: موتور گیمیفیکیشن، اعتماد سیستم (Honor) و دفتر کل (Reputation Engine)
 
 #### ۵. مدل دفتر کل رویدادهای اعتبار و تجربه (`ReputationLedger`)
-* **وراثت:** `BaseEntity`, `IAggregateRoot`, `ICreatedAuditable` *(جدول Append-Only و تغییرناپذیر)*
+* **وراثت:** `BaseEntity`, `IAggregateRoot`, `ICreatedAuditable`, `IAppendOnlyEntity` *(جدول Append-Only و تغییرناپذیر)*
 * **مسیر:** `Ekip.Domain.Entities.Gamification`
 
 | نام پراپرتی (Property) | نوع داده در C# (Type) | توضیحات و قوانین معماری |
