@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net10.0</TargetFramework>
+		<OutputType>Exe</OutputType>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<IsPackable>false</IsPackable>
+		<IsTestProject>true</IsTestProject>
+		<UserSecretsId>461ec2ac-7a43-490e-816e-0f13f5da6ad4</UserSecretsId>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.12.0" />
+		<PackageReference Include="TngTech.ArchUnitNET.xUnitV3" Version="0.13.5" />
+		<PackageReference Include="xunit.runner.visualstudio" Version="3.1.5">
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+			<PrivateAssets>all</PrivateAssets>
+		</PackageReference>
+		<PackageReference Include="xunit.v3" Version="3.2.2" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Ekip.Api\Ekip.Api.csproj" />
+		<ProjectReference Include="..\Ekip.Application\Ekip.Application.csproj" />
+		<ProjectReference Include="..\Ekip.Domain\Ekip.Domain.csproj" />
+		<ProjectReference Include="..\Ekip.Infrastructure\Ekip.Infrastructure.csproj" />
+		<ProjectReference Include="..\Ekip.Persistence\Ekip.Persistence.csproj" />
+	</ItemGroup>
+
+</Project>

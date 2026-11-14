@@ -2,6 +2,7 @@
   <Project Path="Ekip.Api/Ekip.Api.csproj" />
   <Project Path="Ekip.AppHost/Ekip.AppHost.csproj" />
   <Project Path="Ekip.Application/Ekip.Application.csproj" />
+  <Project Path="Ekip.ArchitectureTests/Ekip.ArchitectureTests.csproj" Id="bbd33a90-838a-4526-9b31-6ef909d6bc1a" />
   <Project Path="Ekip.Domain/Ekip.Domain.csproj" />
   <Project Path="Ekip.Infrastructure/Ekip.Infrastructure.csproj" />
   <Project Path="Ekip.Persistence/Ekip.Persistence.csproj" Id="29b3c4f9-cd1a-4db0-8dba-3ea7d77a9cc6" />
