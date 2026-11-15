@@ -1,11 +1,12 @@
 using Ekip.Api.gRPC;
+using Ekip.Api.gRPC.Services;
 using Ekip.Api.Middlewares;
 using Ekip.Application;
+using Ekip.Infrastructure;
 using Ekip.Persistence;
 using Ekip.Persistence.Context;
 using Ekip.ServiceDefaults;
 using Microsoft.EntityFrameworkCore;
-using Ekip.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -51,6 +52,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseAuthorization();
+app.MapGrpcService<UserGrpcService>();
+app.MapGrpcService<GamificationGrpcService>();
 app.MapControllers();
 
 app.Run();

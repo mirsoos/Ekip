@@ -35,4 +35,12 @@ public static class GamificationErrors
     public static readonly Error ManualAdjustmentRequiresExplicitDeltas = Error.Validation(
         "GAMIFICATION.MANUAL_ADJUSTMENT_REQUIRES_EXPLICIT_DELTAS",
         "Admin manual reputation adjustments require explicit XP or Honor deltas.");
+
+    public static readonly Error InvalidPageSize = Error.Validation(
+        "GAMIFICATION.INVALID_PAGE_SIZE",
+        "PageSize must be between 1 and 100.");
+
+    public static readonly Error InvalidCursor = Error.Validation(
+        "GAMIFICATION.INVALID_CURSOR",
+        "Pagination cursor format is invalid.");
 }

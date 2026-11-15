@@ -127,4 +127,48 @@ public static class UserErrors
     public static readonly Error NationalIdAlreadyVerified = Error.Conflict(
     "USER.NATIONAL_ID_ALREADY_VERIFIED",
     "National ID has already been verified and cannot be changed.");
+
+    public static readonly Error UsernameAlreadyTaken = Error.Conflict(
+        "USER.USERNAME_ALREADY_TAKEN",
+        "This username is already taken.");
+
+    public static readonly Error EmailAlreadyTaken = Error.Conflict(
+        "USER.EMAIL_ALREADY_TAKEN",
+        "An account with this email already exists.");
+
+    public static readonly Error PhoneNumberAlreadyTaken = Error.Conflict(
+        "USER.PHONE_NUMBER_ALREADY_TAKEN",
+        "An account with this phone number already exists.");
+
+    public static readonly Error ReferralCodeNotFound = Error.NotFound(
+        "USER.REFERRAL_CODE_NOT_FOUND",
+        "The provided referral code does not exist.");
+
+    public static readonly Error UserNotFound = Error.NotFound(
+        "USER.NOT_FOUND",
+        "User was not found.");
+
+    public static readonly Error RegistrationInProgress = Error.Conflict(
+        "USER.REGISTRATION_IN_PROGRESS",
+        "A registration request with this idempotency key is already being processed.");
+
+    public static readonly Error ReferralCodeGenerationFailed = Error.Failure(
+        "USER.REFERRAL_CODE_GENERATION_FAILED",
+        "Could not generate a unique referral code. Please try again.");
+
+    public static readonly Error InvalidIdempotencyKey = Error.Validation(
+        "USER.INVALID_IDEMPOTENCY_KEY",
+        "IdempotencyKey is required and cannot be empty.");
+
+    public static readonly Error InvalidPassword = Error.Validation(
+        "USER.INVALID_PASSWORD",
+        "Password must be between 8 and 128 characters.");
+
+    public static readonly Error InvalidUserId = Error.Validation(
+        "USER.INVALID_USER_ID",
+        "UserId is required and cannot be empty.");
+
+    public static readonly Error InvalidCityId = Error.Validation(
+        "USER.INVALID_CITY_ID",
+        "CityId cannot be an empty GUID when provided.");
 }

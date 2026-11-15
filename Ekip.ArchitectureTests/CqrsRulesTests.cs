@@ -1,6 +1,7 @@
 ﻿using ArchUnitNET.Fluent;
 using ArchUnitNET.xUnitV3;
 using Ekip.Application.Contracts;
+using Ekip.Application.Extensions;
 using Ekip.Application.Interfaces;
 using FluentValidation;
 using MediatR;
@@ -43,6 +44,51 @@ public sealed class CqrsRulesTests : ArchitectureTestBase
             .That().Are(ApplicationLayer)
             .And().ImplementInterface(typeof(IQueryHandler<,>))
             .Should().NotDependOnAny(unitOfWorkType)
+            .WithoutRequiringPositiveResults()
+            .Check(EkipArchitecture);
+    }
+
+    [Fact]
+    public void QueryHandlers_Should_Not_Depend_On_Write_Repositories()
+    {
+        var writeRepositories = ArchRuleDefinition.Types()
+            .That().ResideInNamespaceMatching("^Ekip\\.Application\\.Interfaces\\.Repositories(\\..+)?$")
+            .As("Write Repositories");
+
+        ArchRuleDefinition.Classes()
+            .That().Are(ApplicationLayer)
+            .And().ImplementInterface(typeof(IQueryHandler<,>))
+            .Should().NotDependOnAny(writeRepositories)
+            .WithoutRequiringPositiveResults()
+            .Check(EkipArchitecture);
+    }
+
+    [Fact]
+    public void Validators_Should_Use_WithError_And_Not_Call_WithErrorCode_Or_WithMessage()
+    {
+        var domainErrorCatalogs = ArchRuleDefinition.Types()
+            .That().ResideInNamespaceMatching("^Ekip\\.Domain\\.Errors(\\..+)?$")
+            .As("Domain Error Catalogs");
+
+        ArchRuleDefinition.Classes()
+            .That().Are(ApplicationLayer)
+            .And().ImplementInterface(typeof(IValidator<>))
+            .Should().DependOnAny(typeof(FluentValidationExtensions))
+            .AndShould().DependOnAny(domainErrorCatalogs)
+            .WithoutRequiringPositiveResults()
+            .Check(EkipArchitecture);
+
+        var forbiddenMethods = ArchRuleDefinition.MethodMembers()
+            .That().AreDeclaredIn(typeof(DefaultValidatorOptions))
+            .And().HaveNameStartingWith("WithErrorCode")
+            .Or().AreDeclaredIn(typeof(DefaultValidatorOptions))
+            .And().HaveNameStartingWith("WithMessage")
+            .As("Hardcoded WithErrorCode/WithMessage");
+
+        ArchRuleDefinition.Classes()
+            .That().Are(ApplicationLayer)
+            .And().ImplementInterface(typeof(IValidator<>))
+            .Should().NotCallAny(forbiddenMethods)
             .WithoutRequiringPositiveResults()
             .Check(EkipArchitecture);
     }

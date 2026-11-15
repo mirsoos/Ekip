@@ -1,0 +1,77 @@
+syntax = "proto3";
+
+option csharp_namespace = "Ekip.Api.Grpc.User";
+
+package ekip.user.v1;
+
+import "google/protobuf/timestamp.proto";
+
+service UserGrpc {
+  rpc RegisterUser (RegisterUserGrpcRequest) returns (RegisterUserGrpcResponse);
+  rpc GetUserProfile (GetUserProfileGrpcRequest) returns (UserProfileGrpcResponse);
+}
+
+message RegisterUserGrpcRequest {
+  string idempotency_key = 1;
+  string username = 2;
+  string password = 3;
+  string first_name = 4;
+  string last_name = 5;
+  int32 user_gender = 6;
+  string birth_date = 7;
+  optional string email = 8;
+  optional string phone_number = 9;
+  optional string city_id = 10;
+  optional string referral_code = 11;
+}
+
+message RegisterUserGrpcResponse {
+  string user_id = 1;
+}
+
+message GetUserProfileGrpcRequest {
+  string user_id = 1;
+}
+
+message MoodWidgetGrpcDto {
+  optional string mood_emoji = 1;
+  optional string mood_description = 2;
+  optional string mood_color = 3;
+  google.protobuf.Timestamp created_at_utc = 4;
+}
+
+message SocialLinkGrpcDto {
+  string platform = 1;
+  string url = 2;
+  google.protobuf.Timestamp linked_at_utc = 3;
+}
+
+message UserProfileGrpcResponse {
+  string user_id = 1;
+  string username = 2;
+  string first_name = 3;
+  string last_name = 4;
+  int32 user_gender = 5;
+  string birth_date = 6;
+  optional string city_id = 7;
+  optional string avatar_asset_id = 8;
+  optional string banner_asset_id = 9;
+  optional string bio = 10;
+  optional string job_title = 11;
+  optional int32 mbti_types = 12;
+  optional MoodWidgetGrpcDto mood_widget = 13;
+  repeated SocialLinkGrpcDto social_links = 14;
+  repeated string interests = 15;
+  bool is_face_verified = 16;
+  bool is_national_id_verified = 17;
+  bool is_searchable = 18;
+  bool show_contacts = 19;
+  bool show_last_seen = 20;
+  optional google.protobuf.Timestamp last_seen_at_utc = 21;
+  int32 total_xp = 22;
+  int32 current_level = 23;
+  int32 next_level_xp = 24;
+  double public_score = 25;
+  int32 ratings_count = 26;
+  google.protobuf.Timestamp created_at_utc = 27;
+}

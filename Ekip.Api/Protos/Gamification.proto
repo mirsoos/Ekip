@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+option csharp_namespace = "Ekip.Api.Grpc.Gamification";
+
+package ekip.gamification.v1;
+
+import "google/protobuf/timestamp.proto";
+
+service GamificationGrpc {
+  rpc GetReputationHistory (GetReputationHistoryGrpcRequest) returns (GetReputationHistoryGrpcResponse);
+}
+
+message GetReputationHistoryGrpcRequest {
+  string user_id = 1;
+  optional string cursor = 2;
+  int32 page_size = 3;
+}
+
+message ReputationLedgerItemGrpcDto {
+  string id = 1;
+  int32 event_type = 2;
+  int32 xp_delta = 3;
+  int32 xp_balance_after = 4;
+  int32 honor_delta = 5;
+  int32 honor_balance_after = 6;
+  optional string description = 7;
+  optional string reference_entity_type = 8;
+  optional string reference_entity_id = 9;
+  google.protobuf.Timestamp created_at_utc = 10;
+}
+
+message GetReputationHistoryGrpcResponse {
+  repeated ReputationLedgerItemGrpcDto items = 1;
+  optional string next_cursor = 2;
+  bool has_more = 3;
+}

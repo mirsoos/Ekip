@@ -1,7 +1,15 @@
 ﻿using Ekip.Application.Interfaces;
+using Ekip.Application.Interfaces.Queries.Gamification;
+using Ekip.Application.Interfaces.Queries.User;
+using Ekip.Application.Interfaces.Repositories.Gamification;
+using Ekip.Application.Interfaces.Repositories.User;
 using Ekip.Persistence.Context;
 using Ekip.Persistence.Interceptors;
+using Ekip.Persistence.Queries.Gamification;
+using Ekip.Persistence.Queries.User;
 using Ekip.Persistence.Repositories;
+using Ekip.Persistence.Repositories.Gamification;
+using Ekip.Persistence.Repositories.User;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -56,6 +64,11 @@ public static class DependencyInjection
 
         services.AddSingleton<ISqlConnectionFactory, SqlConnectionFactory>();
         services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+        services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<IGamificationRepository, GamificationRepository>();
+        services.AddScoped<IUserQueries, UserQueries>();
+        services.AddScoped<IGamificationQueries, GamificationQueries>();
 
         return services;
     }
