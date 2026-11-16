@@ -53,6 +53,7 @@ public class UserGamificationSummary : Entity, IAggregateRoot
 
         var oldLevel = CurrentLevel;
         var oldHonor = TotalHonor;
+        var oldXp = TotalXp;
 
         var updatedXp = Math.Max(0L, (long)TotalXp + xpDelta);
         TotalXp = (int)Math.Min(int.MaxValue, updatedXp);
@@ -70,7 +71,7 @@ public class UserGamificationSummary : Entity, IAggregateRoot
         if (CurrentLevel > oldLevel)
             AddDomainEvent(new UserLeveledUpDomainEvent(UserId, oldLevel, CurrentLevel, TotalXp, utcNow));
 
-        if (CurrentLevel != oldLevel || TotalHonor != oldHonor)
+        if (TotalXp != oldXp || TotalHonor != oldHonor)
             AddDomainEvent(new UserReputationChangedDomainEvent(UserId, TotalXp, CurrentLevel, TotalHonor, utcNow));
 
         return Result.Success();

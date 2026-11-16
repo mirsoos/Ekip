@@ -1,5 +1,4 @@
-﻿using Ekip.Application.Caching;
-using Ekip.Application.Interfaces;
+﻿using Ekip.Application.Interfaces;
 using Ekip.Application.Interfaces.Repositories.Gamification;
 using Ekip.Domain.Entities.Gamification;
 using Ekip.Domain.Entities.User;
@@ -13,7 +12,6 @@ namespace Ekip.Application.Consumers.Gamification;
 public sealed class UserRegisteredConsumer(
     IGamificationRepository gamificationRepository,
     IUnitOfWork unitOfWork,
-    ICacheService cacheService,
     TimeProvider timeProvider) : IConsumer<UserRegisteredDomainEvent>
 {
     public async Task Consume(ConsumeContext<UserRegisteredDomainEvent> context)
@@ -31,6 +29,7 @@ public sealed class UserRegisteredConsumer(
         {
             return;
         }
+
         var referrerSummary = await gamificationRepository.GetSummaryForUpdateAsync(referrerId, ct)
             ?? throw new InvalidOperationException($"Referrer gamification summary was not found for user '{referrerId}'.");
 
@@ -69,7 +68,5 @@ public sealed class UserRegisteredConsumer(
         gamificationRepository.AddLedgerEntry(ledgerResult.Value);
 
         await unitOfWork.SaveChangesAsync(ct);
-
-        await cacheService.RemoveAsync(RedisSchemaKey.UserProfile(referrerId), ct);
     }
 }
