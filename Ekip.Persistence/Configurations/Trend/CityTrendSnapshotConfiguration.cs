@@ -15,8 +15,6 @@ public sealed class CityTrendSnapshotConfiguration : IEntityTypeConfiguration<Ci
         builder.Property(x => x.Id).ValueGeneratedNever();
 
         builder.Property(x => x.Type)
-            .HasConversion<string>()
-            .HasMaxLength(30)
             .IsRequired();
 
         builder.Property(x => x.Keyword)

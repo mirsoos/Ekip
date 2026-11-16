@@ -18,8 +18,6 @@ public sealed class PaymentTransactionConfiguration : IEntityTypeConfiguration<P
         builder.Property<uint>("Version").IsRowVersion();
 
         builder.Property(x => x.Purpose)
-            .HasConversion<string>()
-            .HasMaxLength(40)
             .IsRequired();
 
         builder.Property(x => x.BaseAmount)
@@ -43,8 +41,6 @@ public sealed class PaymentTransactionConfiguration : IEntityTypeConfiguration<P
             .HasMaxLength(10);
 
         builder.Property(x => x.Gateway)
-            .HasConversion<string>()
-            .HasMaxLength(30)
             .IsRequired();
 
         builder.Property(x => x.AuthorityOrToken)
@@ -54,8 +50,6 @@ public sealed class PaymentTransactionConfiguration : IEntityTypeConfiguration<P
             .HasMaxLength(256);
 
         builder.Property(x => x.Status)
-            .HasConversion<string>()
-            .HasMaxLength(30)
             .IsRequired();
 
         builder.Property(x => x.FailureReason)

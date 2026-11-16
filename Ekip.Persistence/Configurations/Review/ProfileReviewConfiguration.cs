@@ -23,8 +23,6 @@ public sealed class ProfileReviewConfiguration : IEntityTypeConfiguration<Profil
             .HasPrecision(5, 4);
 
         builder.Property(x => x.ModerationStatus)
-            .HasConversion<string>()
-            .HasMaxLength(30)
             .IsRequired();
 
         builder.HasOne<UserAccount>()

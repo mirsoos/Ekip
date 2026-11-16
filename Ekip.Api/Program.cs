@@ -57,3 +57,4 @@ app.MapGrpcService<GamificationGrpcService>();
 app.MapControllers();
 
 app.Run();
+public partial class Program;

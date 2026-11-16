@@ -1,9 +1,11 @@
-﻿using Ekip.Application.Contracts;
+﻿using Ekip.Application.Caching;
+using Ekip.Application.Contracts;
 using Ekip.Application.Interfaces;
+using Ekip.Application.Interfaces.Repositories.Gamification;
 using Ekip.Application.Interfaces.Repositories.User;
-using Ekip.Domain.Entities.User;
 using Ekip.Domain.Errors.User;
 using Ekip.Domain.Extensions;
+using Ekip.Domain.Factories;
 using Ekip.Domain.Results;
 using Ekip.Domain.ValueObjects.User;
 
@@ -11,6 +13,7 @@ namespace Ekip.Application.Features.User.Commands.RegisterUser;
 
 internal sealed class RegisterUserCommandHandler(
     IUserRepository userRepository,
+    IGamificationRepository gamificationRepository,
     IPasswordHasher passwordHasher,
     IReferralCodeGenerator referralCodeGenerator,
     IIdempotencyService idempotencyService,
@@ -25,12 +28,12 @@ internal sealed class RegisterUserCommandHandler(
         RegisterUserCommand request,
         CancellationToken cancellationToken)
     {
-        var cacheKey = $"idempotency:register:{request.IdempotencyKey:D}";
+        var cacheKey = RedisSchemaKey.RegisterIdempotency(request.IdempotencyKey);
         var cachedResult = await idempotencyService.GetCachedResultAsync(cacheKey, cancellationToken);
         if (Guid.TryParseExact(cachedResult, "D", out var existingUserId))
             return existingUserId;
 
-        var lockKey = $"idempotency:lock:register:{request.IdempotencyKey:D}";
+        var lockKey = RedisSchemaKey.RegisterLock(request.IdempotencyKey);
         var ownerToken = Guid.NewGuid().ToString("N");
 
         if (!await idempotencyService.TryAcquireLockAsync(lockKey, ownerToken, LockTtl, cancellationToken))
@@ -104,42 +107,38 @@ internal sealed class RegisterUserCommandHandler(
 
             var passwordHash = await passwordHasher.HashAsync(request.Password, cancellationToken);
 
-            var accountResult = UserAccount.Register(
+            var registrationResult = UserRegistrationFactory.Create(
                 username: usernameResult.Value,
                 referralCode: newReferralCode,
-                utcNow: utcNow,
-                email: email,
-                phoneNumber: phoneNumber,
                 passwordHash: passwordHash,
-                referredById: referredById);
-
-            if (accountResult.IsFailure)
-                return accountResult.Error;
-
-            var profileResult = UserProfile.Create(
-                userId: accountResult.Value.Id,
                 firstName: request.FirstName,
                 lastName: request.LastName,
                 gender: request.UserGender,
                 birthDate: request.BirthDate,
                 utcNow: utcNow,
-                cityId: request.CityId);
+                email: email,
+                phoneNumber: phoneNumber,
+                cityId: request.CityId,
+                referredById: referredById);
 
-            if (profileResult.IsFailure)
-                return profileResult.Error;
+            if (registrationResult.IsFailure)
+                return registrationResult.Error;
 
-            userRepository.AddAccount(accountResult.Value);
-            userRepository.AddProfile(profileResult.Value);
+            var bundle = registrationResult.Value;
+
+            userRepository.AddAccount(bundle.Account);
+            userRepository.AddProfile(bundle.Profile);
+            gamificationRepository.AddSummary(bundle.Summary);
 
             await unitOfWork.SaveChangesAsync(cancellationToken);
 
             await idempotencyService.SetCachedResultAsync(
                 cacheKey,
-                accountResult.Value.Id.ToString("D"),
+                bundle.Account.Id.ToString("D"),
                 ResultCacheTtl,
                 cancellationToken);
 
-            return accountResult.Value.Id;
+            return bundle.Account.Id;
         }
         finally
         {

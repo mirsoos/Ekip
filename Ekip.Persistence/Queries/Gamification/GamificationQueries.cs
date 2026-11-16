@@ -4,6 +4,7 @@ using Ekip.Application.DTOs.Gamification;
 using Ekip.Application.Helpers;
 using Ekip.Application.Interfaces;
 using Ekip.Application.Interfaces.Queries.Gamification;
+using Ekip.Domain.Enums.Gamification;
 
 namespace Ekip.Persistence.Queries.Gamification;
 
@@ -65,11 +66,39 @@ internal sealed class GamificationQueries(ISqlConnectionFactory connectionFactor
             new { UserId = userId, CursorId = cursorId, FetchLimit = fetchLimit },
             cancellationToken: cancellationToken);
 
-        var items = (await connection.QueryAsync<ReputationLedgerItemDto>(command)).AsList();
+        var rows = await connection.QueryAsync<ReputationLedgerRow>(command);
+
+        var items = rows
+            .Select(r => new ReputationLedgerItemDto(
+                r.Id,
+                r.EventType,
+                r.XpDelta,
+                r.XpBalanceAfter,
+                r.HonorDelta,
+                r.HonorBalanceAfter,
+                r.Description,
+                r.ReferenceEntityType,
+                r.ReferenceEntityId,
+                r.CreatedAtUtc))
+            .ToList();
 
         return CursorPagedResult<ReputationLedgerItemDto>.Create(
             items,
             pageSize,
             item => CursorCodec.EncodeId(item.Id));
+    }
+
+    private sealed class ReputationLedgerRow
+    {
+        public Guid Id { get; init; }
+        public ReputationEventType EventType { get; init; }
+        public int XpDelta { get; init; }
+        public int XpBalanceAfter { get; init; }
+        public int HonorDelta { get; init; }
+        public int HonorBalanceAfter { get; init; }
+        public string? Description { get; init; }
+        public string? ReferenceEntityType { get; init; }
+        public Guid? ReferenceEntityId { get; init; }
+        public DateTime CreatedAtUtc { get; init; }
     }
 }

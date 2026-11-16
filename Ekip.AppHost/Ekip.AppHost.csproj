@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Ekip.Api\Ekip.Api.csproj" />
+    <ProjectReference Include="..\Ekip.Persistence\Ekip.Persistence.csproj" />
   </ItemGroup>
 
 </Project>

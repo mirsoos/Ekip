@@ -17,8 +17,6 @@ public sealed class RecurringEkipConfiguration : IEntityTypeConfiguration<Recurr
         builder.Property<uint>("Version").IsRowVersion();
 
         builder.Property(x => x.Frequency)
-            .HasConversion<string>()
-            .HasMaxLength(20)
             .IsRequired();
 
         builder.HasOne<UserAccount>()

@@ -15,8 +15,6 @@ public sealed class WalletLedgerConfiguration : IEntityTypeConfiguration<WalletL
         builder.Property(x => x.Id).ValueGeneratedNever();
 
         builder.Property(x => x.Type)
-            .HasConversion<string>()
-            .HasMaxLength(40)
             .IsRequired();
 
         builder.Property(x => x.AmountDelta)

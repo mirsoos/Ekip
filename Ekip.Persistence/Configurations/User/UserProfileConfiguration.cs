@@ -25,8 +25,6 @@ public sealed class UserProfileConfiguration : IEntityTypeConfiguration<UserProf
             .HasMaxLength(100);
 
         builder.Property(x => x.UserGender)
-            .HasConversion<string>()
-            .HasMaxLength(20)
             .IsRequired();
 
         builder.Property(x => x.Bio)
@@ -35,9 +33,7 @@ public sealed class UserProfileConfiguration : IEntityTypeConfiguration<UserProf
         builder.Property(x => x.JobTitle)
             .HasMaxLength(150);
 
-        builder.Property(x => x.MbtiTypes)
-            .HasConversion<string>()
-            .HasMaxLength(10);
+        builder.Property(x => x.MbtiTypes);
 
         // PostgreSQL native varchar[] with GIN Index for Interests
         builder.Property(x => x.Interests)

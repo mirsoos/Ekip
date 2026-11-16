@@ -46,7 +46,7 @@ public class UserProfile : Entity, IAggregateRoot, IAuditableEntity
         LastName = null!;
     }
 
-    private UserProfile(
+    internal UserProfile(
         Guid userId,
         string firstName,
         string lastName,
@@ -62,7 +62,7 @@ public class UserProfile : Entity, IAggregateRoot, IAuditableEntity
         CityId = cityId;
     }
 
-    public static Result<UserProfile> Create(
+    internal static Result<UserProfile> Create(
         Guid userId,
         string firstName,
         string lastName,

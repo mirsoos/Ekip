@@ -20,8 +20,6 @@ public sealed class UserDeviceSessionConfiguration : IEntityTypeConfiguration<Us
             .HasMaxLength(128);
 
         builder.Property(x => x.DeviceType)
-            .HasConversion<string>()
-            .HasMaxLength(20)
             .IsRequired();
 
         builder.Property(x => x.DeviceName)

@@ -36,8 +36,6 @@ public sealed class AdminAccountConfiguration : IEntityTypeConfiguration<AdminAc
             .HasMaxLength(512);
 
         builder.Property(x => x.Role)
-            .HasConversion<string>()
-            .HasMaxLength(40)
             .IsRequired();
 
         builder.Property(x => x.TotpSecret)

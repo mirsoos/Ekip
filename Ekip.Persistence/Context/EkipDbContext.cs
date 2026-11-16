@@ -1,4 +1,5 @@
 ﻿using System.Linq.Expressions;
+using System.Text;
 using Ekip.Domain.Base;
 using Ekip.Domain.Entities.Admin;
 using Ekip.Domain.Entities.AI;
@@ -104,13 +105,13 @@ public sealed class EkipDbContext(DbContextOptions<EkipDbContext> options)
         modelBuilder.AddOutboxMessageEntity();
         modelBuilder.AddOutboxStateEntity();
 
-        // ۴. فیلتر سراسری Soft Delete روی تمامی موجودیت‌های ISoftDeletable
+        // ۴. تبدیل یکپارچه نام تمامی جداول دامنه به snake_case مفرد
+        ApplySnakeCaseTableNames(modelBuilder);
+
+        // ۵. فیلتر سراسری Soft Delete روی تمامی موجودیت‌های ISoftDeletable
         ApplySoftDeleteQueryFilters(modelBuilder);
     }
 
-    /// <summary>
-    /// خواندن غیرمخرب DomainEventها از موجودیت‌های ردیابی‌شده برای ثبت در Outbox پیش از Commit نهایی.
-    /// </summary>
     public IReadOnlyList<IDomainEvent> GetDomainEvents()
     {
         return ChangeTracker
@@ -119,9 +120,6 @@ public sealed class EkipDbContext(DbContextOptions<EkipDbContext> options)
             .ToList();
     }
 
-    /// <summary>
-    /// پاک‌سازی DomainEventها صرفاً پس از Commit موفق تراکنش جهت حفظ سلامت Retry در ExecutionStrategy.
-    /// </summary>
     public void ClearDomainEvents()
     {
         foreach (var entry in ChangeTracker.Entries<Entity>())
@@ -131,6 +129,55 @@ public sealed class EkipDbContext(DbContextOptions<EkipDbContext> options)
                 entry.Entity.ClearDomainEvents();
             }
         }
+    }
+
+    private static void ApplySnakeCaseTableNames(ModelBuilder modelBuilder)
+    {
+        foreach (var entityType in modelBuilder.Model.GetEntityTypes())
+        {
+            if (entityType.IsOwned())
+                continue;
+
+            var tableName = entityType.GetTableName();
+            if (!string.IsNullOrEmpty(tableName))
+            {
+                entityType.SetTableName(ToSnakeCase(tableName));
+            }
+        }
+    }
+
+    private static string ToSnakeCase(string input)
+    {
+        if (string.IsNullOrEmpty(input))
+            return input;
+
+        var builder = new StringBuilder(input.Length + 8);
+
+        for (var i = 0; i < input.Length; i++)
+        {
+            var c = input[i];
+            if (char.IsUpper(c))
+            {
+                if (i > 0 && input[i - 1] != '_')
+                {
+                    var prevIsLowerOrDigit = char.IsLower(input[i - 1]) || char.IsDigit(input[i - 1]);
+                    var nextIsLower = i + 1 < input.Length && char.IsLower(input[i + 1]);
+
+                    if (prevIsLowerOrDigit || (char.IsUpper(input[i - 1]) && nextIsLower))
+                    {
+                        builder.Append('_');
+                    }
+                }
+
+                builder.Append(char.ToLowerInvariant(c));
+            }
+            else
+            {
+                builder.Append(c);
+            }
+        }
+
+        return builder.ToString();
     }
 
     private static void ApplySoftDeleteQueryFilters(ModelBuilder modelBuilder)
@@ -144,8 +191,6 @@ public sealed class EkipDbContext(DbContextOptions<EkipDbContext> options)
             var isDeletedProp = Expression.Property(parameter, nameof(ISoftDeletable.IsDeleted));
             var filter = Expression.Lambda(Expression.Not(isDeletedProp), parameter);
 
-            // نکته EF Core 10: اگر فیلتر دیگری روی این موجودیت ست شده باشد، می‌توان از Named Query Filter استفاده کرد:
-            // entityType.SetQueryFilter("SoftDelete", filter);
             entityType.SetQueryFilter(filter);
         }
     }

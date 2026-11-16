@@ -14,8 +14,6 @@ public sealed class AdminAuditLogConfiguration : IEntityTypeConfiguration<AdminA
         builder.Property(x => x.Id).ValueGeneratedNever();
 
         builder.Property(x => x.ActionType)
-            .HasConversion<string>()
-            .HasMaxLength(50)
             .IsRequired();
 
         builder.Property(x => x.TargetEntity)

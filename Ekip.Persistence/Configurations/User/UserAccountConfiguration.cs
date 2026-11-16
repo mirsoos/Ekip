@@ -32,8 +32,6 @@ public sealed class UserAccountConfiguration : IEntityTypeConfiguration<UserAcco
             .HasMaxLength(512);
 
         builder.Property(x => x.AccountStatus)
-            .HasConversion<string>()
-            .HasMaxLength(30)
             .IsRequired();
 
         builder.Property(x => x.NationalIdHash)

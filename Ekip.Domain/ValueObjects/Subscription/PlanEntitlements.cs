@@ -7,29 +7,19 @@ namespace Ekip.Domain.ValueObjects.Subscription;
 
 public sealed record PlanEntitlements
 {
-    [JsonInclude]
-    public int MaxActiveEkips { get; private init; }
+    public int MaxActiveEkips { get; }
+    public int DailyAiMessagesQuota { get; }
+    public bool CanCreateRecurringEkips { get; }
+    public bool CanCreateBusinessEkips { get; }
+    public IReadOnlyDictionary<string, string>? CustomPerks { get; }
 
-    [JsonInclude]
-    public int DailyAiMessagesQuota { get; private init; }
-
-    [JsonInclude]
-    public bool CanCreateRecurringEkips { get; private init; }
-
-    [JsonInclude]
-    public bool CanCreateBusinessEkips { get; private init; }
-
-    [JsonInclude]
-    public IReadOnlyDictionary<string, string>? CustomPerks { get; private init; }
-
-    private PlanEntitlements() { }
-
-    private PlanEntitlements(
+    [JsonConstructor]
+    internal PlanEntitlements(
         int maxActiveEkips,
         int dailyAiMessagesQuota,
         bool canCreateRecurringEkips,
         bool canCreateBusinessEkips,
-        IReadOnlyDictionary<string, string>? customPerks)
+        IReadOnlyDictionary<string, string>? customPerks = null)
     {
         MaxActiveEkips = maxActiveEkips;
         DailyAiMessagesQuota = dailyAiMessagesQuota;

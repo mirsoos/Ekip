@@ -29,8 +29,6 @@ public sealed class UserIdentityVectorConfiguration : IEntityTypeConfiguration<U
             .HasMaxLength(4000);
 
         builder.Property(x => x.UserGender)
-            .HasConversion<string>()
-            .HasMaxLength(20)
             .IsRequired();
 
         builder.HasOne<UserAccount>()

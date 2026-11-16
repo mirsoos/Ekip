@@ -17,8 +17,6 @@ public sealed class EkipHostCompanionConfiguration : IEntityTypeConfiguration<Ek
         builder.Property<uint>("Version").IsRowVersion();
 
         builder.Property(x => x.CompanionStatus)
-            .HasConversion<string>()
-            .HasMaxLength(30)
             .IsRequired();
 
         builder.HasOne<UserAccount>()

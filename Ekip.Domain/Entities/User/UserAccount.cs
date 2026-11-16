@@ -55,7 +55,7 @@ public class UserAccount : BaseEntity, IAggregateRoot, IAuditableEntity, ISoftDe
         TermsAcceptedAt = termsAcceptedAt;
     }
 
-    public static Result<UserAccount> Register(
+    internal static Result<UserAccount> Register(
         Username username,
         string referralCode,
         DateTime utcNow,

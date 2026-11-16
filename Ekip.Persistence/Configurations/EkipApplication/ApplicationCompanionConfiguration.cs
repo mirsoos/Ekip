@@ -17,8 +17,6 @@ public sealed class ApplicationCompanionConfiguration : IEntityTypeConfiguration
         builder.Property<uint>("Version").IsRowVersion();
 
         builder.Property(x => x.Status)
-            .HasConversion<string>()
-            .HasMaxLength(30)
             .IsRequired();
 
         builder.HasOne<UserAccount>()

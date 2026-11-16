@@ -16,8 +16,6 @@ public sealed class NotificationConfiguration : IEntityTypeConfiguration<Domain.
         builder.Property<uint>("Version").IsRowVersion();
 
         builder.Property(x => x.Type)
-            .HasConversion<string>()
-            .HasMaxLength(50)
             .IsRequired();
 
         builder.Property(x => x.Title)

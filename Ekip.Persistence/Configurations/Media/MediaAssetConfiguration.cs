@@ -17,8 +17,6 @@ public sealed class MediaAssetConfiguration : IEntityTypeConfiguration<MediaAsse
         builder.Property<uint>("Version").IsRowVersion();
 
         builder.Property(x => x.UsageContext)
-            .HasConversion<string>()
-            .HasMaxLength(50)
             .IsRequired();
 
         builder.Property(x => x.StorageKey)
@@ -29,8 +27,6 @@ public sealed class MediaAssetConfiguration : IEntityTypeConfiguration<MediaAsse
             .HasPrecision(5, 4);
 
         builder.Property(x => x.ModerationStatus)
-            .HasConversion<string>()
-            .HasMaxLength(30)
             .IsRequired();
 
         builder.Property(x => x.Error)

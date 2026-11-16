@@ -3,6 +3,7 @@ using ArchUnitNET.xUnitV3;
 using Ekip.Application.Contracts;
 using Ekip.Application.Extensions;
 using Ekip.Application.Interfaces;
+using Ekip.Application.Interfaces.Repositories.User;
 using FluentValidation;
 using MediatR;
 using Xunit;
@@ -105,5 +106,21 @@ public sealed class CqrsRulesTests : ArchitectureTestBase
             .ToList();
 
         Assert.Empty(invalidRequests);
+    }
+
+    [Fact]
+    public void Only_Registration_Command_Handlers_Should_Call_AddAccount()
+    {
+        var addAccountMethod = ArchRuleDefinition.MethodMembers()
+            .That().AreDeclaredIn(typeof(IUserRepository))
+            .And().HaveName("AddAccount")
+            .As("IUserRepository.AddAccount");
+
+        ArchRuleDefinition.Classes()
+            .That().Are(ApplicationLayer)
+            .And().DoNotHaveNameMatching(".*Register.*Handler.*")
+            .Should().NotCallAny(addAccountMethod)
+            .WithoutRequiringPositiveResults()
+            .Check(EkipArchitecture);
     }
 }

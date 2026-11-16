@@ -15,8 +15,6 @@ public sealed class ReputationLedgerConfiguration : IEntityTypeConfiguration<Rep
         builder.Property(x => x.Id).ValueGeneratedNever();
 
         builder.Property(x => x.EventType)
-            .HasConversion<string>()
-            .HasMaxLength(50)
             .IsRequired();
 
         builder.Property(x => x.Description)

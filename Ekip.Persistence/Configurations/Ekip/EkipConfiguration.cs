@@ -26,8 +26,6 @@ public sealed class EkipConfiguration : IEntityTypeConfiguration<Domain.Entities
             .HasMaxLength(4000);
 
         builder.Property(x => x.Category)
-            .HasConversion<string>()
-            .HasMaxLength(30)
             .IsRequired();
 
         builder.Property(x => x.SubCategory)
@@ -54,29 +52,21 @@ public sealed class EkipConfiguration : IEntityTypeConfiguration<Domain.Entities
             .HasMaxLength(1000);
 
         builder.Property(x => x.HostComposition)
-            .HasConversion<string>()
-            .HasMaxLength(20)
             .IsRequired();
 
         builder.Property(x => x.EstimatedCost)
             .HasPrecision(18, 2);
 
         builder.Property(x => x.ModerationStatus)
-            .HasConversion<string>()
-            .HasMaxLength(30)
             .IsRequired();
 
         builder.Property(x => x.LifecycleStatus)
-            .HasConversion<string>()
-            .HasMaxLength(30)
             .IsRequired();
 
         builder.Property(x => x.CancellationReason)
             .HasMaxLength(1000);
 
         builder.Property(x => x.QuorumStatus)
-            .HasConversion<string>()
-            .HasMaxLength(30)
             .IsRequired();
 
         // PostgreSQL native arrays with Backing Fields

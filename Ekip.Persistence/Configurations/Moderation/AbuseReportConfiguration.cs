@@ -18,18 +18,12 @@ public sealed class AbuseReportConfiguration : IEntityTypeConfiguration<AbuseRep
         builder.Property<uint>("Version").IsRowVersion();
 
         builder.Property(x => x.TargetType)
-            .HasConversion<string>()
-            .HasMaxLength(40)
             .IsRequired();
 
         builder.Property(x => x.Reason)
-            .HasConversion<string>()
-            .HasMaxLength(40)
             .IsRequired();
 
         builder.Property(x => x.Status)
-            .HasConversion<string>()
-            .HasMaxLength(30)
             .IsRequired();
 
         builder.Property(x => x.Description)

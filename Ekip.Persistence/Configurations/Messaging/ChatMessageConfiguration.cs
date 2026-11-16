@@ -18,8 +18,6 @@ public sealed class ChatMessageConfiguration : IEntityTypeConfiguration<ChatMess
         builder.Property<uint>("Version").IsRowVersion();
 
         builder.Property(x => x.Type)
-            .HasConversion<string>()
-            .HasMaxLength(30)
             .IsRequired();
 
         builder.Property(x => x.ContentText)

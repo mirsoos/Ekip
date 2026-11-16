@@ -31,7 +31,7 @@ public class UserGamificationSummary : Entity, IAggregateRoot
         NextLevelXp = ReputationPolicy.GetNextLevelXp(1);
     }
 
-    public static UserGamificationSummary Create(Guid userId)
+    internal static UserGamificationSummary Create(Guid userId)
     {
         if (userId == Guid.Empty)
             throw new ArgumentException("UserId cannot be empty.", nameof(userId));

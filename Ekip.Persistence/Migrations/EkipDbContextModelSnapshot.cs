@@ -33,10 +33,8 @@ namespace Ekip.Persistence.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("id");
 
-                    b.Property<string>("ContextMode")
-                        .IsRequired()
-                        .HasMaxLength(40)
-                        .HasColumnType("character varying(40)")
+                    b.Property<int>("ContextMode")
+                        .HasColumnType("integer")
                         .HasColumnName("context_mode");
 
                     b.Property<DateTime>("CreatedAtUtc")
@@ -92,7 +90,7 @@ namespace Ekip.Persistence.Migrations
                     b.HasIndex("UserId", "UpdatedAtUtc")
                         .HasDatabaseName("ix_ai_conversation_user_id_updated_at_utc");
 
-                    b.ToTable("AIConversation", (string)null);
+                    b.ToTable("ai_conversation", (string)null);
                 });
 
             modelBuilder.Entity("Ekip.Domain.Entities.AI.AIMessage", b =>
@@ -142,7 +140,7 @@ namespace Ekip.Persistence.Migrations
                     b.HasIndex("AIConversationId", "CreatedAtUtc")
                         .HasDatabaseName("ix_ai_message_ai_conversation_id_created_at_utc");
 
-                    b.ToTable("AIMessage", (string)null);
+                    b.ToTable("ai_message", (string)null);
                 });
 
             modelBuilder.Entity("Ekip.Domain.Entities.AI.EkipSemanticVector", b =>
@@ -192,7 +190,7 @@ namespace Ekip.Persistence.Migrations
                         .HasDatabaseName("ix_ekip_semantic_vector_city_id_is_available")
                         .HasFilter("is_available = true");
 
-                    b.ToTable("EkipSemanticVector", (string)null);
+                    b.ToTable("ekip_semantic_vector", (string)null);
                 });
 
             modelBuilder.Entity("Ekip.Domain.Entities.AI.UserIdentityVector", b =>
@@ -235,10 +233,8 @@ namespace Ekip.Persistence.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("updated_at_utc");
 
-                    b.Property<string>("UserGender")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("character varying(20)")
+                    b.Property<int>("UserGender")
+                        .HasColumnType("integer")
                         .HasColumnName("user_gender");
 
                     b.Property<uint>("Version")
@@ -259,7 +255,7 @@ namespace Ekip.Persistence.Migrations
                     b.HasIndex("CityId", "UserGender", "BirthYear")
                         .HasDatabaseName("ix_user_identity_vector_city_id_user_gender_birth_year");
 
-                    b.ToTable("UserIdentityVector", (string)null);
+                    b.ToTable("user_identity_vector", (string)null);
                 });
 
             modelBuilder.Entity("Ekip.Domain.Entities.Admin.AdminAccount", b =>
@@ -334,10 +330,8 @@ namespace Ekip.Persistence.Migrations
                         .HasColumnType("varchar(100)[]")
                         .HasColumnName("permissions");
 
-                    b.Property<string>("Role")
-                        .IsRequired()
-                        .HasMaxLength(40)
-                        .HasColumnType("character varying(40)")
+                    b.Property<int>("Role")
+                        .HasColumnType("integer")
                         .HasColumnName("role");
 
                     b.Property<string>("TotpSecret")
@@ -372,7 +366,7 @@ namespace Ekip.Persistence.Migrations
                         .IsUnique()
                         .HasDatabaseName("ix_admin_account_user_name");
 
-                    b.ToTable("AdminAccount", (string)null);
+                    b.ToTable("admin_account", (string)null);
                 });
 
             modelBuilder.Entity("Ekip.Domain.Entities.Admin.AdminAuditLog", b =>
@@ -381,10 +375,8 @@ namespace Ekip.Persistence.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("id");
 
-                    b.Property<string>("ActionType")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("character varying(50)")
+                    b.Property<int>("ActionType")
+                        .HasColumnType("integer")
                         .HasColumnName("action_type");
 
                     b.Property<Guid>("AdminId")
@@ -434,7 +426,7 @@ namespace Ekip.Persistence.Migrations
                     b.HasIndex("TargetEntity", "TargetId")
                         .HasDatabaseName("ix_admin_audit_log_target_entity_target_id");
 
-                    b.ToTable("AdminAuditLog", (string)null);
+                    b.ToTable("admin_audit_log", (string)null);
                 });
 
             modelBuilder.Entity("Ekip.Domain.Entities.Admin.AdminSession", b =>
@@ -504,7 +496,7 @@ namespace Ekip.Persistence.Migrations
                     b.HasIndex("AdminId", "IsRevoked")
                         .HasDatabaseName("ix_admin_session_admin_id_is_revoked");
 
-                    b.ToTable("AdminSession", (string)null);
+                    b.ToTable("admin_session", (string)null);
                 });
 
             modelBuilder.Entity("Ekip.Domain.Entities.Billing.PaymentTransaction", b =>
@@ -543,10 +535,8 @@ namespace Ekip.Persistence.Migrations
                         .HasColumnType("character varying(1000)")
                         .HasColumnName("failure_reason");
 
-                    b.Property<string>("Gateway")
-                        .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("character varying(30)")
+                    b.Property<int>("Gateway")
+                        .HasColumnType("integer")
                         .HasColumnName("gateway");
 
                     b.Property<decimal>("GatewayPayableAmount")
@@ -566,10 +556,8 @@ namespace Ekip.Persistence.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("promo_code_id");
 
-                    b.Property<string>("Purpose")
-                        .IsRequired()
-                        .HasMaxLength(40)
-                        .HasColumnType("character varying(40)")
+                    b.Property<int>("Purpose")
+                        .HasColumnType("integer")
                         .HasColumnName("purpose");
 
                     b.Property<Guid>("ReferenceEntityId")
@@ -585,10 +573,8 @@ namespace Ekip.Persistence.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("refunded_at_utc");
 
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("character varying(30)")
+                    b.Property<int>("Status")
+                        .HasColumnType("integer")
                         .HasColumnName("status");
 
                     b.Property<DateTime?>("UpdatedAtUtc")
@@ -632,7 +618,7 @@ namespace Ekip.Persistence.Migrations
                     b.HasIndex("UserId", "CreatedAtUtc")
                         .HasDatabaseName("ix_payment_transaction_user_id_created_at_utc");
 
-                    b.ToTable("PaymentTransaction", (string)null);
+                    b.ToTable("payment_transaction", (string)null);
                 });
 
             modelBuilder.Entity("Ekip.Domain.Entities.Billing.UserWallet", b =>
@@ -674,7 +660,7 @@ namespace Ekip.Persistence.Migrations
                     b.HasKey("UserId")
                         .HasName("pk_user_wallet");
 
-                    b.ToTable("UserWallet", (string)null);
+                    b.ToTable("user_wallet", (string)null);
                 });
 
             modelBuilder.Entity("Ekip.Domain.Entities.Billing.WalletLedger", b =>
@@ -716,10 +702,8 @@ namespace Ekip.Persistence.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("reference_entity_id");
 
-                    b.Property<string>("Type")
-                        .IsRequired()
-                        .HasMaxLength(40)
-                        .HasColumnType("character varying(40)")
+                    b.Property<int>("Type")
+                        .HasColumnType("integer")
                         .HasColumnName("type");
 
                     b.Property<Guid>("UserId")
@@ -736,7 +720,7 @@ namespace Ekip.Persistence.Migrations
                     b.HasIndex("UserId", "CreatedAtUtc")
                         .HasDatabaseName("ix_wallet_ledger_user_id_created_at_utc");
 
-                    b.ToTable("WalletLedger", (string)null);
+                    b.ToTable("wallet_ledger", (string)null);
                 });
 
             modelBuilder.Entity("Ekip.Domain.Entities.Configuration.SystemSetting", b =>
@@ -805,7 +789,7 @@ namespace Ekip.Persistence.Migrations
                     b.HasIndex("UpdatedByAdminId")
                         .HasDatabaseName("ix_system_setting_updated_by_admin_id");
 
-                    b.ToTable("SystemSetting", (string)null);
+                    b.ToTable("system_setting", (string)null);
                 });
 
             modelBuilder.Entity("Ekip.Domain.Entities.Discount.PromoCode", b =>
@@ -874,7 +858,7 @@ namespace Ekip.Persistence.Migrations
                         .HasDatabaseName("ix_promo_code_target_user_id_is_active")
                         .HasFilter("target_user_id IS NOT NULL");
 
-                    b.ToTable("PromoCode", (string)null);
+                    b.ToTable("promo_code", (string)null);
                 });
 
             modelBuilder.Entity("Ekip.Domain.Entities.Ekip.Ekip", b =>
@@ -902,10 +886,8 @@ namespace Ekip.Persistence.Migrations
                         .HasColumnType("character varying(1000)")
                         .HasColumnName("cancellation_reason");
 
-                    b.Property<string>("Category")
-                        .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("character varying(30)")
+                    b.Property<int>("Category")
+                        .HasColumnType("integer")
                         .HasColumnName("category");
 
                     b.Property<Guid>("CityId")
@@ -944,10 +926,8 @@ namespace Ekip.Persistence.Migrations
                         .HasColumnType("geography(Point, 4326)")
                         .HasColumnName("exact_location_point");
 
-                    b.Property<string>("HostComposition")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("character varying(20)")
+                    b.Property<int>("HostComposition")
+                        .HasColumnType("integer")
                         .HasColumnName("host_composition");
 
                     b.Property<Guid>("IdempotencyKey")
@@ -966,10 +946,8 @@ namespace Ekip.Persistence.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("join_deadline_utc");
 
-                    b.Property<string>("LifecycleStatus")
-                        .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("character varying(30)")
+                    b.Property<int>("LifecycleStatus")
+                        .HasColumnType("integer")
                         .HasColumnName("lifecycle_status");
 
                     b.Property<string>("LocationName")
@@ -991,10 +969,8 @@ namespace Ekip.Persistence.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("min_members");
 
-                    b.Property<string>("ModerationStatus")
-                        .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("character varying(30)")
+                    b.Property<int>("ModerationStatus")
+                        .HasColumnType("integer")
                         .HasColumnName("moderation_status");
 
                     b.Property<Point>("PublicMapPoint")
@@ -1006,10 +982,8 @@ namespace Ekip.Persistence.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("quorum_decision_deadline_utc");
 
-                    b.Property<string>("QuorumStatus")
-                        .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("character varying(30)")
+                    b.Property<int>("QuorumStatus")
+                        .HasColumnType("integer")
                         .HasColumnName("quorum_status");
 
                     b.Property<Guid?>("RecurringEkipId")
@@ -1077,7 +1051,7 @@ namespace Ekip.Persistence.Migrations
                     b.HasIndex("CityId", "LifecycleStatus", "ModerationStatus", "EventDateTimeUtc")
                         .HasDatabaseName("ix_ekip_city_id_lifecycle_status_moderation_status_event_date_");
 
-                    b.ToTable("Ekip", (string)null);
+                    b.ToTable("ekip", (string)null);
                 });
 
             modelBuilder.Entity("Ekip.Domain.Entities.Ekip.EkipHostCompanion", b =>
@@ -1086,10 +1060,8 @@ namespace Ekip.Persistence.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("id");
 
-                    b.Property<string>("CompanionStatus")
-                        .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("character varying(30)")
+                    b.Property<int>("CompanionStatus")
+                        .HasColumnType("integer")
                         .HasColumnName("companion_status");
 
                     b.Property<Guid>("CompanionUserId")
@@ -1124,7 +1096,7 @@ namespace Ekip.Persistence.Migrations
                         .IsUnique()
                         .HasDatabaseName("ix_ekip_host_companion_ekip_id_companion_user_id");
 
-                    b.ToTable("EkipHostCompanion", (string)null);
+                    b.ToTable("ekip_host_companion", (string)null);
                 });
 
             modelBuilder.Entity("Ekip.Domain.Entities.Ekip.EkipMember", b =>
@@ -1137,10 +1109,8 @@ namespace Ekip.Persistence.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("application_id");
 
-                    b.Property<string>("AttendanceStatus")
-                        .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("character varying(30)")
+                    b.Property<int>("AttendanceStatus")
+                        .HasColumnType("integer")
                         .HasColumnName("attendance_status");
 
                     b.Property<DateTime?>("CheckInAtUtc")
@@ -1159,20 +1129,16 @@ namespace Ekip.Persistence.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("ekip_id");
 
-                    b.Property<string>("MembershipStatus")
-                        .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("character varying(30)")
+                    b.Property<int>("MembershipStatus")
+                        .HasColumnType("integer")
                         .HasColumnName("membership_status");
 
                     b.Property<int>("NoShowReportedCount")
                         .HasColumnType("integer")
                         .HasColumnName("no_show_reported_count");
 
-                    b.Property<string>("Role")
-                        .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("character varying(30)")
+                    b.Property<int>("Role")
+                        .HasColumnType("integer")
                         .HasColumnName("role");
 
                     b.Property<DateTime?>("UpdatedAtUtc")
@@ -1202,7 +1168,7 @@ namespace Ekip.Persistence.Migrations
                     b.HasIndex("UserId", "MembershipStatus")
                         .HasDatabaseName("ix_ekip_member_user_id_membership_status");
 
-                    b.ToTable("EkipMember", (string)null);
+                    b.ToTable("ekip_member", (string)null);
                 });
 
             modelBuilder.Entity("Ekip.Domain.Entities.Ekip.RecurringEkip", b =>
@@ -1227,10 +1193,8 @@ namespace Ekip.Persistence.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("ends_at_utc");
 
-                    b.Property<string>("Frequency")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("character varying(20)")
+                    b.Property<int>("Frequency")
+                        .HasColumnType("integer")
                         .HasColumnName("frequency");
 
                     b.Property<bool>("IsActive")
@@ -1280,7 +1244,7 @@ namespace Ekip.Persistence.Migrations
                     b.HasIndex("CreatorId", "IsActive")
                         .HasDatabaseName("ix_recurring_ekip_creator_id_is_active");
 
-                    b.ToTable("RecurringEkip", (string)null);
+                    b.ToTable("recurring_ekip", (string)null);
                 });
 
             modelBuilder.Entity("Ekip.Domain.Entities.Ekip.SavedEkip", b =>
@@ -1311,7 +1275,7 @@ namespace Ekip.Persistence.Migrations
                         .IsUnique()
                         .HasDatabaseName("ix_saved_ekip_user_id_ekip_id");
 
-                    b.ToTable("SavedEkip", (string)null);
+                    b.ToTable("saved_ekip", (string)null);
                 });
 
             modelBuilder.Entity("Ekip.Domain.Entities.EkipApplication.ApplicationCompanion", b =>
@@ -1336,10 +1300,8 @@ namespace Ekip.Persistence.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("responded_at_utc");
 
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("character varying(30)")
+                    b.Property<int>("Status")
+                        .HasColumnType("integer")
                         .HasColumnName("status");
 
                     b.Property<uint>("Version")
@@ -1358,7 +1320,7 @@ namespace Ekip.Persistence.Migrations
                         .IsUnique()
                         .HasDatabaseName("ix_application_companion_ekip_application_id_companion_user_id");
 
-                    b.ToTable("ApplicationCompanion", (string)null);
+                    b.ToTable("application_companion", (string)null);
                 });
 
             modelBuilder.Entity("Ekip.Domain.Entities.EkipApplication.EkipApplication", b =>
@@ -1371,10 +1333,8 @@ namespace Ekip.Persistence.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("applicant_id");
 
-                    b.Property<string>("ApplicationStatus")
-                        .IsRequired()
-                        .HasMaxLength(40)
-                        .HasColumnType("character varying(40)")
+                    b.Property<int>("ApplicationStatus")
+                        .HasColumnType("integer")
                         .HasColumnName("application_status");
 
                     b.Property<DateTime>("CreatedAtUtc")
@@ -1403,10 +1363,8 @@ namespace Ekip.Persistence.Migrations
                         .HasColumnType("boolean")
                         .HasColumnName("is_deleted");
 
-                    b.Property<string>("JoinType")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("character varying(20)")
+                    b.Property<int>("JoinType")
+                        .HasColumnType("integer")
                         .HasColumnName("join_type");
 
                     b.Property<DateTime?>("UpdatedAtUtc")
@@ -1432,12 +1390,12 @@ namespace Ekip.Persistence.Migrations
                     b.HasIndex("ApplicantId", "EkipId")
                         .IsUnique()
                         .HasDatabaseName("ix_ekip_application_applicant_id_ekip_id")
-                        .HasFilter("is_deleted = false AND application_status IN ('WaitingCompanionApproval', 'PendingHostApproval', 'Waitlisted', 'Approved')");
+                        .HasFilter("is_deleted = false AND application_status IN (1, 2, 3, 4)");
 
                     b.HasIndex("EkipId", "ApplicationStatus", "CreatedAtUtc")
                         .HasDatabaseName("ix_ekip_application_ekip_id_application_status_created_at_utc");
 
-                    b.ToTable("EkipApplication", (string)null);
+                    b.ToTable("ekip_application", (string)null);
                 });
 
             modelBuilder.Entity("Ekip.Domain.Entities.Gamification.ReputationLedger", b =>
@@ -1459,10 +1417,8 @@ namespace Ekip.Persistence.Migrations
                         .HasColumnType("character varying(500)")
                         .HasColumnName("description");
 
-                    b.Property<string>("EventType")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("character varying(50)")
+                    b.Property<int>("EventType")
+                        .HasColumnType("integer")
                         .HasColumnName("event_type");
 
                     b.Property<int>("HonorBalanceAfter")
@@ -1508,7 +1464,7 @@ namespace Ekip.Persistence.Migrations
                     b.HasIndex("UserId", "CreatedAtUtc")
                         .HasDatabaseName("ix_reputation_ledger_user_id_created_at_utc");
 
-                    b.ToTable("ReputationLedger", (string)null);
+                    b.ToTable("reputation_ledger", (string)null);
                 });
 
             modelBuilder.Entity("Ekip.Domain.Entities.Gamification.UserGamificationSummary", b =>
@@ -1555,7 +1511,7 @@ namespace Ekip.Persistence.Migrations
                     b.HasKey("UserId")
                         .HasName("pk_user_gamification_summary");
 
-                    b.ToTable("UserGamificationSummary", (string)null);
+                    b.ToTable("user_gamification_summary", (string)null);
                 });
 
             modelBuilder.Entity("Ekip.Domain.Entities.Location.City", b =>
@@ -1633,7 +1589,7 @@ namespace Ekip.Persistence.Migrations
                     b.HasIndex("ProvinceId", "IsActive", "DisplayOrder")
                         .HasDatabaseName("ix_city_province_id_is_active_display_order");
 
-                    b.ToTable("City", (string)null);
+                    b.ToTable("city", (string)null);
                 });
 
             modelBuilder.Entity("Ekip.Domain.Entities.Location.Country", b =>
@@ -1710,7 +1666,7 @@ namespace Ekip.Persistence.Migrations
                     b.HasIndex("IsActive", "DisplayOrder")
                         .HasDatabaseName("ix_country_is_active_display_order");
 
-                    b.ToTable("Country", (string)null);
+                    b.ToTable("country", (string)null);
                 });
 
             modelBuilder.Entity("Ekip.Domain.Entities.Location.Province", b =>
@@ -1767,7 +1723,7 @@ namespace Ekip.Persistence.Migrations
                     b.HasIndex("CountryId", "IsActive", "DisplayOrder")
                         .HasDatabaseName("ix_province_country_id_is_active_display_order");
 
-                    b.ToTable("Province", (string)null);
+                    b.ToTable("province", (string)null);
                 });
 
             modelBuilder.Entity("Ekip.Domain.Entities.Media.MediaAsset", b =>
@@ -1793,10 +1749,8 @@ namespace Ekip.Persistence.Migrations
                         .HasColumnType("boolean")
                         .HasColumnName("is_deleted");
 
-                    b.Property<string>("ModerationStatus")
-                        .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("character varying(30)")
+                    b.Property<int>("ModerationStatus")
+                        .HasColumnType("integer")
                         .HasColumnName("moderation_status");
 
                     b.Property<decimal?>("NsfwProbability")
@@ -1822,10 +1776,8 @@ namespace Ekip.Persistence.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("uploader_id");
 
-                    b.Property<string>("UsageContext")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("character varying(50)")
+                    b.Property<int>("UsageContext")
+                        .HasColumnType("integer")
                         .HasColumnName("usage_context");
 
                     b.Property<uint>("Version")
@@ -1844,7 +1796,7 @@ namespace Ekip.Persistence.Migrations
                     b.HasIndex("UploaderId", "ModerationStatus")
                         .HasDatabaseName("ix_media_asset_uploader_id_moderation_status");
 
-                    b.ToTable("MediaAsset", (string)null);
+                    b.ToTable("media_asset", (string)null);
                 });
 
             modelBuilder.Entity("Ekip.Domain.Entities.Messaging.ChatMessage", b =>
@@ -1902,10 +1854,8 @@ namespace Ekip.Persistence.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("sender_id");
 
-                    b.Property<string>("Type")
-                        .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("character varying(30)")
+                    b.Property<int>("Type")
+                        .HasColumnType("integer")
                         .HasColumnName("type");
 
                     b.Property<DateTime?>("UpdatedAtUtc")
@@ -1931,7 +1881,7 @@ namespace Ekip.Persistence.Migrations
                         .HasDatabaseName("ix_chat_message_conversation_id_is_pinned")
                         .HasFilter("is_pinned = true");
 
-                    b.ToTable("ChatMessage", (string)null);
+                    b.ToTable("chat_message", (string)null);
                 });
 
             modelBuilder.Entity("Ekip.Domain.Entities.Messaging.Conversation", b =>
@@ -1940,10 +1890,8 @@ namespace Ekip.Persistence.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("id");
 
-                    b.Property<string>("ConversationType")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("character varying(20)")
+                    b.Property<int>("ConversationType")
+                        .HasColumnType("integer")
                         .HasColumnName("conversation_type");
 
                     b.Property<DateTime>("CreatedAtUtc")
@@ -2012,7 +1960,7 @@ namespace Ekip.Persistence.Migrations
                         .HasDatabaseName("ix_conversation_participant_one_id_participant_two_id")
                         .HasFilter("participant_one_id IS NOT NULL AND participant_two_id IS NOT NULL");
 
-                    b.ToTable("Conversation", (string)null);
+                    b.ToTable("conversation", (string)null);
                 });
 
             modelBuilder.Entity("Ekip.Domain.Entities.Messaging.ConversationParticipant", b =>
@@ -2073,7 +2021,7 @@ namespace Ekip.Persistence.Migrations
                     b.HasIndex("UserId", "IsActive")
                         .HasDatabaseName("ix_conversation_participant_user_id_is_active");
 
-                    b.ToTable("ConversationParticipant", (string)null);
+                    b.ToTable("conversation_participant", (string)null);
                 });
 
             modelBuilder.Entity("Ekip.Domain.Entities.Moderation.AbuseReport", b =>
@@ -2105,10 +2053,8 @@ namespace Ekip.Persistence.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("idempotency_key");
 
-                    b.Property<string>("Reason")
-                        .IsRequired()
-                        .HasMaxLength(40)
-                        .HasColumnType("character varying(40)")
+                    b.Property<int>("Reason")
+                        .HasColumnType("integer")
                         .HasColumnName("reason");
 
                     b.Property<Guid>("ReporterId")
@@ -2123,20 +2069,16 @@ namespace Ekip.Persistence.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("resolved_by_admin_id");
 
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("character varying(30)")
+                    b.Property<int>("Status")
+                        .HasColumnType("integer")
                         .HasColumnName("status");
 
                     b.Property<Guid>("TargetId")
                         .HasColumnType("uuid")
                         .HasColumnName("target_id");
 
-                    b.Property<string>("TargetType")
-                        .IsRequired()
-                        .HasMaxLength(40)
-                        .HasColumnType("character varying(40)")
+                    b.Property<int>("TargetType")
+                        .HasColumnType("integer")
                         .HasColumnName("target_type");
 
                     b.Property<DateTime?>("UpdatedAtUtc")
@@ -2168,7 +2110,7 @@ namespace Ekip.Persistence.Migrations
                     b.HasIndex("TargetType", "TargetId")
                         .HasDatabaseName("ix_abuse_report_target_type_target_id");
 
-                    b.ToTable("AbuseReport", (string)null);
+                    b.ToTable("abuse_report", (string)null);
                 });
 
             modelBuilder.Entity("Ekip.Domain.Entities.Notification.Notification", b =>
@@ -2218,10 +2160,8 @@ namespace Ekip.Persistence.Migrations
                         .HasColumnType("character varying(200)")
                         .HasColumnName("title");
 
-                    b.Property<string>("Type")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("character varying(50)")
+                    b.Property<int>("Type")
+                        .HasColumnType("integer")
                         .HasColumnName("type");
 
                     b.Property<uint>("Version")
@@ -2243,7 +2183,7 @@ namespace Ekip.Persistence.Migrations
                         .HasDatabaseName("ix_notification_recipient_id_id1")
                         .HasFilter("is_read = false");
 
-                    b.ToTable("Notification", (string)null);
+                    b.ToTable("notification", (string)null);
                 });
 
             modelBuilder.Entity("Ekip.Domain.Entities.Review.ProfileReview", b =>
@@ -2281,10 +2221,8 @@ namespace Ekip.Persistence.Migrations
                         .HasColumnType("boolean")
                         .HasColumnName("is_deleted");
 
-                    b.Property<string>("ModerationStatus")
-                        .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("character varying(30)")
+                    b.Property<int>("ModerationStatus")
+                        .HasColumnType("integer")
                         .HasColumnName("moderation_status");
 
                     b.Property<int>("Score")
@@ -2327,7 +2265,7 @@ namespace Ekip.Persistence.Migrations
                         .IsUnique()
                         .HasDatabaseName("ix_profile_review_ekip_id_author_user_id_target_user_id");
 
-                    b.ToTable("ProfileReview", (string)null);
+                    b.ToTable("profile_review", (string)null);
                 });
 
             modelBuilder.Entity("Ekip.Domain.Entities.Subscription.SubscriptionPlan", b =>
@@ -2394,7 +2332,7 @@ namespace Ekip.Persistence.Migrations
                         .IsUnique()
                         .HasDatabaseName("ix_subscription_plan_code");
 
-                    b.ToTable("SubscriptionPlan", (string)null);
+                    b.ToTable("subscription_plan", (string)null);
                 });
 
             modelBuilder.Entity("Ekip.Domain.Entities.Subscription.UserSubscription", b =>
@@ -2446,7 +2384,7 @@ namespace Ekip.Persistence.Migrations
                     b.HasIndex("SubscriptionPlanId")
                         .HasDatabaseName("ix_user_subscription_subscription_plan_id");
 
-                    b.ToTable("UserSubscription", (string)null);
+                    b.ToTable("user_subscription", (string)null);
                 });
 
             modelBuilder.Entity("Ekip.Domain.Entities.Support.Ticket", b =>
@@ -2459,10 +2397,8 @@ namespace Ekip.Persistence.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("assigned_admin_id");
 
-                    b.Property<string>("Category")
-                        .IsRequired()
-                        .HasMaxLength(40)
-                        .HasColumnType("character varying(40)")
+                    b.Property<int>("Category")
+                        .HasColumnType("integer")
                         .HasColumnName("category");
 
                     b.Property<DateTime?>("ClosedAtUtc")
@@ -2473,16 +2409,12 @@ namespace Ekip.Persistence.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("created_at_utc");
 
-                    b.Property<string>("Priority")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("character varying(20)")
+                    b.Property<int>("Priority")
+                        .HasColumnType("integer")
                         .HasColumnName("priority");
 
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("character varying(30)")
+                    b.Property<int>("Status")
+                        .HasColumnType("integer")
                         .HasColumnName("status");
 
                     b.Property<string>("Subject")
@@ -2517,7 +2449,7 @@ namespace Ekip.Persistence.Migrations
                     b.HasIndex("Status", "Priority", "UpdatedAtUtc")
                         .HasDatabaseName("ix_ticket_status_priority_updated_at_utc");
 
-                    b.ToTable("Ticket", (string)null);
+                    b.ToTable("ticket", (string)null);
                 });
 
             modelBuilder.Entity("Ekip.Domain.Entities.Support.TicketMessage", b =>
@@ -2559,7 +2491,7 @@ namespace Ekip.Persistence.Migrations
                     b.HasIndex("TicketId", "CreatedAtUtc")
                         .HasDatabaseName("ix_ticket_message_ticket_id_created_at_utc");
 
-                    b.ToTable("TicketMessage", (string)null);
+                    b.ToTable("ticket_message", (string)null);
                 });
 
             modelBuilder.Entity("Ekip.Domain.Entities.Trend.CityTrendSnapshot", b =>
@@ -2595,10 +2527,8 @@ namespace Ekip.Persistence.Migrations
                         .HasColumnType("numeric(10,4)")
                         .HasColumnName("trend_score");
 
-                    b.Property<string>("Type")
-                        .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("character varying(30)")
+                    b.Property<int>("Type")
+                        .HasColumnType("integer")
                         .HasColumnName("type");
 
                     b.HasKey("Id")
@@ -2607,7 +2537,7 @@ namespace Ekip.Persistence.Migrations
                     b.HasIndex("CityId", "CreatedAtUtc", "Rank")
                         .HasDatabaseName("ix_city_trend_snapshot_city_id_created_at_utc_rank");
 
-                    b.ToTable("CityTrendSnapshot", (string)null);
+                    b.ToTable("city_trend_snapshot", (string)null);
                 });
 
             modelBuilder.Entity("Ekip.Domain.Entities.Trend.SearchQueryLog", b =>
@@ -2647,7 +2577,7 @@ namespace Ekip.Persistence.Migrations
                     b.HasIndex("CityId", "CreatedAtUtc", "NormalizedQuery")
                         .HasDatabaseName("ix_search_query_log_city_id_created_at_utc_normalized_query");
 
-                    b.ToTable("SearchQueryLog", (string)null);
+                    b.ToTable("search_query_log", (string)null);
                 });
 
             modelBuilder.Entity("Ekip.Domain.Entities.User.UserAccount", b =>
@@ -2656,10 +2586,8 @@ namespace Ekip.Persistence.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("id");
 
-                    b.Property<string>("AccountStatus")
-                        .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("character varying(30)")
+                    b.Property<int>("AccountStatus")
+                        .HasColumnType("integer")
                         .HasColumnName("account_status");
 
                     b.Property<DateTime>("CreatedAtUtc")
@@ -2770,7 +2698,7 @@ namespace Ekip.Persistence.Migrations
                         .HasDatabaseName("ix_user_account_username")
                         .HasFilter("is_deleted = false");
 
-                    b.ToTable("UserAccount", (string)null);
+                    b.ToTable("user_account", (string)null);
                 });
 
             modelBuilder.Entity("Ekip.Domain.Entities.User.UserDeviceSession", b =>
@@ -2799,10 +2727,8 @@ namespace Ekip.Persistence.Migrations
                         .HasColumnType("character varying(150)")
                         .HasColumnName("device_name");
 
-                    b.Property<string>("DeviceType")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("character varying(20)")
+                    b.Property<int>("DeviceType")
+                        .HasColumnType("integer")
                         .HasColumnName("device_type");
 
                     b.Property<DateTime>("ExpiresAtUtc")
@@ -2875,7 +2801,7 @@ namespace Ekip.Persistence.Migrations
                         .IsUnique()
                         .HasDatabaseName("ix_user_device_session_user_id_device_id");
 
-                    b.ToTable("UserDeviceSession", (string)null);
+                    b.ToTable("user_device_session", (string)null);
                 });
 
             modelBuilder.Entity("Ekip.Domain.Entities.User.UserProfile", b =>
@@ -2939,9 +2865,8 @@ namespace Ekip.Persistence.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("last_seen_at_utc");
 
-                    b.Property<string>("MbtiTypes")
-                        .HasMaxLength(10)
-                        .HasColumnType("character varying(10)")
+                    b.Property<int?>("MbtiTypes")
+                        .HasColumnType("integer")
                         .HasColumnName("mbti_types");
 
                     b.Property<bool>("ShowContacts")
@@ -2956,10 +2881,8 @@ namespace Ekip.Persistence.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("updated_at_utc");
 
-                    b.Property<string>("UserGender")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("character varying(20)")
+                    b.Property<int>("UserGender")
+                        .HasColumnType("integer")
                         .HasColumnName("user_gender");
 
                     b.Property<uint>("Version")
@@ -2979,7 +2902,7 @@ namespace Ekip.Persistence.Migrations
 
                     NpgsqlIndexBuilderExtensions.HasMethod(b.HasIndex("Interests"), "gin");
 
-                    b.ToTable("UserProfile", (string)null);
+                    b.ToTable("user_profile", (string)null);
                 });
 
             modelBuilder.Entity("Ekip.Domain.Entities.User.UserRelation", b =>
@@ -3000,10 +2923,8 @@ namespace Ekip.Persistence.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("requester_id");
 
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("character varying(30)")
+                    b.Property<int>("Status")
+                        .HasColumnType("integer")
                         .HasColumnName("status");
 
                     b.Property<DateTime?>("UpdatedAtUtc")
@@ -3026,7 +2947,7 @@ namespace Ekip.Persistence.Migrations
                         .IsUnique()
                         .HasDatabaseName("ix_user_relation_requester_id_receiver_id");
 
-                    b.ToTable("UserRelation", (string)null);
+                    b.ToTable("user_relation", (string)null);
                 });
 
             modelBuilder.Entity("MassTransit.EntityFrameworkCoreIntegration.InboxState", b =>
@@ -3254,7 +3175,7 @@ namespace Ekip.Persistence.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
-                        .HasConstraintName("fk_ai_conversation_user_accounts_user_id");
+                        .HasConstraintName("fk_ai_conversation_user_account_user_id");
                 });
 
             modelBuilder.Entity("Ekip.Domain.Entities.AI.AIMessage", b =>
@@ -3274,14 +3195,14 @@ namespace Ekip.Persistence.Migrations
                         .HasForeignKey("CityId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired()
-                        .HasConstraintName("fk_ekip_semantic_vector_cities_city_id");
+                        .HasConstraintName("fk_ekip_semantic_vector_city_city_id");
 
                     b.HasOne("Ekip.Domain.Entities.Ekip.Ekip", null)
                         .WithOne()
                         .HasForeignKey("Ekip.Domain.Entities.AI.EkipSemanticVector", "EkipId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
-                        .HasConstraintName("fk_ekip_semantic_vector_ekips_ekip_id");
+                        .HasConstraintName("fk_ekip_semantic_vector_ekip_ekip_id");
                 });
 
             modelBuilder.Entity("Ekip.Domain.Entities.AI.UserIdentityVector", b =>
@@ -3291,7 +3212,7 @@ namespace Ekip.Persistence.Migrations
                         .HasForeignKey("Ekip.Domain.Entities.AI.UserIdentityVector", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
-                        .HasConstraintName("fk_user_identity_vector_user_accounts_user_id");
+                        .HasConstraintName("fk_user_identity_vector_user_account_user_id");
                 });
 
             modelBuilder.Entity("Ekip.Domain.Entities.Admin.AdminAuditLog", b =>
@@ -3320,14 +3241,14 @@ namespace Ekip.Persistence.Migrations
                         .WithMany()
                         .HasForeignKey("PromoCodeId")
                         .OnDelete(DeleteBehavior.Restrict)
-                        .HasConstraintName("fk_payment_transaction_promo_codes_promo_code_id");
+                        .HasConstraintName("fk_payment_transaction_promo_code_promo_code_id");
 
                     b.HasOne("Ekip.Domain.Entities.User.UserAccount", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired()
-                        .HasConstraintName("fk_payment_transaction_user_accounts_user_id");
+                        .HasConstraintName("fk_payment_transaction_user_account_user_id");
                 });
 
             modelBuilder.Entity("Ekip.Domain.Entities.Billing.UserWallet", b =>
@@ -3337,7 +3258,7 @@ namespace Ekip.Persistence.Migrations
                         .HasForeignKey("Ekip.Domain.Entities.Billing.UserWallet", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
-                        .HasConstraintName("fk_user_wallet_user_accounts_user_id");
+                        .HasConstraintName("fk_user_wallet_user_account_user_id");
                 });
 
             modelBuilder.Entity("Ekip.Domain.Entities.Billing.WalletLedger", b =>
@@ -3347,7 +3268,7 @@ namespace Ekip.Persistence.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired()
-                        .HasConstraintName("fk_wallet_ledger_user_accounts_user_id");
+                        .HasConstraintName("fk_wallet_ledger_user_account_user_id");
                 });
 
             modelBuilder.Entity("Ekip.Domain.Entities.Configuration.SystemSetting", b =>
@@ -3372,7 +3293,7 @@ namespace Ekip.Persistence.Migrations
                         .WithMany()
                         .HasForeignKey("TargetUserId")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .HasConstraintName("fk_promo_code_user_accounts_target_user_id");
+                        .HasConstraintName("fk_promo_code_user_account_target_user_id");
                 });
 
             modelBuilder.Entity("Ekip.Domain.Entities.Ekip.Ekip", b =>
@@ -3382,20 +3303,20 @@ namespace Ekip.Persistence.Migrations
                         .HasForeignKey("CityId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired()
-                        .HasConstraintName("fk_ekip_cities_city_id");
+                        .HasConstraintName("fk_ekip_city_city_id");
 
                     b.HasOne("Ekip.Domain.Entities.User.UserAccount", null)
                         .WithMany()
                         .HasForeignKey("CreatorId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired()
-                        .HasConstraintName("fk_ekip_user_accounts_creator_id");
+                        .HasConstraintName("fk_ekip_user_account_creator_id");
 
                     b.HasOne("Ekip.Domain.Entities.Ekip.RecurringEkip", null)
                         .WithMany()
                         .HasForeignKey("RecurringEkipId")
                         .OnDelete(DeleteBehavior.SetNull)
-                        .HasConstraintName("fk_ekip_recurring_ekips_recurring_ekip_id");
+                        .HasConstraintName("fk_ekip_recurring_ekip_recurring_ekip_id");
 
                     b.OwnsOne("Ekip.Domain.ValueObjects.Ekip.EkipJoinCriteria", "JoinCriteria", b1 =>
                         {
@@ -3422,7 +3343,7 @@ namespace Ekip.Persistence.Migrations
 
                             b1.HasKey("EkipId");
 
-                            b1.ToTable("Ekip");
+                            b1.ToTable("ekip");
 
                             b1
                                 .ToJson("join_criteria")
@@ -3444,7 +3365,7 @@ namespace Ekip.Persistence.Migrations
                         .HasForeignKey("CompanionUserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired()
-                        .HasConstraintName("fk_ekip_host_companion_user_accounts_companion_user_id");
+                        .HasConstraintName("fk_ekip_host_companion_user_account_companion_user_id");
 
                     b.HasOne("Ekip.Domain.Entities.Ekip.Ekip", null)
                         .WithMany("HostCompanions")
@@ -3460,7 +3381,7 @@ namespace Ekip.Persistence.Migrations
                         .WithMany()
                         .HasForeignKey("ApplicationId")
                         .OnDelete(DeleteBehavior.SetNull)
-                        .HasConstraintName("fk_ekip_member_ekip_applications_application_id");
+                        .HasConstraintName("fk_ekip_member_ekip_application_application_id");
 
                     b.HasOne("Ekip.Domain.Entities.Ekip.Ekip", null)
                         .WithMany()
@@ -3474,7 +3395,7 @@ namespace Ekip.Persistence.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired()
-                        .HasConstraintName("fk_ekip_member_user_accounts_user_id");
+                        .HasConstraintName("fk_ekip_member_user_account_user_id");
                 });
 
             modelBuilder.Entity("Ekip.Domain.Entities.Ekip.RecurringEkip", b =>
@@ -3484,7 +3405,7 @@ namespace Ekip.Persistence.Migrations
                         .HasForeignKey("CreatorId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired()
-                        .HasConstraintName("fk_recurring_ekip_user_accounts_creator_id");
+                        .HasConstraintName("fk_recurring_ekip_user_account_creator_id");
 
                     b.HasOne("Ekip.Domain.Entities.Ekip.Ekip", null)
                         .WithMany()
@@ -3508,7 +3429,7 @@ namespace Ekip.Persistence.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
-                        .HasConstraintName("fk_saved_ekip_user_accounts_user_id");
+                        .HasConstraintName("fk_saved_ekip_user_account_user_id");
                 });
 
             modelBuilder.Entity("Ekip.Domain.Entities.EkipApplication.ApplicationCompanion", b =>
@@ -3518,14 +3439,14 @@ namespace Ekip.Persistence.Migrations
                         .HasForeignKey("CompanionUserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired()
-                        .HasConstraintName("fk_application_companion_user_accounts_companion_user_id");
+                        .HasConstraintName("fk_application_companion_user_account_companion_user_id");
 
                     b.HasOne("Ekip.Domain.Entities.EkipApplication.EkipApplication", null)
                         .WithMany("Companions")
                         .HasForeignKey("EkipApplicationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
-                        .HasConstraintName("fk_application_companion_ekip_applications_ekip_application_id");
+                        .HasConstraintName("fk_application_companion_ekip_application_ekip_application_id");
                 });
 
             modelBuilder.Entity("Ekip.Domain.Entities.EkipApplication.EkipApplication", b =>
@@ -3535,7 +3456,7 @@ namespace Ekip.Persistence.Migrations
                         .HasForeignKey("ApplicantId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired()
-                        .HasConstraintName("fk_ekip_application_user_accounts_applicant_id");
+                        .HasConstraintName("fk_ekip_application_user_account_applicant_id");
 
                     b.HasOne("Ekip.Domain.Entities.Ekip.Ekip", null)
                         .WithMany()
@@ -3552,7 +3473,7 @@ namespace Ekip.Persistence.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired()
-                        .HasConstraintName("fk_reputation_ledger_user_accounts_user_id");
+                        .HasConstraintName("fk_reputation_ledger_user_account_user_id");
                 });
 
             modelBuilder.Entity("Ekip.Domain.Entities.Gamification.UserGamificationSummary", b =>
@@ -3562,7 +3483,7 @@ namespace Ekip.Persistence.Migrations
                         .HasForeignKey("Ekip.Domain.Entities.Gamification.UserGamificationSummary", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
-                        .HasConstraintName("fk_user_gamification_summary_user_accounts_user_id");
+                        .HasConstraintName("fk_user_gamification_summary_user_account_user_id");
 
                     b.OwnsMany("Ekip.Domain.ValueObjects.Gamification.AggregatedCounters", "AggregatedCounters", b1 =>
                         {
@@ -3577,7 +3498,7 @@ namespace Ekip.Persistence.Migrations
 
                             b1.HasKey("UserGamificationSummaryUserId", "__synthesizedOrdinal");
 
-                            b1.ToTable("UserGamificationSummary");
+                            b1.ToTable("user_gamification_summary");
 
                             b1
                                 .ToJson("aggregated_counters")
@@ -3598,14 +3519,14 @@ namespace Ekip.Persistence.Migrations
                         .HasForeignKey("CountryId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired()
-                        .HasConstraintName("fk_city_countries_country_id");
+                        .HasConstraintName("fk_city_country_country_id");
 
                     b.HasOne("Ekip.Domain.Entities.Location.Province", null)
                         .WithMany("Cities")
                         .HasForeignKey("ProvinceId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired()
-                        .HasConstraintName("fk_city_provinces_province_id");
+                        .HasConstraintName("fk_city_province_province_id");
                 });
 
             modelBuilder.Entity("Ekip.Domain.Entities.Location.Province", b =>
@@ -3625,7 +3546,7 @@ namespace Ekip.Persistence.Migrations
                         .HasForeignKey("UploaderId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired()
-                        .HasConstraintName("fk_media_asset_user_accounts_uploader_id");
+                        .HasConstraintName("fk_media_asset_user_account_uploader_id");
                 });
 
             modelBuilder.Entity("Ekip.Domain.Entities.Messaging.ChatMessage", b =>
@@ -3635,14 +3556,14 @@ namespace Ekip.Persistence.Migrations
                         .HasForeignKey("ConversationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
-                        .HasConstraintName("fk_chat_message_conversations_conversation_id");
+                        .HasConstraintName("fk_chat_message_conversation_conversation_id");
 
                     b.HasOne("Ekip.Domain.Entities.User.UserAccount", null)
                         .WithMany()
                         .HasForeignKey("SenderId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired()
-                        .HasConstraintName("fk_chat_message_user_accounts_sender_id");
+                        .HasConstraintName("fk_chat_message_user_account_sender_id");
 
                     b.OwnsOne("Ekip.Domain.ValueObjects.Messaging.ChatAttachment", "Attachment", b1 =>
                         {
@@ -3666,7 +3587,7 @@ namespace Ekip.Persistence.Migrations
 
                             b1.HasKey("ChatMessageId");
 
-                            b1.ToTable("ChatMessage");
+                            b1.ToTable("chat_message");
 
                             b1
                                 .ToJson("attachment")
@@ -3692,13 +3613,13 @@ namespace Ekip.Persistence.Migrations
                         .WithMany()
                         .HasForeignKey("ParticipantOneId")
                         .OnDelete(DeleteBehavior.Restrict)
-                        .HasConstraintName("fk_conversation_user_accounts_participant_one_id");
+                        .HasConstraintName("fk_conversation_user_account_participant_one_id");
 
                     b.HasOne("Ekip.Domain.Entities.User.UserAccount", null)
                         .WithMany()
                         .HasForeignKey("ParticipantTwoId")
                         .OnDelete(DeleteBehavior.Restrict)
-                        .HasConstraintName("fk_conversation_user_accounts_participant_two_id");
+                        .HasConstraintName("fk_conversation_user_account_participant_two_id");
 
                     b.OwnsOne("Ekip.Domain.ValueObjects.Messaging.ChatTheme", "Theme", b1 =>
                         {
@@ -3710,7 +3631,7 @@ namespace Ekip.Persistence.Migrations
 
                             b1.HasKey("ConversationId");
 
-                            b1.ToTable("Conversation");
+                            b1.ToTable("conversation");
 
                             b1
                                 .ToJson("theme")
@@ -3738,7 +3659,7 @@ namespace Ekip.Persistence.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired()
-                        .HasConstraintName("fk_conversation_participant_user_accounts_user_id");
+                        .HasConstraintName("fk_conversation_participant_user_account_user_id");
                 });
 
             modelBuilder.Entity("Ekip.Domain.Entities.Moderation.AbuseReport", b =>
@@ -3748,7 +3669,7 @@ namespace Ekip.Persistence.Migrations
                         .HasForeignKey("ReporterId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired()
-                        .HasConstraintName("fk_abuse_report_user_accounts_reporter_id");
+                        .HasConstraintName("fk_abuse_report_user_account_reporter_id");
 
                     b.HasOne("Ekip.Domain.Entities.Admin.AdminAccount", null)
                         .WithMany()
@@ -3763,14 +3684,14 @@ namespace Ekip.Persistence.Migrations
                         .WithMany()
                         .HasForeignKey("ActorId")
                         .OnDelete(DeleteBehavior.SetNull)
-                        .HasConstraintName("fk_notification_user_accounts_actor_id");
+                        .HasConstraintName("fk_notification_user_account_actor_id");
 
                     b.HasOne("Ekip.Domain.Entities.User.UserAccount", null)
                         .WithMany()
                         .HasForeignKey("RecipientId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
-                        .HasConstraintName("fk_notification_user_accounts_recipient_id");
+                        .HasConstraintName("fk_notification_user_account_recipient_id");
                 });
 
             modelBuilder.Entity("Ekip.Domain.Entities.Review.ProfileReview", b =>
@@ -3780,7 +3701,7 @@ namespace Ekip.Persistence.Migrations
                         .HasForeignKey("AuthorUserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired()
-                        .HasConstraintName("fk_profile_review_user_accounts_author_user_id");
+                        .HasConstraintName("fk_profile_review_user_account_author_user_id");
 
                     b.HasOne("Ekip.Domain.Entities.Ekip.Ekip", null)
                         .WithMany()
@@ -3794,7 +3715,7 @@ namespace Ekip.Persistence.Migrations
                         .HasForeignKey("TargetUserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired()
-                        .HasConstraintName("fk_profile_review_user_accounts_target_user_id");
+                        .HasConstraintName("fk_profile_review_user_account_target_user_id");
                 });
 
             modelBuilder.Entity("Ekip.Domain.Entities.Subscription.UserSubscription", b =>
@@ -3811,7 +3732,7 @@ namespace Ekip.Persistence.Migrations
                         .HasForeignKey("Ekip.Domain.Entities.Subscription.UserSubscription", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
-                        .HasConstraintName("fk_user_subscription_user_accounts_user_id");
+                        .HasConstraintName("fk_user_subscription_user_account_user_id");
 
                     b.OwnsOne("Ekip.Domain.ValueObjects.Subscription.QuotaUsage", "QuotaUsage", b1 =>
                         {
@@ -3825,7 +3746,7 @@ namespace Ekip.Persistence.Migrations
 
                             b1.HasKey("UserSubscriptionUserId");
 
-                            b1.ToTable("UserSubscription");
+                            b1.ToTable("user_subscription");
 
                             b1
                                 .ToJson("quota_usage")
@@ -3853,7 +3774,7 @@ namespace Ekip.Persistence.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired()
-                        .HasConstraintName("fk_ticket_user_accounts_user_id");
+                        .HasConstraintName("fk_ticket_user_account_user_id");
                 });
 
             modelBuilder.Entity("Ekip.Domain.Entities.Support.TicketMessage", b =>
@@ -3889,7 +3810,7 @@ namespace Ekip.Persistence.Migrations
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.SetNull)
-                        .HasConstraintName("fk_search_query_log_user_accounts_user_id");
+                        .HasConstraintName("fk_search_query_log_user_account_user_id");
                 });
 
             modelBuilder.Entity("Ekip.Domain.Entities.User.UserAccount", b =>
@@ -3919,7 +3840,7 @@ namespace Ekip.Persistence.Migrations
 
                             b1.HasKey("UserAccountId", "__synthesizedOrdinal");
 
-                            b1.ToTable("UserAccount");
+                            b1.ToTable("user_account");
 
                             b1
                                 .ToJson("oauth_providers")
@@ -3972,7 +3893,7 @@ namespace Ekip.Persistence.Migrations
 
                             b1.HasKey("UserProfileUserId");
 
-                            b1.ToTable("UserProfile");
+                            b1.ToTable("user_profile");
 
                             b1
                                 .ToJson("mood_widget")
@@ -4000,7 +3921,7 @@ namespace Ekip.Persistence.Migrations
 
                             b1.HasKey("UserProfileUserId", "__synthesizedOrdinal");
 
-                            b1.ToTable("UserProfile");
+                            b1.ToTable("user_profile");
 
                             b1
                                 .ToJson("social_links")

@@ -20,8 +20,6 @@ public sealed class AIConversationConfiguration : IEntityTypeConfiguration<AICon
             .HasMaxLength(200);
 
         builder.Property(x => x.ContextMode)
-            .HasConversion<string>()
-            .HasMaxLength(40)
             .IsRequired();
 
         builder.HasOne<UserAccount>()

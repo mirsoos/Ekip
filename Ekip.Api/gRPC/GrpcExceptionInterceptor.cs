@@ -5,7 +5,8 @@ using Grpc.Core.Interceptors;
 namespace Ekip.Api.gRPC;
 
 public sealed class GrpcExceptionInterceptor(
-    ILogger<GrpcExceptionInterceptor> logger) : Interceptor
+    ILogger<GrpcExceptionInterceptor> logger,
+    IHostEnvironment environment) : Interceptor
 {
     private static readonly Error UnhandledError = Error.Failure(
         "GENERAL.UNHANDLED_ERROR",
@@ -82,6 +83,15 @@ public sealed class GrpcExceptionInterceptor(
             return new RpcException(new Status(StatusCode.Cancelled, "The request was cancelled by the client."));
 
         logger.LogError(ex, "Unhandled gRPC exception for method {Method}", context.Method);
+
+        if (!environment.IsProduction())
+        {
+            var debugError = Error.Failure(
+                UnhandledError.Code,
+                $"{ex.GetType().Name}: {ex.Message}");
+            return debugError.ToRpcException();
+        }
+
         return UnhandledError.ToRpcException();
     }
 }

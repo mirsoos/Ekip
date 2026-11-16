@@ -1,4 +1,5 @@
 ﻿using Ekip.Domain.Entities.User;
+using Ekip.Domain.Enums.EkipApplication;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -18,8 +19,6 @@ public sealed class EkipApplicationConfiguration : IEntityTypeConfiguration<Doma
         builder.Ignore(x => x.PartySize);
 
         builder.Property(x => x.JoinType)
-            .HasConversion<string>()
-            .HasMaxLength(20)
             .IsRequired();
 
         builder.Property(x => x.IntroNote)
@@ -27,8 +26,6 @@ public sealed class EkipApplicationConfiguration : IEntityTypeConfiguration<Doma
             .HasMaxLength(1000);
 
         builder.Property(x => x.ApplicationStatus)
-            .HasConversion<string>()
-            .HasMaxLength(40)
             .IsRequired();
 
         builder.HasOne<Domain.Entities.Ekip.Ekip>()
@@ -58,7 +55,8 @@ public sealed class EkipApplicationConfiguration : IEntityTypeConfiguration<Doma
 
         builder.HasIndex(x => new { x.ApplicantId, x.EkipId })
             .IsUnique()
-            .HasFilter("is_deleted = false AND application_status IN ('WaitingCompanionApproval', 'PendingHostApproval', 'Waitlisted', 'Approved')");
+            .HasFilter(
+                $"is_deleted = false AND application_status IN ({(int)EkipApplicationStatus.WaitingCompanionApproval}, {(int)EkipApplicationStatus.PendingHostApproval}, {(int)EkipApplicationStatus.Waitlisted}, {(int)EkipApplicationStatus.Approved})");
 
         builder.HasIndex(x => new { x.ApplicantId, x.CreatedAtUtc });
 

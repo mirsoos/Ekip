@@ -17,8 +17,6 @@ public sealed class ConversationConfiguration : IEntityTypeConfiguration<Convers
         builder.Property<uint>("Version").IsRowVersion();
 
         builder.Property(x => x.ConversationType)
-            .HasConversion<string>()
-            .HasMaxLength(20)
             .IsRequired();
 
         builder.Property(x => x.LastMessagePreview)

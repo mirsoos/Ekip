@@ -18,18 +18,12 @@ public sealed class EkipMemberConfiguration : IEntityTypeConfiguration<EkipMembe
         builder.Property<uint>("Version").IsRowVersion();
 
         builder.Property(x => x.Role)
-            .HasConversion<string>()
-            .HasMaxLength(30)
             .IsRequired();
 
         builder.Property(x => x.MembershipStatus)
-            .HasConversion<string>()
-            .HasMaxLength(30)
             .IsRequired();
 
         builder.Property(x => x.AttendanceStatus)
-            .HasConversion<string>()
-            .HasMaxLength(30)
             .IsRequired();
 
         // PostGIS Geography Point for GPS Check-In

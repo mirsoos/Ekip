@@ -4,6 +4,7 @@
 		<TargetFramework>net10.0</TargetFramework>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
+		<UserSecretsId>612fc30c-6e49-4e54-a492-de027d76fadb</UserSecretsId>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -24,7 +25,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Protobuf Include="Protos\**\*.proto" GrpcServices="Server" />
+		<Protobuf Include="Protos\**\*.proto" GrpcServices="Both" />
 	</ItemGroup>
 
 	<ItemGroup>
